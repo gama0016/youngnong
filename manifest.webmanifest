@@ -1,0 +1,12 @@
+{
+  "name": "영농노트",
+  "short_name": "영농노트",
+  "description": "농사로 농작업일정·시비·병해충 정보를 작목별로 한눈에",
+  "lang": "ko",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f6f4ec",
+  "theme_color": "#1f5d3a",
+  "icons": [{ "src": "icons/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }]
+}

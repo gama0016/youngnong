@@ -1,0 +1,129 @@
+{
+  "id": 30599,
+  "name": "고추(꽈리고추 반촉성)",
+  "type": "반촉성재배",
+  "category": "채소",
+  "sciName": "Capsicum annuum L.",
+  "family": "가지과",
+  "summary": "가지과에 속하는 영년생 중일성 작물로, 뿌리가 낮게 퍼져 가뭄과 장마에 약하다. 꽃은 일시에 피지 않고 3~4회 주기로 핀다.",
+  "env": [
+    { "label": "발아적온", "value": "25~32℃" },
+    { "label": "모 기르기 적온", "value": "22~30℃" },
+    { "label": "개화적온", "value": "18~23℃" },
+    { "label": "생육적온", "value": "20~30℃" },
+    { "label": "과비대적온", "value": "18~23℃" },
+    { "label": "저장적온", "value": "4℃" },
+    { "label": "개화 및 열매달림 가능 온도", "value": "15.5~28.5℃" },
+    { "label": "재배적지(토양 pH)", "value": "토양 적응범위가 넓은 편이며 pH 6.1~7.6 범위이나 pH 6.5 정도의 중성이 적당" }
+  ],
+  "schedule": [
+    { "task": "씨뿌림", "kind": "sow", "region": null, "start": { "m": 11, "p": 3 }, "end": { "m": 2, "p": 1 }, "text": "11월 하순~2월 상순 (작형별 출하시기 표)" },
+    { "task": "아주심기", "kind": "plant", "region": null, "start": { "m": 2, "p": 2 }, "end": { "m": 3, "p": 2 }, "text": "2월 중순~3월 중순 (작형별 출하시기 표)" },
+    { "task": "수확기", "kind": "harvest", "region": null, "start": { "m": 3, "p": 1 }, "end": { "m": 10, "p": 2 }, "text": "3월 상순~10월 중순" },
+    { "task": "성출하기", "kind": "harvest", "region": null, "start": { "m": 7, "p": 1 }, "end": { "m": 8, "p": 3 }, "text": "7월 상순~8월 하순" },
+    { "task": "씨뿌림 준비", "kind": "etc", "region": null, "start": null, "end": null, "text": null },
+    { "task": "모판 관리", "kind": "nursery", "region": null, "start": null, "end": null, "text": null },
+    { "task": "아주심기 준비", "kind": "etc", "region": null, "start": null, "end": null, "text": null },
+    { "task": "받침대 설치 유인", "kind": "manage", "region": null, "start": null, "end": null, "text": null },
+    { "task": "풋고추 수확", "kind": "harvest", "region": null, "start": null, "end": null, "text": null },
+    { "task": "보온 시작", "kind": "manage", "region": null, "start": null, "end": null, "text": null },
+    { "task": "온도 높임(가온)", "kind": "manage", "region": "중부", "start": null, "end": null, "text": null },
+    { "task": "웃거름", "kind": "fert", "region": null, "start": null, "end": null, "text": null },
+    { "task": "약제방제", "kind": "pest", "region": null, "start": null, "end": null, "text": null }
+  ],
+  "stages": [
+    {
+      "title": "씨뿌림 준비",
+      "timing": null,
+      "items": [
+        { "label": "준비 작업", "value": "육묘상 하우스 설치, 상토 준비, 씨앗과 포트 준비" },
+        { "label": "파종상 설치", "value": "6.6㎡/10a" }
+      ]
+    },
+    {
+      "title": "씨뿌림",
+      "timing": "10월 중하순 (늦여름 씨뿌림: 8월 하순~9월 상순)",
+      "items": [
+        { "label": "종자 파종량", "value": "80㎖/10a" },
+        { "label": "싹틔우기", "value": "1~2mm" },
+        { "label": "거리", "value": "골 사이 8cm, 종자 사이 1cm" }
+      ]
+    },
+    {
+      "title": "묘판 관리",
+      "timing": null,
+      "items": [
+        { "label": "온도", "value": "낮 22~30℃, 밤 15℃ 이상 (생육 단계별 변온관리, 밤 보온관리 유의)" },
+        { "label": "물주기", "value": "20℃ 정도의 물을 오전에 충분히 줌" },
+        { "label": "방제", "value": "진딧물, 모잘록병 방제" },
+        { "label": "액비", "value": "생육상태에 따른 액비 시용" },
+        { "label": "모 기르기 기간", "value": "80~90일 (공정 모 기르기 60~70일, 가급적 포트 모 기르기 실시)" }
+      ]
+    },
+    {
+      "title": "아주심기 준비",
+      "timing": null,
+      "items": [
+        { "label": "볏짚, 석회 시용", "value": "아주심기 1개월 전" },
+        { "label": "하우스 설치", "value": "11월 중순" },
+        { "label": "밑거름 시용", "value": "아주심기 2~3주 전" },
+        { "label": "이랑짓기, 비닐덮기(멀칭)", "value": "아주심기 1주 전 (1조식 90cm, 2조식 180cm)" },
+        { "label": "가온 지온상승", "value": "아주심기 1~2일 전" },
+        { "label": "모 굳히기", "value": "아주심기 1주 전" }
+      ]
+    },
+    {
+      "title": "아주심기",
+      "timing": "11월 하순~12월",
+      "items": [
+        { "label": "적정묘", "value": "본잎 12~13매" },
+        { "label": "심는 밀도(1줄 심기)", "value": "70~80cm × 35~40cm" },
+        { "label": "심는 밀도(2줄 심기)", "value": "140cm × 35cm" }
+      ]
+    },
+    {
+      "title": "웃거름(추비)",
+      "timing": "1차 아주심기 후 30일경 / 2차 1차 후 30~35일경 / 3차 2차 후 35~40일경 / 4차 3차 후 40~45일경",
+      "items": [
+        { "label": "1차", "value": "요소 7kg" },
+        { "label": "2차", "value": "요소 8kg" },
+        { "label": "3차", "value": "요소 9kg, 염화칼리 7kg" },
+        { "label": "4차", "value": "요소 9kg, 염화칼리 10kg" }
+      ]
+    }
+  ],
+  "fertilizer": {
+    "unit": "kg/10a",
+    "columns": ["합계", "웃거름 1차", "웃거름 2차", "웃거름 3차", "웃거름 4차"],
+    "rows": [
+      { "name": "퇴비", "values": [3000, null, null, null, null] },
+      { "name": "요소", "values": [32, 7, 8, 9, 9] },
+      { "name": "용성인비", "values": [26, null, null, null, null] },
+      { "name": "염화칼리", "values": [30, null, null, 7, 10] }
+    ],
+    "note": "성분량이 아닌 비료(요소·용성인비·염화칼리) 기준 총량으로 표기되어 있음. 밑거름 양은 페이지에 별도로 명시되어 있지 않고 시기(아주심기 2~3주 전)만 있음. 웃거름 시기: 1차 아주심기 후 30일경, 2차 1차 후 30~35일경, 3차 2차 후 35~40일경, 4차 3차 후 40~45일경."
+  },
+  "pests": [
+    { "name": "진딧물", "kind": "해충", "timing": "묘판 관리 시기", "control": "묘판 관리 단계에서 방제" },
+    { "name": "모잘록병", "kind": "병", "timing": "묘판 관리 시기(저온 시)", "control": "묘판 관리 단계에서 방제" },
+    { "name": "담배나방", "kind": "해충", "timing": null, "control": null }
+  ],
+  "disasters": [
+    { "risk": "모 기를 때 저온(냉해, 모잘록병, 묘 생장 불량)", "timing": "모 기르기", "measures": ["적기 씨뿌림", "야간 15℃ 이상 보온", "잘록병 방제", "예비 육묘상 설치"] },
+    { "risk": "낙과 및 낙화(지나친 저온·고온·건조로 인한 수분·수정 불량)", "timing": null, "measures": ["보온 및 환기 철저", "적정 토양수분 관리"] },
+    { "risk": "혹한, 폭설, 폭풍(시설 파손 등)", "timing": null, "measures": ["시설 받침대 보완", "눈이 내리면 즉시 쓸기", "하우스 주변 배수구 정비", "난방기 가동으로 적온 유지", "비닐끈 고정"] },
+    { "risk": "생육기 저온", "timing": "생육기", "measures": ["하우스 보온시설 보완", "야간 15℃ 이상 보온"] }
+  ],
+  "notes": [
+    "작형별 출하시기 표(씨뿌림 11월 하순~2월 상순, 아주심기 2월 중순~3월 중순)와 작업 상세(씨뿌림 10월 중하순, 아주심기 11월 하순~12월)의 시기가 페이지 안에서 서로 다르게 적혀 있음. schedule 은 작형별 출하시기 표 기준.",
+    "주당 600~1,200화가 개화하여 400~600화가 열매를 달며, 이 중 200~300개 수확 가능",
+    "열매는 낮 70~80%, 초저녁 20~30% 비율로 자람",
+    "관비재배: 관행재배 대비 17% 증수, 비료주기 및 물관리 비용 82% 절감",
+    "다겹보온 커튼 설치: 부직포 대비 연료 46% 절감, 수량 12% 증수",
+    "하절기 재배 적정 모 기르기: 72공 40일 모 기르기(72공 60일 모 기르기 대비 11% 증수, 28% 소득증대)",
+    "병해충은 적정 시기에 예방 위주로 적용 약제를 살포",
+    "예상 문제점: 고온·다습·건조에 따른 병해 및 초기생육 불량, 습해 발생, 돌림병 다발생, 진딧물 다발, 담배나방 다발",
+    "페이지의 월별 생육과정 표는 텍스트로 확인되지 않아 일부 작업의 시기는 비워 둠"
+  ],
+  "source": "https://www.nongsaro.go.kr/portal/ps/psb/psbl/workScheduleDtl.ps?menuId=PS00087&cntntsNo=30599"
+}

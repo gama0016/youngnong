@@ -1,0 +1,96 @@
+{
+  "id": 30661,
+  "name": "배",
+  "type": null,
+  "category": "과수",
+  "sciName": "Pyrus pyrifolia NAKAI var.",
+  "family": "장미과",
+  "summary": "토심이 깊고 유기물 함량이 많으며 배수가 잘되고 늦서리 피해가 없는 곳이 재배적지인 과수. 한 과총에 5~8개의 꽃이 피며 3~4번째 꽃에서 열린 과실이 좋고, 수분수를 20% 이상 섞어 심는다.",
+  "env": [
+    { "label": "생육 적온", "value": "20℃ 내외" },
+    { "label": "지온 최고", "value": "26~27℃" },
+    { "label": "언피해 온도(휴면기)", "value": "-25~-30℃" },
+    { "label": "언피해 온도(개화기)", "value": "-1.7~-2.8℃" },
+    { "label": "토양 pH", "value": "5.5~6.5" },
+    { "label": "재배적지", "value": "토심이 깊고 유기물 함량이 많은 곳, 바람이 세지 않고 배수가 잘되며 늦서리 피해가 없는 곳. 평지가 가장 좋고 경사지는 15° 미만까지 재배 가능" }
+  ],
+  "schedule": [
+    { "task": "1차 열매솎기", "kind": "manage", "region": null, "start": { "m": 5, "p": 1 }, "end": { "m": 5, "p": 2 }, "text": "꽃이 진 후 10일경(5월 상중순)" },
+    { "task": "2차 열매솎기", "kind": "manage", "region": null, "start": { "m": 5, "p": 2 }, "end": { "m": 5, "p": 3 }, "text": "꽃이 진 후 20일경(5월 중하순)" },
+    { "task": "가지 눕히기", "kind": "manage", "region": null, "start": { "m": 7, "p": 1 }, "end": { "m": 7, "p": 2 }, "text": "7월 상중순" },
+    { "task": "조생종 수확", "kind": "harvest", "region": null, "start": { "m": 8, "p": 2 }, "end": { "m": 9, "p": 1 }, "text": "8월 중순~9월 상순" },
+    { "task": "중생종 수확", "kind": "harvest", "region": null, "start": { "m": 9, "p": 2 }, "end": { "m": 10, "p": 2 }, "text": "9월 중순~10월 중순" },
+    { "task": "만생종 수확", "kind": "harvest", "region": null, "start": { "m": 10, "p": 2 }, "end": { "m": 11, "p": 1 }, "text": "10월 중순~11월 상순" },
+    { "task": "정지전정·유인·꽃눈정리", "kind": "manage", "region": null, "start": null, "end": null, "text": null },
+    { "task": "봉오리따기", "kind": "manage", "region": null, "start": null, "end": null, "text": null },
+    { "task": "인공수분", "kind": "manage", "region": null, "start": null, "end": null, "text": null },
+    { "task": "봉지씌우기", "kind": "manage", "region": null, "start": null, "end": null, "text": null },
+    { "task": "신초유인", "kind": "manage", "region": null, "start": null, "end": null, "text": null },
+    { "task": "낙엽 및 조피제거", "kind": "manage", "region": null, "start": null, "end": null, "text": null },
+    { "task": "묘목심기·고접갱신", "kind": "plant", "region": null, "start": null, "end": null, "text": null },
+    { "task": "물주기·배수", "kind": "manage", "region": null, "start": null, "end": null, "text": null },
+    { "task": "풀베기관리", "kind": "manage", "region": null, "start": null, "end": null, "text": null },
+    { "task": "밑거름", "kind": "fert", "region": null, "start": null, "end": null, "text": null },
+    { "task": "웃거름", "kind": "fert", "region": null, "start": null, "end": null, "text": null },
+    { "task": "과실저장", "kind": "etc", "region": null, "start": null, "end": null, "text": null }
+  ],
+  "stages": [
+    { "title": "수분수 심기", "timing": null,
+      "items": [
+        { "label": "수분수 비율", "value": "20% 이상 섞어 심음" },
+        { "label": "'신고' 품종", "value": "꽃가루가 없어 수분수 2품종 필요" }
+      ] },
+    { "title": "열매솎기", "timing": "1차 꽃이 진 후 10일경(5월 상중순) / 2차 꽃이 진 후 20일경(5월 중하순)",
+      "items": [
+        { "label": "1차", "value": "송이당 1과 남김(3~4번과)" },
+        { "label": "2차", "value": "3~4개 열매 송이당 1개 남김" }
+      ] },
+    { "title": "가지 눕히기", "timing": "7월 상중순",
+      "items": [ { "label": "각도", "value": "수평 기준 10~40°로 눕힘" } ] },
+    { "title": "열매가지 관리", "timing": null,
+      "items": [
+        { "label": "사용 연한", "value": "5~6년 사용 가능('신고'는 6년 이상)" },
+        { "label": "갱신", "value": "웃자람 가지가 있는 3년생 가지는 갱신 필요" },
+        { "label": "배치", "value": "열매가지와 버금가지는 직각으로 배치하고 1~5년생 열매가지를 고르게 배치" }
+      ] },
+    { "title": "물주기(점적관수)", "timing": null,
+      "items": [ { "label": "관수 기준", "value": "7~10일 간격, 20~30㎜" } ] },
+    { "title": "토양개량", "timing": null,
+      "items": [ { "label": "방법", "value": "심토 파쇄, 깊이갈기, 유기물 및 석회 시용" } ] },
+    { "title": "병해충 방제", "timing": null,
+      "items": [ { "label": "방법", "value": "기상자료와 페로몬 트랩으로 미리 살핀 뒤 적기 방제" } ] }
+  ],
+  "fertilizer": null,
+  "pests": [
+    { "name": "붉은별무늬병", "kind": "병", "timing": null, "control": null },
+    { "name": "검은별무늬병", "kind": "병", "timing": null, "control": null },
+    { "name": "흰가루병", "kind": "병", "timing": null, "control": null },
+    { "name": "깍지벌레", "kind": "해충", "timing": null, "control": null },
+    { "name": "주경배나무이", "kind": "해충", "timing": null, "control": null },
+    { "name": "복숭아순나방", "kind": "해충", "timing": null, "control": null },
+    { "name": "응애", "kind": "해충", "timing": null, "control": null },
+    { "name": "바람들이", "kind": "생리장해", "timing": null, "control": "전정법 개선, 원가지 솎음, 가지유인, 약전정, 깊이갈이·퇴비·석회 시용, 너무 익기 전 수확" },
+    { "name": "과일껍질 흑변", "kind": "생리장해", "timing": null, "control": "투광량이 많은 봉지 사용, 조기 수확, 수확 후 예비 건조, 저장고 환기 및 적량 적재" },
+    { "name": "열매터짐(열과)", "kind": "생리장해", "timing": null, "control": "토양개량, 칼슘제 엽면 살포, 토양수분 급변 억제" },
+    { "name": "과일 속 갈변", "kind": "생리장해", "timing": null, "control": "적숙기 수확, 서늘한 곳에서 과실 고르기, 장기저장 지양" }
+  ],
+  "disasters": [
+    { "risk": "강추위", "timing": null, "measures": [] },
+    { "risk": "서리", "timing": null, "measures": ["방상팬, 미세 살수장치, 연소법 사용", "달린 열매가 부족하면 불량과를 달아 수세를 안정시킴"] },
+    { "risk": "가뭄", "timing": null, "measures": ["뿌리 주변에 퇴비, 짚, 풀, 비닐 멀칭", "물주기 시설 설치", "가물 때 7~10일 간격 물주기"] },
+    { "risk": "장마", "timing": null, "measures": ["겉도랑과 속도랑 설치", "토양유실 방지"] },
+    { "risk": "태풍", "timing": null, "measures": ["덕 설치, 가지 유인선을 단단히 고정", "익은 과실은 5~7일 앞당겨 수확", "피해과와 부러진 가지 정리"] },
+    { "risk": "우박", "timing": null, "measures": [] }
+  ],
+  "notes": [
+    "생육단계: 휴면기, 발아기, 개화 및 전엽기, 세포분열기, 과실 비대기, 신초신장기, 꽃눈분화기, 낙엽기",
+    "꽃눈분화기: 6월 중순~8월",
+    "유망품종(숙기는 나주 기준, 과중 g/개, 당도 °Bx, 저장력 일): 조이스킨 9월 상순·320·15.2·15 / 황금배 9월 중순·430·14.9·30 / 그린시스 9월 하순·470·12.4·80 / 화산 9월 하순·543·12.9·80 / 신화 9월 중순·626·13.0·80",
+    "조생종: 수확기 8월 중순~9월 상순, 출하기 8월 중순~9월 중순, 성출하기 8월 하순~9월 상순",
+    "중생종: 수확기 9월 중순~10월 중순, 출하기 9월 하순~10월 중순, 성출하기 10월 하순~2월 하순, 저장출하기 10월 중순~6월 중순",
+    "만생종: 수확기 10월 중순~11월 상순, 출하기 10월 중순~11월 중순, 성출하기 10월 하순~2월 하순, 저장출하기 11월 중순~8월 중순",
+    "페이지에 kg/10a 기준 비료 표는 없으며 밑거름·웃거름은 작업 항목으로만 언급됨",
+    "정지전정·봉지씌우기·인공수분 등 대부분 작업의 월·순 시기는 페이지 도표에서 텍스트로 확인되지 않음"
+  ],
+  "source": "https://www.nongsaro.go.kr/portal/ps/psb/psbl/workScheduleDtl.ps?menuId=PS00087&cntntsNo=30661"
+}

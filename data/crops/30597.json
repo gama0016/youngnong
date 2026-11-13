@@ -1,0 +1,115 @@
+{
+  "id": 30597,
+  "name": "고들빼기",
+  "type": null,
+  "category": "채소",
+  "sciName": "Youngia sonchifolia MAX",
+  "family": "국화과",
+  "summary": "국화과 일년생 초본 또는 월년초로 줄기는 높이 60cm 정도로 곧게 자란다. 토양을 가리지 않고 척박한 땅에서도 잘 자라나, 지나치게 습한 땅에서는 무름병이 발생하기 쉽다.",
+  "env": [
+    { "label": "발아적온", "value": "15~20℃" },
+    { "label": "생육적온", "value": "25℃ 전후" },
+    { "label": "재배적지", "value": "토심이 깊고 배수가 양호한 비옥한 양토가 적합. 참흙이나 모래참흙이 좋음" }
+  ],
+  "schedule": [
+    { "task": "씨뿌림(보통재배)", "kind": "sow", "region": null, "start": { "m": 7, "p": 3 }, "end": { "m": 8, "p": 2 }, "text": "7월 하순~8월 중순" },
+    { "task": "수확(보통재배·가을)", "kind": "harvest", "region": null, "start": { "m": 10, "p": null }, "end": { "m": 11, "p": null }, "text": "10~11월 (성출하기 11월 상순)" },
+    { "task": "수확(보통재배·이듬해 봄)", "kind": "harvest", "region": null, "start": { "m": 3, "p": null }, "end": { "m": 3, "p": null }, "text": "3월 (성출하기 3월 상순)" },
+    { "task": "수확(하우스 및 터널재배)", "kind": "harvest", "region": null, "start": { "m": 12, "p": null }, "end": { "m": 2, "p": null }, "text": "12~2월" },
+    { "task": "웃거름(이듬해 봄 수확 시)", "kind": "fert", "region": null, "start": { "m": 2, "p": 1 }, "end": { "m": 2, "p": 1 }, "text": "2월 상순경" },
+    { "task": "씨뿌림(노지재배)", "kind": "sow", "region": null, "start": null, "end": null, "text": "4월 중순 이후" },
+    { "task": "수확(노지재배)", "kind": "harvest", "region": null, "start": { "m": 6, "p": 2 }, "end": { "m": 6, "p": 2 }, "text": "6월 중순 (씨뿌림 후 60일 이내)" },
+    { "task": "씨뿌림(하우스 무가온 억제재배)", "kind": "sow", "region": "중부 이북", "start": null, "end": null, "text": "9월 15일 이전" },
+    { "task": "하우스 비닐 설치(억제재배)", "kind": "manage", "region": "중부 이북", "start": { "m": 9, "p": 3 }, "end": { "m": 9, "p": 3 }, "text": "9월 하순" },
+    { "task": "수확(하우스 무가온 억제재배)", "kind": "harvest", "region": "중부 이북", "start": null, "end": null, "text": "11월 15일까지 수확 완료" },
+    { "task": "씨뿌림(조기재배)", "kind": "sow", "region": "중부 이남", "start": { "m": 3, "p": 1 }, "end": { "m": 3, "p": 2 }, "text": "3월 10~20일" },
+    { "task": "수확(조기재배)", "kind": "harvest", "region": "중부 이남", "start": null, "end": null, "text": "씨뿌림 후 50~60일 이내" },
+    { "task": "씨뿌림(여름 차광재배)", "kind": "sow", "region": null, "start": { "m": 6, "p": 1 }, "end": { "m": 6, "p": 2 }, "text": "6월 상중순" },
+    { "task": "웃거름", "kind": "fert", "region": null, "start": null, "end": null, "text": "발아 후 30일" },
+    { "task": "밑거름 및 토양 만들기", "kind": "fert", "region": null, "start": null, "end": null, "text": null },
+    { "task": "김매기", "kind": "manage", "region": null, "start": null, "end": null, "text": null },
+    { "task": "씨받이(채종)", "kind": "etc", "region": null, "start": null, "end": null, "text": null }
+  ],
+  "stages": [
+    {
+      "title": "씨뿌림",
+      "timing": "7월 하순~8월 중순",
+      "items": [
+        { "label": "씨앗양", "value": "10a당 2~3ℓ" },
+        { "label": "이랑 너비", "value": "120cm" },
+        { "label": "흙 덮기", "value": "씨앗 크기의 2~3배 두께" },
+        { "label": "덮기", "value": "씨뿌림 후 10일간 덮기" }
+      ]
+    },
+    {
+      "title": "물주기·김매기",
+      "timing": null,
+      "items": [
+        { "label": "물주기", "value": "씨뿌림 후 2~3회" },
+        { "label": "김매기", "value": "덮개물 제거 후 김매기 실시" }
+      ]
+    },
+    {
+      "title": "웃거름",
+      "timing": "발아 후 30일 / 이듬해 봄 수확 시 2월 상순경",
+      "items": []
+    },
+    {
+      "title": "수확",
+      "timing": "가을재배 10~11월, 3월 / 하우스 및 터널재배 12~2월",
+      "items": [
+        { "label": "수확 기준", "value": "잎 길이가 15~25cm일 때" }
+      ]
+    },
+    {
+      "title": "여름 차광재배",
+      "timing": "씨뿌림 6월 상중순",
+      "items": [
+        { "label": "빛가림망", "value": "본엽 2~3매부터 지상 2m 높이에 측면을 제외한 상단부에 20~35% 흑색 빛가림망 설치" }
+      ]
+    },
+    {
+      "title": "하우스 무가온 재배(억제재배, 중부 이북)",
+      "timing": "씨뿌림 9월 15일 이전, 11월 15일까지 수확 완료",
+      "items": [
+        { "label": "비닐 설치", "value": "9월 하순 하우스에 비닐 설치" },
+        { "label": "유의사항", "value": "10℃ 이하 저온이 지속되면 꽃대 출현 유의" }
+      ]
+    }
+  ],
+  "fertilizer": {
+    "unit": "kg/10a",
+    "columns": ["총량", "밑거름", "웃거름 1회", "웃거름 2회"],
+    "rows": [
+      { "name": "퇴비", "values": [2000, 2000, null, null] },
+      { "name": "질소", "values": [16, 6, 5, 5] },
+      { "name": "인산", "values": [25, 25, null, null] },
+      { "name": "칼리", "values": [16, 6, 5, 5] },
+      { "name": "석회", "values": [150, 150, null, null] }
+    ],
+    "note": "웃거름 시기: 발아 후 30일. 이듬해 봄 수확 시 2월 상순경 웃거름 실시."
+  },
+  "pests": [
+    { "name": "진딧물", "kind": "해충", "timing": null, "control": null },
+    { "name": "녹병", "kind": "병", "timing": null, "control": null },
+    { "name": "흰가루병", "kind": "병", "timing": null, "control": null },
+    { "name": "점무늬병", "kind": "병", "timing": null, "control": null },
+    { "name": "무름병", "kind": "병", "timing": "지나치게 습한 땅에서 발생하기 쉬움", "control": null },
+    { "name": "뿌리썩음병", "kind": "병", "timing": "습해 시", "control": "배수구 정비" }
+  ],
+  "disasters": [
+    { "risk": "가뭄(과습이나 건조 모두 수량 저하)", "timing": null, "measures": ["이동식 스프링클러 또는 점적관수로 물주기", "웃거름은 관비 형태의 액비로 공급"] },
+    { "risk": "고온(더위시듦 또는 로제트 현상, 지상부 생육 불량)", "timing": null, "measures": [] },
+    { "risk": "습해(지하부 생육 불량, 뿌리썩음병 발생)", "timing": null, "measures": ["배수구 정비"] }
+  ],
+  "notes": [
+    "잎 길이 2.5~5cm, 너비 1.4~1.7cm / 뿌리 굵기 1~2cm, 길이 10~20cm",
+    "꽃은 5~6월경 가지 끝에 여러 개가 뭉쳐 핌",
+    "주요 기술: 7월 하순 제때 씨뿌림, 씨뿌림 후 물관리 철저, 웃거름 관리(수확 후 웃거름 포함)",
+    "흑색 유공비닐 사용 시 노동력 절감 가능(10cm 간격으로 구멍 뚫음)",
+    "억제재배는 중부 이북, 조기재배는 중부 이남 기준",
+    "예상 문제점: 발아불량, 발아·생육불량, 뿌리썩음병 다발생",
+    "페이지의 월별 생육과정 표는 텍스트로 확인되지 않아 일부 작업 및 병해충 발생 시기는 비워 둠"
+  ],
+  "source": "https://www.nongsaro.go.kr/portal/ps/psb/psbl/workScheduleDtl.ps?menuId=PS00087&cntntsNo=30597"
+}

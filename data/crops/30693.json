@@ -1,0 +1,75 @@
+{
+  "id": 30693,
+  "name": "튤립",
+  "type": "억제재배, 촉성재배, 반촉성재배",
+  "category": "화훼",
+  "sciName": "Tulipa gesneriana L.",
+  "family": "백합과",
+  "summary": "알뿌리를 저온처리한 뒤 아주심기하여 절화를 생산하는 화훼. 개화는 일장의 영향을 크게 받지 않는 중성식물이며 꽃눈분화는 6~8월 초에 이루어진다.",
+  "env": [
+    { "label": "생육온도", "value": "주간 15~20℃, 야간 15℃ 이상(최저 8℃ 이상)" },
+    { "label": "재배적지 토양", "value": "약산성 또는 중성 토양, pH 6.5~6.9" },
+    { "label": "알뿌리 생산 토양", "value": "사질양토 및 사양토, pH 6.8~6.9" },
+    { "label": "고온 한계", "value": "25℃ 이상에서는 도장하여 식물이 연약해짐" }
+  ],
+  "schedule": [
+    { "task": "꽃눈분화", "kind": "etc", "region": null, "start": { "m": 6, "p": null }, "end": { "m": 8, "p": 1 }, "text": "6~8월 초" },
+    { "task": "저온처리(냉장)", "kind": "manage", "region": null, "start": { "m": 8, "p": 1 }, "end": null, "text": "8월 상순 이후, 노즈 길이 3~4mm일 때" },
+    { "task": "씨알소독", "kind": "pest", "region": null, "start": null, "end": null, "text": null },
+    { "task": "아주심기(억제재배)", "kind": "plant", "region": null, "start": { "m": 11, "p": 3 }, "end": { "m": 12, "p": 1 }, "text": "11월 하순~12월 상순" },
+    { "task": "수확(억제재배)", "kind": "harvest", "region": null, "start": { "m": 5, "p": 2 }, "end": { "m": 6, "p": 2 }, "text": "5월 중순~6월 중순" },
+    { "task": "아주심기(촉성재배)", "kind": "plant", "region": null, "start": { "m": 10, "p": 2 }, "end": { "m": 11, "p": 1 }, "text": "10월 중순~11월 상순" },
+    { "task": "수확(촉성재배)", "kind": "harvest", "region": null, "start": { "m": 1, "p": 2 }, "end": { "m": 2, "p": 2 }, "text": "1월 중순~2월 중순" },
+    { "task": "아주심기(반촉성재배)", "kind": "plant", "region": null, "start": { "m": 10, "p": 2 }, "end": { "m": 11, "p": 1 }, "text": "10월 중순~11월 상순" },
+    { "task": "수확(반촉성재배)", "kind": "harvest", "region": null, "start": { "m": 2, "p": 3 }, "end": { "m": 3, "p": 2 }, "text": "2월 하순~3월 중순" },
+    { "task": "물주기(알뿌리 비대기)", "kind": "manage", "region": null, "start": { "m": 5, "p": null }, "end": { "m": 6, "p": null }, "text": "5~6월" },
+    { "task": "바닥덮기(멀칭)", "kind": "manage", "region": null, "start": null, "end": null, "text": null },
+    { "task": "알뿌리 수확 후 저장", "kind": "etc", "region": null, "start": null, "end": null, "text": null },
+    { "task": "병해충 방제", "kind": "pest", "region": null, "start": null, "end": null, "text": null }
+  ],
+  "stages": [
+    { "title": "저온처리", "timing": "8월 상순 이후, 노즈 길이가 3~4mm일 때", "items": [
+      { "label": "촉성재배 예비냉장", "value": "14~15℃에서 2주" },
+      { "label": "촉성재배 본냉장", "value": "2~5℃에서 6~8주" },
+      { "label": "기준", "value": "꽃눈분화 후 2~5℃에서 6~8주 처리한 뒤 아주심기" },
+      { "label": "주의", "value": "저온처리 중 0℃ 이하가 되면 블라인드 발생. 저온처리 전 꽃눈 발달 정도를 확인해야 하며 저온이 부족하면 화경 신장이 불량함" }
+    ] },
+    { "title": "씨알소독", "timing": null, "items": [
+      { "label": "방법", "value": "벤레이트티 200배액에 30~40분" }
+    ] },
+    { "title": "아주심기 및 관리", "timing": "억제재배 11월 하순~12월 상순 / 촉성·반촉성재배 10월 중순~11월 상순", "items": [
+      { "label": "아주심기 후 관리", "value": "짚으로 바닥덮기(멀칭)" },
+      { "label": "물주기", "value": "알뿌리 비대기인 5~6월에 수분관리 철저" }
+    ] },
+    { "title": "알뿌리 저장", "timing": "수확 후", "items": [
+      { "label": "저장", "value": "건조 후 23~25℃ 저장고에 보관" },
+      { "label": "주의", "value": "꽃눈 발달은 20℃ 전후에서 촉진, 35℃ 이상에서는 억제되므로 여름철 알뿌리 저장 시 주의" }
+    ] }
+  ],
+  "fertilizer": {
+    "unit": "kg/10a",
+    "columns": ["총량", "밑거름", "웃거름 1회", "웃거름 2회", "웃거름 3회"],
+    "rows": [
+      { "name": "퇴비", "values": [2500, 2500, null, null, null] },
+      { "name": "질소", "values": [17, 12, 5, null, null] },
+      { "name": "인산", "values": [9, 6, 3, null, null] },
+      { "name": "칼리", "values": [24, 16, 8, null, null] }
+    ],
+    "note": null
+  },
+  "pests": [
+    { "name": "응애, 진딧물", "kind": "해충", "timing": null, "control": null },
+    { "name": "바이러스", "kind": "병", "timing": null, "control": null },
+    { "name": "알뿌리 부패병, 보트리티스", "kind": "병", "timing": null, "control": null },
+    { "name": "꽃목 부러짐 및 잎 갈라짐", "kind": "생리장해", "timing": null, "control": "보트리티스나 급격한 온도 상승, 과습 등으로 인한 일시적 칼슘 부족이 원인. 칼슘나이트레이트 0.06% 액을 2~3회 살포하고 통풍을 좋게 하며 재배온도를 18~20℃로 유지" },
+    { "name": "블라인드", "kind": "생리장해", "timing": null, "control": "예방 및 품질 향상: 생장조절제 GA3 200ppm과 BA 5~10ppm을 길이 5~10cm일 때 1주당 1ml씩 엽통 내에 적하" }
+  ],
+  "disasters": [
+    { "risk": "저온장해", "timing": "겨울철 촉성재배 때", "measures": ["야간 8℃ 이상 유지", "주간 15~20℃, 야간 15℃ 유지"] }
+  ],
+  "notes": [
+    "성출하기: 억제재배 5월 하순, 촉성재배 1월 하순~2월 상순, 반촉성재배 3월 상순",
+    "꽃눈분화 개시는 비교적 고온에서 양호하고, 발달은 20℃ 전후에서 촉진됨"
+  ],
+  "source": "https://www.nongsaro.go.kr/portal/ps/psb/psbl/workScheduleDtl.ps?menuId=PS00087&cntntsNo=30693"
+}

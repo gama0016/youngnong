@@ -1,0 +1,86 @@
+{
+  "id": 30595,
+  "name": "갓",
+  "type": null,
+  "category": "채소",
+  "sciName": "Brassica juncea",
+  "family": "배추과",
+  "summary": "서늘한 기후를 좋아하며 추위와 더위에 강한 편은 아니다. 모 나이와 관계없이 12℃ 이하의 저온에 감응해 꽃눈분화가 촉진되고 고온에서 꽃대신장이 촉진된다.",
+  "env": [
+    { "label": "발아적온", "value": "25℃" },
+    { "label": "개화적온", "value": "12℃" },
+    { "label": "생육적온", "value": "20℃" },
+    { "label": "재배적지", "value": "토양산도 pH 5.5~6.8, 중성 내지 약산성 토양" }
+  ],
+  "schedule": [
+    { "task": "씨뿌림(봄재배)", "kind": "sow", "region": null, "start": { "m": 4, "p": null }, "end": { "m": 4, "p": null }, "text": "4월" },
+    { "task": "수확(봄재배)", "kind": "harvest", "region": null, "start": { "m": 6, "p": null }, "end": { "m": 6, "p": null }, "text": "6월 (성출하기 6월 상순)" },
+    { "task": "씨뿌림(가을재배)", "kind": "sow", "region": null, "start": { "m": 8, "p": 3 }, "end": { "m": 9, "p": 1 }, "text": "8월 하순~9월 상순" },
+    { "task": "수확(가을재배)", "kind": "harvest", "region": null, "start": { "m": 10, "p": null }, "end": { "m": 11, "p": null }, "text": "10월~11월 (성출하기 10월 하순)" },
+    { "task": "씨뿌림(겨울재배·시설재배)", "kind": "sow", "region": null, "start": { "m": 11, "p": 3 }, "end": { "m": 11, "p": 3 }, "text": "11월 하순" },
+    { "task": "수확(겨울재배·시설재배)", "kind": "harvest", "region": null, "start": { "m": 2, "p": null }, "end": { "m": 3, "p": null }, "text": "이듬해 2~3월 (성출하기 2월 하순)" },
+    { "task": "웃거름", "kind": "fert", "region": null, "start": null, "end": null, "text": null },
+    { "task": "김매기·물주기·배수", "kind": "manage", "region": null, "start": null, "end": null, "text": null }
+  ],
+  "stages": [
+    {
+      "title": "씨뿌림",
+      "timing": "봄 4월 / 가을 8월 하순~9월 상순",
+      "items": [
+        { "label": "씨앗양", "value": "5~6dL/10a" },
+        { "label": "방법", "value": "이랑 너비 120cm, 30cm 간격으로 4줄 줄뿌림, 포기 사이 10cm 내외" },
+        { "label": "김매기", "value": "씨뿌림 직후 제초제 사용" }
+      ]
+    },
+    {
+      "title": "솎음",
+      "timing": "본잎 1~2매일 때 시작, 6~7매일 때 종료",
+      "items": [
+        { "label": "횟수", "value": "노동력 유무에 따라 2~3회 실시" }
+      ]
+    },
+    {
+      "title": "관리",
+      "timing": null,
+      "items": [
+        { "label": "바닥덮기(멀칭)", "value": "유공필름, 왕겨, 짚 등" },
+        { "label": "물주기", "value": "씨뿌림 직후 및 가물 때" },
+        { "label": "붕소 결핍 시", "value": "붕사 0.2% 엽면 시비" }
+      ]
+    }
+  ],
+  "fertilizer": {
+    "unit": "kg/10a",
+    "columns": ["총량", "밑거름", "웃거름 1회"],
+    "rows": [
+      { "name": "퇴비", "values": [2000, 2000, null] },
+      { "name": "질소", "values": [17.0, 12.0, 5.0] },
+      { "name": "인산", "values": [8.0, 8.0, null] },
+      { "name": "칼리", "values": [12.0, 12.0, null] },
+      { "name": "붕사", "values": [1.0, 1.0, null] }
+    ],
+    "note": null
+  },
+  "pests": [
+    { "name": "벼룩잎벌레", "kind": "해충", "timing": null, "control": null },
+    { "name": "배추흰나방", "kind": "해충", "timing": null, "control": null },
+    { "name": "무름병", "kind": "병", "timing": null, "control": null },
+    { "name": "바이러스병(진딧물 매개)", "kind": "병", "timing": null, "control": null },
+    { "name": "석회 부족증", "kind": "생리장해", "timing": null, "control": "적정 토양수분 관리(자연강우 시 발생률 75%, 적습을 유지하면 발생하지 않음)" }
+  ],
+  "disasters": [
+    { "risk": "저온 꽃대신장", "timing": null, "measures": ["4월 상순 이후 씨뿌림", "생육 초기 저온 감응을 막도록 보온관리"] },
+    { "risk": "봄가뭄", "timing": "봄", "measures": ["간이 저수장 설치", "이동식 스프링클러 설치", "짚·비닐덮기"] },
+    { "risk": "호우", "timing": null, "measures": ["배수구 정비", "엽면 비료 주기", "살균제 살포"] },
+    { "risk": "가을가뭄", "timing": "가을", "measures": ["이동식 스프링클러 설치", "짚 덮기", "망사덮기", "살충제 살포"] },
+    { "risk": "한파(언피해 온도 -3℃ 내외)", "timing": null, "measures": ["섬피 비닐덮기"] }
+  ],
+  "notes": [
+    "작형: 봄재배, 가을재배, 겨울재배(시설재배)",
+    "자가 불화합성이 있어 계속 자식하면 세력이 약화됨",
+    "망사를 이용한 피복재배로 병해충 발생을 줄임",
+    "예상 문제점: 발아불량, 저온 감응에 따른 꽃대신장, 습해, 병해충 다발생, 씨뿌림 지연, 침수·관수·유실·매몰, 언피해(동해)",
+    "페이지의 월별 작업 표는 텍스트로 확인되지 않아 웃거름·김매기 등의 시기와 병해충 발생 시기는 비워 둠"
+  ],
+  "source": "https://www.nongsaro.go.kr/portal/ps/psb/psbl/workScheduleDtl.ps?menuId=PS00087&cntntsNo=30595"
+}

@@ -1,0 +1,80 @@
+{
+  "id": 30691,
+  "name": "칼라",
+  "type": "가온재배, 노지재배, 억제재배",
+  "category": "화훼",
+  "sciName": "Zantedeschia spp.",
+  "family": "천남성과",
+  "summary": "알뿌리를 심어 절화·분화로 출하하는 화훼. 가온·노지·억제재배 작형이 있으며 유색 칼라는 개화조절이 가능해 연중 절화가 가능하다.",
+  "env": [
+    { "label": "토양", "value": "배수가 양호한 모래흙(사질토), 모래참흙(사양토), 참흙(양토). 재배적지는 모래참흙(사양토)" },
+    { "label": "전기전도도(EC)", "value": "0.3mS/cm 이하" },
+    { "label": "토양산도(pH)", "value": "6.5~7.0" },
+    { "label": "생육온도", "value": "주간 25℃ 이하, 야간 15℃ 이상" },
+    { "label": "빛가림", "value": "6~8월에 50~60% 빛가림 시 품질 향상" }
+  ],
+  "schedule": [
+    { "task": "아주심기(가온재배)", "kind": "plant", "region": null, "start": { "m": 2, "p": 3 }, "end": { "m": 3, "p": 1 }, "text": "2월 하순~3월 상순" },
+    { "task": "수확(가온재배)", "kind": "harvest", "region": null, "start": { "m": 5, "p": 3 }, "end": { "m": 6, "p": 1 }, "text": "5월 하순~6월 상순" },
+    { "task": "아주심기(노지재배)", "kind": "plant", "region": null, "start": { "m": 4, "p": 3 }, "end": { "m": 5, "p": 1 }, "text": "4월 하순~5월 상순" },
+    { "task": "수확(노지재배)", "kind": "harvest", "region": null, "start": { "m": 7, "p": 3 }, "end": { "m": 8, "p": 1 }, "text": "7월 하순~8월 상순" },
+    { "task": "아주심기(억제재배)", "kind": "plant", "region": null, "start": { "m": 5, "p": 3 }, "end": { "m": 6, "p": 1 }, "text": "5월 하순~6월 상순" },
+    { "task": "수확(억제재배)", "kind": "harvest", "region": null, "start": { "m": 8, "p": 3 }, "end": { "m": 10, "p": 1 }, "text": "8월 하순~10월 상순" },
+    { "task": "빛가림", "kind": "manage", "region": null, "start": { "m": 6, "p": null }, "end": { "m": 8, "p": null }, "text": "6~8월" },
+    { "task": "지베렐린 처리", "kind": "manage", "region": null, "start": null, "end": null, "text": null },
+    { "task": "알뿌리 저장(억제재배)", "kind": "etc", "region": null, "start": null, "end": null, "text": null },
+    { "task": "병해충 방제(나방유충, 무름병)", "kind": "pest", "region": null, "start": null, "end": null, "text": null }
+  ],
+  "stages": [
+    { "title": "아주심기", "timing": "가온재배 2월 하순~3월 상순 / 노지재배 4월 하순~5월 상순 / 억제재배 5월 하순~6월 상순", "items": [
+      { "label": "심는 방식", "value": "3조식 또는 4조식" },
+      { "label": "심는 거리", "value": "조간 30cm, 주간 15~20cm" },
+      { "label": "심은 뒤 관리", "value": "덮기(멀칭)를 하고 충분히 물을 줌" },
+      { "label": "엽수", "value": "6매 정도일 때 절화 수량에 효과적" },
+      { "label": "아주심기 가능 시기", "value": "하우스 2월 상순부터, 노지 4월 하순부터" }
+    ] },
+    { "title": "가온재배", "timing": "2~3월 아주심기, 5~6월 출하", "items": [
+      { "label": "알뿌리 저장온도", "value": "5℃보다 10℃에서 저장할 때 개화일수가 짧아짐" },
+      { "label": "방법", "value": "모판에서 일정하게 발아시킨 뒤 지베렐린 처리 후 아주심기" }
+    ] },
+    { "title": "억제재배", "timing": "5~6월 아주심기, 8~9월 출하", "items": [
+      { "label": "알뿌리 저장", "value": "5℃에서 저장했다가 아주심기" },
+      { "label": "심는 깊이", "value": "10cm 깊이로 심고 짚을 두껍게 덮음" },
+      { "label": "적지", "value": "고온기 생육이므로 서늘한 지역이 적합" }
+    ] },
+    { "title": "개화조절", "timing": null, "items": [
+      { "label": "알뿌리 지베렐린 처리(개화조절)", "value": "100ppm 30분 처리" },
+      { "label": "알뿌리 지베렐린 처리(기형화 방지 측면)", "value": "50ppm 5초 순간 처리가 효과적" },
+      { "label": "분화용 풀길이 조절", "value": "화분당 파크로부트라졸 4mg 처리" }
+    ] }
+  ],
+  "fertilizer": {
+    "unit": "kg/10a",
+    "columns": ["총량", "밑거름", "웃거름 1회", "웃거름 2회", "웃거름 3회"],
+    "rows": [
+      { "name": "퇴비", "values": [1500, 1500, null, null, null] },
+      { "name": "질소", "values": [25, 20, 5, null, null] },
+      { "name": "인산", "values": [25, 25, null, null, null] },
+      { "name": "칼리", "values": [25, 20, 5, null, null] },
+      { "name": "석회", "values": [150, 150, null, null, null] }
+    ],
+    "note": null
+  },
+  "pests": [
+    { "name": "나방유충", "kind": "해충", "timing": null, "control": null },
+    { "name": "무름병", "kind": "병", "timing": null, "control": null },
+    { "name": "꽃의 기형화", "kind": "생리장해", "timing": null, "control": "온도 변화가 심하면 발생. 지베렐린 농도가 높으면 꽃이 녹색 또는 기형으로 변하거나 이중으로 피는 경우가 많음. 처리한 알뿌리를 오래 방치하면 부패할 수 있으므로 심기 전에 처리. 지베렐린 처리 알뿌리는 알뿌리 비대에 나쁜 영향을 주므로 알뿌리 생산에는 사용하지 않음" },
+    { "name": "알뿌리 백화현상", "kind": "생리장해", "timing": null, "control": "상처 부위에 백색의 죽은 세포층이 생기는 것으로 상처가 아문 흔적이라 대체로 문제 없으나, 상처가 큰 알뿌리는 버림" }
+  ],
+  "disasters": [
+    { "risk": "저온 및 언 피해", "timing": "2~3월 아주심기하는 가온재배", "measures": ["야간 10℃ 이상 유지", "0℃ 이하에 장시간 노출되면 언 피해 발생"] },
+    { "risk": "가뭄", "timing": null, "measures": ["물주기"] },
+    { "risk": "장마기, 호우·태풍", "timing": null, "measures": [] },
+    { "risk": "고온피해", "timing": null, "measures": [] }
+  ],
+  "notes": [
+    "성출하기: 가온재배 5월 하순~6월 상순, 노지재배 7월 하순~8월 상순, 억제재배 9월 중순",
+    "유색 칼라는 개화조절이 가능해 연중 절화 가능"
+  ],
+  "source": "https://www.nongsaro.go.kr/portal/ps/psb/psbl/workScheduleDtl.ps?menuId=PS00087&cntntsNo=30691"
+}

@@ -1,0 +1,78 @@
+{
+  "id": 30694,
+  "name": "팔레놉시스",
+  "type": "보통재배, 촉성재배, 억제재배",
+  "category": "화훼",
+  "sciName": "Phalaenopsis spp.",
+  "family": "난과",
+  "summary": "시설에서 재배하는 난과 분화 작물. 온도조절로 연중 꽃눈을 유도할 수 있으며 10℃ 이하에서 저온피해를 받는다.",
+  "env": [
+    { "label": "재배관리온도", "value": "생육적온 25~28℃, 개화적온 18~25℃" },
+    { "label": "재배 가능 시설 내 온도 범위", "value": "15~35℃" },
+    { "label": "생육적온", "value": "주간 25~30℃, 야간 20~25℃" },
+    { "label": "생장기 관리온도", "value": "20~30℃ (25℃ 이상에서 생육 촉진)" },
+    { "label": "개화기 온도", "value": "밤 15~18℃, 낮 20~25℃" },
+    { "label": "화아분화 온도", "value": "18~23℃ (단일조건에서 촉진)" },
+    { "label": "적정광도", "value": "15,000~30,000 Lux" },
+    { "label": "저온피해 온도", "value": "10℃ 이하 (15℃ 이하 관리 시 잎·꽃 피해 우려)" }
+  ],
+  "schedule": [
+    { "task": "입식(보통재배)", "kind": "plant", "region": null, "start": { "m": 3, "p": 3 }, "end": { "m": 4, "p": 1 }, "text": "3월 하순~4월 상순" },
+    { "task": "꽃눈분화기(보통재배)", "kind": "manage", "region": null, "start": { "m": 9, "p": 3 }, "end": { "m": 10, "p": 1 }, "text": "9월 하순~10월 상순" },
+    { "task": "개화기(보통재배)", "kind": "harvest", "region": null, "start": { "m": 1, "p": null }, "end": { "m": 3, "p": null }, "text": "1월~3월" },
+    { "task": "입식(촉성재배)", "kind": "plant", "region": null, "start": { "m": 12, "p": 3 }, "end": { "m": 1, "p": 1 }, "text": "12월 하순~1월 상순" },
+    { "task": "꽃눈분화기(촉성재배)", "kind": "manage", "region": null, "start": { "m": 6, "p": 3 }, "end": { "m": 7, "p": 1 }, "text": "6월 하순~7월 상순" },
+    { "task": "개화기(촉성재배)", "kind": "harvest", "region": null, "start": { "m": 10, "p": 3 }, "end": { "m": 11, "p": 1 }, "text": "10월 하순~11월 상순" },
+    { "task": "입식(억제재배)", "kind": "plant", "region": null, "start": { "m": 8, "p": 2 }, "end": { "m": 9, "p": 1 }, "text": "8월 중순~9월 상순" },
+    { "task": "꽃눈분화기(억제재배)", "kind": "manage", "region": null, "start": { "m": 3, "p": 1 }, "end": { "m": 3, "p": 3 }, "text": "3월 상순~3월 하순" },
+    { "task": "개화기(억제재배)", "kind": "harvest", "region": null, "start": { "m": 6, "p": 3 }, "end": { "m": 12, "p": 1 }, "text": "6월 하순~12월 상순" },
+    { "task": "실외재배 전환", "kind": "manage", "region": null, "start": { "m": 5, "p": 3 }, "end": null, "text": "5월 하순부터" },
+    { "task": "생장기 비료 주기", "kind": "fert", "region": null, "start": { "m": 4, "p": null }, "end": null, "text": "4월 중 생장기부터 가을까지" },
+    { "task": "분갈이", "kind": "manage", "region": null, "start": null, "end": null, "text": "생장기 진입 시" },
+    { "task": "받침대 세우기", "kind": "manage", "region": null, "start": null, "end": null, "text": null }
+  ],
+  "stages": [
+    { "title": "생장기 관리", "timing": "새 뿌리·새잎이 나오는 시기", "items": [
+      { "label": "비료", "value": "4월 중 생장기에 시용. 1500배 액비를 물 대신 가을까지 주거나, 물주기와 별도로 주 1회 1000배 액비 시용" },
+      { "label": "물주기", "value": "식재 표면에서 1~2cm가 마르면 실시" },
+      { "label": "분갈이", "value": "생장기 진입 시 실시" },
+      { "label": "두는 장소", "value": "매일 7~8시간 햇빛, 강한 햇빛은 피하고 50% 차광" }
+    ] },
+    { "title": "실내·실외 재배", "timing": "5월 하순부터 실외재배", "items": [
+      { "label": "실내재배", "value": "빛가림 30%" },
+      { "label": "실외재배", "value": "빛가림 50~70%, 물 충분히, 10일에 한 번 액비" }
+    ] },
+    { "title": "꽃눈분화기 관리", "timing": "보통재배 9월 하순~10월 상순 / 촉성재배 6월 하순~7월 상순 / 억제재배 3월 상순~3월 하순", "items": [
+      { "label": "온도", "value": "18~23℃" },
+      { "label": "꽃눈 온도관리", "value": "최저 16℃, 가능하면 20℃ 이상" },
+      { "label": "꽃대발생 100% 조건", "value": "주간 25℃, 야간 18℃ (주요기술 항목에는 야간 20℃로도 기재)" },
+      { "label": "광", "value": "약한 차광. 늦가을부터는 햇빛을 오래 쬐어 포기를 튼튼하게 함" },
+      { "label": "물주기", "value": "표면이 마르면 실시" },
+      { "label": "비료", "value": "주지 않음" }
+    ] },
+    { "title": "개화기 관리", "timing": "보통재배 1월~3월 / 촉성재배 10월 하순~11월 상순 / 억제재배 6월 하순~12월 상순", "items": [
+      { "label": "온도", "value": "밤 15~18℃, 낮 20~25℃" },
+      { "label": "관리", "value": "받침대 세우기, 과다 물주기 주의" }
+    ] },
+    { "title": "겨울관리", "timing": "겨울~봄", "items": [
+      { "label": "온도", "value": "봄까지 가능한 한 추위에 노출하지 않음 (15℃ 이하 관리 시 저온피해 우려)" },
+      { "label": "물주기", "value": "15℃ 이상에서 표면이 마르면 물주기. 10℃ 내외에서 찬물은 뿌리를 상하게 함. 저온에서 과다 물주기는 뿌리 썩음의 원인" }
+    ] }
+  ],
+  "fertilizer": null,
+  "pests": [
+    { "name": "세균성 병", "kind": "병", "timing": null, "control": "발생이 많아 항생제 등 살포" },
+    { "name": "연부병, 부패병", "kind": "병", "timing": "여름 고온기", "control": "물주기, 빛가림, 환기, 팬·패드 설치, 살충·살균제 살포" },
+    { "name": "민달팽이", "kind": "해충", "timing": null, "control": "나메톡스 등 구제약 처리" },
+    { "name": "잎 생육이상", "kind": "생리장해", "timing": null, "control": "이상묘 확인주 제거, 적정 재배조건 유지" }
+  ],
+  "disasters": [
+    { "risk": "저온(저온피해, 냉해, 꽃에 검은 반점, 묘생육 불량)", "timing": null, "measures": ["난방기 가동"] },
+    { "risk": "고온(여름 고온기 병 다발)", "timing": "여름 고온기", "measures": ["물주기", "빛가림", "환기", "팬·패드 설치", "살충·살균제 살포"] },
+    { "risk": "강광(일소, 잎 황화)", "timing": null, "measures": ["빛가림망 설치", "환기"] }
+  ],
+  "notes": [
+    "농장에서는 온도조절로 연중 꽃눈 유도"
+  ],
+  "source": "https://www.nongsaro.go.kr/portal/ps/psb/psbl/workScheduleDtl.ps?menuId=PS00087&cntntsNo=30694"
+}

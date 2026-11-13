@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>영농노트 — 농사에 필요한 정보만, 한눈에</title>
+<meta name="description" content="농촌진흥청 농사로의 농작업일정·시비·병해충·재해 대책 정보를 작목별로 한 화면에 정리한 영농인용 사이트">
+<meta name="theme-color" content="#1f5d3a">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icons/icon.svg">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<a class="skip" href="#app">본문 바로가기</a>
+<header class="top">
+  <div class="top-in">
+    <a class="brand" href="#/" aria-label="영농노트 홈">
+      <svg viewBox="0 0 32 32" width="30" height="30" aria-hidden="true"><rect width="32" height="32" rx="8" fill="currentColor"/><path d="M16 26V14M16 14c0-5 3-8 8-8 0 5-3 8-8 8Zm0 4c0-4-2.500-6.500-7-6.500C9 16 11.500 18 16 18Z" fill="none" stroke="#fff" stroke-width="2.200" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span>영농노트</span>
+    </a>
+    <nav class="nav" aria-label="주 메뉴">
+      <a href="#/" data-nav="home"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11l8-7 8 7v8a1 1 0 0 1-1 1h-4v-6h-6v6H5a1 1 0 0 1-1-1z"/></svg><span>오늘</span></a>
+      <a href="#/crops" data-nav="crops"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21V10M12 10c0-4 2.500-6.500 7-6.500 0 4-2.500 6.500-7 6.500Zm0 4c0-3.500-2-5.500-6-5.500 0 3.500 2 5.500 6 5.500Z"/></svg><span>작목</span></a>
+      <a href="#/calendar" data-nav="calendar"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16M8 3v4M16 3v4"/></svg><span>달력</span></a>
+      <a href="#/tools" data-nav="tools"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8 7h8M8 12h2M12 12h0M16 12h0M8 16h2M12 16h0M16 16h0"/></svg><span>계산기</span></a>
+      <a href="#/diary" data-nav="diary"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h11a2 2 0 0 1 2 2v16H7a2 2 0 0 1-2-2V4a1 1 0 0 1 1-1zM9 8h6M9 12h6"/></svg><span>일지</span></a>
+      <a href="#/links" data-nav="links"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8v0M12 11v6"/></svg><span>더보기</span></a>
+    </nav>
+  </div>
+</header>
+<main id="app" tabindex="-1"><p class="loading">불러오는 중…</p></main>
+<footer class="foot">
+  <p>자료 출처: 농촌진흥청 농사로(<a href="https://www.nongsaro.go.kr" target="_blank" rel="noopener">nongsaro.go.kr</a>) 농작업일정 · 공공누리 제2유형(출처표시·상업적 이용금지)</p>
+  <p>재배 환경과 품종에 따라 시기·시비량은 달라질 수 있습니다. 농약은 반드시 해당 작물 등록 약제와 안전사용기준을 확인하세요.</p>
+</footer>
+<script src="js/app.js" type="module"></script>
+</body>
+</html>

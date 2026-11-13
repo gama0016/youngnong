@@ -1,0 +1,96 @@
+{
+  "id": 30662,
+  "name": "복숭아",
+  "type": null,
+  "category": "과수",
+  "sciName": null,
+  "family": null,
+  "summary": "토심이 깊고 배수가 양호한 양토 또는 사양토가 적합한 과수. 자가 결실률은 양호하나 꽃가루가 없는 품종은 꽃가루가 많은 품종과 섞어 심어야 하며, 꽃눈 분화기는 7월 하순~8월 하순이다.",
+  "env": [
+    { "label": "재배적지", "value": "토심이 깊고 배수가 양호한 양토 또는 사양토" },
+    { "label": "토양 산도", "value": "pH 4.9~5.2 정도의 산성토양에서 잘 자람" },
+    { "label": "주의지역", "value": "사방이 산으로 막힌 분지는 개화 전후 늦서리 피해를 받기 쉬움" }
+  ],
+  "schedule": [
+    { "task": "조생종 수확", "kind": "harvest", "region": null, "start": { "m": 6, "p": 2 }, "end": { "m": 7, "p": 3 }, "text": "6월 중순~7월 하순" },
+    { "task": "중생종 수확", "kind": "harvest", "region": null, "start": { "m": 8, "p": 1 }, "end": { "m": 8, "p": 2 }, "text": "8월 상순~8월 중순" },
+    { "task": "만생종 수확", "kind": "harvest", "region": null, "start": { "m": 8, "p": 2 }, "end": { "m": 9, "p": 3 }, "text": "8월 중순~9월 하순" },
+    { "task": "유리나방 방제", "kind": "pest", "region": null, "start": { "m": 3, "p": 3 }, "end": { "m": 3, "p": 3 }, "text": "3월 하순(월동유충 활동 초기)" },
+    { "task": "잿빛무늬병 집중 방제", "kind": "pest", "region": null, "start": { "m": 5, "p": null }, "end": { "m": 7, "p": null }, "text": "5~7월(수확 20일 전까지)" },
+    { "task": "봉오리따기", "kind": "manage", "region": null, "start": null, "end": null, "text": "꽃 피기 2주 전" },
+    { "task": "꽃솎기", "kind": "manage", "region": null, "start": null, "end": null, "text": null },
+    { "task": "열매솎기", "kind": "manage", "region": null, "start": null, "end": null, "text": "1차 활짝 핀 후 2~3주경, 2차 활짝 핀 후 4주경" },
+    { "task": "봉지씌우기", "kind": "manage", "region": null, "start": null, "end": null, "text": null },
+    { "task": "정지전정", "kind": "manage", "region": null, "start": null, "end": null, "text": null },
+    { "task": "묘목심기", "kind": "plant", "region": null, "start": null, "end": null, "text": null },
+    { "task": "물주기", "kind": "manage", "region": null, "start": null, "end": null, "text": null },
+    { "task": "여름전정 및 유인", "kind": "manage", "region": null, "start": null, "end": null, "text": null },
+    { "task": "장마·집중호우 시 배수대책", "kind": "manage", "region": null, "start": null, "end": null, "text": null },
+    { "task": "가을전정", "kind": "manage", "region": null, "start": null, "end": null, "text": null },
+    { "task": "웃거름", "kind": "fert", "region": null, "start": null, "end": null, "text": null },
+    { "task": "가을거름", "kind": "fert", "region": null, "start": null, "end": null, "text": null },
+    { "task": "밑거름", "kind": "fert", "region": null, "start": null, "end": null, "text": null },
+    { "task": "겨울약제 살포", "kind": "pest", "region": null, "start": null, "end": null, "text": null }
+  ],
+  "stages": [
+    { "title": "묘목심기(심는 거리)", "timing": null,
+      "items": [
+        { "label": "척박지", "value": "6×5m, 10a당 33주" },
+        { "label": "비옥지", "value": "6×7m, 10a당 24주" }
+      ] },
+    { "title": "열매맺음 조절", "timing": "개화 전 봉오리따기부터 봉지씌우기 직전까지",
+      "items": [
+        { "label": "순서", "value": "개화 전 봉오리따기를 시작하여 꽃솎기, 열매솎기를 거쳐 최종 열매 수 확보" },
+        { "label": "봉오리따기", "value": "꽃 피기 2주 전 실시" },
+        { "label": "1차 열매솎기(봉오리따기를 하지 않은 경우)", "value": "활짝 핀 후 2~3주경" },
+        { "label": "2차 열매솎기", "value": "활짝 핀 후 4주경 꽃가루가 있는 품종부터" },
+        { "label": "마무리", "value": "봉지씌우기 직전까지 마무리 열매솎기 및 가지받침" },
+        { "label": "최종 열매수(단과지)", "value": "1개/3가지" },
+        { "label": "최종 열매수(중과지)", "value": "0~1" },
+        { "label": "최종 열매수(장과지)", "value": "1~2" }
+      ] },
+    { "title": "고품질 다수확 재배기술", "timing": null,
+      "items": [
+        { "label": "비료·토양", "value": "비료는 토양분석에 따라 주고, 유기물(2.5~3.0% 유지) 및 석회 시용" },
+        { "label": "깊이갈이", "value": "깊이갈이로 토양의 이화학성 개선, 심토파쇄기 이용 등 고려" },
+        { "label": "전정", "value": "과도한 강전정을 피하고 수세에 맞게 전정" },
+        { "label": "열매솎기", "value": "꽃 피기 2주 전 봉오리따기를 실시하고 열매솎기를 2~3회 함" },
+        { "label": "수확 후 방제", "value": "수확 후 낙엽기까지 복숭아굴나방, 세균구멍병 등 병해충 방제 철저" }
+      ] }
+  ],
+  "fertilizer": null,
+  "pests": [
+    { "name": "세균구멍병", "kind": "병", "timing": "낙엽 직전, 겨울, 생육기", "control": "낙엽 직전 보르도액 2~3회 살포로 월동밀도 낮춤. 석회유황합제, 석회보르도액 등 겨울약제 철저 방제. 생육기에 아연석회액 또는 농용신수화제 예방 살포" },
+    { "name": "잿빛무늬병", "kind": "병", "timing": "5~7월 집중 방제, 수확 20일 전까지", "control": "석회유황합제 살포. 5~7월 집중 방제. 수확 20일 전까지 방제" },
+    { "name": "검은별무늬병", "kind": "병", "timing": "꽃 진 후부터 6월 하순까지", "control": "석회유황합제로 예방. 꽃 진 후부터 6월 하순까지 약제 방제" },
+    { "name": "탄저병", "kind": "병", "timing": "꽃 피기 전, 꽃 진 후", "control": "꽃 피기 전 석회유황합제로 예방. 꽃 진 후 다코닐과 안트라콜 살포. 이병 가지는 태우고, 이병 과실은 발견 즉시 땅에 묻음" },
+    { "name": "복숭아심식나방", "kind": "해충", "timing": "6월 중순~수확 2주 전까지", "control": "6월 중순~수확 2주 전까지 방제. 봉지씌우기로 예방. 토양 살충제 처리" },
+    { "name": "유리나방", "kind": "해충", "timing": "3월 하순(월동유충 활동 초기)", "control": "주간부에 약제를 충분히 묻도록 살포" },
+    { "name": "복숭아순나방", "kind": "해충", "timing": "이른 봄", "control": "이른 봄 거친 껍질을 제거해 월동유충 방제. 페로몬트랩으로 발생을 살펴 제때 방제. 교미교란제 활용" },
+    { "name": "굴나방", "kind": "해충", "timing": null, "control": null },
+    { "name": "붕소 결핍증", "kind": "생리장해", "timing": null, "control": "붕사 3kg/10a 시용. 퇴비 등 유기물 시용" },
+    { "name": "수지병", "kind": "생리장해", "timing": null, "control": "배수대책 철저, 유리나방 유충 방제 철저. 상처 부위는 긁어내고 전정도포제 처리" },
+    { "name": "생리적 낙과", "kind": "생리장해", "timing": null, "control": "땅 얼기 전 밑거름 시용, 질소과다 비료 지양, 깊이갈이. 꽃가루 없는 품종은 충분한 수분수로 수분·수정 철저. 과습 방지를 위한 배수대책. 강전정 지양, 붕소 결핍 방지, 석회 시용. 단·중과지 위주 착과" }
+  ],
+  "disasters": [
+    { "risk": "언피해", "timing": null, "measures": ["흙덮기(지제부에서 30~45cm 높이까지)", "짚싸주기(지상 80~100cm 높이까지)", "질소비료 주기 제한"] },
+    { "risk": "가뭄", "timing": null, "measures": ["뿌리 분포 지면에 퇴비·짚·풀·비닐 덮기", "물주기 20~30t/10a", "생육 불량 시 요소 0.3%액 엽면살포"] },
+    { "risk": "장마·집중호우", "timing": null, "measures": ["익은 과실은 3~4일 앞당겨 수확", "피해 과실 및 부러진 가지 정리"] },
+    { "risk": "서리", "timing": null, "measures": [] },
+    { "risk": "우박", "timing": null, "measures": [] },
+    { "risk": "태풍", "timing": null, "measures": [] }
+  ],
+  "notes": [
+    "꽃눈 분화기: 7월 하순~8월 하순",
+    "눈은 홑눈과 겹눈이 있으며 겹눈은 대체로 꽃눈 2개와 잎눈 1개가 정상",
+    "생육 단계: 휴면기, 봄뿌리 신장기, 발아기, 개화기, 세포분열기(과실비대1기), 경핵기(과실비대2기), 과실비대기(과실비대3기), 꽃눈분화기, 저장양분축적기, 가을뿌리 신장기, 낙엽기",
+    "주요 재배품종(전북 완주 기준, 숙기·과중 g·당도 °Bx): 미홍 6월 하순·250·11.0 / 유미 7월 상순·280·11.5 / 아까즈까 7월 중순·300·12.0 / 천홍 8월 상순·250·12.0 / 애천중도 8월 상순·300·12.0 / 미백도 8월 상순·300·11.0 / 천중도백도 8월 중순·300·12.0 / 유명 8월 하순·300·12.0 / 수미 9월 상순·300·12.5 / 장호원황도 9월 중순·300·12.5",
+    "조생종(재배비율 21.0%): 수확기·출하기 6월 중순~7월 하순, 성출하기 7월 상순~7월 중순",
+    "중생종(재배비율 34.4%): 수확기·출하기 8월 상순~8월 중순, 성출하기 8월 중순",
+    "만생종(재배비율 44.6%): 수확기·출하기 8월 중순~9월 하순, 성출하기 8월 하순~9월 하순",
+    "겨울약제 살포: 세균성구멍병, 잿빛무늬병, 굴나방, 유리나방, 복숭아순나방 등 주요 병해충 방제",
+    "페이지에 성분별 시비량(kg/10a) 표는 없으며 웃거름·가을거름·밑거름은 작업 항목으로만 표시됨",
+    "대부분 농작업의 월·순 시기는 페이지 도표에서 텍스트로 확인되지 않음"
+  ],
+  "source": "https://www.nongsaro.go.kr/portal/ps/psb/psbl/workScheduleDtl.ps?menuId=PS00087&cntntsNo=30662"
+}

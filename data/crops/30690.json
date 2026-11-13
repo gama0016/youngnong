@@ -1,0 +1,78 @@
+{
+  "id": 30690,
+  "name": "카네이션",
+  "type": "겨울재배, 고랭지재배",
+  "category": "화훼",
+  "sciName": null,
+  "family": null,
+  "summary": "겨울재배와 고랭지재배 작형으로 재배하는 절화용 화훼. 주재배지역은 경남(김해), 부산, 전남 등이며 졸업시즌·가정의 달 등 성수기에 출하량과 가격이 함께 높다.",
+  "env": [
+    { "label": "생육적온", "value": "12~16℃ (최고 25℃ 이하)" },
+    { "label": "CO2 공급", "value": "11~2월, 일출 후 3시간" }
+  ],
+  "schedule": [
+    { "task": "삽수 채취", "kind": "nursery", "region": null, "start": { "m": 2, "p": 2 }, "end": { "m": 3, "p": 1 }, "text": "2월 중순~3월 상순" },
+    { "task": "꺾꽂이(삽목)", "kind": "nursery", "region": null, "start": null, "end": null, "text": null },
+    { "task": "임시심기 및 1차 순지르기", "kind": "nursery", "region": null, "start": null, "end": null, "text": null },
+    { "task": "아주심기", "kind": "plant", "region": null, "start": null, "end": null, "text": null },
+    { "task": "최종 순지르기", "kind": "manage", "region": null, "start": null, "end": null, "text": null },
+    { "task": "유인", "kind": "manage", "region": null, "start": null, "end": null, "text": null },
+    { "task": "꽃 수확(겨울재배)", "kind": "harvest", "region": null, "start": { "m": 11, "p": 2 }, "end": { "m": 6, "p": 2 }, "text": "11월 중순~6월 중순" },
+    { "task": "꽃 수확(고랭지재배)", "kind": "harvest", "region": "고랭지", "start": { "m": 7, "p": 1 }, "end": { "m": 11, "p": 2 }, "text": "7월 상순~11월 중순" }
+  ],
+  "stages": [
+    { "title": "삽수 채취", "timing": "2월 중순~3월 상순", "items": [
+      { "label": "삽수 상태", "value": "본잎 8~9매, 중량 8~10g" },
+      { "label": "방법", "value": "무병상태의 것을 손으로 땀" }
+    ] },
+    { "title": "삽목", "timing": null, "items": [
+      { "label": "뿌리내림 촉진제", "value": "루톤, 옥시베른 분제" },
+      { "label": "삽목용토", "value": "펄라이트 40 + 피트모스 60 혼용" }
+    ] },
+    { "title": "모 기르기", "timing": null, "items": [
+      { "label": "육묘", "value": "육묘상, 포트 9cm 비닐 사용" },
+      { "label": "모기르기 기간", "value": "40~50일" }
+    ] },
+    { "title": "아주심기", "timing": null, "items": [
+      { "label": "심는 밀도", "value": "3.3㎡당 70주 내외" }
+    ] },
+    { "title": "순지르기", "timing": null, "items": [
+      { "label": "방법", "value": "4~5마디 남기고 순지르기 (1.5회 순지르기)" }
+    ] },
+    { "title": "유인", "timing": null, "items": [
+      { "label": "방법", "value": "받침대 또는 절화망 이용" }
+    ] },
+    { "title": "꽃 수확", "timing": "겨울재배 11월 중순~6월 중순 / 고랭지재배 7월 상순~11월 중순", "items": [
+      { "label": "스탠다드계 수확 적기", "value": "30% 개화 시" },
+      { "label": "스프레이계 수확 적기", "value": "1, 2번화 개화 시" },
+      { "label": "절화 위치", "value": "꽃봉오리에서 8마디째 절화" },
+      { "label": "포장", "value": "등급별 20송이 한 다발" },
+      { "label": "출하 조절", "value": "저온저장고를 이용하여 홍수 출하 방지" }
+    ] }
+  ],
+  "fertilizer": null,
+  "pests": [
+    { "name": "녹병, 반점세균병", "kind": "병", "timing": "봄, 가을 다습 시", "control": "건전묘 식재, 돌려짓기, 토양소독 및 이병주 조기 제거, 환기·통풍 등 재배환경 개선, 예방 위주 약제 살포" },
+    { "name": "위조병, 위조세균병", "kind": "병", "timing": "아주심기 직후, 여름", "control": "건전묘 식재, 돌려짓기, 토양소독 및 이병주 조기 제거, 환기·통풍 등 재배환경 개선, 예방 위주 약제 살포" },
+    { "name": "반점병", "kind": "병", "timing": "장마철 고온다습 시", "control": "건전묘 식재, 돌려짓기, 토양소독 및 이병주 조기 제거, 환기·통풍 등 재배환경 개선, 예방 위주 약제 살포" },
+    { "name": "총채벌레, 응애", "kind": "해충", "timing": "고온건조 시", "control": "건전묘 식재, 돌려짓기, 토양소독 및 이병주 조기 제거, 환기·통풍 등 재배환경 개선, 예방 위주 약제 살포" },
+    { "name": "꽃받침 터짐", "kind": "생리장해", "timing": null, "control": "원인: 주야 온도차가 크거나 유전적으로 다발생하는 품종(중대형 꽃에서 많이 발생). 대책: 발생이 적은 품종 선택, 일교차 감소, 질소 20ppm·붕소 10ppm 적정 유지" },
+    { "name": "꽃잎말이", "kind": "생리장해", "timing": "여름철 고온", "control": "고온기 환기, 노화 꽃 제거, 에틸렌 발생원 제거" },
+    { "name": "잎말이", "kind": "생리장해", "timing": "겨울철", "control": "원인: 겨울철 광부족 또는 질소 부족. 대책: 겨울철 광조건 개선, 질소 20ppm 유지" },
+    { "name": "노심현상", "kind": "생리장해", "timing": "약광, 저온기", "control": "광조건 개선, 적정온도 유지, 곁눈 적기 제거" }
+  ],
+  "disasters": [
+    { "risk": "고온장해, 병해", "timing": null, "measures": [] },
+    { "risk": "불량묘 식재", "timing": null, "measures": [] },
+    { "risk": "품질저하", "timing": null, "measures": [] }
+  ],
+  "notes": [
+    "우량품종 - 스탠다드계: 데지오(적), 도나(백, 분홍), 카스테라로(분홍) 등 / 스프레이계: 푸에고(진홍색), 다이아몬드(분홍), 그린매직(연두), 크레카오, 스칼렛(복색)",
+    "겨울재배: 수확기 11월 중순~6월 중순, 출하기 11월 중순~6월 하순, 성출하기 12월 상순~5월 하순, 단경기 7월 상순~11월 상순",
+    "고랭지재배: 수확기 7월 상순~11월 중순, 출하기 7월 중순~11월 하순, 성출하기 8월 상순~10월 하순, 단경기 11월 하순~6월 하순",
+    "출하규격(풀길이): 1등급 65cm 이상, 2등급 65~50cm, 3등급 50~40cm / 1속 본수 20본",
+    "수요 성수기: 졸업·입학 시기, 어버이날, 스승의날, 성탄절",
+    "주재배지역: 경남(김해), 부산, 전남 등"
+  ],
+  "source": "https://www.nongsaro.go.kr/portal/ps/psb/psbl/workScheduleDtl.ps?menuId=PS00087&cntntsNo=30690"
+}
