@@ -1,0 +1,86 @@
+{
+  "id": 30686,
+  "name": "오리엔탈나리",
+  "type": "촉성재배",
+  "category": "화훼",
+  "sciName": "Lilium longiflorum Thunb.",
+  "family": "백합과",
+  "summary": "저온처리한 알뿌리의 싹을 틔워 가을에 아주심고 3~4월에 절화하는 촉성재배 작형. 토양 적응범위가 넓으나 pH 5.5~6.5, 염류농도 1.5mS/cm 이하가 적당하며 겨울철 야간 13℃ 이상 보온이 필요하다.",
+  "env": [
+    { "label": "주간 생육온도", "value": "22~25℃(겨울 15℃ 이상)" },
+    { "label": "야간 생육온도", "value": "15℃ 이상(겨울 13℃ 이상), 주간보다 5~10℃ 낮게 관리" },
+    { "label": "토양 pH", "value": "5.5~6.5가 적당(적응범위 넓음)" },
+    { "label": "염류농도", "value": "1.5mS/cm 이하" },
+    { "label": "물주기", "value": "오전 중 20℃ 정도" },
+    { "label": "저온처리", "value": "2~5℃에서 8~10주" },
+    { "label": "싹 틔우기 온도", "value": "5~12℃(저장고)" },
+    { "label": "빛", "value": "강한 햇빛은 엽소현상을 일으키며 여름철 재배에는 30~40% 빛가림 필요" },
+    { "label": "저온 피해 온도", "value": "5℃ 이하(동해는 0℃ 이하에 장시간 노출 시)" }
+  ],
+  "schedule": [
+    { "task": "아주심기(촉성재배)", "kind": "plant", "region": null, "start": { "m": 9, "p": 1 }, "end": { "m": 11, "p": 1 }, "text": "9월 상순~11월 상순(재배관리 항목에는 알뿌리 아주심기 9월 하순~11월 초순으로 기재)" },
+    { "task": "수확(촉성재배)", "kind": "harvest", "region": null, "start": { "m": 3, "p": 1 }, "end": { "m": 4, "p": 3 }, "text": "3월 상순~4월 하순" },
+    { "task": "토양관리(소독, 밑거름, 정리)", "kind": "fert", "region": null, "start": null, "end": null, "text": null },
+    { "task": "아주심기 전 싹 틔우기(냉장)", "kind": "nursery", "region": null, "start": null, "end": null, "text": "5~10cm 싹 틔우기" },
+    { "task": "온도높임(가온) 및 물주기", "kind": "manage", "region": null, "start": null, "end": null, "text": null },
+    { "task": "김매기", "kind": "manage", "region": null, "start": null, "end": null, "text": "제초제 시용" }
+  ],
+  "stages": [
+    { "title": "알뿌리 준비", "timing": null,
+      "items": [
+        { "label": "저온처리", "value": "2~5℃에서 8~10주" },
+        { "label": "싹 틔우기", "value": "5~12℃(저장고), 촉성재배 시 싹을 약 5cm 틔워서 아주심기(생육과정 표에는 5~10cm로 기재)" },
+        { "label": "알뿌리", "value": "충실한 알뿌리 사용, 알뿌리 건조 방지" }
+      ] },
+    { "title": "아주심기", "timing": "9월 상순~11월 상순",
+      "items": [
+        { "label": "재식구수", "value": "80구/3.3㎡" },
+        { "label": "토양관리", "value": "소독, 밑거름, 정리" }
+      ] },
+    { "title": "생육 관리", "timing": null,
+      "items": [
+        { "label": "주간 온도", "value": "22~25℃(겨울 15℃ 이상)" },
+        { "label": "야간 온도", "value": "15℃ 이상(겨울 13℃ 이상), 주간보다 5~10℃ 낮게 관리" },
+        { "label": "물주기", "value": "오전 중 20℃ 정도" },
+        { "label": "김매기", "value": "제초제 시용" }
+      ] },
+    { "title": "꽃 수확", "timing": "3월 상순~4월 하순(성출하기 4월 중순)",
+      "items": [ { "label": "절화기", "value": "3~4월" } ] }
+  ],
+  "fertilizer": {
+    "unit": "kg/10a",
+    "columns": ["총량", "밑거름", "웃거름 1회", "웃거름 2회", "웃거름 3회"],
+    "rows": [
+      { "name": "퇴비", "values": [1500, 1500, null, null, null] },
+      { "name": "질소", "values": [10, 10, null, null, null] },
+      { "name": "인산", "values": [10, 10, null, null, null] },
+      { "name": "칼륨", "values": [10, 10, null, null, null] }
+    ],
+    "note": null
+  },
+  "pests": [
+    { "name": "잎마름병", "kind": "병", "timing": null, "control": null },
+    { "name": "바이러스", "kind": "병", "timing": null, "control": null },
+    { "name": "알뿌리 부패병", "kind": "병", "timing": null, "control": null },
+    { "name": "진딧물", "kind": "해충", "timing": null, "control": null },
+    { "name": "저온·동해", "kind": "생리장해", "timing": "촉성재배 시 주로 발생", "control": "야간 13℃ 이상 보온. 저온 피해는 5℃ 이하, 동해는 0℃ 이하에 장시간 노출될 때 발생" },
+    { "name": "엽소현상", "kind": "생리장해", "timing": "촉성·억제재배 시, 초장 30~40cm 무렵", "control": "원인은 고온다습, 일시적 칼슘 부족. 충분한 물주기와 충실한 알뿌리 사용, 겨울 주간 20℃ 이상 방지, 민감 품종은 꽃봉오리 출현 전부터 염화칼슘 0.1% 용액을 2일 간격 살포, 큰 알뿌리 사용 자제, 고온기 깊게 아주심기" },
+    { "name": "블라인드·블라스팅", "kind": "생리장해", "timing": null, "control": "블라인드는 꽃눈이 분화되지 않는 현상, 블라스팅은 분화된 꽃눈이 발달하지 못하거나 도중에 떨어지는 현상. 충실한 알뿌리 사용과 수분관리, 생육 초기 5℃ 이하 저온 장시간 노출 금지, 주야간 온도차 완화, 생육적온 유지, 충분한 일조량 확보, 알뿌리 건조 방지" }
+  ],
+  "disasters": [
+    { "risk": "혹한 및 저온", "timing": null, "measures": ["생육지연, 꽃눈분화 및 발달 지연, 기형화 및 웃자람이 나타남", "야간 13℃ 이상 보온"] },
+    { "risk": "가뭄", "timing": null, "measures": [] },
+    { "risk": "장마기, 호우·태풍", "timing": null, "measures": [] },
+    { "risk": "고온피해", "timing": null, "measures": [] }
+  ],
+  "notes": [
+    "작형별 출하시기 - 보통재배: 아주심기 10월 상순~11월 상순, 수확기 6월 중순~7월 하순, 성출하기 7월 중순",
+    "작형별 출하시기 - 촉성재배: 아주심기 9월 상순~11월 상순, 수확기 3월 상순~4월 하순, 성출하기 4월 중순",
+    "작형별 출하시기 - 억제재배: 아주심기 8월 하순~10월 상순, 수확기 11월 상순~1월 상순, 성출하기 11월 하순~12월 하순",
+    "알뿌리 장기저장(억제재배용): -1.5℃, 9개월 이내 권장(그 이상은 알뿌리 영양 소모가 많음)",
+    "적지적작: 여름은 고랭지·준고랭지, 겨울은 난지(남부 및 제주도), 봄·가을은 중남부 평지에서 생산",
+    "페이지에 표기된 학명은 Lilium longiflorum Thunb.임(원문 그대로)",
+    "페이지에 품종명, 출하규격은 없음. 병해충별 방제법과 가온·싹 틔우기의 월·순 시기는 페이지에서 텍스트로 확인되지 않음"
+  ],
+  "source": "https://www.nongsaro.go.kr/portal/ps/psb/psbl/workScheduleDtl.ps?menuId=PS00087&cntntsNo=30686"
+}
