@@ -1,0 +1,247 @@
+{
+  "id": 30613,
+  "name": "멜론",
+  "type": null,
+  "category": "채소",
+  "sciName": "Cucumis melo L.",
+  "family": "박과",
+  "summary": "배수와 통기성이 좋은 토양에서 재배하는 박과 채소. 페이지에 봄재배·여름재배 과정이 제시되어 있다.",
+  "env": [
+    {
+      "label": "발아적온",
+      "value": "28~30℃"
+    },
+    {
+      "label": "모 기르기 적온",
+      "value": "18~25℃"
+    },
+    {
+      "label": "개화적온",
+      "value": "20~25℃"
+    },
+    {
+      "label": "생육적온",
+      "value": "20~30℃"
+    },
+    {
+      "label": "과비대적온",
+      "value": "20~25℃"
+    },
+    {
+      "label": "저장적온",
+      "value": "0~4℃"
+    },
+    {
+      "label": "토양산도",
+      "value": "pH 6.0~6.8"
+    },
+    {
+      "label": "수확기 온도",
+      "value": "낮 26℃, 밤 16℃ 내외"
+    }
+  ],
+  "schedule": [
+    {
+      "task": "씨뿌림·모 기르기(봄재배)",
+      "kind": "sow",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "아주심기(봄재배)",
+      "kind": "plant",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "유인, 곁가지 제거, 교배, 열매솎기(봄재배)",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "수확(봄재배)",
+      "kind": "harvest",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "씨뿌림(여름재배)",
+      "kind": "sow",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "아주심기(여름재배)",
+      "kind": "plant",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "곁가지 제거, 교배, 열매솎기(여름재배)",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "수확(여름재배)",
+      "kind": "harvest",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    }
+  ],
+  "stages": [
+    {
+      "title": "토양수분 관리",
+      "timing": null,
+      "items": [
+        {
+          "label": "아주심기 후",
+          "value": "뿌리내리기까지 수분 부족을 피함"
+        },
+        {
+          "label": "수정기",
+          "value": "뿌리내림 후 점차 줄여 건조하게 관리"
+        },
+        {
+          "label": "과실비대기",
+          "value": "충분히 공급"
+        },
+        {
+          "label": "수확기",
+          "value": "줄여 당도 축적 유도"
+        }
+      ]
+    },
+    {
+      "title": "키우기 방식",
+      "timing": null,
+      "items": [
+        {
+          "label": "세워 키우기",
+          "value": "6~9주/3.3㎡"
+        },
+        {
+          "label": "눕혀 키우기",
+          "value": "2~3주/3.3㎡ (과실 받침대나 유인장치 이용)"
+        }
+      ]
+    }
+  ],
+  "fertilizer": {
+    "unit": "kg/10a",
+    "columns": [
+      "질소",
+      "인산",
+      "칼리",
+      "석회",
+      "마그네슘"
+    ],
+    "rows": [
+      {
+        "name": "10a당 흡수량(2,400주 아주심기) 예1",
+        "values": [
+          10.6,
+          3.8,
+          16.8,
+          22.3,
+          2.7
+        ]
+      },
+      {
+        "name": "10a당 흡수량(2,400주 아주심기) 예2",
+        "values": [
+          13.2,
+          5.3,
+          16.2,
+          18,
+          6.2
+        ]
+      }
+    ],
+    "note": "시비량이 아닌 흡수량 표임. 주당 흡수량(1주 1과, g): 예1 질소 4.4, 인산 1.6, 칼리 6.8, 석회 9.3, 마그네슘 1.2 / 예2 질소 5.5, 인산 2.2, 칼리 6.7, 석회 7.5, 마그네슘 2.6. 시비량은 흡수량보다 많이 줘야 하나 시설재배는 이어짓기를 하므로 많이 주지 않는 것이 좋음. 밑거름·웃거름 분할은 페이지에 없음."
+  },
+  "pests": [
+    {
+      "name": "흰가루병",
+      "kind": "병",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "덩굴마름병",
+      "kind": "병",
+      "timing": "밀식·다습 조건(20~24℃)에서 많이 발생",
+      "control": "병든 부위 제거, 환기 철저, 지제부 수분을 줄임"
+    },
+    {
+      "name": "검은점뿌리썩음병",
+      "kind": "병",
+      "timing": "토양온도가 높아 식물이 연약할 때 많이 발생",
+      "control": "토양소독, 접목재배, 또는 약제처리(리조렉스 등)"
+    },
+    {
+      "name": "괴저반점바이러스(MNSV)",
+      "kind": "병",
+      "timing": "저온성이라 촉성재배에서 많음",
+      "control": "지온 유지 (토양·접촉 전염)"
+    },
+    {
+      "name": "진딧물",
+      "kind": "해충",
+      "timing": "가뭄 시",
+      "control": "방제 철저"
+    },
+    {
+      "name": "총채벌레",
+      "kind": "해충",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "열매터짐(열과)",
+      "kind": "생리장해",
+      "timing": null,
+      "control": "생장기 토양수분 급변 주의, 야간 저온에 따른 과피 경화 주의"
+    }
+  ],
+  "disasters": [
+    {
+      "risk": "봄비·저온가뭄",
+      "timing": null,
+      "measures": [
+        "배수구 정비",
+        "비닐 배수로로 외부 유입수 차단",
+        "촉성재배 시 보온시설 완비"
+      ]
+    },
+    {
+      "risk": "고온 (생리장해·품질저하)",
+      "timing": null,
+      "measures": []
+    }
+  ],
+  "notes": [
+    "주간 고온(35℃ 이상) 관리 시 넷트가 가늘어지므로 주의",
+    "시설은 높고 환기·보온시설을 갖출 것",
+    "기온이 낮은 지방에서 무리한 가온재배를 하거나 장마기에 수정하는 작형은 피하는 것이 좋음",
+    "씨앗량과 심는 거리, 작업별 월·순 시기는 페이지 본문에 명시되지 않음"
+  ],
+  "source": "https://www.nongsaro.go.kr/portal/ps/psb/psbl/workScheduleDtl.ps?menuId=PS00087&cntntsNo=30613"
+}

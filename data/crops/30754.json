@@ -1,0 +1,155 @@
+{
+  "id": 30754,
+  "name": null,
+  "type": "직파재배·육묘이식재배",
+  "category": null,
+  "sciName": null,
+  "family": null,
+  "summary": "농사로 원문 페이지 제목이 \"-\"로만 표시되어 작목명이 확인되지 않음. 직파재배와 육묘이식재배 두 흐름이 표시됨.",
+  "env": [],
+  "schedule": [
+    {
+      "task": "종묘준비",
+      "kind": "etc",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "퇴비시용",
+      "kind": "fert",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "깊이갈이",
+      "kind": "etc",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "밑거름 시용",
+      "kind": "fert",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "파종(직파재배)",
+      "kind": "sow",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "제초제 살포(직파재배)",
+      "kind": "pest",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "솎음·제초작업(직파재배)",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "묘채취(가식)",
+      "kind": "nursery",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "정식(육묘이식재배)",
+      "kind": "plant",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "웃거름",
+      "kind": "fert",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "수확",
+      "kind": "harvest",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "응애방제",
+      "kind": "pest",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "병해충방제",
+      "kind": "pest",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    }
+  ],
+  "stages": [],
+  "fertilizer": null,
+  "pests": [
+    {
+      "name": "응애",
+      "kind": "해충",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "점무늬병",
+      "kind": "병",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "진딧물",
+      "kind": "해충",
+      "timing": null,
+      "control": null
+    }
+  ],
+  "disasters": [
+    {
+      "risk": "가뭄",
+      "timing": null,
+      "measures": []
+    },
+    {
+      "risk": "장마",
+      "timing": null,
+      "measures": []
+    }
+  ],
+  "notes": [
+    "원문은 월·순(상/중/하) 일정표이나 칸 위치를 확인할 수 없어 작업 시기는 비워 둠.",
+    "예상되는 문제점(원문): 입모율 불량, 배수불량에 따른 생육부진, 병해발생, 생육부진"
+  ],
+  "source": "https://www.nongsaro.go.kr/portal/ps/psb/psbl/workScheduleDtl.ps?menuId=PS00087&cntntsNo=30754"
+}

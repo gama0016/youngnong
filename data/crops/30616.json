@@ -1,0 +1,414 @@
+{
+  "id": 30616,
+  "name": "미나리",
+  "type": null,
+  "category": "채소",
+  "sciName": "Oenanthe javanica DC.",
+  "family": "산형과",
+  "summary": "호습성으로 물기가 많은 곳이면 어디서나 재배할 수 있으나 내음성이 약해 충분한 일조가 필요하다.",
+  "env": [
+    {
+      "label": "발아적온",
+      "value": "25~30℃"
+    },
+    {
+      "label": "최저온도",
+      "value": "10℃"
+    },
+    {
+      "label": "개화적온",
+      "value": "25~30℃"
+    },
+    {
+      "label": "생육적온",
+      "value": "22~24℃"
+    },
+    {
+      "label": "최고온도",
+      "value": "30℃"
+    },
+    {
+      "label": "저장적온",
+      "value": "0℃"
+    },
+    {
+      "label": "광포화점(25℃)",
+      "value": "60klux"
+    },
+    {
+      "label": "광보상점(25℃)",
+      "value": "2.3klux"
+    },
+    {
+      "label": "토양 유기물",
+      "value": "1.5% 이상"
+    },
+    {
+      "label": "토양산도",
+      "value": "pH 6~7 (약산성)"
+    }
+  ],
+  "schedule": [
+    {
+      "task": "씨뿌림(논미나리재배)",
+      "kind": "sow",
+      "region": null,
+      "start": {
+        "m": 3,
+        "p": 3
+      },
+      "end": {
+        "m": 5,
+        "p": 1
+      },
+      "text": "3월 하순~5월 상순"
+    },
+    {
+      "task": "아주심기(논미나리재배)",
+      "kind": "plant",
+      "region": null,
+      "start": {
+        "m": 8,
+        "p": 3
+      },
+      "end": {
+        "m": 9,
+        "p": 1
+      },
+      "text": "8월 하순~9월 상순"
+    },
+    {
+      "task": "수확(논미나리재배)",
+      "kind": "harvest",
+      "region": null,
+      "start": {
+        "m": 11,
+        "p": 3
+      },
+      "end": {
+        "m": 3,
+        "p": 3
+      },
+      "text": "11월 하순~3월 하순"
+    },
+    {
+      "task": "씨뿌림(밭미나리 봄재배, 실생)",
+      "kind": "sow",
+      "region": null,
+      "start": {
+        "m": 3,
+        "p": 1
+      },
+      "end": {
+        "m": 3,
+        "p": 1
+      },
+      "text": "3월 상순"
+    },
+    {
+      "task": "아주심기(밭미나리 봄재배, 실생)",
+      "kind": "plant",
+      "region": null,
+      "start": {
+        "m": 5,
+        "p": 1
+      },
+      "end": {
+        "m": 5,
+        "p": 1
+      },
+      "text": "5월 상순"
+    },
+    {
+      "task": "수확(밭미나리 봄재배, 실생)",
+      "kind": "harvest",
+      "region": null,
+      "start": {
+        "m": 6,
+        "p": 2
+      },
+      "end": {
+        "m": 6,
+        "p": 2
+      },
+      "text": "6월 중순"
+    },
+    {
+      "task": "씨뿌림(밭미나리 가을재배, 실생)",
+      "kind": "sow",
+      "region": null,
+      "start": {
+        "m": 7,
+        "p": 1
+      },
+      "end": {
+        "m": 7,
+        "p": 1
+      },
+      "text": "7월 상순"
+    },
+    {
+      "task": "아주심기(밭미나리 가을재배, 실생)",
+      "kind": "plant",
+      "region": null,
+      "start": {
+        "m": 9,
+        "p": 1
+      },
+      "end": {
+        "m": 9,
+        "p": 1
+      },
+      "text": "9월 상순"
+    },
+    {
+      "task": "수확(밭미나리 가을재배, 실생)",
+      "kind": "harvest",
+      "region": null,
+      "start": {
+        "m": 11,
+        "p": 2
+      },
+      "end": {
+        "m": 11,
+        "p": 3
+      },
+      "text": "11월 중순~하순"
+    },
+    {
+      "task": "아주심기(조숙재배, 영양, 터널)",
+      "kind": "plant",
+      "region": null,
+      "start": {
+        "m": 2,
+        "p": 3
+      },
+      "end": {
+        "m": 2,
+        "p": 3
+      },
+      "text": "2월 하순"
+    },
+    {
+      "task": "수확(조숙재배, 영양)",
+      "kind": "harvest",
+      "region": null,
+      "start": {
+        "m": 4,
+        "p": 2
+      },
+      "end": {
+        "m": 4,
+        "p": 2
+      },
+      "text": "4월 중순"
+    }
+  ],
+  "stages": [
+    {
+      "title": "씨뿌림",
+      "timing": null,
+      "items": [
+        {
+          "label": "파종량",
+          "value": "1,200~1,500 kg/10a"
+        }
+      ]
+    },
+    {
+      "title": "모 기르기",
+      "timing": null,
+      "items": [
+        {
+          "label": "종묘포 만들기",
+          "value": "흙갈이, 물주기, 균일하게 정지 후 배수"
+        },
+        {
+          "label": "비료",
+          "value": "묘판면적 10a당 퇴비 400kg, 복비(21-17-17) 75kg"
+        },
+        {
+          "label": "묘심기",
+          "value": "이랑 너비 30cm, 포기 사이 28~30cm"
+        },
+        {
+          "label": "묘관리",
+          "value": "모 심은 후 4~5일간 줄기가 약간 묻힐 정도로 물주기"
+        },
+        {
+          "label": "씨모 수확",
+          "value": "본포 심기 1주일 전에 수확, 길이 30~40cm"
+        }
+      ]
+    },
+    {
+      "title": "아주심기",
+      "timing": "8월 하순~9월 상순",
+      "items": [
+        {
+          "label": "방법",
+          "value": "줄기를 6~9cm 절단, 3~5cm 간격으로 고루 뿌림"
+        }
+      ]
+    },
+    {
+      "title": "관리",
+      "timing": null,
+      "items": [
+        {
+          "label": "물관리",
+          "value": "물 1~2cm 대고 물 흘려대기"
+        },
+        {
+          "label": "모 고르기",
+          "value": "싹이 나온 후 15일경"
+        }
+      ]
+    }
+  ],
+  "fertilizer": {
+    "unit": "kg/10a",
+    "columns": [
+      "총량",
+      "밑거름",
+      "웃거름 1회",
+      "웃거름 2회",
+      "웃거름 3회"
+    ],
+    "rows": [
+      {
+        "name": "퇴비",
+        "values": [
+          1500,
+          1500,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "name": "질소",
+        "values": [
+          25,
+          10,
+          5,
+          5,
+          5
+        ]
+      },
+      {
+        "name": "인산",
+        "values": [
+          20,
+          20,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "name": "칼리",
+        "values": [
+          20,
+          10,
+          4,
+          3,
+          3
+        ]
+      }
+    ],
+    "note": "밭미나리 기준: 질소 6.2, 인산 6.5, 칼리 4.8, 퇴비 1,500, 석회 200kg"
+  },
+  "pests": [
+    {
+      "name": "곰팡이병",
+      "kind": "병",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "균핵병",
+      "kind": "병",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "빗자루병",
+      "kind": "병",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "반점고사병",
+      "kind": "병",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "뿌리썩음병",
+      "kind": "병",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "바이러스병",
+      "kind": "병",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "진딧물",
+      "kind": "해충",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "질소결핍, 황화",
+      "kind": "생리장해",
+      "timing": null,
+      "control": "요소 적기 공급"
+    }
+  ],
+  "disasters": [
+    {
+      "risk": "혹한",
+      "timing": null,
+      "measures": [
+        "잎 끝이 닿게 물관리",
+        "오염된 물 유입 금지"
+      ]
+    },
+    {
+      "risk": "가뭄",
+      "timing": null,
+      "measures": [
+        "모 기르기 시 물 부족 방지"
+      ]
+    },
+    {
+      "risk": "고온장해",
+      "timing": null,
+      "measures": [
+        "여름재배 시 50% 빛가림",
+        "논미나리재배 시 물이 정체되지 않도록 관리"
+      ]
+    },
+    {
+      "risk": "호우, 태풍",
+      "timing": null,
+      "measures": [
+        "쓰러짐 방지를 위한 물주기 시설",
+        "병해충 종합방제(2~3회)"
+      ]
+    }
+  ],
+  "notes": [
+    "성출하기: 논미나리재배 12월 상순 / 밭미나리 봄재배 6월 중순 / 가을재배 11월 중순 / 조숙재배 4월 중순",
+    "작형별 출하시기 표의 밭미나리 여름재배(실생)는 봄재배와 같은 시기(씨뿌림 3월 상순, 아주심기 5월 상순, 수확 6월 중순)로 표기되어 있음",
+    "수경재배 시 72공 플러그트레이에 씨뿌림 후 1개월간 모 기르기",
+    "밭미나리 유공비닐 이용 조숙터널재배 시 2월 중순 덮기",
+    "밭미나리 봄재배 시 20% 빛가림망 재배로 수량 39% 증가",
+    "단일조건에서는 단축경에서 잎이 무더기로 발생, 장일조건에서는 포복경이 발생하며 마디 사이가 신장"
+  ],
+  "source": "https://www.nongsaro.go.kr/portal/ps/psb/psbl/workScheduleDtl.ps?menuId=PS00087&cntntsNo=30616"
+}

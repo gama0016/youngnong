@@ -1,0 +1,154 @@
+{
+  "id": 30759,
+  "name": null,
+  "type": null,
+  "category": null,
+  "sciName": null,
+  "family": null,
+  "summary": "농사로 원문 페이지 제목이 \"-\"로만 표시되어 작목명이 확인되지 않음. 1년째, 2~15년째로 나뉜 여러해살이 작물 일정표(수확은 3년 이후).",
+  "env": [],
+  "schedule": [
+    {
+      "task": "정식(1년째)",
+      "kind": "plant",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "지주세우기",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "중경제초",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "주손질",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "주정리",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "눈고르기",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "1차 웃거름",
+      "kind": "fert",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "2차 웃거름",
+      "kind": "fert",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "3차 웃거름",
+      "kind": "fert",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "퇴비사용",
+      "kind": "fert",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "병해충방제",
+      "kind": "pest",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "수확",
+      "kind": "harvest",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": "수확(3년이후)"
+    }
+  ],
+  "stages": [],
+  "fertilizer": null,
+  "pests": [
+    {
+      "name": "노랑줄벼룩벌레",
+      "kind": "해충",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "애잎벌레",
+      "kind": "해충",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "뽕잎벌레",
+      "kind": "해충",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "점박이응애",
+      "kind": "해충",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "조마디벌레",
+      "kind": "해충",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "노균병",
+      "kind": "병",
+      "timing": null,
+      "control": null
+    }
+  ],
+  "disasters": [],
+  "notes": [
+    "원문은 월·순(상/중/하) 일정표이나 칸 위치를 확인할 수 없어 작업 시기는 비워 둠.",
+    "원문 일정표에 \"남부\", \"중북부\" 지역 표기가 있으나 어느 작업에 해당하는지 확인할 수 없음."
+  ],
+  "source": "https://www.nongsaro.go.kr/portal/ps/psb/psbl/workScheduleDtl.ps?menuId=PS00087&cntntsNo=30759"
+}

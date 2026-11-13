@@ -1,0 +1,78 @@
+{
+  "id": 30678,
+  "name": "산호수",
+  "type": "분화 온실재배",
+  "category": "화훼",
+  "sciName": null,
+  "family": null,
+  "summary": "제주도 표고 300m 이하 저지대 상록수림에 분포하는 포복형 상록활엽성 관목으로 분화로 온실재배한다. 6월에 흰 꽃이 피고 9월에 열매가 붉게 익으며, 꺾꽂이로 번식하고 여름에는 90% 빛가림이 필요하다.",
+  "env": [
+    { "label": "삽목상 온도", "value": "20~25℃" },
+    { "label": "영양생장기 온도", "value": "25~30℃(주간온도 20℃ 이상인 시기)" },
+    { "label": "개화 반응 온도", "value": "10~15℃에서 1개월 이상 저온 감응" },
+    { "label": "저온장해 온도", "value": "동절기 야간온도 8℃ 이하에서 신초가 말라 죽고 낙엽될 수 있음" },
+    { "label": "여름 빛가림", "value": "90%" }
+  ],
+  "schedule": [
+    { "task": "꺾꽂이", "kind": "nursery", "region": null, "start": { "m": 3, "p": 1 }, "end": { "m": 9, "p": 1 }, "text": "3월 상순~9월 상순" },
+    { "task": "출하(중형분화 - 꽃)", "kind": "harvest", "region": null, "start": { "m": 3, "p": 1 }, "end": { "m": 5, "p": 3 }, "text": "3월 상순~5월 하순" },
+    { "task": "출하(중형분화 - 열매)", "kind": "harvest", "region": null, "start": { "m": 11, "p": 2 }, "end": { "m": 2, "p": 3 }, "text": "11월 중순~2월 하순(수확기 11월 중순~2월 중순)" },
+    { "task": "출하(실내지피용, 소형분화 - 관엽)", "kind": "harvest", "region": null, "start": null, "end": null, "text": "연중" },
+    { "task": "아주심기", "kind": "plant", "region": null, "start": null, "end": null, "text": null },
+    { "task": "부분가온(꽃눈분화기-저온감응기)", "kind": "manage", "region": null, "start": null, "end": null, "text": null },
+    { "task": "가온(꽃눈발달기)", "kind": "manage", "region": null, "start": null, "end": null, "text": null },
+    { "task": "착과촉진제 처리", "kind": "manage", "region": null, "start": null, "end": null, "text": "80% 개화 시" }
+  ],
+  "stages": [
+    { "title": "꺾꽂이", "timing": "3월 상순~9월 상순",
+      "items": [
+        { "label": "삽수 채취", "value": "새 가지의 잎이 연녹색으로 발달했을 때" },
+        { "label": "삽목상 온도", "value": "20~25℃" },
+        { "label": "꺾꽂이 용토", "value": "묘 기르기용 상토, 버미큘라이트 1 : 펄라이트 1" },
+        { "label": "물주기", "value": "미스트" },
+        { "label": "여름 빛가림", "value": "90%" }
+      ] },
+    { "title": "영양생장기", "timing": "주간온도 20℃ 이상인 시기",
+      "items": [
+        { "label": "양분", "value": "고형비료 또는 분화용 양액" },
+        { "label": "온도", "value": "25~30℃" },
+        { "label": "여름 빛가림", "value": "90%" }
+      ] },
+    { "title": "개화조절", "timing": null,
+      "items": [
+        { "label": "꽃눈 형성 가능한 묘", "value": "꺾꽂이 후 최소 2개월 이상 뿌리를 내린 묘" },
+        { "label": "개화 반응 온도", "value": "10~15℃에서 1개월 이상 저온 감응" },
+        { "label": "가온", "value": "가온 시기에 따라 꽃눈 발달 조절 가능" },
+        { "label": "양분", "value": "꽃봉오리기에는 적정 양분 공급이 개화에 영향" }
+      ] },
+    { "title": "착과조절", "timing": "80% 개화 시",
+      "items": [
+        { "label": "착과촉진제", "value": "80% 개화 시 화방에 착과촉진제 처리(기준량 이상 살포하면 잎이 뒤틀릴 수 있음)" },
+        { "label": "네트", "value": "덩굴식물용 네트로 늘어지지 않게 하고 통풍 촉진" }
+      ] }
+  ],
+  "fertilizer": null,
+  "pests": [
+    { "name": "응애", "kind": "해충", "timing": null, "control": null },
+    { "name": "민달팽이", "kind": "해충", "timing": null, "control": null },
+    { "name": "작은뿌리파리", "kind": "해충", "timing": null, "control": null },
+    { "name": "고두병(열과)", "kind": "생리장해", "timing": null, "control": "잎색을 진하게 하려고 마그네슘 비료를 과용하면 칼슘과 길항작용으로 과피가 터질 수 있음" },
+    { "name": "기형엽", "kind": "생리장해", "timing": null, "control": "착과촉진제를 기준량 이상 살포하면 잎이 뒤틀릴 수 있음" },
+    { "name": "급성위조증", "kind": "생리장해", "timing": null, "control": "과습과 건조 모두에 강하지만 시들기 시작하면 급격히 시드는 현상에 주의" },
+    { "name": "엽소현상", "kind": "생리장해", "timing": "여름철", "control": "강한 빛에 잎색이 누렇게 변하고 생육이 떨어지므로 90% 빛가림 유지" }
+  ],
+  "disasters": [
+    { "risk": "저온장해", "timing": "동절기", "measures": ["아열대성 관목이므로 동절기 야간온도 8℃ 이하에서 신초가 말라 죽고 낙엽될 수 있음(적온 관리)"] },
+    { "risk": "빛가림 관리 미흡", "timing": null, "measures": ["생육 저해 및 잎색 퇴화가 나타나므로 여름철 90% 빛가림 유지"] }
+  ],
+  "notes": [
+    "형태 - 잎: 윤생, 길이 3~4cm, 폭 1.5~3.0cm 타원형 / 꽃: 6월에 흰색으로 핌 / 열매: 지름 5~6mm의 둥근 장과, 9월에 붉게 익음 / 줄기: 높이 5~8cm",
+    "작형별 출하시기 - 실내지피용·소형분화(관엽): 수확기·출하기 연중",
+    "작형별 출하시기 - 중형분화(꽃): 수확기·출하기 3월 상순~5월 하순, 단경기 6월 상순~2월 하순",
+    "작형별 출하시기 - 중형분화(열매): 수확기 11월 중순~2월 중순, 출하기 11월 중순~2월 하순, 단경기 3월 상순~10월 하순",
+    "실내지피용은 열매까지 생장 단계별 모두 관상할 수 있어 연중 생산 가능",
+    "페이지에 학명·과명, 품종, 비료 표, 출하규격은 없음",
+    "아주심기·가온 등의 월·순 시기는 페이지 도표에서 텍스트로 확인되지 않음"
+  ],
+  "source": "https://www.nongsaro.go.kr/portal/ps/psb/psbl/workScheduleDtl.ps?menuId=PS00087&cntntsNo=30678"
+}

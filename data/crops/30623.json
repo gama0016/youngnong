@@ -1,0 +1,304 @@
+{
+  "id": 30623,
+  "name": "비트",
+  "type": null,
+  "category": "채소",
+  "sciName": "Beta vulgaris subsp. vulgaris",
+  "family": "명아주과",
+  "summary": "아프리카와 유럽 남부 원산의 2년생 초본. 서늘한 기후를 좋아하고 추위에 강하며, 고온장일에서 꽃대가 신장한다.",
+  "env": [
+    {
+      "label": "발아적온",
+      "value": "20~30℃"
+    },
+    {
+      "label": "모 기르기 적온",
+      "value": "13~18℃"
+    },
+    {
+      "label": "토양산도",
+      "value": "pH 5.6∼6.7 (약산성, 산성토양에서는 생육 억제)"
+    },
+    {
+      "label": "재배적지",
+      "value": "배수 및 보습조건이 좋은 토양"
+    }
+  ],
+  "schedule": [
+    {
+      "task": "밑거름·토양관리",
+      "kind": "fert",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "씨뿌림(봄재배)",
+      "kind": "sow",
+      "region": null,
+      "start": {
+        "m": 3,
+        "p": 1
+      },
+      "end": {
+        "m": 5,
+        "p": 3
+      },
+      "text": "3월 상순~5월 하순"
+    },
+    {
+      "task": "씨뿌림(여름재배)",
+      "kind": "sow",
+      "region": null,
+      "start": {
+        "m": 6,
+        "p": null
+      },
+      "end": {
+        "m": 6,
+        "p": null
+      },
+      "text": "6월"
+    },
+    {
+      "task": "씨뿌림(가을재배)",
+      "kind": "sow",
+      "region": null,
+      "start": {
+        "m": 8,
+        "p": 1
+      },
+      "end": {
+        "m": 9,
+        "p": 3
+      },
+      "text": "8월 상순~9월 하순"
+    },
+    {
+      "task": "웃거름",
+      "kind": "fert",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "김매기",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "수확(봄재배)",
+      "kind": "harvest",
+      "region": null,
+      "start": {
+        "m": 5,
+        "p": 3
+      },
+      "end": {
+        "m": 7,
+        "p": 3
+      },
+      "text": "5월 하순~7월 하순"
+    },
+    {
+      "task": "수확(여름재배)",
+      "kind": "harvest",
+      "region": null,
+      "start": {
+        "m": 8,
+        "p": 3
+      },
+      "end": {
+        "m": 10,
+        "p": 3
+      },
+      "text": "8월 하순~10월 하순"
+    },
+    {
+      "task": "수확(가을재배)",
+      "kind": "harvest",
+      "region": null,
+      "start": {
+        "m": 10,
+        "p": 1
+      },
+      "end": {
+        "m": 11,
+        "p": 3
+      },
+      "text": "10월 상순~11월 하순"
+    }
+  ],
+  "stages": [
+    {
+      "title": "씨뿌림",
+      "timing": "씨뿌림 항목 표기: 봄재배 3~4월, 여름재배 5~6월, 가을재배 9~10월 (작형별 출하시기 표와 다름)",
+      "items": [
+        {
+          "label": "씨앗양",
+          "value": "2kg/10a"
+        },
+        {
+          "label": "이랑 너비",
+          "value": "1~1.2m"
+        },
+        {
+          "label": "포기 사이",
+          "value": "10×15cm"
+        }
+      ]
+    },
+    {
+      "title": "관리",
+      "timing": null,
+      "items": [
+        {
+          "label": "솎음",
+          "value": "발아 후 2~3회"
+        },
+        {
+          "label": "김매기",
+          "value": "제초제 사용"
+        },
+        {
+          "label": "물주기",
+          "value": "가뭄 때"
+        },
+        {
+          "label": "비료",
+          "value": "제4종 복비 사용"
+        }
+      ]
+    },
+    {
+      "title": "수확",
+      "timing": null,
+      "items": [
+        {
+          "label": "기준",
+          "value": "잎 7~8매, 뿌리 지름 5~6cm 이상일 때"
+        },
+        {
+          "label": "봄·여름 수확",
+          "value": "저녁 때 실시하여 시듦 방지"
+        },
+        {
+          "label": "유의",
+          "value": "수확이 늦어지면 섬유질이 발달하여 맛이 떨어짐"
+        }
+      ]
+    }
+  ],
+  "fertilizer": {
+    "unit": "kg/10a",
+    "columns": [
+      "총량",
+      "밑거름",
+      "웃거름 1회",
+      "웃거름 2회"
+    ],
+    "rows": [
+      {
+        "name": "퇴비",
+        "values": [
+          1500,
+          1500,
+          null,
+          null
+        ]
+      },
+      {
+        "name": "질소",
+        "values": [
+          15,
+          "8~9",
+          "3~4",
+          "3~4"
+        ]
+      },
+      {
+        "name": "인산",
+        "values": [
+          "11~15",
+          "11~15",
+          null,
+          null
+        ]
+      },
+      {
+        "name": "칼리",
+        "values": [
+          25,
+          15,
+          "4~5",
+          "4~5"
+        ]
+      },
+      {
+        "name": "석회",
+        "values": [
+          200,
+          100,
+          null,
+          null
+        ]
+      },
+      {
+        "name": "붕사",
+        "values": [
+          1,
+          1,
+          null,
+          null
+        ]
+      }
+    ],
+    "note": "석회는 페이지 표에 총량 200, 밑거름 100으로 표기되어 있음"
+  },
+  "pests": [
+    {
+      "name": "잘록병",
+      "kind": "병",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "갈색점무늬병",
+      "kind": "병",
+      "timing": null,
+      "control": null
+    }
+  ],
+  "disasters": [
+    {
+      "risk": "가뭄 (발아 불량, 잎 생육 불량)",
+      "timing": null,
+      "measures": [
+        "이동식 스프링클러 또는 점적관수로 물주기",
+        "웃거름은 관비 형태의 액비로 공급"
+      ]
+    },
+    {
+      "risk": "고온 (발아 불량, 지상부 생육 불량. 30℃ 이상에서 잎이 윤기와 광택을 잃어 쌈채소로 상품성 저하)",
+      "timing": null,
+      "measures": []
+    },
+    {
+      "risk": "습해 (지하부 생육 불량)",
+      "timing": null,
+      "measures": [
+        "배수구 정비"
+      ]
+    }
+  ],
+  "notes": [
+    "작형별 출하시기 표의 성출하기: 봄재배 5월 하순~6월 중순, 여름재배 7월 상순~7월 중순, 가을재배 11월 중순",
+    "주요기술: 우량품종 선택, 플러그 모 기르기 가능, 높은 이랑 설치, 비닐덮기(멀칭) 재배 및 배수구 정비"
+  ],
+  "source": "https://www.nongsaro.go.kr/portal/ps/psb/psbl/workScheduleDtl.ps?menuId=PS00087&cntntsNo=30623"
+}

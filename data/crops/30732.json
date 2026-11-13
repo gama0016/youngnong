@@ -1,0 +1,147 @@
+{
+  "id": 30732,
+  "name": "흑염소",
+  "type": "비육",
+  "category": "축산",
+  "sciName": null,
+  "family": null,
+  "summary": "비육 흑염소의 성장단계(생후~이유기, 육성기, 비육기)별 사양관리와 거세 요령.",
+  "env": [],
+  "schedule": [
+    {
+      "task": "생후~이유기",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": "0~3개월령"
+    },
+    {
+      "task": "육성기",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": "4~8개월령"
+    },
+    {
+      "task": "비육기(거세)",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": "9개월령~출하시"
+    },
+    {
+      "task": "거세",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": "생후 15일, 3개월, 5개월 중 비육 형태와 사양관리에 따라 선택"
+    },
+    {
+      "task": "농후사료 보충",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": "생후 1개월 이후(어미 포유량 감소)"
+    },
+    {
+      "task": "이유 후 구충",
+      "kind": "pest",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "분리 사육",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "미네랄 블록 급여 및 물 공급",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    }
+  ],
+  "stages": [
+    {
+      "title": "사양관리 주의사항",
+      "timing": null,
+      "items": [
+        {
+          "label": "폐사 원인",
+          "value": "축사환경 불량, 초유 섭취 부족"
+        },
+        {
+          "label": "폐사율 낮추기",
+          "value": "분만실을 설치해 개체별로 충분히 초유를 먹게 함"
+        },
+        {
+          "label": "육성기",
+          "value": "골격과 근육이 활발히 발달하므로 충분한 단백질과 조사료 급여"
+        },
+        {
+          "label": "농후사료",
+          "value": "단백질 15% 이상 제품 급여, 급여량은 체중의 2~3%로 조정"
+        },
+        {
+          "label": "요로결석 예방",
+          "value": "미네랄 블록 급여, 충분한 물 공급"
+        },
+        {
+          "label": "분리 사육",
+          "value": "조기번식과 근친번식 예방"
+        }
+      ]
+    },
+    {
+      "title": "거세",
+      "timing": "생후 15일, 3개월, 5개월 중 선택",
+      "items": [
+        {
+          "label": "방법",
+          "value": "외과적 시술로 고환을 절개하고 정관을 절단해 묶은 뒤 강옥도로 소독하고 항생제 주사"
+        },
+        {
+          "label": "효과",
+          "value": "근친번식 예방, 사양관리 용이, 염소고기 특이취 감소, 육질 개선"
+        }
+      ]
+    },
+    {
+      "title": "사료 영양 수준",
+      "timing": null,
+      "items": [
+        {
+          "label": "조단백질",
+          "value": "육성기 15%, 비육기 12%"
+        },
+        {
+          "label": "TDN(가소화 영양소 총량)",
+          "value": "육성기 72%, 비육기 70%"
+        },
+        {
+          "label": "일일 증체량",
+          "value": "육성기 50~100g, 비육기 50~100g"
+        }
+      ]
+    }
+  ],
+  "fertilizer": null,
+  "pests": [],
+  "disasters": [],
+  "notes": [
+    "사료 급여량 표(원문 값 나열 순서): 체중(kg) 2~10, 10, 20, 30, 40, 50, 60, 70 / 일일 사료 급여량(kg) 0.5, 0.7, 0.8, 1.0, 1.1, 1.3, 1.4 / 체중비(%) 3.9, 3.0, 2.5, 2.3, 2.2, 2.0, 1.9. 체중과 급여량의 정확한 대응은 원문 추출로 확인하지 못함"
+  ],
+  "source": "https://www.nongsaro.go.kr/portal/ps/psb/psbl/workScheduleDtl.ps?menuId=PS00087&cntntsNo=30732"
+}

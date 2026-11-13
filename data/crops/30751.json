@@ -1,0 +1,127 @@
+{
+  "id": 30751,
+  "name": null,
+  "type": null,
+  "category": null,
+  "sciName": null,
+  "family": null,
+  "summary": "농사로 원문 페이지 제목이 \"-\"로만 표시되어 작목명이 확인되지 않음. 1년째와 3~4년째로 나뉜 여러해살이 작물 일정표(8월~이듬해 7월).",
+  "env": [],
+  "schedule": [
+    {
+      "task": "정식(1년째)",
+      "kind": "plant",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "적뢰(1년째)",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "제초(1년째)",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "웃거름(1년째)",
+      "kind": "fert",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "병전염원제거(3~4년째)",
+      "kind": "pest",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "제초·웃거름(3~4년째)",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "수확(3~4년째)",
+      "kind": "harvest",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "병해충 방제(3~4년째)",
+      "kind": "pest",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    }
+  ],
+  "stages": [],
+  "fertilizer": null,
+  "pests": [
+    {
+      "name": "점무늬병",
+      "kind": "병",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "녹병",
+      "kind": "병",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "탄저병",
+      "kind": "병",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "흰가루병",
+      "kind": "병",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "가지마름병",
+      "kind": "병",
+      "timing": null,
+      "control": null
+    }
+  ],
+  "disasters": [
+    {
+      "risk": "가뭄",
+      "timing": null,
+      "measures": []
+    },
+    {
+      "risk": "동해 발생",
+      "timing": null,
+      "measures": []
+    }
+  ],
+  "notes": [
+    "원문은 월·순(상/중/하) 일정표이나 칸 위치를 확인할 수 없어 작업 시기는 비워 둠.",
+    "예상되는 문제점(원문): 생육부진"
+  ],
+  "source": "https://www.nongsaro.go.kr/portal/ps/psb/psbl/workScheduleDtl.ps?menuId=PS00087&cntntsNo=30751"
+}

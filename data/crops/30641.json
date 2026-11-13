@@ -1,0 +1,381 @@
+{
+  "id": 30641,
+  "name": "참취",
+  "type": null,
+  "category": "채소",
+  "sciName": "Aster scaber THUNB",
+  "family": "국화과",
+  "summary": "다년생 초본으로 원줄기 높이는 최대 1m이며 8~9월에 꽃대가 신장해 흰 꽃이 핀다. 전국 재배가 가능하다.",
+  "env": [
+    {
+      "label": "발아적온",
+      "value": "15℃"
+    },
+    {
+      "label": "모 기르기 적온",
+      "value": "15~25℃"
+    },
+    {
+      "label": "토양산도",
+      "value": "pH 5.5~6.5"
+    },
+    {
+      "label": "토심",
+      "value": "30~50cm"
+    },
+    {
+      "label": "재배적지",
+      "value": "부식질이 풍부한 사질양토·부식토·식질양토"
+    }
+  ],
+  "schedule": [
+    {
+      "task": "봄뿌림",
+      "kind": "sow",
+      "region": null,
+      "start": {
+        "m": 3,
+        "p": null
+      },
+      "end": {
+        "m": 4,
+        "p": null
+      },
+      "text": "3~4월"
+    },
+    {
+      "task": "가을뿌림",
+      "kind": "sow",
+      "region": null,
+      "start": {
+        "m": 9,
+        "p": null
+      },
+      "end": {
+        "m": 10,
+        "p": null
+      },
+      "text": "9~10월"
+    },
+    {
+      "task": "밑거름·토양관리",
+      "kind": "fert",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "모 기르기",
+      "kind": "nursery",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "아주심기",
+      "kind": "plant",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "김매기",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "웃거름",
+      "kind": "fert",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "지상부 제거, 퇴비살포 및 웃거름",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "수확(보통재배)",
+      "kind": "harvest",
+      "region": null,
+      "start": {
+        "m": 4,
+        "p": 3
+      },
+      "end": {
+        "m": 6,
+        "p": 1
+      },
+      "text": "4월 하순~6월 상순"
+    },
+    {
+      "task": "온도높임(조기재배)",
+      "kind": "manage",
+      "region": null,
+      "start": {
+        "m": 2,
+        "p": 3
+      },
+      "end": {
+        "m": 3,
+        "p": 1
+      },
+      "text": "2월 하순~3월 상순"
+    },
+    {
+      "task": "수확(조기재배)",
+      "kind": "harvest",
+      "region": null,
+      "start": {
+        "m": 4,
+        "p": 1
+      },
+      "end": {
+        "m": 5,
+        "p": 2
+      },
+      "text": "4월 상순~5월 중순"
+    },
+    {
+      "task": "온도높임(촉성재배)",
+      "kind": "manage",
+      "region": null,
+      "start": {
+        "m": 11,
+        "p": 3
+      },
+      "end": {
+        "m": 2,
+        "p": 3
+      },
+      "text": "11월 하순~2월 하순"
+    },
+    {
+      "task": "수확(촉성재배)",
+      "kind": "harvest",
+      "region": null,
+      "start": {
+        "m": 1,
+        "p": 1
+      },
+      "end": {
+        "m": 2,
+        "p": 3
+      },
+      "text": "1월 상순~2월 하순"
+    }
+  ],
+  "stages": [
+    {
+      "title": "씨뿌림",
+      "timing": "봄 3~4월, 가을 9~10월",
+      "items": [
+        {
+          "label": "씨앗 처리",
+          "value": "지베렐린 10~30ppm 용액에 30분간 담금"
+        },
+        {
+          "label": "씨앗 저온처리",
+          "value": "물에 불린 뒤 4℃ 냉장고에서 15일간 저장"
+        },
+        {
+          "label": "씨앗양",
+          "value": "2~4ℓ/10a"
+        }
+      ]
+    },
+    {
+      "title": "모 기르기",
+      "timing": null,
+      "items": [
+        {
+          "label": "용기",
+          "value": "파종상자 또는 105공 플러그판"
+        }
+      ]
+    },
+    {
+      "title": "아주심기",
+      "timing": null,
+      "items": [
+        {
+          "label": "이랑 너비",
+          "value": "100cm"
+        },
+        {
+          "label": "포기 사이",
+          "value": "20cm"
+        },
+        {
+          "label": "밀식재배",
+          "value": "30×10cm"
+        }
+      ]
+    },
+    {
+      "title": "관리",
+      "timing": null,
+      "items": [
+        {
+          "label": "빛가림",
+          "value": "30~50%"
+        },
+        {
+          "label": "물주기",
+          "value": "주기적 물주기"
+        },
+        {
+          "label": "웃거름",
+          "value": "제4종 복비 사용"
+        }
+      ]
+    },
+    {
+      "title": "수확",
+      "timing": null,
+      "items": [
+        {
+          "label": "수확 대상",
+          "value": "꽃대가 신장된 연한 잎과 줄기"
+        },
+        {
+          "label": "보관",
+          "value": "-20℃에서 급속 냉동"
+        }
+      ]
+    }
+  ],
+  "fertilizer": {
+    "unit": "kg/10a",
+    "columns": [
+      "총량",
+      "밑거름",
+      "웃거름 1회",
+      "웃거름 2회"
+    ],
+    "rows": [
+      {
+        "name": "퇴비",
+        "values": [
+          3000,
+          3000,
+          null,
+          null
+        ]
+      },
+      {
+        "name": "질소",
+        "values": [
+          22,
+          16,
+          3,
+          3
+        ]
+      },
+      {
+        "name": "인산",
+        "values": [
+          12,
+          12,
+          null,
+          null
+        ]
+      },
+      {
+        "name": "칼리",
+        "values": [
+          18,
+          12,
+          3,
+          3
+        ]
+      },
+      {
+        "name": "석회",
+        "values": [
+          150,
+          150,
+          null,
+          null
+        ]
+      }
+    ],
+    "note": null
+  },
+  "pests": [
+    {
+      "name": "청벌레",
+      "kind": "해충",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "민달팽이",
+      "kind": "해충",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "진딧물",
+      "kind": "해충",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "풍뎅이",
+      "kind": "해충",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "거세미",
+      "kind": "해충",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "뿌리썩음병",
+      "kind": "병",
+      "timing": "습해 시",
+      "control": null
+    }
+  ],
+  "disasters": [
+    {
+      "risk": "가뭄(과습하거나 건조하면 말라 죽을 수 있음)",
+      "timing": null,
+      "measures": [
+        "이동식 스프링클러 또는 점적관수로 물주기",
+        "웃거름은 관비 형태의 액비로 공급"
+      ]
+    },
+    {
+      "risk": "고온(시듦·로제트 현상, 지상부 생육 불량)",
+      "timing": null,
+      "measures": []
+    },
+    {
+      "risk": "습해(지하부 생육 불량, 뿌리썩음병)",
+      "timing": null,
+      "measures": [
+        "배수구 정비"
+      ]
+    }
+  ],
+  "notes": [
+    "작형별 성출하기: 보통재배 5월 상순, 조기재배 4월 중순, 촉성재배 1월 중하순",
+    "페이지의 월별 일정표(생육과정·병충해·기상재해 도표)는 수집 과정에서 칸 위치가 확인되지 않아, 본문에 명시된 시기만 기재함. 정확한 시기는 원문 확인 필요."
+  ],
+  "source": "https://www.nongsaro.go.kr/portal/ps/psb/psbl/workScheduleDtl.ps?menuId=PS00087&cntntsNo=30641"
+}

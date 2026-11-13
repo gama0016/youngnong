@@ -1,0 +1,59 @@
+{
+  "id": 30710,
+  "name": "완두",
+  "type": "비닐피복(비닐멀칭) 재배, 노지재배",
+  "category": "밭농사",
+  "sciName": null,
+  "family": null,
+  "summary": "겨울~이른 봄에 파종해 5월에 수확하는 콩과 밭작물. 연작 시 수량이 크게 줄어 석회 시용과 작부체계 관리가 필요하다.",
+  "env": [
+    { "label": "적정 토양 산도", "value": "pH 6.5~8.0" },
+    { "label": "발아최적 온도", "value": "25~30℃" },
+    { "label": "발아 최저 온도", "value": "1~2℃" },
+    { "label": "발아 최고 온도", "value": "35~37℃" }
+  ],
+  "schedule": [
+    { "task": "파종(비닐피복)", "kind": "sow", "region": null, "start": { "m": 12, "p": 1 }, "end": { "m": 1, "p": 3 }, "text": "12월 상순~1월 하순" },
+    { "task": "수확(비닐피복)", "kind": "harvest", "region": null, "start": { "m": 5, "p": 1 }, "end": { "m": 5, "p": 3 }, "text": "5월 상순~하순" },
+    { "task": "출하(비닐피복)", "kind": "harvest", "region": null, "start": { "m": 5, "p": 2 }, "end": { "m": 5, "p": 3 }, "text": "5월 중순~하순 (성출하기 5월 중순)" },
+    { "task": "비닐 등 자재준비", "kind": "etc", "region": null, "start": null, "end": null, "text": null },
+    { "task": "김매기·북주기", "kind": "manage", "region": null, "start": null, "end": null, "text": null },
+    { "task": "배수구정비", "kind": "manage", "region": null, "start": null, "end": null, "text": null },
+    { "task": "비닐찢기", "kind": "manage", "region": null, "start": null, "end": null, "text": null },
+    { "task": "병해 방제", "kind": "pest", "region": null, "start": null, "end": null, "text": "개화 10일 전, 개화 시 (2회)" },
+    { "task": "충해 방제", "kind": "pest", "region": null, "start": null, "end": null, "text": "개화기" }
+  ],
+  "stages": [
+    { "title": "파종", "timing": "비닐피복 12월 상순~1월 하순", "items": [
+      { "label": "종자 소요량", "value": "6~7ℓ/10a" },
+      { "label": "개화촉진 처리", "value": "종자 최아 후 10~50일간 0~2℃ 처리 시 3~10일 개화촉진" }
+    ] },
+    { "title": "연작장해 대책", "timing": null, "items": [
+      { "label": "연작 피해", "value": "연작 시 식물체 왜화 및 감수. 연작 2년 수량 50% 감수, 연작 3년 초년 수량 대비 90% 감수" },
+      { "label": "석회", "value": "필히 시용, 100~120㎏/10a" },
+      { "label": "작부체계", "value": "2기작 재배(남부). 완두+벼 재배 시 연작피해 거의 없음" }
+    ] },
+    { "title": "수확", "timing": "비닐피복 5월 상순~하순", "items": [
+      { "label": "꼬투리 식용", "value": "종실이 굵어지기 전에 수확하며 꼬투리가 연한 품종을 재배" },
+      { "label": "꼬투리알 식용", "value": "꼬투리 변색과 견고해지기 전에 수확" }
+    ] }
+  ],
+  "fertilizer": null,
+  "pests": [
+    { "name": "갈색무늬병, 흰가루병 등", "kind": "병", "timing": "개화 10일 전, 개화 시 (2회)", "control": "만코지수화제 600배, 베노밀수화제 1,500배액" },
+    { "name": "팥알락명나방 등", "kind": "해충", "timing": "개화기", "control": "스미치온, 호리치온 1,000배액" }
+  ],
+  "disasters": [
+    { "risk": "잦은 비(파종 및 피복 지연, 습해)", "timing": null, "measures": ["배수작업 후 파종", "습해방지를 위한 배수구 정비", "개화기 병해충 방지"] },
+    { "risk": "가뭄(생육초기 위조)", "timing": null, "measures": ["헛골에 산야초 등 피복", "비닐 양끝을 흙으로 덮어 건조 방지", "관수가능지는 고랑에 관수"] }
+  ],
+  "notes": [
+    "재배유형별 생육 결과 - 12월 15일 파종 비닐멀칭: 월동률 76%, 수량 238kg/10a, 성숙기 6월 6일, 협수 13.3개",
+    "재배유형별 생육 결과 - 2월 10일 파종 비닐멀칭: 월동률 87%, 수량 254kg/10a, 성숙기 6월 16일, 협수 12.8개",
+    "재배유형별 생육 결과 - 3월 10일 파종 노지재배: 월동률 91%, 수량 162kg/10a, 성숙기 6월 23일, 협수 8.7개",
+    "원문에 '비닐피복적기: 23상~1하순'이라는 표기가 있으나 의미가 불명확하여 일정에 반영하지 않음",
+    "원문에 시비량 표가 없음(석회 시용량 100~120㎏/10a만 연작장해 항목에 명시)",
+    "생육단계: 발아기 → 유묘기 → 신장기 → 개화기 → 등숙기 (원문 월별 표는 칸 위치를 확인할 수 없어 시기를 넣지 않음)"
+  ],
+  "source": "https://www.nongsaro.go.kr/portal/ps/psb/psbl/workScheduleDtl.ps?menuId=PS00087&cntntsNo=30710"
+}

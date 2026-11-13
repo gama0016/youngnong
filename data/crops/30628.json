@@ -1,0 +1,315 @@
+{
+  "id": 30628,
+  "name": "시금치",
+  "type": null,
+  "category": "채소",
+  "sciName": "Spinacia oleracea L.",
+  "family": "명아주과",
+  "summary": "자웅이주의 1년생 저온발아성 작물. 영하 추위에 강하고 25℃ 이상 더위에 약하며, 장일에서 꽃대신장(추대)이 촉진된다.",
+  "env": [
+    {
+      "label": "발아 온도",
+      "value": "최저 4℃, 최적 15~20℃, 최고 30℃"
+    },
+    {
+      "label": "생육 온도",
+      "value": "최저 3~4℃, 최적 15~20℃, 최고 25℃"
+    },
+    {
+      "label": "생육장해 온도",
+      "value": "10℃ 이하, 25℃ 이상"
+    },
+    {
+      "label": "토양산도",
+      "value": "pH 6.0~7.0 (pH 6 이하에서는 경제적 재배가 어려움)"
+    }
+  ],
+  "schedule": [
+    {
+      "task": "씨뿌림(봄 재배)",
+      "kind": "sow",
+      "region": null,
+      "start": {
+        "m": 2,
+        "p": 1
+      },
+      "end": {
+        "m": 5,
+        "p": 3
+      },
+      "text": "2월 상순~5월 하순"
+    },
+    {
+      "task": "수확(봄 재배)",
+      "kind": "harvest",
+      "region": null,
+      "start": {
+        "m": 3,
+        "p": 2
+      },
+      "end": {
+        "m": 7,
+        "p": 1
+      },
+      "text": "3월 중순~7월 상순"
+    },
+    {
+      "task": "씨뿌림(여름 재배)",
+      "kind": "sow",
+      "region": null,
+      "start": {
+        "m": 6,
+        "p": 1
+      },
+      "end": {
+        "m": 8,
+        "p": 3
+      },
+      "text": "6월 상순~8월 하순"
+    },
+    {
+      "task": "수확(여름 재배)",
+      "kind": "harvest",
+      "region": null,
+      "start": {
+        "m": 7,
+        "p": 1
+      },
+      "end": {
+        "m": 10,
+        "p": 1
+      },
+      "text": "7월 상순~10월 상순"
+    },
+    {
+      "task": "씨뿌림(가을 재배)",
+      "kind": "sow",
+      "region": null,
+      "start": {
+        "m": 9,
+        "p": 2
+      },
+      "end": {
+        "m": 11,
+        "p": 3
+      },
+      "text": "9월 중순~11월 하순"
+    },
+    {
+      "task": "수확(가을 재배)",
+      "kind": "harvest",
+      "region": null,
+      "start": {
+        "m": 10,
+        "p": 1
+      },
+      "end": {
+        "m": 3,
+        "p": 3
+      },
+      "text": "10월 상순~3월 하순"
+    }
+  ],
+  "stages": [
+    {
+      "title": "씨뿌림",
+      "timing": null,
+      "items": [
+        {
+          "label": "종자 사용량",
+          "value": "환씨앗 6~7ℓ/10a, 각씨앗 15~18ℓ/10a"
+        },
+        {
+          "label": "씨뿌림 폭",
+          "value": "15~20cm, 파종기를 이용한 줄뿌림"
+        },
+        {
+          "label": "이랑",
+          "value": "4줄 또는 8줄 재배, 이랑 폭 1m 또는 2m"
+        },
+        {
+          "label": "싹틔우기",
+          "value": "시판 씨앗은 싹틔우기 없이 바로 뿌림, 자가 채종한 가시종자는 15~18℃에서 싹틔우기"
+        },
+        {
+          "label": "물주기",
+          "value": "발아 때까지 건조하지 않도록, 1주일에 1회 정도 땅속 깊이 스며들 만큼"
+        }
+      ]
+    },
+    {
+      "title": "솎음",
+      "timing": null,
+      "items": [
+        {
+          "label": "1차",
+          "value": "싹튼 후 약 1주일, 2~3cm 간격"
+        },
+        {
+          "label": "2차",
+          "value": "싹튼 후 약 2주일, 4~5cm 간격"
+        }
+      ]
+    },
+    {
+      "title": "수확",
+      "timing": null,
+      "items": [
+        {
+          "label": "소요일수",
+          "value": "가을 씨뿌림 50~60일, 여름 씨뿌림 30~35일, 봄 40일"
+        },
+        {
+          "label": "유의",
+          "value": "수확이 늦어지면 줄기 마디가 길어지고 잎자루가 단단해져 상품성이 떨어짐"
+        }
+      ]
+    }
+  ],
+  "fertilizer": {
+    "unit": "kg/10a",
+    "columns": [
+      "총량",
+      "밑거름",
+      "웃거름 1회",
+      "웃거름 2회",
+      "웃거름 3회"
+    ],
+    "rows": [
+      {
+        "name": "퇴비",
+        "values": [
+          1500,
+          1500,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "name": "질소",
+        "values": [
+          25,
+          10,
+          5,
+          5,
+          5
+        ]
+      },
+      {
+        "name": "인산",
+        "values": [
+          5.9,
+          5.9,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "name": "칼리",
+        "values": [
+          11.9,
+          7.9,
+          1.3,
+          1.3,
+          1.4
+        ]
+      },
+      {
+        "name": "석회",
+        "values": [
+          200,
+          200,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "name": "붕사",
+        "values": [
+          1.5,
+          1.5,
+          null,
+          null,
+          null
+        ]
+      }
+    ],
+    "note": null
+  },
+  "pests": [
+    {
+      "name": "모잘록병",
+      "kind": "병",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "노균병",
+      "kind": "병",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "탄저병",
+      "kind": "병",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "모자이크병",
+      "kind": "병",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "응애",
+      "kind": "해충",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "도둑나방",
+      "kind": "해충",
+      "timing": null,
+      "control": null
+    }
+  ],
+  "disasters": [
+    {
+      "risk": "가뭄 (생육불량)",
+      "timing": null,
+      "measures": [
+        "이동식 스프링클러로 물주기",
+        "시설 내에서는 분수테이프나 분수호스를 이용한 고정식 물주기",
+        "적기 씨뿌림"
+      ]
+    },
+    {
+      "risk": "저온·혹한 (생육불량, 동해피해)",
+      "timing": null,
+      "measures": [
+        "비닐, 짚, 부직포 등으로 피복",
+        "내한성 품종 재배"
+      ]
+    },
+    {
+      "risk": "고온 (25℃ 이상에서 발아와 생육 불량, 고온·장일에서 꽃대신장)",
+      "timing": null,
+      "measures": [
+        "빛가림망 이용",
+        "만추대성 품종 재배"
+      ]
+    }
+  ],
+  "notes": [
+    "성출하기: 봄 재배 6월 상순~6월 하순 / 여름 재배 7월 중순~9월 중순 / 가을 재배 11월 중순~2월 중순",
+    "씨뿌림 항목의 시기는 봄 2월 상순~5월 하순, 여름 6~8월, 가을 9~10월로 표기되어 작형별 출하시기 표와 일부 다름",
+    "30℃ 이상에서 발아율이 50% 이하로 감소",
+    "고온기에 약 50% 빛가림망 이용",
+    "수경재배 시 배양액 농도 EC 2.1 dS/m로 급액"
+  ],
+  "source": "https://www.nongsaro.go.kr/portal/ps/psb/psbl/workScheduleDtl.ps?menuId=PS00087&cntntsNo=30628"
+}

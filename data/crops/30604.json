@@ -1,0 +1,284 @@
+{
+  "id": 30604,
+  "name": "냉이",
+  "type": null,
+  "category": "채소",
+  "sciName": "Capsella bursa-pastoris (L.) A.DC.",
+  "family": "배추과",
+  "summary": "저온에 강하고 토양을 크게 가리지 않으나 햇빛이 잘 들고 배수가 잘 되는 비옥한 사양토에서 생육이 좋다.",
+  "env": [
+    {
+      "label": "발아적온",
+      "value": "20℃"
+    },
+    {
+      "label": "생육적온",
+      "value": "15~25℃"
+    },
+    {
+      "label": "재배적지",
+      "value": "햇빛이 잘 들고 배수가 잘 되는 비옥한 사양토"
+    }
+  ],
+  "schedule": [
+    {
+      "task": "밑거름·토양관리",
+      "kind": "fert",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "씨뿌림(노지재배)",
+      "kind": "sow",
+      "region": null,
+      "start": {
+        "m": 9,
+        "p": 1
+      },
+      "end": {
+        "m": 9,
+        "p": 1
+      },
+      "text": "9월 상순"
+    },
+    {
+      "task": "씨뿌림(촉성재배)",
+      "kind": "sow",
+      "region": null,
+      "start": {
+        "m": 9,
+        "p": 3
+      },
+      "end": {
+        "m": 10,
+        "p": 1
+      },
+      "text": "9월 하순~10월 상순"
+    },
+    {
+      "task": "하우스·터널 설치(촉성재배)",
+      "kind": "manage",
+      "region": null,
+      "start": {
+        "m": 10,
+        "p": 3
+      },
+      "end": {
+        "m": 10,
+        "p": 3
+      },
+      "text": "10월 하순"
+    },
+    {
+      "task": "웃거름(시설재배)",
+      "kind": "fert",
+      "region": null,
+      "start": {
+        "m": 10,
+        "p": null
+      },
+      "end": {
+        "m": 10,
+        "p": null
+      },
+      "text": "10월"
+    },
+    {
+      "task": "수확(노지재배)",
+      "kind": "harvest",
+      "region": null,
+      "start": {
+        "m": 11,
+        "p": 2
+      },
+      "end": {
+        "m": 4,
+        "p": 1
+      },
+      "text": "11월 중순~4월 상순"
+    },
+    {
+      "task": "수확(촉성재배)",
+      "kind": "harvest",
+      "region": null,
+      "start": {
+        "m": 1,
+        "p": 3
+      },
+      "end": {
+        "m": 2,
+        "p": 3
+      },
+      "text": "1월 하순~2월 하순"
+    }
+  ],
+  "stages": [
+    {
+      "title": "씨뿌림",
+      "timing": "9월 상순",
+      "items": [
+        {
+          "label": "방법",
+          "value": "흩뿌리기, 흙덮기 하지 않음 (모래와 섞어 뿌린 뒤 눌러만 줌)"
+        },
+        {
+          "label": "씨앗양",
+          "value": "2~3ℓ/10a"
+        },
+        {
+          "label": "이랑 너비",
+          "value": "90cm"
+        }
+      ]
+    },
+    {
+      "title": "관리",
+      "timing": null,
+      "items": [
+        {
+          "label": "솎음",
+          "value": "포기 사이 3~4㎝"
+        },
+        {
+          "label": "김매기",
+          "value": "2회"
+        },
+        {
+          "label": "물주기",
+          "value": "씨뿌림 후 스프링클러로 물주기"
+        }
+      ]
+    },
+    {
+      "title": "촉성재배",
+      "timing": "10월 하순경",
+      "items": [
+        {
+          "label": "보온",
+          "value": "하우스와 터널을 설치해 보온"
+        }
+      ]
+    },
+    {
+      "title": "웃거름(시설재배)",
+      "timing": "10월",
+      "items": [
+        {
+          "label": "양",
+          "value": "1회, 유기질비료 50kg/10a"
+        }
+      ]
+    },
+    {
+      "title": "수확",
+      "timing": "11~4월",
+      "items": []
+    }
+  ],
+  "fertilizer": {
+    "unit": "kg/10a",
+    "columns": [
+      "총량",
+      "밑거름",
+      "웃거름 1회",
+      "웃거름 2회"
+    ],
+    "rows": [
+      {
+        "name": "퇴비",
+        "values": [
+          3000,
+          3000,
+          null,
+          null
+        ]
+      },
+      {
+        "name": "질소",
+        "values": [
+          6,
+          6,
+          null,
+          null
+        ]
+      },
+      {
+        "name": "인산",
+        "values": [
+          25,
+          25,
+          null,
+          null
+        ]
+      },
+      {
+        "name": "칼리",
+        "values": [
+          6,
+          6,
+          null,
+          null
+        ]
+      },
+      {
+        "name": "석회",
+        "values": [
+          150,
+          150,
+          null,
+          null
+        ]
+      }
+    ],
+    "note": "비료는 전량 밑거름으로 줌"
+  },
+  "pests": [
+    {
+      "name": "흰가루병",
+      "kind": "병",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "세균성 연부병",
+      "kind": "병",
+      "timing": null,
+      "control": "과번무에 의한 연부병은 솎아줌"
+    },
+    {
+      "name": "달팽이",
+      "kind": "해충",
+      "timing": null,
+      "control": "석회분말 살포"
+    }
+  ],
+  "disasters": [
+    {
+      "risk": "가뭄 (과습하거나 건조하면 발아율이 낮아짐)",
+      "timing": null,
+      "measures": [
+        "씨뿌림 후 스프링클러로 물주기"
+      ]
+    },
+    {
+      "risk": "고온 (발아 불량)",
+      "timing": null,
+      "measures": []
+    },
+    {
+      "risk": "습해 (지하부 생육 불량)",
+      "timing": null,
+      "measures": [
+        "배수구 정비"
+      ]
+    }
+  ],
+  "notes": [
+    "성출하기: 노지재배 1월 중순~4월 상순, 촉성재배 1월 하순~2월 하순",
+    "씨뿌림 양이 많을수록 수량이 증가함",
+    "뿌리는 흰색으로 10~50㎝ 곧게 뻗고, 잎은 16~28매, 꽃대는 5~6월에 나옴"
+  ],
+  "source": "https://www.nongsaro.go.kr/portal/ps/psb/psbl/workScheduleDtl.ps?menuId=PS00087&cntntsNo=30604"
+}

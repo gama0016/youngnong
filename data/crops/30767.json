@@ -1,0 +1,83 @@
+{
+  "id": 30767,
+  "name": null,
+  "type": null,
+  "category": null,
+  "sciName": null,
+  "family": null,
+  "summary": "농사로 원문 페이지 제목이 \"-\"로만 표시되어 작목명이 확인되지 않음. 1차·2차 수확이 있는 작물의 일정표.",
+  "env": [],
+  "schedule": [
+    {
+      "task": "파종",
+      "kind": "sow",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "포장관리",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "수확(1차)",
+      "kind": "harvest",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "웃거름",
+      "kind": "fert",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "수확(2차)",
+      "kind": "harvest",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    }
+  ],
+  "stages": [],
+  "fertilizer": null,
+  "pests": [],
+  "disasters": [
+    {
+      "risk": "가뭄",
+      "timing": null,
+      "measures": []
+    },
+    {
+      "risk": "저온",
+      "timing": null,
+      "measures": []
+    },
+    {
+      "risk": "잦은비-습해",
+      "timing": null,
+      "measures": []
+    },
+    {
+      "risk": "도복",
+      "timing": null,
+      "measures": []
+    }
+  ],
+  "notes": [
+    "원문은 월·순(상/중/하) 일정표이나 칸 위치를 확인할 수 없어 작업 시기는 비워 둠.",
+    "생육단계 표기(원문): 유묘기, 신장기, 출수개화~성숙기, 재생기",
+    "예상되는 문제점(원문): 잡초, 병해충 / 지역별 파종기 조절, 파종지연 / 발아불량, 입모수 부족 / 산간지방 저온피해, 생육저조 / 토양수분 과부족에 따른 초기생육 장애"
+  ],
+  "source": "https://www.nongsaro.go.kr/portal/ps/psb/psbl/workScheduleDtl.ps?menuId=PS00087&cntntsNo=30767"
+}

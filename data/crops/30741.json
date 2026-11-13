@@ -1,0 +1,304 @@
+{
+  "id": 30741,
+  "name": "더덕(양유)",
+  "type": null,
+  "category": "약초",
+  "sciName": null,
+  "family": null,
+  "summary": "더덕(양유)의 모 기르기, 아주심기, 김매기·웃거름, 지주 세우기, 수확 요령.",
+  "env": [],
+  "schedule": [
+    {
+      "task": "봄 씨뿌림",
+      "kind": "sow",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "가을 씨뿌림",
+      "kind": "sow",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "아주심기",
+      "kind": "plant",
+      "region": null,
+      "start": {
+        "m": 4,
+        "p": 1
+      },
+      "end": {
+        "m": 4,
+        "p": 2
+      },
+      "text": "4월 상순~4월 중순"
+    },
+    {
+      "task": "웃거름·김매기(1년차)",
+      "kind": "fert",
+      "region": null,
+      "start": {
+        "m": 7,
+        "p": 3
+      },
+      "end": {
+        "m": 7,
+        "p": 3
+      },
+      "text": "7월 하순 1회"
+    },
+    {
+      "task": "웃거름·김매기(2년차부터) 1회",
+      "kind": "fert",
+      "region": null,
+      "start": {
+        "m": 6,
+        "p": 3
+      },
+      "end": {
+        "m": 6,
+        "p": 3
+      },
+      "text": "6월 하순"
+    },
+    {
+      "task": "웃거름·김매기(2년차부터) 2회",
+      "kind": "fert",
+      "region": null,
+      "start": {
+        "m": 7,
+        "p": 3
+      },
+      "end": {
+        "m": 7,
+        "p": 3
+      },
+      "text": "7월 하순"
+    },
+    {
+      "task": "지주 세우기",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": "본잎 3~4매 시"
+    },
+    {
+      "task": "꽃망울 제거",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "수확",
+      "kind": "harvest",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": "10월 중순 이후~봄에 싹이 나오기 전(아주심기 2~3년째)"
+    }
+  ],
+  "stages": [
+    {
+      "title": "모 기르기",
+      "timing": null,
+      "items": [
+        {
+          "label": "모판 설치",
+          "value": "40㎡/10a"
+        },
+        {
+          "label": "씨앗양",
+          "value": "150~200g/40㎡"
+        },
+        {
+          "label": "씨앗 관리",
+          "value": "채종 후 약 120일 휴면기간이 지난 뒤 2~5℃에서 7일간 저온처리하거나, 채종 후 노천매장하여 씨뿌림"
+        },
+        {
+          "label": "파종 방법",
+          "value": "흩뿌림 또는 10cm 간격 줄뿌림"
+        },
+        {
+          "label": "복토",
+          "value": "부드러운 토양을 5~10mm 두께로 덮기"
+        },
+        {
+          "label": "발아율 향상",
+          "value": "짚 또는 건초 덮기"
+        }
+      ]
+    },
+    {
+      "title": "아주심기",
+      "timing": "4월 상순~4월 중순",
+      "items": [
+        {
+          "label": "재식 거리",
+          "value": "30×10~15cm"
+        },
+        {
+          "label": "씨모 기준",
+          "value": "뿌리가 곧고 굵으며 잔뿌리가 적고 절단되지 않은 5g 이상의 묘"
+        },
+        {
+          "label": "심는 방법",
+          "value": "가능하면 수직으로 곧게 심기"
+        },
+        {
+          "label": "심기 전 처리",
+          "value": "지베렐린 5ppm에 24시간 침지 시 뿌리내림과 수량성 증대"
+        },
+        {
+          "label": "밑거름(사양토, 10a)",
+          "value": "퇴비 1,500kg, 질소·인산·칼리 각 6kg"
+        }
+      ]
+    },
+    {
+      "title": "주요 관리작업",
+      "timing": null,
+      "items": [
+        {
+          "label": "웃거름",
+          "value": "1년차 7월 하순 1회, 2년차부터 6월 하순·7월 하순 2회"
+        },
+        {
+          "label": "김매기",
+          "value": "6월 하순, 7월 하순(웃거름과 동시)"
+        },
+        {
+          "label": "지주 세우기",
+          "value": "본잎 3~4매 시 높이 2.0~2.5m 지주(1자형, 삼각형, 사다리형 등)를 세워 통풍과 햇빛 개선"
+        },
+        {
+          "label": "꽃망울 제거",
+          "value": "뿌리 발육을 촉진해 수량 증대"
+        }
+      ]
+    },
+    {
+      "title": "수확",
+      "timing": "10월 중순 이후~봄 싹이 나오기 전",
+      "items": [
+        {
+          "label": "수확 기준",
+          "value": "아주심기 2~3년차, 개당 무게 30~50g 이상"
+        }
+      ]
+    }
+  ],
+  "fertilizer": {
+    "unit": "kg/10a",
+    "columns": [
+      "밑거름"
+    ],
+    "rows": [
+      {
+        "name": "퇴비",
+        "values": [
+          1500
+        ]
+      },
+      {
+        "name": "질소",
+        "values": [
+          6
+        ]
+      },
+      {
+        "name": "인산",
+        "values": [
+          6
+        ]
+      },
+      {
+        "name": "칼리",
+        "values": [
+          6
+        ]
+      }
+    ],
+    "note": "사양토 10a 기준. 웃거름은 1년차 7월 하순 1회, 2년차부터 6월 하순·7월 하순 2회이며 웃거름 양은 원문에 명시되지 않음"
+  },
+  "pests": [
+    {
+      "name": "굼벵이",
+      "kind": "해충",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "거세미",
+      "kind": "해충",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "응애류",
+      "kind": "해충",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "진딧물",
+      "kind": "해충",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "세균성마름병",
+      "kind": "병",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "점무늬병",
+      "kind": "병",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "탄저병",
+      "kind": "병",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "녹병",
+      "kind": "병",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "갈색무늬병",
+      "kind": "병",
+      "timing": null,
+      "control": null
+    }
+  ],
+  "disasters": [
+    {
+      "risk": "가뭄",
+      "timing": null,
+      "measures": []
+    },
+    {
+      "risk": "습해",
+      "timing": null,
+      "measures": []
+    }
+  ],
+  "notes": [
+    "월별 일정표(상·중·하순 막대)는 원문에서 칸 위치를 확인할 수 없어 작업별 시기를 비워 둠(본문에 시기가 적힌 작업만 시기 기재)",
+    "예상되는 문제점: 생육부진(주 수 미확보), 병해충 피해"
+  ],
+  "source": "https://www.nongsaro.go.kr/portal/ps/psb/psbl/workScheduleDtl.ps?menuId=PS00087&cntntsNo=30741"
+}

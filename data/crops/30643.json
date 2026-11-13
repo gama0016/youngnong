@@ -1,0 +1,454 @@
+{
+  "id": 30643,
+  "name": "청경채",
+  "type": null,
+  "category": "채소",
+  "sciName": "Brassica campestris var. chinensis",
+  "family": "배추과",
+  "summary": "1년생 초본으로 차고 서늘한 기후에서 잘 자라지만 더위에도 강하다. 저온에서 꽃눈이 분화하고 장일 조건에서 꽃대가 신장한다.",
+  "env": [
+    {
+      "label": "발아적온",
+      "value": "15~30℃"
+    },
+    {
+      "label": "모 기르기 적온",
+      "value": "20~25℃"
+    },
+    {
+      "label": "생육적온",
+      "value": "20~25℃"
+    },
+    {
+      "label": "최저생육적온",
+      "value": "12~13℃"
+    },
+    {
+      "label": "재배적지",
+      "value": "유기질이 풍부하고 배수가 양호한 토양"
+    }
+  ],
+  "schedule": [
+    {
+      "task": "씨뿌림",
+      "kind": "sow",
+      "region": null,
+      "start": {
+        "m": 4,
+        "p": 3
+      },
+      "end": {
+        "m": 9,
+        "p": 1
+      },
+      "text": "4월 하순~9월 상순"
+    },
+    {
+      "task": "모 기르기",
+      "kind": "nursery",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "아주심기",
+      "kind": "plant",
+      "region": null,
+      "start": {
+        "m": 5,
+        "p": 1
+      },
+      "end": {
+        "m": 9,
+        "p": 3
+      },
+      "text": "5월 상순~9월 하순"
+    },
+    {
+      "task": "밑거름",
+      "kind": "fert",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": "아주심기 10일 전"
+    },
+    {
+      "task": "관리(물주기·김매기)",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "병충해 방제",
+      "kind": "pest",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "씨뿌림(봄재배)",
+      "kind": "sow",
+      "region": null,
+      "start": {
+        "m": 4,
+        "p": null
+      },
+      "end": {
+        "m": 5,
+        "p": null
+      },
+      "text": "4~5월"
+    },
+    {
+      "task": "아주심기(봄재배)",
+      "kind": "plant",
+      "region": null,
+      "start": {
+        "m": 5,
+        "p": null
+      },
+      "end": {
+        "m": 6,
+        "p": null
+      },
+      "text": "5~6월"
+    },
+    {
+      "task": "수확(봄재배)",
+      "kind": "harvest",
+      "region": null,
+      "start": {
+        "m": 6,
+        "p": null
+      },
+      "end": {
+        "m": 7,
+        "p": null
+      },
+      "text": "6~7월"
+    },
+    {
+      "task": "씨뿌림(여름재배)",
+      "kind": "sow",
+      "region": null,
+      "start": {
+        "m": 6,
+        "p": null
+      },
+      "end": {
+        "m": 7,
+        "p": null
+      },
+      "text": "6~7월"
+    },
+    {
+      "task": "아주심기(여름재배)",
+      "kind": "plant",
+      "region": null,
+      "start": {
+        "m": 8,
+        "p": null
+      },
+      "end": {
+        "m": 9,
+        "p": null
+      },
+      "text": "8~9월"
+    },
+    {
+      "task": "수확(여름재배)",
+      "kind": "harvest",
+      "region": null,
+      "start": {
+        "m": 9,
+        "p": null
+      },
+      "end": {
+        "m": 10,
+        "p": null
+      },
+      "text": "9~10월"
+    },
+    {
+      "task": "씨뿌림(가을재배)",
+      "kind": "sow",
+      "region": null,
+      "start": {
+        "m": 9,
+        "p": null
+      },
+      "end": {
+        "m": 9,
+        "p": null
+      },
+      "text": "9월"
+    },
+    {
+      "task": "아주심기(가을재배)",
+      "kind": "plant",
+      "region": null,
+      "start": {
+        "m": 10,
+        "p": null
+      },
+      "end": {
+        "m": 10,
+        "p": null
+      },
+      "text": "10월"
+    },
+    {
+      "task": "수확(가을재배)",
+      "kind": "harvest",
+      "region": null,
+      "start": {
+        "m": 11,
+        "p": null
+      },
+      "end": {
+        "m": 12,
+        "p": null
+      },
+      "text": "11~12월"
+    },
+    {
+      "task": "씨뿌림(겨울재배)",
+      "kind": "sow",
+      "region": null,
+      "start": {
+        "m": 10,
+        "p": null
+      },
+      "end": {
+        "m": 11,
+        "p": null
+      },
+      "text": "10~11월"
+    },
+    {
+      "task": "아주심기(겨울재배)",
+      "kind": "plant",
+      "region": null,
+      "start": {
+        "m": 11,
+        "p": null
+      },
+      "end": {
+        "m": 12,
+        "p": null
+      },
+      "text": "11~12월"
+    },
+    {
+      "task": "수확(겨울재배)",
+      "kind": "harvest",
+      "region": null,
+      "start": {
+        "m": 1,
+        "p": null
+      },
+      "end": {
+        "m": 2,
+        "p": null
+      },
+      "text": "1~2월"
+    }
+  ],
+  "stages": [
+    {
+      "title": "씨뿌림",
+      "timing": "4월 하순~9월 상순",
+      "items": [
+        {
+          "label": "씨앗양",
+          "value": "160~200㎖/10a"
+        }
+      ]
+    },
+    {
+      "title": "모 기르기",
+      "timing": null,
+      "items": [
+        {
+          "label": "온도",
+          "value": "25/15℃(주/야간)"
+        },
+        {
+          "label": "물주기",
+          "value": "오전 중 20℃의 물"
+        }
+      ]
+    },
+    {
+      "title": "아주심기",
+      "timing": "5월 상순~9월 하순",
+      "items": [
+        {
+          "label": "이랑 너비",
+          "value": "15cm"
+        },
+        {
+          "label": "포기 사이",
+          "value": "15cm"
+        },
+        {
+          "label": "멀칭",
+          "value": "두께 0.02~0.03mm 흑색비닐"
+        }
+      ]
+    },
+    {
+      "title": "관리",
+      "timing": null,
+      "items": [
+        {
+          "label": "물주기",
+          "value": "가물 때 물주기"
+        },
+        {
+          "label": "김매기",
+          "value": "제초제 사용"
+        }
+      ]
+    }
+  ],
+  "fertilizer": {
+    "unit": "kg/10a",
+    "columns": [
+      "총량",
+      "밑거름",
+      "웃거름 1회",
+      "웃거름 2회",
+      "웃거름 3회"
+    ],
+    "rows": [
+      {
+        "name": "퇴비",
+        "values": [
+          1500,
+          1500,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "name": "질소",
+        "values": [
+          "12~15",
+          "12~15",
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "name": "인산",
+        "values": [
+          "10~12",
+          "10~12",
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "name": "칼리",
+        "values": [
+          "10~12",
+          "10~12",
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "name": "석회",
+        "values": [
+          150,
+          150,
+          null,
+          null,
+          null
+        ]
+      }
+    ],
+    "note": "밑거름 주는 시기: 아주심기 10일 전"
+  },
+  "pests": [
+    {
+      "name": "모잘록병",
+      "kind": "병",
+      "timing": "저온 시",
+      "control": "모잘록병 방제"
+    },
+    {
+      "name": "노균병",
+      "kind": "병",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "무름병",
+      "kind": "병",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "진딧물",
+      "kind": "해충",
+      "timing": "가뭄",
+      "control": "진딧물·응애 등 해충 방제"
+    },
+    {
+      "name": "배추좀나방",
+      "kind": "해충",
+      "timing": null,
+      "control": null
+    }
+  ],
+  "disasters": [
+    {
+      "risk": "저온",
+      "timing": null,
+      "measures": [
+        "제때 씨뿌림",
+        "야간 15℃ 이상 보온",
+        "모잘록병 방제",
+        "예비 육묘상 설치"
+      ]
+    },
+    {
+      "risk": "가뭄",
+      "timing": null,
+      "measures": [
+        "물주기 후 아주심기",
+        "진딧물·응애 등 해충 방제",
+        "비닐덮기(멀칭) 재배",
+        "한여름 한랭사 재배",
+        "물주기 실시(이동식 스프링클러 또는 점적관수 시설)"
+      ]
+    },
+    {
+      "risk": "장마·호우·태풍(습해, 생육부진)",
+      "timing": null,
+      "measures": [
+        "배수구 정비",
+        "병해충 종합방제(돌려짓기, 배수 설치, 퇴비 증시)",
+        "엽면 비료 시비"
+      ]
+    }
+  ],
+  "notes": [
+    "작형별 성출하기: 봄재배 6월 중순, 여름재배 9월 중순, 가을재배 11월 중순, 겨울재배 1월 중순",
+    "주요기술: 플러그 모 기르기, 우량품종 선택, 높은 이랑 설치, 비닐덮기 재배, 무름병·진딧물 방제",
+    "초봄재배 시 꽃대신장 주의",
+    "광적응성이 높고 광포화점은 상추와 비슷함",
+    "페이지의 월별 일정표(생육과정·병충해·기상재해 도표)는 수집 과정에서 칸 위치가 확인되지 않아, 본문에 명시된 시기만 기재함. 정확한 시기는 원문 확인 필요."
+  ],
+  "source": "https://www.nongsaro.go.kr/portal/ps/psb/psbl/workScheduleDtl.ps?menuId=PS00087&cntntsNo=30643"
+}

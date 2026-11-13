@@ -1,0 +1,315 @@
+{
+  "id": 30612,
+  "name": "마늘",
+  "type": "잎마늘",
+  "category": "채소",
+  "sciName": "Allium Sativum L.",
+  "family": "백합과",
+  "summary": "노지 잎마늘 재배. 겨울 동안 최저 4℃ 이상에서 안정적으로 재배할 수 있다.",
+  "env": [
+    {
+      "label": "발아적온",
+      "value": "15~27℃"
+    },
+    {
+      "label": "잎 생육적온",
+      "value": "18~20℃"
+    },
+    {
+      "label": "생육 최저온도",
+      "value": "4℃"
+    },
+    {
+      "label": "언피해 온도",
+      "value": "-5℃"
+    },
+    {
+      "label": "토양산도",
+      "value": "pH 5.5~6.0"
+    }
+  ],
+  "schedule": [
+    {
+      "task": "씨알 저온처리",
+      "kind": "etc",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "씨알소독",
+      "kind": "etc",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "씨뿌림",
+      "kind": "sow",
+      "region": null,
+      "start": {
+        "m": 8,
+        "p": 2
+      },
+      "end": {
+        "m": 9,
+        "p": 1
+      },
+      "text": "8월 중순~9월 상순"
+    },
+    {
+      "task": "짚 덮기",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "물주기",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "웃거름",
+      "kind": "fert",
+      "region": null,
+      "start": {
+        "m": 10,
+        "p": null
+      },
+      "end": {
+        "m": 10,
+        "p": null
+      },
+      "text": "10월"
+    },
+    {
+      "task": "병해충 방제",
+      "kind": "pest",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "수확",
+      "kind": "harvest",
+      "region": null,
+      "start": {
+        "m": 11,
+        "p": 2
+      },
+      "end": {
+        "m": 3,
+        "p": 3
+      },
+      "text": "11월 15일~3월 30일"
+    }
+  ],
+  "stages": [
+    {
+      "title": "씨뿌림",
+      "timing": "8월 중순~9월 상순",
+      "items": [
+        {
+          "label": "씨알 준비",
+          "value": "300kg/10a"
+        },
+        {
+          "label": "씨알 소독",
+          "value": "벤레이트티 400배액에 1시간 담그기"
+        },
+        {
+          "label": "토양소독(씨뿌림 전)",
+          "value": "밧사미드, 호리큐어"
+        },
+        {
+          "label": "이랑 너비",
+          "value": "12cm"
+        },
+        {
+          "label": "포기 사이",
+          "value": "10cm"
+        }
+      ]
+    },
+    {
+      "title": "관리",
+      "timing": null,
+      "items": [
+        {
+          "label": "짚 덮기",
+          "value": "씨뿌림 직후 (수확 시 기계작업을 위해 비닐덮기는 안 함)"
+        },
+        {
+          "label": "물주기",
+          "value": "비가 오지 않을 경우 씨뿌림 직후부터 최대 10일 이내 간격"
+        },
+        {
+          "label": "웃거름",
+          "value": "10월 중 2~3회"
+        },
+        {
+          "label": "김매기",
+          "value": "제초제 이용"
+        }
+      ]
+    }
+  ],
+  "fertilizer": {
+    "unit": "kg/10a",
+    "columns": [
+      "총량",
+      "밑거름",
+      "웃거름 1회",
+      "웃거름 2회"
+    ],
+    "rows": [
+      {
+        "name": "퇴비",
+        "values": [
+          3000,
+          3000,
+          null,
+          null
+        ]
+      },
+      {
+        "name": "요소",
+        "values": [
+          54,
+          20,
+          17,
+          17
+        ]
+      },
+      {
+        "name": "용과린",
+        "values": [
+          39,
+          39,
+          null,
+          null
+        ]
+      },
+      {
+        "name": "황산칼리",
+        "values": [
+          40,
+          14,
+          13,
+          13
+        ]
+      },
+      {
+        "name": "석회",
+        "values": [
+          "100~150",
+          "100~150",
+          null,
+          null
+        ]
+      }
+    ],
+    "note": null
+  },
+  "pests": [
+    {
+      "name": "뿌리응애",
+      "kind": "해충",
+      "timing": "겨울철 고온 시 주의",
+      "control": "살충제 살포"
+    },
+    {
+      "name": "고자리 파리",
+      "kind": "해충",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "잎마름병",
+      "kind": "병",
+      "timing": "겨울철 고온 시 주의",
+      "control": "살균제 살포"
+    },
+    {
+      "name": "녹병",
+      "kind": "병",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "흑색썩음균핵병",
+      "kind": "병",
+      "timing": "겨울철 고온 시 주의",
+      "control": "살균제 살포"
+    },
+    {
+      "name": "무름병",
+      "kind": "병",
+      "timing": null,
+      "control": null
+    }
+  ],
+  "disasters": [
+    {
+      "risk": "봄철 잦은 비",
+      "timing": null,
+      "measures": [
+        "배수구 정비로 습해 예방",
+        "살균제 살포 및 웃거름 증시 금지"
+      ]
+    },
+    {
+      "risk": "봄 가뭄",
+      "timing": null,
+      "measures": [
+        "스프링클러 설치",
+        "고자리파리 방제",
+        "흙·짚 덮어주기",
+        "물 비료 시용"
+      ]
+    },
+    {
+      "risk": "장마",
+      "timing": null,
+      "measures": [
+        "배수구 정비",
+        "무름병 방제",
+        "제때 수확 및 수확 후 건조",
+        "건가식 간이저장"
+      ]
+    },
+    {
+      "risk": "가을가뭄",
+      "timing": null,
+      "measures": [
+        "스프링클러 설치",
+        "짚 덮기"
+      ]
+    },
+    {
+      "risk": "겨울철 고온",
+      "timing": null,
+      "measures": [
+        "토양이 과습되지 않도록 물주는 양 조절"
+      ]
+    }
+  ],
+  "notes": [
+    "성출하기: 12월 상순~1월 하순",
+    "발아 촉진을 위해서는 씨알이 5℃ 이하에서 3주 지나야 함. 25℃ 이상 고온에서는 생육 정지",
+    "11월까지 낮 온도 18℃ 이상에서 잎 생육 촉진",
+    "짚 덮기 재배: 무피복 대비 40~56% 증수",
+    "대주아 유래 무병 씨알재배: 이병씨알 대비 15% 증수",
+    "씨뿌림 후 최대 10일 간격 30mm 물주기: 무관수 대비 150% 증수",
+    "씨알용 마늘 관리는 일반 마늘에 준하며, 잎과 줄기가 2/3~1/2 황변할 때 수확"
+  ],
+  "source": "https://www.nongsaro.go.kr/portal/ps/psb/psbl/workScheduleDtl.ps?menuId=PS00087&cntntsNo=30612"
+}

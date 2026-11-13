@@ -1,0 +1,264 @@
+{
+  "id": 30609,
+  "name": "딸기",
+  "type": "사계성여름재배",
+  "category": "채소",
+  "sciName": "Fragaria X ananassa Duch.",
+  "family": "장미과",
+  "summary": "사계성 딸기를 봄에 아주심기하여 여름~가을에 수확하는 작형.",
+  "env": [
+    {
+      "label": "발아적온",
+      "value": "20℃"
+    },
+    {
+      "label": "모 기르기 적온",
+      "value": "20~25℃"
+    },
+    {
+      "label": "뿌리비대적온",
+      "value": "18℃"
+    },
+    {
+      "label": "저장적온",
+      "value": "4℃"
+    },
+    {
+      "label": "배지 pH",
+      "value": "5~7"
+    },
+    {
+      "label": "묘 저장고 온도",
+      "value": "-2℃ 항상 유지"
+    }
+  ],
+  "schedule": [
+    {
+      "task": "묘 저장",
+      "kind": "nursery",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "모 기르기",
+      "kind": "nursery",
+      "region": null,
+      "start": {
+        "m": 3,
+        "p": 2
+      },
+      "end": {
+        "m": 4,
+        "p": 3
+      },
+      "text": "3월 중순~4월 하순"
+    },
+    {
+      "task": "어미그루 아주심기",
+      "kind": "plant",
+      "region": null,
+      "start": {
+        "m": 3,
+        "p": 2
+      },
+      "end": {
+        "m": 5,
+        "p": 1
+      },
+      "text": "3월 중순~5월 상순"
+    },
+    {
+      "task": "아주심기",
+      "kind": "plant",
+      "region": null,
+      "start": {
+        "m": 4,
+        "p": 2
+      },
+      "end": {
+        "m": 5,
+        "p": 1
+      },
+      "text": "4월 중순~5월 상순"
+    },
+    {
+      "task": "영양생장기",
+      "kind": "manage",
+      "region": null,
+      "start": {
+        "m": 5,
+        "p": 3
+      },
+      "end": {
+        "m": 6,
+        "p": 2
+      },
+      "text": "5월 하순~6월 중순"
+    },
+    {
+      "task": "수확",
+      "kind": "harvest",
+      "region": null,
+      "start": {
+        "m": 6,
+        "p": 3
+      },
+      "end": {
+        "m": 11,
+        "p": 2
+      },
+      "text": "6월 하순~11월 중순"
+    }
+  ],
+  "stages": [
+    {
+      "title": "묘 저장",
+      "timing": null,
+      "items": [
+        {
+          "label": "저장고",
+          "value": "소독·살균된 깨끗한 창고 사용, -2℃ 항상 유지"
+        },
+        {
+          "label": "묘",
+          "value": "무병 건전묘 선발"
+        }
+      ]
+    },
+    {
+      "title": "어미그루 아주심기",
+      "timing": "3월 중순~5월 상순",
+      "items": [
+        {
+          "label": "묘 선발",
+          "value": "바이러스, 시들음병, 응애, 탄저병에 대해 무병 건전묘 선발"
+        },
+        {
+          "label": "배지",
+          "value": "토양소독, 새 상토 사용"
+        }
+      ]
+    },
+    {
+      "title": "아주심기",
+      "timing": "4~5월",
+      "items": [
+        {
+          "label": "밀도",
+          "value": "5,000주/10a"
+        },
+        {
+          "label": "심는 깊이",
+          "value": "관부가 반 정도 묻히도록"
+        },
+        {
+          "label": "주간",
+          "value": "30cm 이상"
+        }
+      ]
+    },
+    {
+      "title": "하우스 관리",
+      "timing": null,
+      "items": [
+        {
+          "label": "환기",
+          "value": "25℃ 이상 오르면 강제 환기"
+        },
+        {
+          "label": "멀칭",
+          "value": "흑백 비닐 멀칭(윗면이 백색)"
+        },
+        {
+          "label": "보온",
+          "value": "3~4월과 10월 이후 가능한 한 10℃ 이상 유지(천창·측창에 보온 부직포 설치)"
+        }
+      ]
+    },
+    {
+      "title": "생육 관리",
+      "timing": null,
+      "items": [
+        {
+          "label": "과실 생산주",
+          "value": "발생하는 런너 제거"
+        },
+        {
+          "label": "육묘용 모주",
+          "value": "발생하는 꽃대 제거"
+        },
+        {
+          "label": "과실 비대",
+          "value": "적정 잎면적과 과실수 유지, 약한 겨드랑눈 제거"
+        }
+      ]
+    }
+  ],
+  "fertilizer": null,
+  "pests": [
+    {
+      "name": "잿빛곰팡이병",
+      "kind": "병",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "흰가루병",
+      "kind": "병",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "총채벌레",
+      "kind": "해충",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "응애",
+      "kind": "해충",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "시들음병",
+      "kind": "병",
+      "timing": "고온기",
+      "control": "노지 모 기르기 시 돌려짓기, 이병 잔재물은 철저히 버림"
+    },
+    {
+      "name": "기형과(부정형과)",
+      "kind": "생리장해",
+      "timing": null,
+      "control": "햇볕 쪼임을 좋게 하고 개화기 약제 살포 금지"
+    },
+    {
+      "name": "철 결핍",
+      "kind": "생리장해",
+      "timing": null,
+      "control": null
+    }
+  ],
+  "disasters": [
+    {
+      "risk": "고온피해 (25℃ 이상에서 과실이 작아지고 새잎 발생 저하)",
+      "timing": "수확기 6~8월",
+      "measures": []
+    },
+    {
+      "risk": "묘 저장 중 냉장 저장고 정전 피해, 잿빛곰팡이병 피해",
+      "timing": null,
+      "measures": []
+    }
+  ],
+  "notes": [
+    "성출하기: 10월 상순~11월 중순",
+    "수출품종은 아주심기 초기 첫 화방을 제거하지 않고 겨드랑눈을 2~3개로 유지하면 관행 대비 수량 14~20% 증가, 잎줄기 터짐률 8~9% 감소",
+    "품종: 고경도 미하 / 고당도 장하 / 제과용 무하, 고하 / 다수성 복하 / 고품질·고향기·고당도 고슬",
+    "철 결핍은 pH가 높거나 중탄산 농도가 높은 토양, 염 제거가 덜 된 코이어 배지에서 발생 우려",
+    "비료 표는 페이지에 없음"
+  ],
+  "source": "https://www.nongsaro.go.kr/portal/ps/psb/psbl/workScheduleDtl.ps?menuId=PS00087&cntntsNo=30609"
+}

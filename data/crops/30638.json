@@ -1,0 +1,507 @@
+{
+  "id": 30638,
+  "name": "적채",
+  "type": null,
+  "category": "채소",
+  "sciName": "Brassica oleracea L. var. capitata f. rubra",
+  "family": "배추과",
+  "summary": "2년생 초본으로 결구에 18~20매의 엽수가 필요하다. 추위에 강해 -4℃까지 견딘다.",
+  "env": [
+    {
+      "label": "발아적온",
+      "value": "15~30℃"
+    },
+    {
+      "label": "생육적온",
+      "value": "15~20℃"
+    },
+    {
+      "label": "결구적온",
+      "value": "8~10℃"
+    },
+    {
+      "label": "저장적온",
+      "value": "0℃"
+    },
+    {
+      "label": "토양산도",
+      "value": "pH 6 정도"
+    },
+    {
+      "label": "내한성",
+      "value": "-4℃까지 견딤"
+    }
+  ],
+  "schedule": [
+    {
+      "task": "씨뿌림",
+      "kind": "sow",
+      "region": null,
+      "start": {
+        "m": 3,
+        "p": 2
+      },
+      "end": {
+        "m": 5,
+        "p": 1
+      },
+      "text": "3월 중순~5월 상순"
+    },
+    {
+      "task": "모 기르기",
+      "kind": "nursery",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "아주심기",
+      "kind": "plant",
+      "region": null,
+      "start": {
+        "m": 5,
+        "p": 1
+      },
+      "end": {
+        "m": 7,
+        "p": 1
+      },
+      "text": "5월 상순~7월 상순"
+    },
+    {
+      "task": "밑거름",
+      "kind": "fert",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": "아주심기 15일 전"
+    },
+    {
+      "task": "웃거름 1회",
+      "kind": "fert",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": "아주심기 후 20일경"
+    },
+    {
+      "task": "웃거름 2회",
+      "kind": "fert",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": "1회 후 20일경"
+    },
+    {
+      "task": "웃거름 3회",
+      "kind": "fert",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": "2회 후 20일경"
+    },
+    {
+      "task": "관리(물주기·김매기)",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "병충해 방제",
+      "kind": "pest",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "씨뿌림(봄재배)",
+      "kind": "sow",
+      "region": null,
+      "start": {
+        "m": 1,
+        "p": 1
+      },
+      "end": {
+        "m": 3,
+        "p": 3
+      },
+      "text": "1월 상순~3월 하순"
+    },
+    {
+      "task": "아주심기(봄재배)",
+      "kind": "plant",
+      "region": null,
+      "start": {
+        "m": 3,
+        "p": 1
+      },
+      "end": {
+        "m": 5,
+        "p": 3
+      },
+      "text": "3월 상순~5월 하순"
+    },
+    {
+      "task": "수확(봄재배)",
+      "kind": "harvest",
+      "region": null,
+      "start": {
+        "m": 4,
+        "p": 1
+      },
+      "end": {
+        "m": 6,
+        "p": 3
+      },
+      "text": "4월 상순~6월 하순"
+    },
+    {
+      "task": "씨뿌림(여름재배)",
+      "kind": "sow",
+      "region": null,
+      "start": {
+        "m": 7,
+        "p": 2
+      },
+      "end": {
+        "m": 7,
+        "p": 2
+      },
+      "text": "7월 중순"
+    },
+    {
+      "task": "아주심기(여름재배)",
+      "kind": "plant",
+      "region": null,
+      "start": {
+        "m": 8,
+        "p": 2
+      },
+      "end": {
+        "m": 8,
+        "p": 2
+      },
+      "text": "8월 중순"
+    },
+    {
+      "task": "수확(여름재배)",
+      "kind": "harvest",
+      "region": null,
+      "start": {
+        "m": 11,
+        "p": 1
+      },
+      "end": {
+        "m": 1,
+        "p": 3
+      },
+      "text": "11월 상순~1월 하순"
+    },
+    {
+      "task": "씨뿌림(가을재배)",
+      "kind": "sow",
+      "region": null,
+      "start": {
+        "m": 8,
+        "p": 2
+      },
+      "end": {
+        "m": 8,
+        "p": 2
+      },
+      "text": "8월 중순"
+    },
+    {
+      "task": "아주심기(가을재배)",
+      "kind": "plant",
+      "region": null,
+      "start": {
+        "m": 11,
+        "p": 2
+      },
+      "end": {
+        "m": 11,
+        "p": 2
+      },
+      "text": "11월 중순"
+    },
+    {
+      "task": "수확(가을재배)",
+      "kind": "harvest",
+      "region": null,
+      "start": {
+        "m": 5,
+        "p": 2
+      },
+      "end": {
+        "m": 5,
+        "p": 2
+      },
+      "text": "5월 중순"
+    },
+    {
+      "task": "씨뿌림(고령지재배)",
+      "kind": "sow",
+      "region": null,
+      "start": {
+        "m": 3,
+        "p": 1
+      },
+      "end": {
+        "m": 5,
+        "p": 3
+      },
+      "text": "3월 상순~5월 하순"
+    },
+    {
+      "task": "아주심기(고령지재배)",
+      "kind": "plant",
+      "region": null,
+      "start": {
+        "m": 5,
+        "p": 1
+      },
+      "end": {
+        "m": 7,
+        "p": 3
+      },
+      "text": "5월 상순~7월 하순"
+    },
+    {
+      "task": "수확(고령지재배)",
+      "kind": "harvest",
+      "region": null,
+      "start": {
+        "m": 7,
+        "p": 1
+      },
+      "end": {
+        "m": 11,
+        "p": 3
+      },
+      "text": "7월 상순~11월 하순"
+    }
+  ],
+  "stages": [
+    {
+      "title": "씨뿌림",
+      "timing": "3월 중순~5월 상순",
+      "items": [
+        {
+          "label": "씨앗양",
+          "value": "70~80㎖/10a"
+        }
+      ]
+    },
+    {
+      "title": "모 기르기",
+      "timing": null,
+      "items": [
+        {
+          "label": "온도",
+          "value": "25/15℃(주간/야간)"
+        },
+        {
+          "label": "물주기",
+          "value": "오전 중 20℃의 물"
+        }
+      ]
+    },
+    {
+      "title": "아주심기",
+      "timing": "5월 상순~7월 상순",
+      "items": [
+        {
+          "label": "이랑 너비",
+          "value": "60cm"
+        },
+        {
+          "label": "포기 사이",
+          "value": "50cm"
+        },
+        {
+          "label": "멀칭",
+          "value": "두께 0.02~0.03mm 흑색비닐"
+        }
+      ]
+    },
+    {
+      "title": "관리",
+      "timing": null,
+      "items": [
+        {
+          "label": "물주기",
+          "value": "가물 때 물주기"
+        },
+        {
+          "label": "김매기",
+          "value": "제초제 사용"
+        }
+      ]
+    }
+  ],
+  "fertilizer": {
+    "unit": "kg/10a",
+    "columns": [
+      "총량",
+      "밑거름",
+      "웃거름 1회",
+      "웃거름 2회",
+      "웃거름 3회"
+    ],
+    "rows": [
+      {
+        "name": "퇴비",
+        "values": [
+          3000,
+          3000,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "name": "질소",
+        "values": [
+          37,
+          10,
+          9,
+          9,
+          9
+        ]
+      },
+      {
+        "name": "인산",
+        "values": [
+          20,
+          20,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "name": "칼리",
+        "values": [
+          30,
+          15,
+          null,
+          15,
+          null
+        ]
+      },
+      {
+        "name": "석회",
+        "values": [
+          100,
+          100,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "name": "붕사",
+        "values": [
+          1,
+          1,
+          null,
+          null,
+          null
+        ]
+      }
+    ],
+    "note": "비료 주는 시기: 밑거름 아주심기 15일 전, 웃거름 1회 아주심기 후 20일경, 2회 1회 후 20일경, 3회 2회 후 20일경"
+  },
+  "pests": [
+    {
+      "name": "모잘록병",
+      "kind": "병",
+      "timing": "모 기를 때 저온",
+      "control": "모잘록병 방제"
+    },
+    {
+      "name": "갈색반점병",
+      "kind": "병",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "버짐병",
+      "kind": "병",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "균핵병",
+      "kind": "병",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "반점세균병",
+      "kind": "병",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "썩음병",
+      "kind": "병",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "진딧물",
+      "kind": "해충",
+      "timing": "가뭄",
+      "control": "진딧물·응애 방제"
+    }
+  ],
+  "disasters": [
+    {
+      "risk": "모 기를 때 저온(모 기르기 불량, 모잘록병, 아주심기 지연)",
+      "timing": null,
+      "measures": [
+        "제때 씨뿌림",
+        "야간 15℃ 이상 보온",
+        "모잘록병 방제",
+        "예비 육묘상 설치"
+      ]
+    },
+    {
+      "risk": "가뭄(초기생육 불량)",
+      "timing": null,
+      "measures": [
+        "물준 후 아주심기",
+        "진딧물·응애 방제",
+        "비닐덮기",
+        "물주기 실시(이동식 스프링클러, 점적관수 시설)"
+      ]
+    },
+    {
+      "risk": "장마·호우·태풍(습해, 생육 부진)",
+      "timing": null,
+      "measures": [
+        "배수구 정비",
+        "병해충 종합방제(돌려짓기, 배수 설치, 퇴비증시)",
+        "엽면 시비"
+      ]
+    },
+    {
+      "risk": "혹한 및 저온(생육 장해)",
+      "timing": null,
+      "measures": []
+    }
+  ],
+  "notes": [
+    "작형별 성출하기: 봄재배 5월 중순~6월 중순, 여름재배 12월 중순~1월 중순, 가을재배 5월 중순, 고령지재배 8월 중순~10월 중순",
+    "주요기술: 플러그 모 기르기, 우량품종 선택, 최종 비료는 결구 초기에 줌, 비닐덮기(멀칭) 재배, 무름병·검은빛썩음병 방제",
+    "물주기가 불량하면 결구 비대가 나빠지고 쓴맛이 증가함",
+    "페이지의 월별 일정표(생육과정·병충해·기상재해 도표)는 수집 과정에서 칸 위치가 확인되지 않아, 본문에 명시된 시기만 기재함. 정확한 시기는 원문 확인 필요."
+  ],
+  "source": "https://www.nongsaro.go.kr/portal/ps/psb/psbl/workScheduleDtl.ps?menuId=PS00087&cntntsNo=30638"
+}

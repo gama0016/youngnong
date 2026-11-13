@@ -1,0 +1,361 @@
+{
+  "id": 30652,
+  "name": "호박(늙은호박)",
+  "type": "노지재배",
+  "category": "채소",
+  "sciName": "Cucurbita moschata Duch.",
+  "family": "박과",
+  "summary": "고온에 약하고 서리 피해를 입기 쉬우며, 8시간 정도의 단일 조건에서 암꽃 착생이 촉진된다. 개화에서 완숙까지 70~80일이 걸린다.",
+  "env": [
+    {
+      "label": "생육적온",
+      "value": "18~30℃"
+    },
+    {
+      "label": "발아적온",
+      "value": "25~30℃"
+    },
+    {
+      "label": "모 기르기 적온",
+      "value": "18~21℃"
+    },
+    {
+      "label": "뿌리비대 적온",
+      "value": "20~25℃"
+    },
+    {
+      "label": "저장적온",
+      "value": "12~15℃(습도 60~70%, 140일 저장 가능)"
+    },
+    {
+      "label": "토양산도",
+      "value": "pH 5.5~6.8"
+    },
+    {
+      "label": "토양",
+      "value": "토심이 깊고 비옥한 사질양토 또는 양토"
+    },
+    {
+      "label": "비닐터널 내 적온",
+      "value": "낮 25℃, 밤 13℃"
+    }
+  ],
+  "schedule": [
+    {
+      "task": "씨뿌림·모 기르기",
+      "kind": "sow",
+      "region": null,
+      "start": {
+        "m": 3,
+        "p": 3
+      },
+      "end": {
+        "m": 4,
+        "p": 2
+      },
+      "text": "3월 하순~4월 중순"
+    },
+    {
+      "task": "아주심기",
+      "kind": "plant",
+      "region": null,
+      "start": {
+        "m": 5,
+        "p": 1
+      },
+      "end": {
+        "m": 5,
+        "p": 3
+      },
+      "text": "5월 상순~5월 하순"
+    },
+    {
+      "task": "수확",
+      "kind": "harvest",
+      "region": null,
+      "start": {
+        "m": 9,
+        "p": 1
+      },
+      "end": {
+        "m": 10,
+        "p": 2
+      },
+      "text": "9월 상순~10월 중순"
+    },
+    {
+      "task": "웃거름 1회",
+      "kind": "fert",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": "아주심기 2주일 후"
+    },
+    {
+      "task": "웃거름 2회",
+      "kind": "fert",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": "첫 암꽃 개화기"
+    },
+    {
+      "task": "웃거름 3회",
+      "kind": "fert",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": "2회 웃거름 후 15일째"
+    },
+    {
+      "task": "비닐덮기(멀칭)·터널",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "순지르기·유인",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": "본잎 5~6매 시 순지르기"
+    }
+  ],
+  "stages": [
+    {
+      "title": "씨뿌림",
+      "timing": "3월 하순~4월 중순",
+      "items": [
+        {
+          "label": "모 기르기 일수",
+          "value": "30~40일"
+        },
+        {
+          "label": "보온",
+          "value": "야간 13℃ 이상"
+        },
+        {
+          "label": "방제",
+          "value": "모잘록병 방제"
+        }
+      ]
+    },
+    {
+      "title": "아주심기",
+      "timing": "5월 상순~5월 하순(본잎 3~5매 시)",
+      "items": [
+        {
+          "label": "이랑 너비",
+          "value": "3.5~4m"
+        },
+        {
+          "label": "심는 거리",
+          "value": "0.6~1m"
+        },
+        {
+          "label": "주수",
+          "value": "300~400주/10a"
+        }
+      ]
+    },
+    {
+      "title": "관리",
+      "timing": null,
+      "items": [
+        {
+          "label": "물주기",
+          "value": "5~7일 간격"
+        },
+        {
+          "label": "순지르기",
+          "value": "본잎 5~6매 시 순지르기 후 아들덩굴 2개 키우기"
+        },
+        {
+          "label": "열매달림",
+          "value": "18마디 정도에서 나오는 세 번째 암꽃에 열매가 달리도록 관리"
+        },
+        {
+          "label": "정지·유인",
+          "value": "정지법 개선 시 약 30% 증수"
+        }
+      ]
+    },
+    {
+      "title": "수확 및 저장",
+      "timing": "9월 상순~10월 중순",
+      "items": [
+        {
+          "label": "성숙 일수",
+          "value": "개화에서 완숙까지 70~80일"
+        },
+        {
+          "label": "성숙 신호",
+          "value": "황갈색 과피에 흰색 분가루, 과실자루의 황갈색 목질화"
+        },
+        {
+          "label": "저장",
+          "value": "온도 12~15℃, 습도 60~70%, 환기 철저, 부패과실 조기 제거"
+        }
+      ]
+    }
+  ],
+  "fertilizer": {
+    "unit": "kg/10a",
+    "columns": [
+      "총량",
+      "밑거름",
+      "웃거름 1회",
+      "웃거름 2회",
+      "웃거름 3회"
+    ],
+    "rows": [
+      {
+        "name": "요소",
+        "values": [
+          43.4,
+          20,
+          7.8,
+          7.8,
+          7.8
+        ]
+      },
+      {
+        "name": "용성인비",
+        "values": [
+          78.2,
+          78.2,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "name": "염화칼리",
+        "values": [
+          21,
+          10,
+          3,
+          4,
+          4
+        ]
+      },
+      {
+        "name": "고토석회",
+        "values": [
+          100,
+          100,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "name": "퇴비",
+        "values": [
+          2000,
+          2000,
+          null,
+          null,
+          null
+        ]
+      }
+    ],
+    "note": "성분량 N 20.0, P 13.3, K 12.6. 웃거름 시기: 1회 아주심기 2주일 후, 2회 첫 암꽃 개화기, 3회 2회 웃거름 후 15일째"
+  },
+  "pests": [
+    {
+      "name": "모잘록병",
+      "kind": "병",
+      "timing": "모 기르기 시",
+      "control": "방제"
+    },
+    {
+      "name": "흰가루병",
+      "kind": "병",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "반점세균병",
+      "kind": "병",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "돌림병",
+      "kind": "병",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "연부병",
+      "kind": "병",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "노균병",
+      "kind": "병",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "바이러스병",
+      "kind": "병",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "진딧물",
+      "kind": "해충",
+      "timing": "가뭄 시",
+      "control": "살충제 살포"
+    },
+    {
+      "name": "응애",
+      "kind": "해충",
+      "timing": "가뭄 시",
+      "control": "살충제 살포"
+    },
+    {
+      "name": "낙과 현상",
+      "kind": "생리장해",
+      "timing": "모 기르기 시기 저온, 수정 불량, 일조 부족, 비료 부족",
+      "control": "17~24℃ 적온관리, 햇볕 충분히 받게 관리, 적정 비료주기"
+    }
+  ],
+  "disasters": [
+    {
+      "risk": "잦은비·장마",
+      "timing": null,
+      "measures": [
+        "배수구 정비",
+        "살균제 7~10일 간격 살포"
+      ]
+    },
+    {
+      "risk": "가뭄·고온",
+      "timing": null,
+      "measures": [
+        "이동식 스프링클러 또는 점적관수 설치",
+        "살충제 살포",
+        "터널 재배"
+      ]
+    },
+    {
+      "risk": "온도 장해(35℃ 이상·15℃ 이하에서 수정 불량)",
+      "timing": null,
+      "measures": [
+        "보온으로 적온 유지"
+      ]
+    }
+  ],
+  "notes": [
+    "성출하기: 9월 중순~10월 상순",
+    "페이지의 월별 일정표(생육과정·병충해·기상재해 도표)는 수집 과정에서 칸 위치가 확인되지 않아, 본문에 명시된 시기만 기재함. 정확한 시기는 원문 확인 필요."
+  ],
+  "source": "https://www.nongsaro.go.kr/portal/ps/psb/psbl/workScheduleDtl.ps?menuId=PS00087&cntntsNo=30652"
+}

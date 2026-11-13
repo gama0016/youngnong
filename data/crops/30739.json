@@ -1,0 +1,383 @@
+{
+  "id": 30739,
+  "name": "구기자",
+  "type": null,
+  "category": "약초",
+  "sciName": null,
+  "family": null,
+  "summary": "구기자의 꺾꽂이, 거름주기, 순지르기, 지주 설치, 수확 및 조제 요령.",
+  "env": [],
+  "schedule": [
+    {
+      "task": "꺾꽂이(1년째)",
+      "kind": "plant",
+      "region": null,
+      "start": {
+        "m": 3,
+        "p": 2
+      },
+      "end": {
+        "m": 3,
+        "p": 3
+      },
+      "text": "3월 중순~하순"
+    },
+    {
+      "task": "1차 순지르기",
+      "kind": "manage",
+      "region": null,
+      "start": {
+        "m": 4,
+        "p": 3
+      },
+      "end": {
+        "m": 4,
+        "p": 3
+      },
+      "text": "4월 하순"
+    },
+    {
+      "task": "2차 순지르기",
+      "kind": "manage",
+      "region": null,
+      "start": {
+        "m": 5,
+        "p": 3
+      },
+      "end": {
+        "m": 5,
+        "p": 3
+      },
+      "text": "5월 하순"
+    },
+    {
+      "task": "수확",
+      "kind": "harvest",
+      "region": null,
+      "start": {
+        "m": 8,
+        "p": 1
+      },
+      "end": {
+        "m": 11,
+        "p": 3
+      },
+      "text": "8월 상순~11월 하순"
+    },
+    {
+      "task": "전정(2년생 이상)",
+      "kind": "manage",
+      "region": null,
+      "start": {
+        "m": 2,
+        "p": null
+      },
+      "end": {
+        "m": 2,
+        "p": null
+      },
+      "text": "2월"
+    },
+    {
+      "task": "밑거름 사용",
+      "kind": "fert",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "싹솎음",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "지주 설치",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "김매기, 웃거름",
+      "kind": "fert",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "줄기자르기(2년째 이후)",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "곁순 제거(2년째 이후)",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "1차 웃거름(2년째 이후)",
+      "kind": "fert",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "2차 웃거름(2년째 이후)",
+      "kind": "fert",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "병해충 방제",
+      "kind": "pest",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    }
+  ],
+  "stages": [
+    {
+      "title": "꺾꽂이",
+      "timing": "3월 중순~하순",
+      "items": [
+        {
+          "label": "소요량",
+          "value": "1,500본/10a(삽수길이 15~20cm)"
+        },
+        {
+          "label": "방법",
+          "value": "150cm 두둑에 50cm 간격으로 꺾꽂이"
+        }
+      ]
+    },
+    {
+      "title": "거름주기",
+      "timing": null,
+      "items": [
+        {
+          "label": "퇴비",
+          "value": "4,000kg/10a"
+        },
+        {
+          "label": "질소-인산-칼리",
+          "value": "40-30-30kg/10a"
+        },
+        {
+          "label": "분시",
+          "value": "질소·칼리 밑거름 60%, 웃거름 40%"
+        },
+        {
+          "label": "석회",
+          "value": "산성토양 150kg/10a 시용"
+        }
+      ]
+    },
+    {
+      "title": "잡초방제",
+      "timing": null,
+      "items": [
+        {
+          "label": "방법",
+          "value": "잡초 방지포나 검은색 부직포로 이랑 사이를 덮음"
+        }
+      ]
+    },
+    {
+      "title": "솎음",
+      "timing": null,
+      "items": [
+        {
+          "label": "방법",
+          "value": "개체당 1~2줄기만 남기고 솎음"
+        }
+      ]
+    },
+    {
+      "title": "순지르기",
+      "timing": "1차 4월 하순, 2차 5월 하순",
+      "items": [
+        {
+          "label": "삽식묘(1년차)",
+          "value": "약 100cm 자랐을 때 90cm 높이에서 실시"
+        },
+        {
+          "label": "2년생 이상",
+          "value": "2월에 전정 작업 실시"
+        }
+      ]
+    },
+    {
+      "title": "지주 설치",
+      "timing": null,
+      "items": [
+        {
+          "label": "방법",
+          "value": "덩굴성이므로 줄기가 땅에 닿지 않도록 지주에 묶음"
+        }
+      ]
+    },
+    {
+      "title": "수확 및 조제",
+      "timing": "8월 상순~11월 하순",
+      "items": [
+        {
+          "label": "건조",
+          "value": "열풍건조기 55℃ 이하에서 수분 15% 이하로 건조"
+        },
+        {
+          "label": "보관",
+          "value": "마대에 비닐을 내장하여 보관(흡습 방지)"
+        },
+        {
+          "label": "수량",
+          "value": "320kg/10a"
+        }
+      ]
+    }
+  ],
+  "fertilizer": {
+    "unit": "kg/10a",
+    "columns": [
+      "시용량",
+      "밑거름 비율(%)",
+      "웃거름 비율(%)"
+    ],
+    "rows": [
+      {
+        "name": "퇴비",
+        "values": [
+          4000,
+          null,
+          null
+        ]
+      },
+      {
+        "name": "질소",
+        "values": [
+          40,
+          60,
+          40
+        ]
+      },
+      {
+        "name": "인산",
+        "values": [
+          30,
+          null,
+          null
+        ]
+      },
+      {
+        "name": "칼리",
+        "values": [
+          30,
+          60,
+          40
+        ]
+      },
+      {
+        "name": "석회(산성토양)",
+        "values": [
+          150,
+          null,
+          null
+        ]
+      }
+    ],
+    "note": "웃거름 시기는 원문에 명시되지 않음"
+  },
+  "pests": [
+    {
+      "name": "흰가루병",
+      "kind": "병",
+      "timing": null,
+      "control": "적용약제를 이용하여 예방위주로 방제"
+    },
+    {
+      "name": "탄저병",
+      "kind": "병",
+      "timing": null,
+      "control": "적용약제를 이용하여 예방위주로 방제"
+    },
+    {
+      "name": "뒷면잎곰팡이병",
+      "kind": "병",
+      "timing": null,
+      "control": "적용약제를 이용하여 예방위주로 방제"
+    },
+    {
+      "name": "구기자 흑응애",
+      "kind": "해충",
+      "timing": null,
+      "control": "적용약제를 이용하여 예방위주로 방제"
+    },
+    {
+      "name": "복숭아흑진딧물",
+      "kind": "해충",
+      "timing": null,
+      "control": "적용약제를 이용하여 예방위주로 방제"
+    },
+    {
+      "name": "열점박이잎벌레(유충)",
+      "kind": "해충",
+      "timing": null,
+      "control": "적용약제를 이용하여 예방위주로 방제"
+    },
+    {
+      "name": "구기자뿔나방(유충)",
+      "kind": "해충",
+      "timing": null,
+      "control": "적용약제를 이용하여 예방위주로 방제"
+    },
+    {
+      "name": "꽃노랑총채벌레",
+      "kind": "해충",
+      "timing": null,
+      "control": "적용약제를 이용하여 예방위주로 방제"
+    }
+  ],
+  "disasters": [
+    {
+      "risk": "습해",
+      "timing": null,
+      "measures": [
+        "배수로 정비 철저(습해에 약함)"
+      ]
+    },
+    {
+      "risk": "가뭄",
+      "timing": null,
+      "measures": []
+    },
+    {
+      "risk": "장마",
+      "timing": null,
+      "measures": []
+    },
+    {
+      "risk": "태풍",
+      "timing": null,
+      "measures": []
+    }
+  ],
+  "notes": [
+    "월별 일정표(상·중·하순 막대)는 원문에서 칸 위치를 확인할 수 없어 작업별 시기를 비워 둠(본문에 시기가 적힌 작업만 시기 기재)"
+  ],
+  "source": "https://www.nongsaro.go.kr/portal/ps/psb/psbl/workScheduleDtl.ps?menuId=PS00087&cntntsNo=30739"
+}

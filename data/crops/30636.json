@@ -1,0 +1,450 @@
+{
+  "id": 30636,
+  "name": "오이",
+  "type": null,
+  "category": "채소",
+  "sciName": "Cucumis sativus L.",
+  "family": "박과",
+  "summary": "암꽃과 수꽃이 한 주에 따로 피며 성분화에는 온도와 일장이 관여한다. 단위결과성이 높은 열매채소이다.",
+  "env": [
+    {
+      "label": "발아적온",
+      "value": "25~30℃"
+    },
+    {
+      "label": "모 기르기 적온",
+      "value": "18~25℃"
+    },
+    {
+      "label": "생육적온",
+      "value": "20~25℃"
+    },
+    {
+      "label": "근권적온",
+      "value": "20~23℃"
+    },
+    {
+      "label": "저장적온",
+      "value": "5~10℃"
+    },
+    {
+      "label": "토양산도",
+      "value": "pH 5.5~6.8(pH 4.3 이하에서는 말라 죽음)"
+    },
+    {
+      "label": "암꽃 분화 촉진",
+      "value": "모 기르기 시 야간 15℃ 정도 저온과 8~10시간 단일"
+    },
+    {
+      "label": "시설 내 적온",
+      "value": "낮 23~25℃, 밤 12℃ 이상"
+    }
+  ],
+  "schedule": [
+    {
+      "task": "씨뿌림(촉성재배)",
+      "kind": "sow",
+      "region": null,
+      "start": {
+        "m": 10,
+        "p": 1
+      },
+      "end": {
+        "m": 11,
+        "p": 2
+      },
+      "text": "10월 상순~11월 중순"
+    },
+    {
+      "task": "아주심기(촉성재배)",
+      "kind": "plant",
+      "region": null,
+      "start": {
+        "m": 11,
+        "p": 1
+      },
+      "end": {
+        "m": 12,
+        "p": 2
+      },
+      "text": "11월 상순~12월 중순"
+    },
+    {
+      "task": "수확(촉성재배)",
+      "kind": "harvest",
+      "region": null,
+      "start": {
+        "m": 1,
+        "p": 2
+      },
+      "end": {
+        "m": 4,
+        "p": 3
+      },
+      "text": "1월 중순~4월 하순"
+    },
+    {
+      "task": "씨뿌림(반촉성재배)",
+      "kind": "sow",
+      "region": null,
+      "start": {
+        "m": 12,
+        "p": 1
+      },
+      "end": {
+        "m": 1,
+        "p": 2
+      },
+      "text": "12월 상순~1월 중순"
+    },
+    {
+      "task": "아주심기(반촉성재배)",
+      "kind": "plant",
+      "region": null,
+      "start": {
+        "m": 1,
+        "p": 1
+      },
+      "end": {
+        "m": 2,
+        "p": 2
+      },
+      "text": "1월 상순~2월 중순"
+    },
+    {
+      "task": "수확(반촉성재배)",
+      "kind": "harvest",
+      "region": null,
+      "start": {
+        "m": 3,
+        "p": 2
+      },
+      "end": {
+        "m": 6,
+        "p": 3
+      },
+      "text": "3월 중순~6월 하순"
+    },
+    {
+      "task": "씨뿌림(조숙재배)",
+      "kind": "sow",
+      "region": null,
+      "start": {
+        "m": 2,
+        "p": 1
+      },
+      "end": {
+        "m": 3,
+        "p": 2
+      },
+      "text": "2월 상순~3월 중순"
+    },
+    {
+      "task": "아주심기(조숙재배)",
+      "kind": "plant",
+      "region": null,
+      "start": {
+        "m": 3,
+        "p": 1
+      },
+      "end": {
+        "m": 4,
+        "p": 2
+      },
+      "text": "3월 상순~4월 중순"
+    },
+    {
+      "task": "수확(조숙재배)",
+      "kind": "harvest",
+      "region": null,
+      "start": {
+        "m": 5,
+        "p": 2
+      },
+      "end": {
+        "m": 7,
+        "p": 3
+      },
+      "text": "5월 중순~7월 하순"
+    },
+    {
+      "task": "씨뿌림(억제재배)",
+      "kind": "sow",
+      "region": null,
+      "start": {
+        "m": 8,
+        "p": 1
+      },
+      "end": {
+        "m": 9,
+        "p": 2
+      },
+      "text": "8월 상순~9월 중순"
+    },
+    {
+      "task": "아주심기(억제재배)",
+      "kind": "plant",
+      "region": null,
+      "start": {
+        "m": 9,
+        "p": 1
+      },
+      "end": {
+        "m": 10,
+        "p": 2
+      },
+      "text": "9월 상순~10월 중순"
+    },
+    {
+      "task": "수확(억제재배)",
+      "kind": "harvest",
+      "region": null,
+      "start": {
+        "m": 10,
+        "p": 2
+      },
+      "end": {
+        "m": 1,
+        "p": 3
+      },
+      "text": "10월 중순~1월 하순"
+    },
+    {
+      "task": "접목 육묘",
+      "kind": "nursery",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "본포 관리(보온·관수·유인)",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "웃거름",
+      "kind": "fert",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    }
+  ],
+  "stages": [
+    {
+      "title": "씨뿌림",
+      "timing": "11월 상순",
+      "items": [
+        {
+          "label": "거리",
+          "value": "4~5cm×0.5cm"
+        },
+        {
+          "label": "트레이",
+          "value": "32공, 40공, 50공"
+        },
+        {
+          "label": "씨앗양",
+          "value": "2.0~2.5㎗/10a"
+        }
+      ]
+    },
+    {
+      "title": "접목 육묘",
+      "timing": null,
+      "items": [
+        {
+          "label": "대목",
+          "value": "흑종, 신토좌"
+        },
+        {
+          "label": "접목방법",
+          "value": "단근편엽맞접, 편엽맞접"
+        },
+        {
+          "label": "비료",
+          "value": "신토좌는 흡비력이 강해 비료 감량"
+        }
+      ]
+    },
+    {
+      "title": "아주심기",
+      "timing": "12월 상순(본잎 3~4매)",
+      "items": [
+        {
+          "label": "이랑 너비",
+          "value": "150~180cm"
+        },
+        {
+          "label": "포기 사이",
+          "value": "30~40cm"
+        },
+        {
+          "label": "피복",
+          "value": "비닐덮기(멀칭) 및 터널재배"
+        }
+      ]
+    },
+    {
+      "title": "본포 관리",
+      "timing": null,
+      "items": [
+        {
+          "label": "보온",
+          "value": "야간 12℃ 이상"
+        },
+        {
+          "label": "물주기",
+          "value": "점적관수, 오전에 실시"
+        },
+        {
+          "label": "멀칭",
+          "value": "투명필름 덮기로 지온 확보"
+        },
+        {
+          "label": "유인",
+          "value": "받침대 세우기, 줄 유인"
+        }
+      ]
+    }
+  ],
+  "fertilizer": {
+    "unit": "kg/10a",
+    "columns": [
+      "총량",
+      "밑거름",
+      "웃거름 1회",
+      "웃거름 2회",
+      "웃거름 3회"
+    ],
+    "rows": [
+      {
+        "name": "퇴비",
+        "values": [
+          2000,
+          2000,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "name": "질소",
+        "values": [
+          24.0,
+          9.0,
+          5.0,
+          5.0,
+          5.0
+        ]
+      },
+      {
+        "name": "인산",
+        "values": [
+          16.4,
+          16.4,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "name": "칼리",
+        "values": [
+          23.8,
+          8.8,
+          5.0,
+          5.0,
+          5.0
+        ]
+      },
+      {
+        "name": "석회",
+        "values": [
+          200,
+          200,
+          null,
+          null,
+          null
+        ]
+      }
+    ],
+    "note": null
+  },
+  "pests": [
+    {
+      "name": "흰가루병",
+      "kind": "병",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "노균병",
+      "kind": "병",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "잿빛곰팡이병",
+      "kind": "병",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "진딧물",
+      "kind": "해충",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "순멎이현상",
+      "kind": "생리장해",
+      "timing": "저온, 단일, 모 기르기 시 건조 또는 질소 부족",
+      "control": "적온관리(낮 23~25℃, 밤 12℃ 이상), 알맞은 물주기, 웃거름 주기"
+    },
+    {
+      "name": "부정형과(곡과·선세과·곤봉과)",
+      "kind": "생리장해",
+      "timing": "고온, 저온, 햇볕 부족, 질소거름 부족",
+      "control": "저온에 강한 품종 선택과 적온관리, 질소 웃거름 및 충분한 물주기"
+    },
+    {
+      "name": "쓴맛과",
+      "kind": "생리장해",
+      "timing": "질소 과다, 인산·칼리 부족, 저온·고온건조·다습·일조 부족",
+      "control": "거름주기 조절, 보온 및 햇볕 확보, 알맞은 품종 선택, 토양 적습 유지"
+    }
+  ],
+  "disasters": [
+    {
+      "risk": "폭설·폭풍",
+      "timing": null,
+      "measures": [
+        "하우스 시설 보강",
+        "피해 시 즉시 응급복구",
+        "강풍 대비 비닐끈 고정"
+      ]
+    },
+    {
+      "risk": "저온 및 혹한(모 기르기·초기생육·과실비대 불량)",
+      "timing": null,
+      "measures": []
+    },
+    {
+      "risk": "시설 내 고온(잎 시듦, 열매달림·비대 불량)",
+      "timing": null,
+      "measures": []
+    }
+  ],
+  "notes": [
+    "작형별 성출하기: 촉성 2월 상순~3월 중순, 반촉성 4월 상순~6월 중순, 조숙 6월 상순, 억제 12월 상순",
+    "접목재배 목적: 덩굴쪼김병 방제, 저온신장성·내서성 강화, 초세 유지",
+    "주요기술: 봉지재배로 규격 오이 생산, 관비재배, 일사비례 변온관리(10~25% 증수, 에너지 절감)",
+    "페이지의 월별 일정표(생육과정·병충해·기상재해 도표)는 수집 과정에서 칸 위치가 확인되지 않아, 본문에 명시된 시기만 기재함. 정확한 시기는 원문 확인 필요."
+  ],
+  "source": "https://www.nongsaro.go.kr/portal/ps/psb/psbl/workScheduleDtl.ps?menuId=PS00087&cntntsNo=30636"
+}

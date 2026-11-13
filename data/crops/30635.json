@@ -1,0 +1,294 @@
+{
+  "id": 30635,
+  "name": "연근",
+  "type": null,
+  "category": "채소",
+  "sciName": "Nelum nucifara GAERTN",
+  "family": "수련과",
+  "summary": "수생의 여러해살이 식물로 끝눈·곁눈·잎눈을 동시에 가지며, 연근은 땅속줄기 선단에 형성된다.",
+  "env": [
+    {
+      "label": "생육적온",
+      "value": "20~30℃"
+    },
+    {
+      "label": "재배 온도",
+      "value": "최적 25~30℃, 최저 15℃, 최고 35℃ 이하"
+    },
+    {
+      "label": "재배적지",
+      "value": "평균기온 15℃ 이상이 6개월 이상인 곳"
+    },
+    {
+      "label": "토양",
+      "value": "토심이 깊고 유기질이 풍부한 참흙 또는 질참흙"
+    },
+    {
+      "label": "아주심기 지온",
+      "value": "12℃ 이상"
+    }
+  ],
+  "schedule": [
+    {
+      "task": "토양갈이",
+      "kind": "etc",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "아주심기(노지재배)",
+      "kind": "plant",
+      "region": null,
+      "start": {
+        "m": 4,
+        "p": 2
+      },
+      "end": {
+        "m": 5,
+        "p": 2
+      },
+      "text": "4월 중순~5월 중순(본문: 4월 하순~5월 상순)"
+    },
+    {
+      "task": "아주심기(하우스재배)",
+      "kind": "plant",
+      "region": null,
+      "start": {
+        "m": 3,
+        "p": 1
+      },
+      "end": {
+        "m": 3,
+        "p": 3
+      },
+      "text": "3월 상순~3월 하순"
+    },
+    {
+      "task": "일반관리(웃거름)",
+      "kind": "fert",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "수확(하우스재배)",
+      "kind": "harvest",
+      "region": null,
+      "start": {
+        "m": 7,
+        "p": 3
+      },
+      "end": {
+        "m": 8,
+        "p": 3
+      },
+      "text": "7월 하순~8월 하순"
+    },
+    {
+      "task": "수확(노지재배)",
+      "kind": "harvest",
+      "region": null,
+      "start": {
+        "m": 8,
+        "p": 2
+      },
+      "end": null,
+      "text": "8월 중순~(수시 수확)"
+    }
+  ],
+  "stages": [
+    {
+      "title": "종근 준비",
+      "timing": null,
+      "items": [
+        {
+          "label": "씨연 크기",
+          "value": "씨눈이 충실하고 새끼연이 붙은 700~1,000g 정도"
+        },
+        {
+          "label": "채취",
+          "value": "부패병이 감염되지 않은 곳에서 채취"
+        },
+        {
+          "label": "소요량",
+          "value": "300~400kg/10a"
+        }
+      ]
+    },
+    {
+      "title": "아주심기",
+      "timing": "노지 4월 하순~5월 상순(지온 12℃ 이상)",
+      "items": [
+        {
+          "label": "심는 거리",
+          "value": "2×1m"
+        },
+        {
+          "label": "본수",
+          "value": "400~500본/10a"
+        }
+      ]
+    },
+    {
+      "title": "물관리",
+      "timing": null,
+      "items": [
+        {
+          "label": "지온 확보 시",
+          "value": "낮에는 얕게, 밤에는 깊게 댐"
+        },
+        {
+          "label": "고온기",
+          "value": "자주 갈아댐"
+        }
+      ]
+    },
+    {
+      "title": "수확",
+      "timing": "수시",
+      "items": [
+        {
+          "label": "포장 저장",
+          "value": "담수하지 않고 저습 상태로 두면 봄까지 포장에 둘 수 있음"
+        },
+        {
+          "label": "한겨울 수확",
+          "value": "수확 예정지에 헌 비닐 등을 덮어 땅을 녹임"
+        }
+      ]
+    }
+  ],
+  "fertilizer": {
+    "unit": "kg/10a",
+    "columns": [
+      "총량",
+      "밑거름",
+      "웃거름 1회",
+      "웃거름 2회",
+      "웃거름 3회"
+    ],
+    "rows": [
+      {
+        "name": "퇴비",
+        "values": [
+          3000,
+          3000,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "name": "석회",
+        "values": [
+          54,
+          54,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "name": "질소",
+        "values": [
+          23,
+          null,
+          4,
+          8,
+          11
+        ]
+      },
+      {
+        "name": "인산",
+        "values": [
+          20,
+          10,
+          5,
+          5,
+          null
+        ]
+      },
+      {
+        "name": "칼리",
+        "values": [
+          24,
+          null,
+          9,
+          15,
+          null
+        ]
+      },
+      {
+        "name": "계분",
+        "values": [
+          188,
+          null,
+          94,
+          94,
+          null
+        ]
+      }
+    ],
+    "note": null
+  },
+  "pests": [
+    {
+      "name": "부패병",
+      "kind": "병",
+      "timing": "이어짓기 시 다발생",
+      "control": "유기질이 많은 진흙땅에서 재배, 무병지에서 씨연을 받아 소독 후 심기"
+    },
+    {
+      "name": "연 밤근나방",
+      "kind": "해충",
+      "timing": "연 4~5회 발생, 가물 때 많이 발생",
+      "control": "초기 약제 살포"
+    },
+    {
+      "name": "호기수생식물(잡초)",
+      "kind": "잡초",
+      "timing": null,
+      "control": "제초제 살포"
+    }
+  ],
+  "disasters": [
+    {
+      "risk": "아주심기 시기 저온(뿌리내림·생육 지연)",
+      "timing": null,
+      "measures": [
+        "기온 15℃, 지온 12℃ 이상 확보",
+        "물 관리"
+      ]
+    },
+    {
+      "risk": "일조 부족·태풍(감수)",
+      "timing": "6~8월",
+      "measures": [
+        "칼리질 비료 시용"
+      ]
+    },
+    {
+      "risk": "여름 고온(생육·비대 억제)",
+      "timing": null,
+      "measures": [
+        "물 걸러대기"
+      ]
+    },
+    {
+      "risk": "낮은 수온·깊은 수심(연근 비대 억제)",
+      "timing": null,
+      "measures": []
+    }
+  ],
+  "notes": [
+    "작형별 성출하기: 하우스재배 7월 중순~7월 하순, 노지재배 11월~2월",
+    "사질토는 조기 재배가 가능하고 육질이 희어 시장성은 좋으나 육질이 연해 품질이 떨어짐",
+    "주요기술: 시설재배로 조기 수확, 저습답 물도랑 돌리기로 초기 수온 확보, 잡초 발생 억제",
+    "학명은 페이지 표기 그대로임",
+    "페이지의 월별 일정표(생육과정·병충해·기상재해 도표)는 수집 과정에서 칸 위치가 확인되지 않아, 본문에 명시된 시기만 기재함. 정확한 시기는 원문 확인 필요."
+  ],
+  "source": "https://www.nongsaro.go.kr/portal/ps/psb/psbl/workScheduleDtl.ps?menuId=PS00087&cntntsNo=30635"
+}

@@ -1,0 +1,434 @@
+{
+  "id": 30720,
+  "name": "꿀벌",
+  "type": null,
+  "category": "축산",
+  "sciName": null,
+  "family": null,
+  "summary": "꿀벌(양봉)의 계절별 봉군 관리, 채밀, 먹이 급이, 월동, 병해충 방제 요령.",
+  "env": [
+    {
+      "label": "밀원",
+      "value": "양봉장 반경 2km 안에 밀원이 풍부한 곳"
+    },
+    {
+      "label": "입지",
+      "value": "햇볕이 잘 들고 습하지 않으며 바람이 적은 곳"
+    },
+    {
+      "label": "벌통 배치",
+      "value": "남향 또는 동향"
+    }
+  ],
+  "schedule": [
+    {
+      "task": "봉군축소, 물/화분 공급",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "산란유도, 세력확대",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "봉군증식, 여왕벌 양성",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "혹서기 관리, 무밀기 먹이공급",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "월동먹이급이",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "월동포장",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "월동",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "꿀벌응애 방제, 노제마 방제",
+      "kind": "pest",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "꿀벌응애 방제",
+      "kind": "pest",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "말벌 방제",
+      "kind": "pest",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "자운영, 유채, 벚꽃 채밀",
+      "kind": "harvest",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "아카시아 꿀 채밀",
+      "kind": "harvest",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "밤, 때죽나무 채밀",
+      "kind": "harvest",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "메밀꿀 채밀",
+      "kind": "harvest",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "싸리, 메밀꿀 채밀",
+      "kind": "harvest",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "화분, 로얄제리 생산",
+      "kind": "harvest",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "프로폴리스 생산",
+      "kind": "harvest",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "수분용 봉군임대",
+      "kind": "etc",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "벌통 구입",
+      "kind": "etc",
+      "region": null,
+      "start": {
+        "m": 3,
+        "p": null
+      },
+      "end": {
+        "m": 4,
+        "p": null
+      },
+      "text": "월동 이후 유밀기 이전 3~4월"
+    },
+    {
+      "task": "월동 벌집 축소 및 내부 보온 포장",
+      "kind": "manage",
+      "region": null,
+      "start": {
+        "m": 11,
+        "p": 1
+      },
+      "end": {
+        "m": 11,
+        "p": 1
+      },
+      "text": "11월 초순"
+    },
+    {
+      "task": "월동 먹이(설탕 용액) 공급",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": "9월 이후"
+    }
+  ],
+  "stages": [
+    {
+      "title": "벌통 구입",
+      "timing": "월동 이후 유밀기 이전 3~4월",
+      "items": [
+        {
+          "label": "여왕벌",
+          "value": "전년도에 태어나 산란이 왕성한 여왕벌 보유"
+        },
+        {
+          "label": "일벌",
+          "value": "1만 마리 이상(착봉 벌집 5장 이상)"
+        },
+        {
+          "label": "먹이 저장",
+          "value": "저밀 벌집 2장 이상"
+        }
+      ]
+    },
+    {
+      "title": "봄 관리",
+      "timing": "3~5월",
+      "items": [
+        {
+          "label": "월동 후",
+          "value": "벌집 압축(두세 장), 대용 화분떡 공급, 매일 청결한 물 공급"
+        },
+        {
+          "label": "5월 이전",
+          "value": "산란권 최대 확장"
+        },
+        {
+          "label": "5월 이후",
+          "value": "분봉 억제 및 아카시아·밤나무 꿀 생산"
+        }
+      ]
+    },
+    {
+      "title": "여름 관리",
+      "timing": "6~8월",
+      "items": [
+        {
+          "label": "증식",
+          "value": "강한 봉군 인공분봉, 여왕벌·수벌 양성 및 신여왕벌 교체"
+        },
+        {
+          "label": "혹서기",
+          "value": "직사광선 차단, 먹이·물 공급"
+        },
+        {
+          "label": "기타",
+          "value": "병해충 방제와 도봉 방지"
+        }
+      ]
+    },
+    {
+      "title": "가을 관리",
+      "timing": "9~11월",
+      "items": [
+        {
+          "label": "채밀",
+          "value": "밀원이 충분하면 채밀"
+        },
+        {
+          "label": "봉군 정리",
+          "value": "벌집 축소 및 약군 합봉"
+        },
+        {
+          "label": "먹이",
+          "value": "9월 이후 설탕 용액 공급"
+        },
+        {
+          "label": "방제",
+          "value": "월동 전 육아 중단기 집중 방제"
+        }
+      ]
+    },
+    {
+      "title": "겨울 관리",
+      "timing": "12~2월",
+      "items": [
+        {
+          "label": "11월 초순",
+          "value": "벌집 축소 및 내부 보온 포장"
+        },
+        {
+          "label": "외부 포장",
+          "value": "기온이 영하일 때 보온덮개, 짚 등으로 외부 포장. 바닥에 비닐을 깔아 습기 차단, 태양 복사열 차단"
+        }
+      ]
+    },
+    {
+      "title": "벌통 이동",
+      "timing": null,
+      "items": [
+        {
+          "label": "단거리",
+          "value": "매일 30~50cm씩 점진 이동"
+        },
+        {
+          "label": "장거리",
+          "value": "2km 이상 먼 곳을 사전 답사, 벌집을 철사로 고정, 저녁에 벌이 모두 들어온 뒤 문 차단, 환기창을 열고 신속 이동"
+        }
+      ]
+    },
+    {
+      "title": "봉군증식",
+      "timing": null,
+      "items": [
+        {
+          "label": "자연 분봉",
+          "value": "일벌이 급증한 봄철 벌을 털어 빈 통에 수용, 빈 벌집 또는 소초광 삽입"
+        },
+        {
+          "label": "인공 분봉",
+          "value": "왕대와 착봉 벌집 3~5매를 빈 통에 수용, 신여왕벌 출생 후 공중교미·산란 시 증식 완료"
+        }
+      ]
+    },
+    {
+      "title": "합봉과 세력조절",
+      "timing": null,
+      "items": [
+        {
+          "label": "직접 합봉",
+          "value": "저녁 무렵 약군 여왕벌 제거 후 다음날 저녁 착봉 벌집 삽입, 싸움 시 연기로 진정"
+        },
+        {
+          "label": "간접 합봉",
+          "value": "합봉망 또는 송곳구멍 뚫은 신문지를 경계로 사용, 적대감이 없어진 후 제거"
+        },
+        {
+          "label": "세력조절",
+          "value": "강군의 봉개 벌집 한두 장을 약군에 삽입"
+        }
+      ]
+    },
+    {
+      "title": "먹이 급이",
+      "timing": null,
+      "items": [
+        {
+          "label": "당액",
+          "value": "설탕:물 = 1.5~2 : 1"
+        },
+        {
+          "label": "월동 시 설탕 용액",
+          "value": "설탕 1.5 : 물 1 (9월 이후 충분히 공급)"
+        },
+        {
+          "label": "화분떡",
+          "value": "이른 봄과 장마철에 벌집틀 위에 공급"
+        },
+        {
+          "label": "대용 화분떡",
+          "value": "자연화분, 탈지분유, 탈지콩가루, 맥주효모, 백설탕 혼합"
+        }
+      ]
+    }
+  ],
+  "fertilizer": null,
+  "pests": [
+    {
+      "name": "미국부저병",
+      "kind": "병",
+      "timing": null,
+      "control": "전염성이 강함. 감염 증상 발견 시 당일 저녁 소각. 초기에는 항생제 200mg과 설탕분말 30g을 섞어 벌통 바닥에 투여"
+    },
+    {
+      "name": "유럽부저병",
+      "kind": "병",
+      "timing": null,
+      "control": "철저한 봉군관리로 예방. 증세가 심하면 항생제 혼합 설탕 분말 투여"
+    },
+    {
+      "name": "백묵병",
+      "kind": "병",
+      "timing": null,
+      "control": "방제 약제가 없어 예방 중심. 환기 철저, 오염 꿀·화분·벌집 공급 주의, 감수성 여왕벌 제거"
+    },
+    {
+      "name": "노제마병",
+      "kind": "병",
+      "timing": null,
+      "control": "현미경 관찰로 진단. 강군 관리, 봄철 습하고 차가운 곳 배치 삼가, 노제마 전문 약제 처리"
+    },
+    {
+      "name": "장수말벌",
+      "kind": "해충",
+      "timing": "8~9월 집중 공격",
+      "control": "봄철 말벌 여왕벌 포살. 8~9월 집중 공격 시기에 끈적이판·유인트랩 사용"
+    },
+    {
+      "name": "꿀벌응애·중국가시응애",
+      "kind": "해충",
+      "timing": "산란 육아가 없는 분봉기 및 월동 전후 집중 방제",
+      "control": "수벌방 검사 또는 바닥 시트지로 24시간 후 응애 관찰(예찰). 봄철과 유밀기에 여왕벌 산란 후 20일 지난 수벌 번데기 제거(유인 포살). 플루발리네이트, 플루메트린, 아미트라즈를 종류별로 교대 사용. 개미산, 옥살산 친환경 방제 병행"
+    }
+  ],
+  "disasters": [
+    {
+      "risk": "혹서기",
+      "timing": null,
+      "measures": [
+        "벌통 직사광선 차단",
+        "충분한 먹이와 물 공급"
+      ]
+    },
+    {
+      "risk": "저온(영하)",
+      "timing": null,
+      "measures": [
+        "보온덮개, 짚 등으로 외부 포장"
+      ]
+    },
+    {
+      "risk": "습기",
+      "timing": null,
+      "measures": [
+        "벌통 바닥에 비닐 깔기",
+        "환기 철저",
+        "습한 곳 배치 삼가"
+      ]
+    }
+  ],
+  "notes": [
+    "월별 일정표(상·중·하순 막대)는 원문에서 칸 위치를 확인할 수 없어 작업별 시기를 비워 둠"
+  ],
+  "source": "https://www.nongsaro.go.kr/portal/ps/psb/psbl/workScheduleDtl.ps?menuId=PS00087&cntntsNo=30720"
+}

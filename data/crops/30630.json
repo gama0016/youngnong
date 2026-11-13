@@ -1,0 +1,359 @@
+{
+  "id": 30630,
+  "name": "쑥갓",
+  "type": null,
+  "category": "채소",
+  "sciName": "Chrysanthemum coronarium L.",
+  "family": "국화과",
+  "summary": "1년생 초본으로 더위에 강하고 병해충이 적으며 생육이 빠르다. 10℃ 정도의 추위까지 견뎌 겨울철 보온하면 연중 재배가 가능하다.",
+  "env": [
+    {
+      "label": "발아·모 기르기 적온",
+      "value": "15~20℃"
+    },
+    {
+      "label": "재배적지",
+      "value": "비옥하고 수분이 알맞은 사질 토양(건조하면 생육 불량)"
+    },
+    {
+      "label": "꽃대 신장 조건",
+      "value": "장일·고온"
+    }
+  ],
+  "schedule": [
+    {
+      "task": "씨뿌림(터널재배)",
+      "kind": "sow",
+      "region": null,
+      "start": {
+        "m": 2,
+        "p": null
+      },
+      "end": {
+        "m": 3,
+        "p": null
+      },
+      "text": "2~3월"
+    },
+    {
+      "task": "수확(터널재배)",
+      "kind": "harvest",
+      "region": null,
+      "start": {
+        "m": 4,
+        "p": null
+      },
+      "end": {
+        "m": 5,
+        "p": null
+      },
+      "text": "4~5월"
+    },
+    {
+      "task": "씨뿌림(봄재배)",
+      "kind": "sow",
+      "region": null,
+      "start": {
+        "m": 3,
+        "p": null
+      },
+      "end": {
+        "m": 4,
+        "p": null
+      },
+      "text": "3~4월"
+    },
+    {
+      "task": "수확(봄재배)",
+      "kind": "harvest",
+      "region": null,
+      "start": {
+        "m": 4,
+        "p": null
+      },
+      "end": {
+        "m": 6,
+        "p": null
+      },
+      "text": "4~6월"
+    },
+    {
+      "task": "씨뿌림(여름재배)",
+      "kind": "sow",
+      "region": null,
+      "start": {
+        "m": 5,
+        "p": null
+      },
+      "end": {
+        "m": 6,
+        "p": null
+      },
+      "text": "5~6월"
+    },
+    {
+      "task": "수확(여름재배)",
+      "kind": "harvest",
+      "region": null,
+      "start": {
+        "m": 6,
+        "p": null
+      },
+      "end": {
+        "m": 7,
+        "p": null
+      },
+      "text": "6~7월"
+    },
+    {
+      "task": "씨뿌림(가을재배)",
+      "kind": "sow",
+      "region": null,
+      "start": {
+        "m": 9,
+        "p": null
+      },
+      "end": {
+        "m": 10,
+        "p": null
+      },
+      "text": "9~10월"
+    },
+    {
+      "task": "수확(가을재배)",
+      "kind": "harvest",
+      "region": null,
+      "start": {
+        "m": 11,
+        "p": null
+      },
+      "end": {
+        "m": 11,
+        "p": null
+      },
+      "text": "11월"
+    },
+    {
+      "task": "씨뿌림(겨울재배)",
+      "kind": "sow",
+      "region": null,
+      "start": {
+        "m": 11,
+        "p": null
+      },
+      "end": {
+        "m": 12,
+        "p": null
+      },
+      "text": "11~12월"
+    },
+    {
+      "task": "수확(겨울재배)",
+      "kind": "harvest",
+      "region": null,
+      "start": {
+        "m": 1,
+        "p": null
+      },
+      "end": {
+        "m": 3,
+        "p": null
+      },
+      "text": "1~3월"
+    },
+    {
+      "task": "솎음",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "김매기",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "물주기",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "웃거름",
+      "kind": "fert",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    }
+  ],
+  "stages": [
+    {
+      "title": "씨뿌림",
+      "timing": "봄 3~4월 / 여름 5~8월 / 가을 9~10월",
+      "items": [
+        {
+          "label": "씨앗양",
+          "value": "0.5ℓ/10a"
+        },
+        {
+          "label": "이랑 너비",
+          "value": "1~1.2m"
+        },
+        {
+          "label": "포기 사이",
+          "value": "20~25cm"
+        }
+      ]
+    },
+    {
+      "title": "관리",
+      "timing": null,
+      "items": [
+        {
+          "label": "솎음",
+          "value": "발아 후 2~3회"
+        },
+        {
+          "label": "김매기",
+          "value": "제초제 사용"
+        },
+        {
+          "label": "물주기",
+          "value": "가물 때 물주기"
+        },
+        {
+          "label": "복비",
+          "value": "제4종 복비 사용"
+        }
+      ]
+    },
+    {
+      "title": "수확",
+      "timing": null,
+      "items": [
+        {
+          "label": "수확 기준",
+          "value": "본잎 5~10매, 키 10~15cm일 때"
+        },
+        {
+          "label": "수확 시간",
+          "value": "봄·여름에는 시들지 않도록 저녁에 수확"
+        }
+      ]
+    }
+  ],
+  "fertilizer": {
+    "unit": "kg/10a",
+    "columns": [
+      "총량",
+      "밑거름",
+      "웃거름 1회",
+      "웃거름 2회"
+    ],
+    "rows": [
+      {
+        "name": "퇴비",
+        "values": [
+          1000,
+          1000,
+          null,
+          null
+        ]
+      },
+      {
+        "name": "질소",
+        "values": [
+          "14~18",
+          "9~11",
+          "2~3",
+          "3~4"
+        ]
+      },
+      {
+        "name": "인산",
+        "values": [
+          8,
+          8,
+          null,
+          null
+        ]
+      },
+      {
+        "name": "칼리",
+        "values": [
+          7.2,
+          4,
+          null,
+          3.2
+        ]
+      },
+      {
+        "name": "석회",
+        "values": [
+          100,
+          100,
+          null,
+          null
+        ]
+      }
+    ],
+    "note": null
+  },
+  "pests": [
+    {
+      "name": "모잘록병",
+      "kind": "병",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "탄저병",
+      "kind": "병",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "잎마름병",
+      "kind": "병",
+      "timing": null,
+      "control": null
+    }
+  ],
+  "disasters": [
+    {
+      "risk": "가뭄",
+      "timing": null,
+      "measures": [
+        "이동식 스프링클러·점적관수로 물주기",
+        "웃거름은 관수와 함께 액비로 공급"
+      ]
+    },
+    {
+      "risk": "고온",
+      "timing": null,
+      "measures": []
+    },
+    {
+      "risk": "습해",
+      "timing": null,
+      "measures": [
+        "배수구 정비"
+      ]
+    }
+  ],
+  "notes": [
+    "주요 품종: 대엽종·중엽종·소엽종이 있으며 중엽종 권장",
+    "가뭄 시 발아·생육 불량, 고온 시 발아 및 지상부 생육 불량, 습해 시 잎마름병·탄저병 발생 및 뿌리 생육 불량",
+    "본문의 여름 씨뿌림 시기는 5~8월, 작형별 출하시기 표의 여름재배 씨뿌림은 5~6월로 기재됨",
+    "페이지의 월별 일정표(생육과정·병충해·기상재해 도표)는 수집 과정에서 칸 위치가 확인되지 않아, 본문에 명시된 시기만 기재함. 정확한 시기는 원문 확인 필요."
+  ],
+  "source": "https://www.nongsaro.go.kr/portal/ps/psb/psbl/workScheduleDtl.ps?menuId=PS00087&cntntsNo=30630"
+}

@@ -1,0 +1,444 @@
+{
+  "id": 30606,
+  "name": "두릅",
+  "type": null,
+  "category": "채소",
+  "sciName": "Aralia elata SEEM",
+  "family": "두릅나무과",
+  "summary": "높이 3~4m의 낙엽관목. 햇빛이 충분하고 물빠짐이 잘되는 경사지 토양에서 재배한다.",
+  "env": [
+    {
+      "label": "발아적온",
+      "value": "20~25℃"
+    },
+    {
+      "label": "모 기르기 적온",
+      "value": "20~25℃"
+    },
+    {
+      "label": "재배적지",
+      "value": "햇빛이 충분하고 물빠짐이 잘되는 경사지 토양, 모래·자갈이 많은 곳이 유리"
+    }
+  ],
+  "schedule": [
+    {
+      "task": "씨뿌림(실생묘)",
+      "kind": "sow",
+      "region": null,
+      "start": {
+        "m": 3,
+        "p": null
+      },
+      "end": {
+        "m": 4,
+        "p": null
+      },
+      "text": "3~4월"
+    },
+    {
+      "task": "아주심기(실생묘, 이듬해)",
+      "kind": "plant",
+      "region": null,
+      "start": {
+        "m": 3,
+        "p": null
+      },
+      "end": {
+        "m": 4,
+        "p": null
+      },
+      "text": "3~4월"
+    },
+    {
+      "task": "뿌리꺾꽂이",
+      "kind": "plant",
+      "region": null,
+      "start": {
+        "m": 3,
+        "p": null
+      },
+      "end": {
+        "m": 4,
+        "p": null
+      },
+      "text": "3~4월"
+    },
+    {
+      "task": "포기 나누기(분주)",
+      "kind": "plant",
+      "region": null,
+      "start": {
+        "m": 3,
+        "p": null
+      },
+      "end": {
+        "m": 4,
+        "p": null
+      },
+      "text": "3~4월"
+    },
+    {
+      "task": "나무 모양 다듬기",
+      "kind": "manage",
+      "region": null,
+      "start": {
+        "m": 5,
+        "p": 1
+      },
+      "end": {
+        "m": 5,
+        "p": 2
+      },
+      "text": "5월 상중순"
+    },
+    {
+      "task": "웃거름 1회",
+      "kind": "fert",
+      "region": null,
+      "start": {
+        "m": 6,
+        "p": 1
+      },
+      "end": {
+        "m": 6,
+        "p": 1
+      },
+      "text": "6월 상순"
+    },
+    {
+      "task": "웃거름 2회",
+      "kind": "fert",
+      "region": null,
+      "start": {
+        "m": 7,
+        "p": 1
+      },
+      "end": {
+        "m": 7,
+        "p": 1
+      },
+      "text": "7월 상순"
+    },
+    {
+      "task": "웃거름 3회",
+      "kind": "fert",
+      "region": null,
+      "start": {
+        "m": 8,
+        "p": 1
+      },
+      "end": {
+        "m": 8,
+        "p": 1
+      },
+      "text": "8월 상순"
+    },
+    {
+      "task": "수확(노지재배)",
+      "kind": "harvest",
+      "region": null,
+      "start": {
+        "m": 4,
+        "p": null
+      },
+      "end": {
+        "m": 5,
+        "p": null
+      },
+      "text": "4~5월"
+    },
+    {
+      "task": "수확(하우스재배)",
+      "kind": "harvest",
+      "region": null,
+      "start": {
+        "m": 2,
+        "p": null
+      },
+      "end": {
+        "m": 4,
+        "p": null
+      },
+      "text": "2~4월"
+    },
+    {
+      "task": "연화재배",
+      "kind": "manage",
+      "region": null,
+      "start": {
+        "m": 2,
+        "p": 2
+      },
+      "end": {
+        "m": 3,
+        "p": 1
+      },
+      "text": "2월 중순~3월 상순"
+    },
+    {
+      "task": "정아삽 촉성재배",
+      "kind": "plant",
+      "region": null,
+      "start": {
+        "m": 12,
+        "p": 2
+      },
+      "end": {
+        "m": 1,
+        "p": 3
+      },
+      "text": "12월 중순~1월 하순"
+    },
+    {
+      "task": "채종",
+      "kind": "etc",
+      "region": null,
+      "start": {
+        "m": 10,
+        "p": null
+      },
+      "end": {
+        "m": 10,
+        "p": null
+      },
+      "text": "10월"
+    }
+  ],
+  "stages": [
+    {
+      "title": "씨뿌림(실생묘)",
+      "timing": "3~4월",
+      "items": [
+        {
+          "label": "씨앗 처리",
+          "value": "흐르는 물에 5일 정도 침종 후 과육 제거, 씨앗과 모래를 3:7로 섞어 망사 자루에 담아 휴면처리(노천 매장 또는 3~5℃ 그늘 보관)"
+        },
+        {
+          "label": "채종·저온보관",
+          "value": "채종 10월, 저온보관 10~3월"
+        }
+      ]
+    },
+    {
+      "title": "아주심기(실생묘)",
+      "timing": "이듬해 3~4월",
+      "items": [
+        {
+          "label": "묘 수량",
+          "value": "1,100~1,320개/10a"
+        },
+        {
+          "label": "포기 사이",
+          "value": "50~60cm"
+        },
+        {
+          "label": "골 사이",
+          "value": "150cm"
+        }
+      ]
+    },
+    {
+      "title": "뿌리꺾꽂이",
+      "timing": "3~4월, 새순이 나오기 전",
+      "items": [
+        {
+          "label": "꺾꽂이순",
+          "value": "지름 0.5~1cm, 길이 10cm"
+        },
+        {
+          "label": "간격",
+          "value": "줄간격 40~50cm, 폭 20cm 간격으로 평삽 후 3~5cm 깊이 흙덮기"
+        }
+      ]
+    },
+    {
+      "title": "포기 나누기(분주)",
+      "timing": "3~4월, 새순이 나오기 전",
+      "items": [
+        {
+          "label": "방법",
+          "value": "포기에서 30~40cm 떨어진 지면 부위를 삽 등으로 찍어 자름"
+        }
+      ]
+    },
+    {
+      "title": "나무 모양 다듬기",
+      "timing": "5월 상중순, 새순 수확 직후",
+      "items": [
+        {
+          "label": "절단 높이",
+          "value": "1년차 30cm 부위 절단, 이후 10cm씩 높게 절단"
+        },
+        {
+          "label": "가지 수",
+          "value": "1주당 4~6개 가지 유지, 20~25개 줄기/3.3m²"
+        }
+      ]
+    },
+    {
+      "title": "수확",
+      "timing": "노지재배 4~5월 / 하우스재배 2~4월",
+      "items": [
+        {
+          "label": "기준",
+          "value": "어린순이 12~15cm로 자랐을 때"
+        },
+        {
+          "label": "2차 수확",
+          "value": "1차 수확 후 12~15일경"
+        }
+      ]
+    },
+    {
+      "title": "연화재배",
+      "timing": "2월 중순~3월 상순",
+      "items": [
+        {
+          "label": "방법",
+          "value": "꺾꽂이순 정아 부분에 흑색 비닐봉지 씌움"
+        },
+        {
+          "label": "효과",
+          "value": "7~10일 조기 수확"
+        }
+      ]
+    },
+    {
+      "title": "정아삽 촉성재배",
+      "timing": "12월 중순~1월 하순",
+      "items": [
+        {
+          "label": "삽수",
+          "value": "굵기 2cm 이상, 길이 50cm"
+        },
+        {
+          "label": "출하",
+          "value": "1월 중순(40~50일)~2월 하순"
+        }
+      ]
+    }
+  ],
+  "fertilizer": {
+    "unit": "kg/10a",
+    "columns": [
+      "총량",
+      "밑거름",
+      "웃거름 1회",
+      "웃거름 2회",
+      "웃거름 3회"
+    ],
+    "rows": [
+      {
+        "name": "퇴비",
+        "values": [
+          1500,
+          1500,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "name": "질소",
+        "values": [
+          35,
+          20,
+          5,
+          5,
+          5
+        ]
+      },
+      {
+        "name": "인산",
+        "values": [
+          70,
+          70,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "name": "칼리",
+        "values": [
+          40,
+          25,
+          5,
+          5,
+          5
+        ]
+      },
+      {
+        "name": "석회",
+        "values": [
+          150,
+          150,
+          null,
+          null,
+          null
+        ]
+      }
+    ],
+    "note": "시기: 밑거름 아주심기 시, 웃거름 1회 6월 상순, 2회 7월 상순, 3회 8월 상순"
+  },
+  "pests": [
+    {
+      "name": "입고역병",
+      "kind": "병",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "더뎅이병",
+      "kind": "병",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "녹병",
+      "kind": "병",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "진딧물",
+      "kind": "해충",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "응애류",
+      "kind": "해충",
+      "timing": null,
+      "control": null
+    }
+  ],
+  "disasters": [
+    {
+      "risk": "가뭄 (과습이나 건조 시 생육이 떨어짐)",
+      "timing": "초기 어린 모 시기",
+      "measures": [
+        "점적관수 실시",
+        "웃거름은 완효성 비료나 퇴비로 공급"
+      ]
+    },
+    {
+      "risk": "고온 (지상부 생육 불량)",
+      "timing": null,
+      "measures": []
+    },
+    {
+      "risk": "습해 (지하부 생육 불량, 뿌리썩음병 발생)",
+      "timing": null,
+      "measures": [
+        "배수구 정비"
+      ]
+    }
+  ],
+  "notes": [
+    "거름을 과다하게 주면 줄기가 약해져 쓰러지기 쉽고 역병·더뎅이병 저항성이 떨어짐",
+    "주요기술: 웃거름 관리 철저, 어릴 때부터 수형 다듬기, 잡초와 주변 잡목 정리로 햇빛 받기 개선, 제때 수확",
+    "꽃은 8~9월에 피고(지름 약 3mm, 백색), 열매는 10월에 흑색으로 익음"
+  ],
+  "source": "https://www.nongsaro.go.kr/portal/ps/psb/psbl/workScheduleDtl.ps?menuId=PS00087&cntntsNo=30606"
+}

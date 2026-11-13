@@ -1,0 +1,305 @@
+{
+  "id": 30619,
+  "name": "배추",
+  "type": "고랭지재배",
+  "category": "채소",
+  "sciName": "Brassica rapa L. ssp. pekinensis",
+  "family": "배추과",
+  "summary": "고랭지 여름재배 작형. 저온성 채소로 12℃ 이하에서 7일 이상 지나면 꽃눈이 분화된다.",
+  "env": [
+    {
+      "label": "모 기르기 적온",
+      "value": "20~22℃"
+    },
+    {
+      "label": "결구적온",
+      "value": "15~18℃"
+    },
+    {
+      "label": "생육적온",
+      "value": "15~20℃"
+    },
+    {
+      "label": "토양산도",
+      "value": "pH 5.5~6.8 (산성토양에서는 병해 발생이 늘어남)"
+    },
+    {
+      "label": "토양",
+      "value": "토심이 깊고 배수와 보수력이 좋은 사질양토"
+    }
+  ],
+  "schedule": [
+    {
+      "task": "씨뿌림",
+      "kind": "sow",
+      "region": null,
+      "start": {
+        "m": 5,
+        "p": 1
+      },
+      "end": {
+        "m": 7,
+        "p": 3
+      },
+      "text": "5월 상순~7월 하순"
+    },
+    {
+      "task": "아주심기",
+      "kind": "plant",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "웃거름",
+      "kind": "fert",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "김매기, 물주기, 배수",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "수확",
+      "kind": "harvest",
+      "region": null,
+      "start": {
+        "m": 7,
+        "p": 1
+      },
+      "end": {
+        "m": 10,
+        "p": 1
+      },
+      "text": "7월 상순~10월 상순"
+    }
+  ],
+  "stages": [
+    {
+      "title": "씨뿌림",
+      "timing": "5월 상순~7월 하순 (순별 분산 씨뿌림 계획에 따라 분산 파종)",
+      "items": [
+        {
+          "label": "씨앗양",
+          "value": "0.7㎗/10a"
+        },
+        {
+          "label": "용기",
+          "value": "플러그 128공, 200공 트레이 및 포트"
+        },
+        {
+          "label": "모 기르기 일수",
+          "value": "20~30일"
+        },
+        {
+          "label": "모 기르기 관리온도",
+          "value": "20~22℃"
+        }
+      ]
+    },
+    {
+      "title": "아주심기 및 관리",
+      "timing": null,
+      "items": [
+        {
+          "label": "아주심는 거리",
+          "value": "60~65cm×30~40cm"
+        },
+        {
+          "label": "아주심기 주수",
+          "value": "4,000~4,500주/10a"
+        },
+        {
+          "label": "웃거름",
+          "value": "아주심기 15일 후"
+        },
+        {
+          "label": "김매기",
+          "value": "1~2회"
+        },
+        {
+          "label": "물주기",
+          "value": "가물 때"
+        },
+        {
+          "label": "배수",
+          "value": "배수로 설치"
+        },
+        {
+          "label": "석회 결핍 시",
+          "value": "염화칼슘 0.3% 엽면 시비"
+        },
+        {
+          "label": "붕소 결핍 시",
+          "value": "붕사 0.2% 엽면 시비"
+        }
+      ]
+    }
+  ],
+  "fertilizer": {
+    "unit": "kg/10a",
+    "columns": [
+      "총량",
+      "밑거름",
+      "웃거름 1회",
+      "웃거름 2회",
+      "웃거름 3회"
+    ],
+    "rows": [
+      {
+        "name": "퇴비",
+        "values": [
+          3000,
+          3000,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "name": "요소",
+        "values": [
+          70,
+          25,
+          15,
+          15,
+          15
+        ]
+      },
+      {
+        "name": "염화칼리",
+        "values": [
+          33,
+          13,
+          5,
+          5,
+          10
+        ]
+      },
+      {
+        "name": "용과린",
+        "values": [
+          39,
+          39,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "name": "소석회",
+        "values": [
+          150,
+          150,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "name": "붕사",
+        "values": [
+          1.5,
+          1.5,
+          null,
+          null,
+          null
+        ]
+      }
+    ],
+    "note": "성분량: 질소 32 – 인산 7.8 – 칼리 19.8. 웃거름 시기: 1회 아주심기 후 15일, 2회 1회 후 15일, 3회 2회 후 15일"
+  },
+  "pests": [
+    {
+      "name": "뿌리혹병",
+      "kind": "병",
+      "timing": null,
+      "control": "3~4년 돌려짓기(배추과 외 작물)"
+    },
+    {
+      "name": "바이러스병(진딧물)",
+      "kind": "병",
+      "timing": null,
+      "control": "알맞은 시기에 씨뿌림, 진딧물 방제"
+    },
+    {
+      "name": "무름병",
+      "kind": "병",
+      "timing": null,
+      "control": "돌려짓기, 석회 시용, 배수구 정비, 적용약제 살포"
+    },
+    {
+      "name": "노균병",
+      "kind": "병",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "탄저병",
+      "kind": "병",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "배추 좀나방",
+      "kind": "해충",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "배추흰나비",
+      "kind": "해충",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "석회 결핍증",
+      "kind": "생리장해",
+      "timing": null,
+      "control": "밑거름으로 석회 살포, 결구 초기 염화칼슘 0.3% 엽면 살포"
+    },
+    {
+      "name": "붕소 결핍증",
+      "kind": "생리장해",
+      "timing": null,
+      "control": "밑거름으로 붕사 살포, 결구 초기 붕사 엽면 살포"
+    }
+  ],
+  "disasters": [
+    {
+      "risk": "가뭄 (아주심기 지연, 초기 생육 불량, 생리장해, 병해충 발생)",
+      "timing": null,
+      "measures": [
+        "간이 저수장 설치",
+        "이동식 스프링클러 설치",
+        "짚 덮기, 비닐 덮기",
+        "살충제 살포"
+      ]
+    },
+    {
+      "risk": "호우 (습해, 병해충, 생리장해, 침수, 유실, 매몰)",
+      "timing": null,
+      "measures": [
+        "배수구 정비",
+        "다시 뿌리기 또는 덧뿌림(조생종, 반결구종)",
+        "엽면시비",
+        "살균제 살포"
+      ]
+    }
+  ],
+  "notes": [
+    "성출하기: 7월 상순~10월 상순",
+    "붕사 엽면 시비 농도는 페이지 안에서 0.2%(관리 항목)와 0.35%(붕소 결핍증 대책)로 다르게 표기되어 있음",
+    "망사 터널재배: 바이러스 이병률이 무피복 100%에서 망사터널 0%로 감소",
+    "비닐덮기 재배: 안 덮는 곳 대비 7~39% 증수"
+  ],
+  "source": "https://www.nongsaro.go.kr/portal/ps/psb/psbl/workScheduleDtl.ps?menuId=PS00087&cntntsNo=30619"
+}

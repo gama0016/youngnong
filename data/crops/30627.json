@@ -1,0 +1,483 @@
+{
+  "id": 30627,
+  "name": "수박",
+  "type": null,
+  "category": "채소",
+  "sciName": "Citrullus lanatus MATSUM. & NAKAI",
+  "family": "박과",
+  "summary": "호온성 작물로 건조에는 강하나 다습에는 약하다. 이어짓기를 싫어하며 덩굴쪼김병 방지를 위해 접목재배한다.",
+  "env": [
+    {
+      "label": "발아적온",
+      "value": "28~30℃"
+    },
+    {
+      "label": "개화적온",
+      "value": "15~20℃"
+    },
+    {
+      "label": "생육적온",
+      "value": "25~30℃ (생육최저온도 10℃)"
+    },
+    {
+      "label": "뿌리비대적온",
+      "value": "20℃"
+    },
+    {
+      "label": "저장적온",
+      "value": "3~10℃"
+    },
+    {
+      "label": "발근온도",
+      "value": "20~25℃"
+    },
+    {
+      "label": "개화·수정적온",
+      "value": "20℃"
+    },
+    {
+      "label": "개화~성숙 적산온도",
+      "value": "800~1,000℃"
+    },
+    {
+      "label": "토양산도",
+      "value": "pH 5.5~6.8, 토심이 깊은 사질양토"
+    }
+  ],
+  "schedule": [
+    {
+      "task": "씨뿌림(촉성재배)",
+      "kind": "sow",
+      "region": null,
+      "start": {
+        "m": 11,
+        "p": 3
+      },
+      "end": {
+        "m": 12,
+        "p": 3
+      },
+      "text": "11월 하순~12월 하순"
+    },
+    {
+      "task": "씨뿌림(반촉성재배)",
+      "kind": "sow",
+      "region": null,
+      "start": {
+        "m": 12,
+        "p": 3
+      },
+      "end": {
+        "m": 1,
+        "p": 1
+      },
+      "text": "12월 하순~1월 상순"
+    },
+    {
+      "task": "씨뿌림(노지재배)",
+      "kind": "sow",
+      "region": null,
+      "start": {
+        "m": 3,
+        "p": 3
+      },
+      "end": {
+        "m": 4,
+        "p": 3
+      },
+      "text": "3월 하순~4월 하순"
+    },
+    {
+      "task": "아주심기(촉성재배)",
+      "kind": "plant",
+      "region": null,
+      "start": {
+        "m": 1,
+        "p": 3
+      },
+      "end": {
+        "m": 2,
+        "p": 1
+      },
+      "text": "1월 하순~2월 상순"
+    },
+    {
+      "task": "아주심기(반촉성재배)",
+      "kind": "plant",
+      "region": null,
+      "start": {
+        "m": 2,
+        "p": 1
+      },
+      "end": {
+        "m": 2,
+        "p": 3
+      },
+      "text": "2월 상순~2월 하순"
+    },
+    {
+      "task": "아주심기(노지재배)",
+      "kind": "plant",
+      "region": null,
+      "start": {
+        "m": 4,
+        "p": 3
+      },
+      "end": {
+        "m": 5,
+        "p": 3
+      },
+      "text": "4월 하순~5월 하순"
+    },
+    {
+      "task": "수확(촉성)",
+      "kind": "harvest",
+      "region": null,
+      "start": {
+        "m": 3,
+        "p": 3
+      },
+      "end": {
+        "m": 4,
+        "p": 3
+      },
+      "text": "3월 하순~4월 하순"
+    },
+    {
+      "task": "수확(반촉성)",
+      "kind": "harvest",
+      "region": null,
+      "start": {
+        "m": 4,
+        "p": 3
+      },
+      "end": {
+        "m": 5,
+        "p": 3
+      },
+      "text": "4월 하순~5월 하순"
+    },
+    {
+      "task": "씨뿌림(조숙)",
+      "kind": "sow",
+      "region": null,
+      "start": {
+        "m": 2,
+        "p": 2
+      },
+      "end": {
+        "m": 3,
+        "p": 3
+      },
+      "text": "2월 중순~3월 하순"
+    },
+    {
+      "task": "아주심기(조숙)",
+      "kind": "plant",
+      "region": null,
+      "start": {
+        "m": 3,
+        "p": 3
+      },
+      "end": {
+        "m": 5,
+        "p": 1
+      },
+      "text": "3월 하순~5월 상순"
+    },
+    {
+      "task": "수확(조숙)",
+      "kind": "harvest",
+      "region": null,
+      "start": {
+        "m": 6,
+        "p": 1
+      },
+      "end": {
+        "m": 7,
+        "p": 2
+      },
+      "text": "6월 상순~7월 중순"
+    },
+    {
+      "task": "씨뿌림(억제)",
+      "kind": "sow",
+      "region": null,
+      "start": {
+        "m": 7,
+        "p": 3
+      },
+      "end": {
+        "m": 8,
+        "p": 1
+      },
+      "text": "7월 하순~8월 상순"
+    },
+    {
+      "task": "아주심기(억제)",
+      "kind": "plant",
+      "region": null,
+      "start": {
+        "m": 8,
+        "p": 3
+      },
+      "end": {
+        "m": 9,
+        "p": 1
+      },
+      "text": "8월 하순~9월 상순"
+    },
+    {
+      "task": "수확(억제)",
+      "kind": "harvest",
+      "region": null,
+      "start": {
+        "m": 11,
+        "p": 1
+      },
+      "end": {
+        "m": 12,
+        "p": 3
+      },
+      "text": "11월 상순~12월 하순"
+    }
+  ],
+  "stages": [
+    {
+      "title": "접목 육묘",
+      "timing": null,
+      "items": [
+        {
+          "label": "대목",
+          "value": "박, 신토좌"
+        },
+        {
+          "label": "접목방법",
+          "value": "맞접 또는 합접"
+        },
+        {
+          "label": "관리",
+          "value": "온도 25~28℃, 습도 75~80%"
+        }
+      ]
+    },
+    {
+      "title": "아주심기",
+      "timing": "촉성재배 1월 하순~2월 상순 / 반촉성재배 2월 상순~2월 하순 / 노지재배 4월 하순~5월 하순",
+      "items": [
+        {
+          "label": "주간거리",
+          "value": "35~45×300cm"
+        },
+        {
+          "label": "심기주수",
+          "value": "420~540주/동"
+        },
+        {
+          "label": "작업",
+          "value": "비닐덮기 및 터널설치"
+        }
+      ]
+    },
+    {
+      "title": "덩굴수(300평당, 1주 1과실)",
+      "timing": null,
+      "items": [
+        {
+          "label": "2~3월 수확(촉성)",
+          "value": "1,550본"
+        },
+        {
+          "label": "5월 수확(반촉성)",
+          "value": "1,700본"
+        },
+        {
+          "label": "6월 이후 수확(노지 등)",
+          "value": "1,900~2,000본"
+        }
+      ]
+    },
+    {
+      "title": "관리",
+      "timing": null,
+      "items": [
+        {
+          "label": "작업",
+          "value": "저온기 터널설치, 정지 및 유인, 식물체 생육에 맞는 비료 관리"
+        }
+      ]
+    },
+    {
+      "title": "성숙기 판정(열매달림 후 일수 / 적산온도)",
+      "timing": null,
+      "items": [
+        {
+          "label": "소과종",
+          "value": "35~38일 / 750℃"
+        },
+        {
+          "label": "조생종",
+          "value": "38~40일 / 800℃"
+        },
+        {
+          "label": "중생종",
+          "value": "40~45일 / 1,000℃"
+        },
+        {
+          "label": "만생종",
+          "value": "40~45일 / 1,200℃"
+        }
+      ]
+    }
+  ],
+  "fertilizer": {
+    "unit": "kg/10a",
+    "columns": [
+      "총량",
+      "밑거름",
+      "웃거름 1회",
+      "웃거름 2회",
+      "웃거름 3회"
+    ],
+    "rows": [
+      {
+        "name": "퇴비",
+        "values": [
+          1500,
+          1500,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "name": "질소",
+        "values": [
+          20,
+          8,
+          4,
+          4,
+          4
+        ]
+      },
+      {
+        "name": "인산",
+        "values": [
+          5.9,
+          5.9,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "name": "칼리",
+        "values": [
+          12.8,
+          6.4,
+          null,
+          6.4,
+          null
+        ]
+      },
+      {
+        "name": "석회",
+        "values": [
+          200,
+          200,
+          null,
+          null,
+          null
+        ]
+      }
+    ],
+    "note": null
+  },
+  "pests": [
+    {
+      "name": "모잘록병",
+      "kind": "병",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "덩굴마름병",
+      "kind": "병",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "탄저병",
+      "kind": "병",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "바이러스",
+      "kind": "병",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "진딧물",
+      "kind": "해충",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "응애",
+      "kind": "해충",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "과도한 덩굴신장(과번무)",
+      "kind": "생리장해",
+      "timing": "거름이 많거나 비가 잦을 때, 열매달림이 불량해 영양생장이 왕성할 때",
+      "control": "질소질 거름을 적정량 사용"
+    },
+    {
+      "name": "속 빈 과일(공동과)",
+      "kind": "생리장해",
+      "timing": null,
+      "control": "꽃필 때 저온·건조와 동화양분 불균형을 피함, 꽃 피고 열매 달릴 때 적온과 적습 유지"
+    },
+    {
+      "name": "급성 시듦증",
+      "kind": "생리장해",
+      "timing": null,
+      "control": "적절한 수분 관리, 알맞은 초세와 뿌리 활력 유지, 미숙퇴비와 가축분뇨 다량 시용 금지"
+    },
+    {
+      "name": "과실 터짐(열과)",
+      "kind": "생리장해",
+      "timing": null,
+      "control": "비닐이나 짚 덮기 재배, 토양수분 적습 유지, 과피가 얇은 품종은 피함"
+    }
+  ],
+  "disasters": [
+    {
+      "risk": "저온 (모기르기 불량, 모잘록병 발생, 아주심기 지연)",
+      "timing": null,
+      "measures": []
+    },
+    {
+      "risk": "가뭄 (초기생육 불량)",
+      "timing": null,
+      "measures": []
+    },
+    {
+      "risk": "장마 (습해, 병 다발생, 과실생리장해 발생)",
+      "timing": null,
+      "measures": []
+    }
+  ],
+  "notes": [
+    "작형별 출하시기 표의 촉성: 씨뿌림 11월 하순~12월 상순, 아주심기 1월 중순~1월 하순 (본문 시기 항목과 일부 다름)",
+    "성출하기: 촉성 3월 중순~4월 중순 / 반촉성 4월 중순~6월 중순 / 조숙 5월 중순~7월 중순 / 억제 11월 중순~12월 중순",
+    "봄 조기재배 시 아주심기 전 두둑이랑 다지기 2회: 생산량 16% 증가, 착과율·당도 증가, 저온피해 경감",
+    "조기재배 시 전열선을 두둑 및 보온터널 내에 설치: 착과일수 2.5일 단축, 착과율 3.8% 향상, 저온피해 4.1% 경감",
+    "기상재해 대책은 페이지에 생리장해 대책 위주로 기재되어 있음"
+  ],
+  "source": "https://www.nongsaro.go.kr/portal/ps/psb/psbl/workScheduleDtl.ps?menuId=PS00087&cntntsNo=30627"
+}

@@ -1,0 +1,271 @@
+{
+  "id": 30655,
+  "name": "감귤(시설재배)",
+  "type": "시설재배",
+  "category": "과수",
+  "sciName": "Citrus Unshiu Marcov.",
+  "family": "운향과",
+  "summary": "가온 하우스 재배로 착색기 고온 시 착색이 지연되고 성숙기 물관리에 따라 품질 차이가 크다. 계속된 하우스 재배로 미량요소가 결핍되기 쉽다.",
+  "env": [
+    {
+      "label": "평균온도",
+      "value": "17℃"
+    },
+    {
+      "label": "발아적온",
+      "value": "18℃"
+    },
+    {
+      "label": "개화적온",
+      "value": "20℃"
+    },
+    {
+      "label": "생육적온",
+      "value": "23~25℃"
+    },
+    {
+      "label": "완숙기",
+      "value": "15℃ 이상"
+    },
+    {
+      "label": "저장적온",
+      "value": "20℃(페이지 표기 그대로)"
+    },
+    {
+      "label": "재배적지",
+      "value": "겨울철이 따뜻하고 영하 3℃ 이하로 내려가지 않는 곳"
+    },
+    {
+      "label": "유효토층",
+      "value": "50cm 이상"
+    },
+    {
+      "label": "지하수위",
+      "value": "1m 이하"
+    },
+    {
+      "label": "토양",
+      "value": "유기물이 풍부하고 배수가 양호한 비화산 토양"
+    }
+  ],
+  "schedule": [
+    {
+      "task": "수확(극조기가온)",
+      "kind": "harvest",
+      "region": null,
+      "start": {
+        "m": 4,
+        "p": 2
+      },
+      "end": {
+        "m": 6,
+        "p": 3
+      },
+      "text": "4월 중순~6월 하순"
+    },
+    {
+      "task": "수확(조기가온)",
+      "kind": "harvest",
+      "region": null,
+      "start": {
+        "m": 6,
+        "p": 3
+      },
+      "end": {
+        "m": 8,
+        "p": 3
+      },
+      "text": "6월 하순~8월 하순"
+    },
+    {
+      "task": "수확(후기가온)",
+      "kind": "harvest",
+      "region": null,
+      "start": {
+        "m": 8,
+        "p": 3
+      },
+      "end": {
+        "m": 9,
+        "p": 3
+      },
+      "text": "8월 하순~9월 하순"
+    },
+    {
+      "task": "수확(극후기가온)",
+      "kind": "harvest",
+      "region": null,
+      "start": {
+        "m": 9,
+        "p": 3
+      },
+      "end": {
+        "m": 10,
+        "p": 3
+      },
+      "text": "9월 하순~10월 하순"
+    },
+    {
+      "task": "제1인산칼륨 0.2%액 엽면 살포",
+      "kind": "fert",
+      "region": null,
+      "start": {
+        "m": 9,
+        "p": 2
+      },
+      "end": null,
+      "text": "9월 중순부터 20일 간격 3회"
+    },
+    {
+      "task": "가온 개시",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "과실 비대기 중간 단수",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "성숙기 절수·물관리",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "전정 후 고토석회 살포",
+      "kind": "fert",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": "전정 후"
+    },
+    {
+      "task": "수용성 칼슘제 살포",
+      "kind": "fert",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": "생리낙과 후 3~4회, 착색개시 후 3~4회"
+    },
+    {
+      "task": "한랭사 천정 덮기",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": "장마 후 고온 시"
+    }
+  ],
+  "stages": [
+    {
+      "title": "물관리",
+      "timing": null,
+      "items": [
+        {
+          "label": "과실 비대기",
+          "value": "중간 단수로 과실 비대를 억제하고 당도를 높임"
+        },
+        {
+          "label": "성숙기",
+          "value": "절수로 품질 향상, 당도 8°Bx 이상 도달 후 적절한 물관리"
+        }
+      ]
+    },
+    {
+      "title": "꽃달림 부족 대책",
+      "timing": "가을",
+      "items": [
+        {
+          "label": "관리",
+          "value": "가을 순 발아 억제, 토양 건조, 원가지 환상철사 조이기"
+        },
+        {
+          "label": "엽면 살포",
+          "value": "제1인산칼륨 0.2%액을 9월 중순부터 20일 간격으로 3회"
+        }
+      ]
+    },
+    {
+      "title": "수부증 대책",
+      "timing": null,
+      "items": [
+        {
+          "label": "고토석회",
+          "value": "전정 후 120kg/10a 살포"
+        },
+        {
+          "label": "수용성 칼슘제",
+          "value": "생리낙과 후 3~4회, 착색개시 후 3~4회 살포"
+        }
+      ]
+    }
+  ],
+  "fertilizer": null,
+  "pests": [
+    {
+      "name": "꽃달림 부족",
+      "kind": "생리장해",
+      "timing": null,
+      "control": "가을 순 발아억제, 토양 건조, 원가지 환상철사 조이기, 제1인산칼륨 0.2%액 9월 중순부터 20일 간격 3회 엽면 살포"
+    },
+    {
+      "name": "구리 결핍",
+      "kind": "생리장해",
+      "timing": null,
+      "control": "보르도액 또는 동제 수화제 살포"
+    },
+    {
+      "name": "미량요소 결핍(망간·아연·마그네슘·붕소 등)",
+      "kind": "생리장해",
+      "timing": null,
+      "control": "적정 미량요소 살포"
+    },
+    {
+      "name": "수부증",
+      "kind": "생리장해",
+      "timing": null,
+      "control": "전정 후 고토석회 120kg/10a 살포, 생리낙과 후·착색개시 후 수용성 칼슘제 각 3~4회 살포"
+    },
+    {
+      "name": "일소·착색지연",
+      "kind": "생리장해",
+      "timing": "장마 후 고온 시",
+      "control": "한랭사 천정 덮기"
+    }
+  ],
+  "disasters": [
+    {
+      "risk": "호우 및 태풍",
+      "timing": null,
+      "measures": [
+        "배수구 정비",
+        "하우스 버팀줄 고정, 비닐·밴드끈 고정",
+        "열매 매달기를 충분히 함"
+      ]
+    },
+    {
+      "risk": "고온",
+      "timing": null,
+      "measures": [
+        "성숙기 고온 방지",
+        "장마 후 고온 시 한랭사 천정 덮기"
+      ]
+    }
+  ],
+  "notes": [
+    "작형별 개화기/수량: 극조기가온 11월 이전/4~6톤, 조기가온 12월 1일~12월 24일/5~7톤, 후기가온 12월 25일~1월 30일/5~7톤, 극후기가온 1월 21일 이후/5~6톤(페이지 표기 그대로)",
+    "페이지에 kg/10a 비료표는 없음",
+    "비화산회 토양에서 하우스재배를 하는 것이 중요함",
+    "페이지의 월별 일정표(생육과정·병충해·기상재해 도표)는 수집 과정에서 칸 위치가 확인되지 않아, 본문에 명시된 시기만 기재함. 정확한 시기는 원문 확인 필요."
+  ],
+  "source": "https://www.nongsaro.go.kr/portal/ps/psb/psbl/workScheduleDtl.ps?menuId=PS00087&cntntsNo=30655"
+}

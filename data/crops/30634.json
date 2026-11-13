@@ -1,0 +1,356 @@
+{
+  "id": 30634,
+  "name": "양배추",
+  "type": null,
+  "category": "채소",
+  "sciName": "Brassica oleracea L.",
+  "family": "배추과",
+  "summary": "서늘한 기후를 좋아하는 저온성 채소로 생육 초기에는 고온에 비교적 잘 견디나 결구기에는 고온에 약하다. 잎수 8~10매 이상에서 14℃ 이하 저온을 만나면 꽃눈이 분화한다.",
+  "env": [
+    {
+      "label": "발아적온",
+      "value": "15~30℃"
+    },
+    {
+      "label": "모 기르기 적온",
+      "value": "20~22℃"
+    },
+    {
+      "label": "생육적온",
+      "value": "15~20℃"
+    },
+    {
+      "label": "결구적온",
+      "value": "15~16℃"
+    },
+    {
+      "label": "개화적온",
+      "value": "12℃"
+    },
+    {
+      "label": "저장적온",
+      "value": "0~3℃"
+    },
+    {
+      "label": "토양산도",
+      "value": "pH 5.5~6.8(산성토양에서는 병해 증가)"
+    }
+  ],
+  "schedule": [
+    {
+      "task": "씨뿌림(봄재배)",
+      "kind": "sow",
+      "region": null,
+      "start": {
+        "m": 3,
+        "p": null
+      },
+      "end": {
+        "m": 4,
+        "p": null
+      },
+      "text": "3~4월"
+    },
+    {
+      "task": "아주심기(봄재배)",
+      "kind": "plant",
+      "region": null,
+      "start": {
+        "m": 5,
+        "p": null
+      },
+      "end": {
+        "m": 5,
+        "p": null
+      },
+      "text": "5월"
+    },
+    {
+      "task": "씨뿌림(여름재배)",
+      "kind": "sow",
+      "region": null,
+      "start": {
+        "m": 5,
+        "p": null
+      },
+      "end": {
+        "m": 6,
+        "p": null
+      },
+      "text": "5~6월"
+    },
+    {
+      "task": "아주심기(여름재배)",
+      "kind": "plant",
+      "region": "고랭지",
+      "start": {
+        "m": 7,
+        "p": null
+      },
+      "end": {
+        "m": 7,
+        "p": null
+      },
+      "text": "7월"
+    },
+    {
+      "task": "씨뿌림(가을재배)",
+      "kind": "sow",
+      "region": null,
+      "start": {
+        "m": 7,
+        "p": null
+      },
+      "end": {
+        "m": 8,
+        "p": null
+      },
+      "text": "7~8월"
+    },
+    {
+      "task": "아주심기(가을재배)",
+      "kind": "plant",
+      "region": null,
+      "start": {
+        "m": 9,
+        "p": null
+      },
+      "end": {
+        "m": 9,
+        "p": null
+      },
+      "text": "9월"
+    },
+    {
+      "task": "씨뿌림(월동재배)",
+      "kind": "sow",
+      "region": null,
+      "start": {
+        "m": 9,
+        "p": null
+      },
+      "end": {
+        "m": 9,
+        "p": null
+      },
+      "text": "9월"
+    },
+    {
+      "task": "아주심기(월동재배)",
+      "kind": "plant",
+      "region": null,
+      "start": {
+        "m": 10,
+        "p": null
+      },
+      "end": {
+        "m": 12,
+        "p": null
+      },
+      "text": "10~12월"
+    },
+    {
+      "task": "망사덮기",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": "씨뿌림 직후"
+    },
+    {
+      "task": "웃거름",
+      "kind": "fert",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "김매기·물주기·배수",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "수확",
+      "kind": "harvest",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    }
+  ],
+  "stages": [
+    {
+      "title": "씨뿌림",
+      "timing": "봄재배 3~4월 / 여름재배 5~6월 / 가을재배 7~8월 / 월동재배 9월",
+      "items": [
+        {
+          "label": "모 기르기 주수",
+          "value": "4,500~5,000주/10a"
+        },
+        {
+          "label": "씨앗양",
+          "value": "0.6㎗/10a"
+        },
+        {
+          "label": "망사덮기",
+          "value": "씨뿌림 직후 망사터널 피복"
+        }
+      ]
+    },
+    {
+      "title": "아주심기 및 관리",
+      "timing": "봄재배 5월 / 여름재배 7월(고랭지) / 가을재배 9월 / 월동재배 10~12월",
+      "items": [
+        {
+          "label": "이랑 너비",
+          "value": "75cm"
+        },
+        {
+          "label": "포기 사이",
+          "value": "45cm"
+        },
+        {
+          "label": "물주기",
+          "value": "가물 때 물주기"
+        },
+        {
+          "label": "김매기",
+          "value": "제초제 사용"
+        }
+      ]
+    }
+  ],
+  "fertilizer": {
+    "unit": "kg/10a",
+    "columns": [
+      "총량",
+      "밑거름",
+      "웃거름 1회",
+      "웃거름 2회",
+      "웃거름 3회"
+    ],
+    "rows": [
+      {
+        "name": "퇴비",
+        "values": [
+          2500,
+          2500,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "name": "질소",
+        "values": [
+          30.0,
+          11.0,
+          7.0,
+          6.0,
+          6.0
+        ]
+      },
+      {
+        "name": "인산",
+        "values": [
+          18.0,
+          18.0,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "name": "칼륨",
+        "values": [
+          23.0,
+          11.0,
+          6.0,
+          6.0,
+          null
+        ]
+      },
+      {
+        "name": "석회",
+        "values": [
+          100,
+          100,
+          null,
+          null,
+          null
+        ]
+      }
+    ],
+    "note": null
+  },
+  "pests": [
+    {
+      "name": "벼룩잎벌레",
+      "kind": "해충",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "배추좀나방",
+      "kind": "해충",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "무름병",
+      "kind": "병",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "뿌리혹병",
+      "kind": "병",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "바이러스병(진딧물 매개)",
+      "kind": "병",
+      "timing": null,
+      "control": "망사 터널재배(바이러스 이병율: 무피복 100%, 망사터널 0%)"
+    },
+    {
+      "name": "노균병",
+      "kind": "병",
+      "timing": null,
+      "control": null
+    }
+  ],
+  "disasters": [
+    {
+      "risk": "저온 및 혹한",
+      "timing": null,
+      "measures": []
+    },
+    {
+      "risk": "가뭄",
+      "timing": null,
+      "measures": []
+    },
+    {
+      "risk": "잦은비·호우",
+      "timing": null,
+      "measures": []
+    },
+    {
+      "risk": "한파",
+      "timing": null,
+      "measures": []
+    }
+  ],
+  "notes": [
+    "기상재해 도표의 예상 문제점: 발아불량, 초기생육 불량, 언피해, 침수·관수·유실·매몰, 습해, 병해충 다발, 씨뿌림 지연, 결구불량, 바이러스병 다발생(대책은 페이지에 구체적으로 없음)",
+    "페이지의 '작형별 출하시기' 표(씨뿌림 1월 상순~/아주심기 6월 중순~ 등, 개화기 열 포함)와 '생리장해' 항목(꽃자루·꽃잎·양액 관련 내용)은 양배추와 맞지 않는 내용으로 보여 수록하지 않음. 원문 확인 필요.",
+    "페이지의 월별 일정표(생육과정·병충해·기상재해 도표)는 수집 과정에서 칸 위치가 확인되지 않아, 본문에 명시된 시기만 기재함. 정확한 시기는 원문 확인 필요."
+  ],
+  "source": "https://www.nongsaro.go.kr/portal/ps/psb/psbl/workScheduleDtl.ps?menuId=PS00087&cntntsNo=30634"
+}

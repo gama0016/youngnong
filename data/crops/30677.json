@@ -1,0 +1,87 @@
+{
+  "id": 30677,
+  "name": "덴드로비움",
+  "type": "보통재배·촉성재배·억제재배",
+  "category": "화훼",
+  "sciName": "Dendrobium spp. L.",
+  "family": "난과",
+  "summary": "고온, 다습, 강광을 좋아하고 저온 피해가 심한 난과 화훼로 시설에서 재배한다. 겨울철 야간온도를 22℃ 이상으로 관리하고 광을 충분히 주어 개화를 유도한다.",
+  "env": [
+    { "label": "묘 기르기 적온", "value": "25~28℃" },
+    { "label": "생육적온", "value": "25~28℃" },
+    { "label": "개화적온", "value": "22~23℃" },
+    { "label": "재배적지", "value": "시설 내 온도가 22~35℃ 범위인 전국" },
+    { "label": "겨울철 야간온도", "value": "18℃ 이하로 관리하면 개화 지연, 다수확을 위해 22℃ 이상 관리" },
+    { "label": "저온 피해 온도", "value": "10℃ 이하" }
+  ],
+  "schedule": [
+    { "task": "묘 입식(보통재배)", "kind": "plant", "region": null, "start": { "m": 3, "p": 1 }, "end": { "m": 3, "p": 2 }, "text": "3월 상순~3월 중순" },
+    { "task": "생장기(보통재배)", "kind": "manage", "region": null, "start": { "m": 4, "p": 2 }, "end": { "m": 7, "p": 3 }, "text": "4월 중순~7월 하순" },
+    { "task": "개화기(보통재배)", "kind": "harvest", "region": null, "start": { "m": 8, "p": 1 }, "end": { "m": 11, "p": 1 }, "text": "8월 상순~11월 상순" },
+    { "task": "묘 입식(촉성재배)", "kind": "plant", "region": null, "start": { "m": 10, "p": 3 }, "end": { "m": 11, "p": 1 }, "text": "10월 하순~11월 상순" },
+    { "task": "생장기(촉성재배)", "kind": "manage", "region": null, "start": { "m": 1, "p": 3 }, "end": { "m": 2, "p": 1 }, "text": "1월 하순~2월 상순" },
+    { "task": "개화기(촉성재배)", "kind": "harvest", "region": null, "start": { "m": 5, "p": 1 }, "end": { "m": 6, "p": 1 }, "text": "5월 상순~6월 상순" },
+    { "task": "묘 입식(억제재배)", "kind": "plant", "region": null, "start": { "m": 12, "p": 3 }, "end": { "m": 1, "p": 1 }, "text": "12월 하순~1월 상순" },
+    { "task": "생장기(억제재배)", "kind": "manage", "region": null, "start": { "m": 3, "p": 1 }, "end": { "m": 3, "p": 3 }, "text": "3월 상순~3월 하순" },
+    { "task": "개화기(억제재배)", "kind": "harvest", "region": null, "start": { "m": 6, "p": 3 }, "end": { "m": 7, "p": 3 }, "text": "6월 하순~7월 하순" },
+    { "task": "빛가림(약 30%)", "kind": "manage", "region": null, "start": { "m": 7, "p": null }, "end": { "m": 8, "p": null }, "text": "7~8월" },
+    { "task": "성주 완효성 비료 주기", "kind": "fert", "region": null, "start": { "m": 4, "p": null }, "end": { "m": 10, "p": null }, "text": "4월부터 10월까지 월 1회" },
+    { "task": "받침대 세우기", "kind": "manage", "region": null, "start": null, "end": null, "text": "개화기" },
+    { "task": "분갈이", "kind": "manage", "region": null, "start": null, "end": null, "text": "생장기 시작 시" }
+  ],
+  "stages": [
+    { "title": "묘 입식", "timing": "3월 상순(보통재배 3월 상순~3월 중순)",
+      "items": [ { "label": "식재료", "value": "수태 또는 바크 등" } ] },
+    { "title": "생장기 관리", "timing": "새 뿌리와 새잎 발생 시(보통재배 4월 중순~7월 하순)",
+      "items": [
+        { "label": "온도", "value": "20~28℃" },
+        { "label": "비료(모 기르기)", "value": "EC 1.0~1.5 농도 액비를 1주일 간격으로 줌" },
+        { "label": "비료(성주)", "value": "4월부터 10월까지 월 1회 완효성 비료를 2~3g 주고 충분히 물을 줌" },
+        { "label": "액비", "value": "4월 중 생장기에 시작, 1,500배액 액비를 가을까지 물 대신 주거나 물주기와 별도로 주 1회 1,000배액 액비를 줌" },
+        { "label": "물주기", "value": "흙이 마른 후" },
+        { "label": "분갈이", "value": "생장기 시작 시" },
+        { "label": "빛", "value": "하루 7~8시간 햇빛을 쬐고 강한 햇빛은 피하며 50% 빛가림. 7~8월 약 30% 빛가림" },
+        { "label": "병해충", "value": "세균성 병이 많아 항생제 등을 살포, 민달팽이 피해가 많아 구제약을 놓음" }
+      ] },
+    { "title": "꽃눈분화기 관리", "timing": null,
+      "items": [
+        { "label": "온도", "value": "최저 20℃, 난방 실시(생육과정 표에는 최저 16℃, 20℃ 이상 관리로 기재)" },
+        { "label": "광", "value": "약한 빛가림. 늦가을부터는 햇빛을 오래 쬐어 포기를 튼튼하게 함" },
+        { "label": "물주기", "value": "표면이 마르면 줌" },
+        { "label": "비료", "value": "주지 않음" },
+        { "label": "유의", "value": "리드벌브(가성비대구)의 비대와 충실화에 유의" }
+      ] },
+    { "title": "개화기 관리", "timing": null,
+      "items": [
+        { "label": "온도", "value": "밤 15~18℃, 낮 24~29℃" },
+        { "label": "작업", "value": "받침대 세우기, 과다 물주기 주의" }
+      ] },
+    { "title": "겨울관리", "timing": "겨울",
+      "items": [
+        { "label": "온도", "value": "봄까지 가능한 한 추위에 노출되지 않도록 함. 20℃ 이하에서는 잎과 꽃에 저온 피해 우려" },
+        { "label": "물주기(15℃ 이상)", "value": "최저 15℃를 유지하면 표면이 마르면 줌" },
+        { "label": "물주기(10℃ 정도)", "value": "물이 말라도 1~2일 후에 물을 줌" },
+        { "label": "주의", "value": "낮은 온도에서 물을 많이 주면 뿌리가 썩을 수 있음" }
+      ] }
+  ],
+  "fertilizer": null,
+  "pests": [
+    { "name": "연부병", "kind": "병", "timing": "여름 고온기에 많이 발생", "control": null },
+    { "name": "부패병", "kind": "병", "timing": "여름 고온기에 많이 발생", "control": null },
+    { "name": "세균성 병", "kind": "병", "timing": null, "control": "항생제 등을 살포" },
+    { "name": "민달팽이", "kind": "해충", "timing": null, "control": "구제약을 놓음" },
+    { "name": "잎 황화 현상", "kind": "생리장해", "timing": null, "control": "원인은 강광, 일소" }
+  ],
+  "disasters": [
+    { "risk": "저온", "timing": null, "measures": ["피해 온도 10℃ 이하", "난방기 가동"] },
+    { "risk": "약광", "timing": null, "measures": ["적정 광도 유지", "빛가림망 제거", "비료주기 중단"] },
+    { "risk": "고온", "timing": null, "measures": ["물주기", "빛가림, 환기, 팬과 패드 설치", "살충·살균제 살포"] }
+  ],
+  "notes": [
+    "생장 후 정부 또는 정부 아래 2~3마디 잎 사이 겨드랑눈에서 20~30cm 꽃대가 나오며 꽃은 8~15송이가 핌",
+    "개화는 단일조건에서 촉진되는 듯하나 확실하지 않다고 기재됨",
+    "저온 시 생육 및 개화 지연",
+    "페이지에 품종, 번식 방법, kg/10a 비료 표, 출하규격은 없음"
+  ],
+  "source": "https://www.nongsaro.go.kr/portal/ps/psb/psbl/workScheduleDtl.ps?menuId=PS00087&cntntsNo=30677"
+}

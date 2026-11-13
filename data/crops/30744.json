@@ -1,0 +1,102 @@
+{
+  "id": 30744,
+  "name": null,
+  "type": null,
+  "category": null,
+  "sciName": null,
+  "family": null,
+  "summary": "원문 페이지에 작목명이 표시되지 않음(제목란 \"-\"). 작업 항목명만 있고 상세 내용 없음",
+  "env": [],
+  "schedule": [
+    {
+      "task": "정식",
+      "kind": "plant",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "김매기",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "웃거름",
+      "kind": "fert",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "물주기",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "짚피복",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "수확",
+      "kind": "harvest",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "조제",
+      "kind": "etc",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    }
+  ],
+  "stages": [],
+  "fertilizer": null,
+  "pests": [
+    {
+      "name": "흑반병",
+      "kind": "병",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "뿌리썩음병",
+      "kind": "병",
+      "timing": null,
+      "control": null
+    }
+  ],
+  "disasters": [
+    {
+      "risk": "가뭄",
+      "timing": null,
+      "measures": []
+    },
+    {
+      "risk": "장마",
+      "timing": null,
+      "measures": []
+    }
+  ],
+  "notes": [
+    "원문 페이지에 작목명이 표시되지 않음(제목란 \"-\"). 작업 항목명만 있고 상세 내용 없음",
+    "월별 일정표(상·중·하순 막대)는 원문에서 칸 위치를 확인할 수 없어 작업별 시기를 비워 둠 (일정표 범위 4월~3월)",
+    "예상되는 문제점: 생육부진"
+  ],
+  "source": "https://www.nongsaro.go.kr/portal/ps/psb/psbl/workScheduleDtl.ps?menuId=PS00087&cntntsNo=30744"
+}

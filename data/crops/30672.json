@@ -1,0 +1,88 @@
+{
+  "id": 30672,
+  "name": "국화",
+  "type": "전조재배·빛가림재배·노지재배",
+  "category": "화훼",
+  "sciName": null,
+  "family": null,
+  "summary": "꺾꽂이로 번식하며 일장과 온도로 개화를 조절하는 화훼. 전조재배, 빛가림(차광)재배, 노지재배 작형으로 연중 출하하며 스탠다드국화는 화환·근조화, 스프레이 및 소국은 꽃꽂이 등 장식용으로 쓰인다.",
+  "env": [
+    { "label": "개화기 온도", "value": "18℃ 이상" },
+    { "label": "삽수 저장(무근 삽수)", "value": "3℃, 습도 약 95%" },
+    { "label": "삽수 저장(유근 꺾꽂이묘)", "value": "5~7℃, 습도 약 90%" }
+  ],
+  "schedule": [
+    { "task": "꽃 수확(전조재배)", "kind": "harvest", "region": null, "start": { "m": 12, "p": 2 }, "end": { "m": 1, "p": 3 }, "text": "12월 중순~1월 하순" },
+    { "task": "꽃 수확(빛가림재배)", "kind": "harvest", "region": null, "start": { "m": 8, "p": 1 }, "end": { "m": 9, "p": 2 }, "text": "8월 상순~9월 중순" },
+    { "task": "꽃 수확(노지재배)", "kind": "harvest", "region": null, "start": { "m": 10, "p": 2 }, "end": { "m": 11, "p": 3 }, "text": "10월 중순~11월 하순" },
+    { "task": "꺾꽂이", "kind": "nursery", "region": null, "start": null, "end": null, "text": null },
+    { "task": "아주심기", "kind": "plant", "region": null, "start": null, "end": null, "text": null },
+    { "task": "전조처리(전조재배·빛가림재배)", "kind": "manage", "region": null, "start": null, "end": null, "text": null },
+    { "task": "소등·단일처리(꽃눈분화·발달 유도)", "kind": "manage", "region": null, "start": null, "end": null, "text": null },
+    { "task": "자연단일에 따른 꽃눈분화·발달 유도(노지재배)", "kind": "manage", "region": null, "start": null, "end": null, "text": null }
+  ],
+  "stages": [
+    { "title": "번식(꺾꽂이)", "timing": null,
+      "items": [
+        { "label": "묘", "value": "꺾꽂이묘와 소일블럭묘 이용, 무병종묘 이용" },
+        { "label": "무근 삽수 저장", "value": "3℃, 습도 약 95%" },
+        { "label": "유근 꺾꽂이묘 저장", "value": "5~7℃, 습도 약 90%" }
+      ] },
+    { "title": "아주심기", "timing": null,
+      "items": [ { "label": "아주심기 주수(무순지르기 재배)", "value": "35,000~40,000주/10a" } ] },
+    { "title": "전조재배", "timing": "수확 12월 중순~1월 하순",
+      "items": [
+        { "label": "조명", "value": "100W 전등 1개당 10~13㎡" },
+        { "label": "전등 위치", "value": "식물체 위 90cm" },
+        { "label": "조명 방법", "value": "심야 4시간 조명" },
+        { "label": "노심현상 방지", "value": "소등 12~14일 후 재전조 실시" }
+      ] },
+    { "title": "빛가림재배", "timing": "수확 8월 상순~9월 중순",
+      "items": [
+        { "label": "빛가림 시간", "value": "오후 6시~오전 7시" },
+        { "label": "일장", "value": "12~13시간 단일처리" },
+        { "label": "재료", "value": "암막 빛가림 전용 스크린" }
+      ] },
+    { "title": "노지재배", "timing": "개화 10월 하순~11월 중순",
+      "items": [ { "label": "개화 유도", "value": "자연단일에 따른 꽃눈분화·발달 유도" } ] },
+    { "title": "비배·온도 관리", "timing": null,
+      "items": [
+        { "label": "온도", "value": "개화기 18℃ 이상, 일장과 온도로 개화 조절" },
+        { "label": "비배관리", "value": "유기물을 시용하고 비료를 균형 있게 줌" },
+        { "label": "관수", "value": "점적관수에 액비시설 혼입" }
+      ] }
+  ],
+  "fertilizer": null,
+  "pests": [
+    { "name": "흰녹병", "kind": "병", "timing": null, "control": "무병묘 식재, 토양소독, 예방 위주의 약제 살포" },
+    { "name": "시들음병", "kind": "병", "timing": null, "control": "무병묘 식재, 토양소독, 예방 위주의 약제 살포" },
+    { "name": "잿빛곰팡이병", "kind": "병", "timing": null, "control": "무병묘 식재, 토양소독, 예방 위주의 약제 살포" },
+    { "name": "바이러스", "kind": "병", "timing": null, "control": "무병묘 식재, 토양소독, 예방 위주의 약제 살포" },
+    { "name": "바이로이드", "kind": "병", "timing": null, "control": "무병묘 식재, 토양소독, 예방 위주의 약제 살포" },
+    { "name": "진딧물", "kind": "해충", "timing": null, "control": "예방 위주의 약제 살포" },
+    { "name": "응애", "kind": "해충", "timing": null, "control": "예방 위주의 약제 살포" },
+    { "name": "총채벌레", "kind": "해충", "timing": null, "control": "예방 위주의 약제 살포" },
+    { "name": "잎굴파리", "kind": "해충", "timing": null, "control": "예방 위주의 약제 살포" },
+    { "name": "버들눈", "kind": "생리장해", "timing": null, "control": "곁눈은 분화하지 않고 끝눈만 미숙 꽃눈이 되어 정상 개화하지 못함. 원인은 장일기 수일간 광 부족, 단일처리 초기 장일 부여, 노화된 모주나 웃자란 신초를 삽수로 사용. 적절한 일장 유지, 고온·저온 회피, 건전 모주 양성과 영양 개선, 유아 조기 제거 및 2번화 유도" },
+    { "name": "관생화", "kind": "생리장해", "timing": "빛가림재배 시 주로 발생", "control": "두상화서 중심부에 소화가 형성됨. 원인은 고온에서 한계일장 단축에 따른 저해작용. 고온장해 회피, 적품종 선택" },
+    { "name": "노심현상", "kind": "생리장해", "timing": "전조재배 시 소등 후", "control": "두상화서 중심부에 관상화가 많이 노출됨. 원인은 소등 후 급격한 일장 변화. 소등 12~14일 후 재전조 실시" }
+  ],
+  "disasters": [
+    { "risk": "장마철 수분 과부족", "timing": null, "measures": [] },
+    { "risk": "고온장해(기형화, 개화지연)", "timing": null, "measures": [] },
+    { "risk": "저온장해(적온관리 미흡)", "timing": null, "measures": [] }
+  ],
+  "notes": [
+    "품종 - 하국: 백광, 유카 등 / 하추국: 백선, 백마, 백강 등 / 추국: 신마 등 / 스프레이국: 글로리핑크, 피치팡팡, 보라미, 포드, 금수, 아르거스 등",
+    "생육과정 예시 - 전조재배(12월 하순 출하작형), 빛가림재배(7월 출하작형), 노지재배(10월 하순~11월 중순 개화작형)",
+    "작형별 출하시기 - 전조재배: 수확·출하·성출하 12월 중순~1월 하순, 때 아닌 철 2월 상순~12월 상순",
+    "작형별 출하시기 - 차광(빛가림)재배: 수확·출하·성출하 8월 상순~9월 중순, 때 아닌 철 9월 하순~7월 하순",
+    "작형별 출하시기 - 노지재배: 수확·출하·성출하 10월 중순~11월 하순, 때 아닌 철 12월 상순~9월 하순",
+    "주재배지역: 경남 창원, 김해, 부산(스탠다드), 충남 태안, 예산(스프레이) 등",
+    "출하량은 자연재배 시기인 10~11월에 가장 많고 가격은 1~4월에 높게 형성됨",
+    "수요 시기: 입학시기, 가정의 달, 현충일, 성탄절, 졸업시기",
+    "페이지에 학명·과명, 비료 표, 출하규격은 없음",
+    "꺾꽂이·아주심기·전조처리의 월·순 시기는 페이지 도표에서 텍스트로 확인되지 않음"
+  ],
+  "source": "https://www.nongsaro.go.kr/portal/ps/psb/psbl/workScheduleDtl.ps?menuId=PS00087&cntntsNo=30672"
+}

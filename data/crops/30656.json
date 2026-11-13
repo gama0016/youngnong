@@ -1,0 +1,367 @@
+{
+  "id": 30656,
+  "name": "단감",
+  "type": null,
+  "category": "과수",
+  "sciName": "Diospyros kaki THUNB.",
+  "family": "감나무과",
+  "summary": "새가지에서 잎이 난 뒤 개화해 열매를 맺으며, 생리적 낙과가 많아 열매맺기 조절에 유의해야 한다. 수분수를 5~10% 섞어 심는 것이 좋다.",
+  "env": [
+    {
+      "label": "연평균기온",
+      "value": "13℃ 이상"
+    },
+    {
+      "label": "휴면기(12~2월) 기온",
+      "value": "평균 -1℃ 이상, 최저 -4℃ 이상"
+    },
+    {
+      "label": "성숙기 평균기온",
+      "value": "10월 15℃ 이상, 11월 9℃ 이상"
+    },
+    {
+      "label": "일조시간",
+      "value": "2,340시간 이상"
+    },
+    {
+      "label": "토양산도",
+      "value": "pH 6.0~6.5"
+    },
+    {
+      "label": "유기물",
+      "value": "2.5~3.5%"
+    },
+    {
+      "label": "유효인산",
+      "value": "450~550mg/kg"
+    },
+    {
+      "label": "칼리",
+      "value": "0.70~0.80cmol+/kg"
+    },
+    {
+      "label": "칼슘",
+      "value": "5.0~6.0cmol+/kg"
+    },
+    {
+      "label": "마그네슘",
+      "value": "1.5~2.0cmol+/kg"
+    },
+    {
+      "label": "양분보유력",
+      "value": "10~15cmol+/kg"
+    }
+  ],
+  "schedule": [
+    {
+      "task": "봉오리 따기",
+      "kind": "manage",
+      "region": null,
+      "start": {
+        "m": 5,
+        "p": null
+      },
+      "end": {
+        "m": 5,
+        "p": null
+      },
+      "text": "5월"
+    },
+    {
+      "task": "열매솎기",
+      "kind": "manage",
+      "region": null,
+      "start": {
+        "m": 7,
+        "p": null
+      },
+      "end": {
+        "m": 7,
+        "p": null
+      },
+      "text": "7월"
+    },
+    {
+      "task": "수확(조생종)",
+      "kind": "harvest",
+      "region": null,
+      "start": {
+        "m": 9,
+        "p": 2
+      },
+      "end": {
+        "m": 9,
+        "p": 3
+      },
+      "text": "9월 중순~하순"
+    },
+    {
+      "task": "수확(중생종)",
+      "kind": "harvest",
+      "region": null,
+      "start": {
+        "m": 10,
+        "p": 1
+      },
+      "end": {
+        "m": 10,
+        "p": 3
+      },
+      "text": "10월 상순~하순"
+    },
+    {
+      "task": "수확(만생종)",
+      "kind": "harvest",
+      "region": null,
+      "start": {
+        "m": 10,
+        "p": 3
+      },
+      "end": {
+        "m": 11,
+        "p": 2
+      },
+      "text": "10월 하순~11월 중순"
+    },
+    {
+      "task": "정지·전정, 조피제거",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": "휴면기"
+    },
+    {
+      "task": "여름전정",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "묘목심기, 고접갱신",
+      "kind": "plant",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": "봄 또는 가을"
+    },
+    {
+      "task": "물주기·배수·김매기",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "밑거름·토양 개량",
+      "kind": "fert",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "여름거름",
+      "kind": "fert",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "가을거름",
+      "kind": "fert",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "병해충 방제",
+      "kind": "pest",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    }
+  ],
+  "stages": [
+    {
+      "title": "묘목심기",
+      "timing": "봄 또는 가을",
+      "items": [
+        {
+          "label": "비옥지",
+          "value": "6×5m(33주, 서촌조생·이두), 6×6m(28주, 부유·차랑·상서조생·갑주백목)"
+        },
+        {
+          "label": "척박지",
+          "value": "5×5m(40주, 서촌조생·이두), 5×6m(33주, 부유·차랑·상서조생·갑주백목)"
+        },
+        {
+          "label": "수분수",
+          "value": "선사환, 사에후지, 조홍시, 정월을 재식주수의 5~10%, 1~2품종 섞어 심기"
+        }
+      ]
+    },
+    {
+      "title": "열매맺음 조절",
+      "timing": "봉오리 따기 5월, 열매솎기 7월",
+      "items": [
+        {
+          "label": "대과",
+          "value": "봉오리 따기+열매솎기, 엽과비 20"
+        },
+        {
+          "label": "중과",
+          "value": "봉오리 따기+열매솎기, 엽과비 15"
+        },
+        {
+          "label": "소과",
+          "value": "열매솎기(7월)"
+        }
+      ]
+    },
+    {
+      "title": "수형 관리",
+      "timing": null,
+      "items": [
+        {
+          "label": "나무 키",
+          "value": "3~4년에 걸쳐 점진적으로 낮춤"
+        },
+        {
+          "label": "곁가지",
+          "value": "약 50cm 간격으로 배치"
+        }
+      ]
+    },
+    {
+      "title": "토양관리",
+      "timing": null,
+      "items": [
+        {
+          "label": "시비",
+          "value": "토양검정과 영양진단 기준에 따라 비료량 조절"
+        },
+        {
+          "label": "초생재배",
+          "value": "오손과 발생 여부에 따라 결정"
+        }
+      ]
+    }
+  ],
+  "fertilizer": null,
+  "pests": [
+    {
+      "name": "탄저병",
+      "kind": "병",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "둥근무늬낙엽병",
+      "kind": "병",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "모무늬낙엽병",
+      "kind": "병",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "흰가루병",
+      "kind": "병",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "잿빛곰팡이병",
+      "kind": "병",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "감관총채벌레",
+      "kind": "해충",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "감꼭지나방",
+      "kind": "해충",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "깍지벌레류",
+      "kind": "해충",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "노린재류",
+      "kind": "해충",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "꼭지들림",
+      "kind": "생리장해",
+      "timing": null,
+      "control": "불충실한 꽃봉오리를 봉오리 따기로 조기 제거, 수분수를 충분히 섞어 심기, 과실 성숙기 급격한 양수분 변화 방지"
+    },
+    {
+      "name": "녹반증",
+      "kind": "생리장해",
+      "timing": "송본조생, 부유, 상서조생, 이두에서 많이 발생",
+      "control": "깊이갈이, 퇴비, 석회 시용으로 토양 개량"
+    },
+    {
+      "name": "오손과",
+      "kind": "생리장해",
+      "timing": "이두·갑주백목에서 많이 발생",
+      "control": "밀식 과원 간벌, 처진 가지·상향과 제거, 다발생 과원은 초생재배를 피하거나 풀베기 철저, 성숙기·수확기 근접 약제 살포 회피"
+    }
+  ],
+  "disasters": [
+    {
+      "risk": "전엽기 저온·늦서리(새 가지 피해)",
+      "timing": null,
+      "measures": []
+    },
+    {
+      "risk": "개화기 저온·강우(수정 불량)",
+      "timing": null,
+      "measures": []
+    },
+    {
+      "risk": "여름철 가뭄·고온(과실비대 불량, 일소 피해)",
+      "timing": null,
+      "measures": []
+    },
+    {
+      "risk": "장마·태풍(습해, 병해 다발생, 가지 절손, 잎 파손)",
+      "timing": null,
+      "measures": []
+    },
+    {
+      "risk": "수확기 저온·서리(과실과 잎 피해)",
+      "timing": null,
+      "measures": []
+    }
+  ],
+  "notes": [
+    "숙기별 품종: 조생종 서촌조생 / 중생종 상서조생·이두·송본조생 / 만생종 부유·차랑",
+    "부유 품종 영양진단: 선단부 새가지 길이 정상 30~40cm(과다 40cm 이상), 새가지 신장 정지 시기 정상 5월 중하순(과다 6월 상순 이후)",
+    "페이지에 kg/10a 비료표는 없음(밑거름·여름거름·가을거름 작업 항목만 있음)",
+    "기상재해 대책은 페이지에 구체적으로 없음",
+    "페이지의 월별 일정표(생육과정·병충해·기상재해 도표)는 수집 과정에서 칸 위치가 확인되지 않아, 본문에 명시된 시기만 기재함. 정확한 시기는 원문 확인 필요."
+  ],
+  "source": "https://www.nongsaro.go.kr/portal/ps/psb/psbl/workScheduleDtl.ps?menuId=PS00087&cntntsNo=30656"
+}

@@ -1,0 +1,93 @@
+{
+  "id": 30667,
+  "name": "자두",
+  "type": null,
+  "category": "과수",
+  "sciName": "Prunus salicina Lindl",
+  "family": "장미과",
+  "summary": "개화기에 온난하고 수확기에 비가 적은 곳이 적합한 과수. 대부분 자가불화합성이어서 반드시 수분수를 섞어 심어야 하며, 개화기가 빨라 늦서리 피해에 주의해야 한다.",
+  "env": [
+    { "label": "재배적지", "value": "개화기에 온난하고 수확기에 비가 적은 곳" },
+    { "label": "주의", "value": "개화기가 빨라 늦서리 피해와 기상 불량에 따른 매개곤충 활동 저하에 주의" }
+  ],
+  "schedule": [
+    { "task": "가을거름", "kind": "fert", "region": null, "start": { "m": 8, "p": 3 }, "end": { "m": 9, "p": 1 }, "text": "8월 하순~9월 상순" },
+    { "task": "묘목심기", "kind": "plant", "region": null, "start": null, "end": null, "text": "봄심기 및 가을심기" },
+    { "task": "정지·전정", "kind": "manage", "region": null, "start": null, "end": null, "text": null },
+    { "task": "열매솎기", "kind": "manage", "region": null, "start": null, "end": null, "text": "1차 만개 후 30일경, 2차 만개 후 50~60일까지" },
+    { "task": "웃거름", "kind": "fert", "region": null, "start": null, "end": null, "text": null },
+    { "task": "수확", "kind": "harvest", "region": null, "start": null, "end": null, "text": null },
+    { "task": "밑거름", "kind": "fert", "region": null, "start": null, "end": null, "text": null },
+    { "task": "겨울약제 살포(기계유유제)", "kind": "pest", "region": null, "start": null, "end": null, "text": "만개 40~60일 전" },
+    { "task": "겨울약제 살포(석회유황합제)", "kind": "pest", "region": null, "start": null, "end": null, "text": "만개 20~30일 전" },
+    { "task": "겨울약제 살포(석회보르도액)", "kind": "pest", "region": null, "start": null, "end": null, "text": "만개 1주 전~직전" }
+  ],
+  "stages": [
+    { "title": "묘목심기", "timing": "봄심기 및 가을심기",
+      "items": [
+        { "label": "심는 거리(일반재배)", "value": "7.0×7.0m" },
+        { "label": "심는 거리(Y자형)", "value": "6×3~4m" },
+        { "label": "수분수", "value": "주품종에 대해 수분수 2~3품종을 20~30% 섞어 심음" }
+      ] },
+    { "title": "겨울약제 살포", "timing": "만개 40~60일 전 ~ 만개 직전",
+      "items": [
+        { "label": "기계유유제", "value": "만개 40~60일 전 살포, 20~25배액, 수세가 약하면 생략. 진딧물, 응애, 나방, 깍지벌레 방제" },
+        { "label": "석회유황합제", "value": "만개 20~30일 전 살포. 검은별무늬병, 잿빛무늬병, 깍지벌레, 응애 방제" },
+        { "label": "석회보르도액", "value": "만개 1주 전~직전 살포. 검은점무늬병, 세균구멍병, 탄저병 방제" },
+        { "label": "살포 간격", "value": "각 약제 살포는 최소 2주 간격을 두어야 약해를 피할 수 있음" },
+        { "label": "살포 요령", "value": "바람이 불지 않는 시간에 나무 전체에 골고루 묻도록 살포" }
+      ] },
+    { "title": "열매솎기", "timing": "1차 만개 후 30일경, 2차 만개 후 50~60일까지",
+      "items": [
+        { "label": "중과성 품종", "value": "6~8cm당 1과" },
+        { "label": "대과성 품종", "value": "8~10cm당 1과" },
+        { "label": "방법", "value": "기형과와 병해충 피해과를 솎고, 둥근 것보다 길쭉한 과실을 남김" }
+      ] },
+    { "title": "토양관리", "timing": "휴면기",
+      "items": [
+        { "label": "깊이갈이", "value": "연차별 계획에 따라 휴면기에 실시" },
+        { "label": "구덩이", "value": "깊이 40cm 구덩이에 석회와 완숙퇴비를 넣음" }
+      ] }
+  ],
+  "fertilizer": {
+    "unit": "kg/10a",
+    "columns": ["총량", "밑거름", "웃거름", "가을거름"],
+    "rows": [
+      { "name": "질소", "values": [15, 10.5, 1.5, 3] },
+      { "name": "인산", "values": [7.5, 7.5, null, null] },
+      { "name": "칼리", "values": [12, 7.2, 4.8, null] },
+      { "name": "퇴비", "values": [2000, 2000, null, null] },
+      { "name": "석회", "values": [200, 200, null, null] },
+      { "name": "붕소", "values": [2, 2, null, null] }
+    ],
+    "note": "다 자란 나무 기준 표준 비료 주기. 석회·붕소는 2~3년마다 비료 주기. 칼리 행은 원문에 값이 3개(12, 7.2, 4.8)만 있어 순서대로 총량·밑거름·웃거름에 대응시킴(가을거름 칸 값 없음)."
+  },
+  "pests": [
+    { "name": "주머니병", "kind": "병", "timing": null, "control": null },
+    { "name": "검은점무늬병", "kind": "병", "timing": null, "control": "석회보르도액(만개 1주 전~직전 살포)" },
+    { "name": "잿빛무늬병", "kind": "병", "timing": null, "control": "석회유황합제(만개 20~30일 전 살포)" },
+    { "name": "검은별무늬병", "kind": "병", "timing": null, "control": "석회유황합제(만개 20~30일 전 살포)" },
+    { "name": "세균구멍병", "kind": "병", "timing": null, "control": "석회보르도액(만개 1주 전~직전 살포)" },
+    { "name": "탄저병", "kind": "병", "timing": null, "control": "석회보르도액(만개 1주 전~직전 살포)" },
+    { "name": "깍지벌레", "kind": "해충", "timing": null, "control": "기계유유제(만개 40~60일 전), 석회유황합제(만개 20~30일 전)" },
+    { "name": "진딧물", "kind": "해충", "timing": null, "control": "기계유유제(만개 40~60일 전 살포)" },
+    { "name": "응애", "kind": "해충", "timing": null, "control": "기계유유제(만개 40~60일 전), 석회유황합제(만개 20~30일 전)" },
+    { "name": "복숭아심식나방", "kind": "해충", "timing": null, "control": null },
+    { "name": "복숭아유리나방", "kind": "해충", "timing": null, "control": null },
+    { "name": "복숭아순나방", "kind": "해충", "timing": null, "control": null },
+    { "name": "생리적 낙과", "kind": "생리장해", "timing": "1기 개화기 직후 / 2기 개화 20일 후 / 3기 콩 크기부터 수확 전까지", "control": null }
+  ],
+  "disasters": [
+    { "risk": "개화기 늦서리", "timing": "개화기", "measures": [] },
+    { "risk": "개화기 기상 불량(매개곤충 활동 저하)", "timing": "개화기", "measures": [] },
+    { "risk": "수확기 강우 지속", "timing": "수확기", "measures": [] }
+  ],
+  "notes": [
+    "생리적 낙과기 3회: 1기 개화기 직후(불완전화에 의한 낙과), 2기 개화 20일 후(수정되지 않은 과실이 떨어지며 대부분의 낙과가 이 시기에 발생), 3기 콩 크기부터 수확 전까지(양분 경쟁으로 배 발육이 멈춰 낙과)",
+    "수확기 강우가 지속되면 과실 품질과 수송력이 떨어지고 병해가 많아짐",
+    "페이지에 품종별 수분수 조합표(대석조생, 포모사, 솔담, 산타로사, 퍼플퀸, 추희)가 있으나 텍스트로 정확히 확인되지 않아 수록하지 않음",
+    "생육과정: 휴면기, 개화기, 꽃눈분화기",
+    "각 농작업의 월·순 시기는 가을거름 외에는 페이지 도표에서 텍스트로 확인되지 않음"
+  ],
+  "source": "https://www.nongsaro.go.kr/portal/ps/psb/psbl/workScheduleDtl.ps?menuId=PS00087&cntntsNo=30667"
+}

@@ -1,0 +1,70 @@
+{
+  "id": 30666,
+  "name": "유자",
+  "type": "노지재배",
+  "category": "과수",
+  "sciName": "Citrus junos SIEB ex TANAKA",
+  "family": "운향과",
+  "summary": "연평균기온 14℃ 이상, 최저기온 -9℃ 이상인 지역에서 재배하는 과수. 가지·뿌리는 봄, 여름, 가을 연 3회 생장하며 노지재배 기준 4월 상순 발아, 5월 하순 개화, 11월 상·중순 수확한다.",
+  "env": [
+    { "label": "생육온도", "value": "연평균기온 14℃ 이상" },
+    { "label": "최저기온", "value": "-9℃ 이상" },
+    { "label": "강수량", "value": "1,300mm" },
+    { "label": "유효토양층", "value": "40~50cm 이상" },
+    { "label": "토양", "value": "양토~식양토" },
+    { "label": "토양산도(pH)", "value": "6.0~6.5" },
+    { "label": "일조시간", "value": "2,400시간 이상" }
+  ],
+  "schedule": [
+    { "task": "발아기", "kind": "etc", "region": null, "start": { "m": 4, "p": 1 }, "end": { "m": 4, "p": 1 }, "text": "4월 상순" },
+    { "task": "개화기", "kind": "etc", "region": null, "start": { "m": 5, "p": 3 }, "end": { "m": 5, "p": 3 }, "text": "5월 하순" },
+    { "task": "철사돌리기", "kind": "manage", "region": null, "start": { "m": 4, "p": null }, "end": { "m": 7, "p": null }, "text": "4~7월" },
+    { "task": "열매솎기", "kind": "manage", "region": null, "start": { "m": 6, "p": 3 }, "end": null, "text": "6월 하순 이후 2~3회" },
+    { "task": "환상박피", "kind": "manage", "region": null, "start": { "m": 10, "p": 3 }, "end": { "m": 10, "p": 3 }, "text": "10월 하순" },
+    { "task": "수확", "kind": "harvest", "region": null, "start": { "m": 11, "p": 1 }, "end": { "m": 11, "p": 2 }, "text": "11월 상·중순" },
+    { "task": "전정", "kind": "manage", "region": null, "start": null, "end": null, "text": null },
+    { "task": "가지유인", "kind": "manage", "region": null, "start": null, "end": null, "text": null },
+    { "task": "봄거름", "kind": "fert", "region": null, "start": null, "end": null, "text": null },
+    { "task": "꽃비료", "kind": "fert", "region": null, "start": null, "end": null, "text": null },
+    { "task": "여름거름", "kind": "fert", "region": null, "start": null, "end": null, "text": null },
+    { "task": "가을거름", "kind": "fert", "region": null, "start": null, "end": null, "text": null }
+  ],
+  "stages": [
+    { "title": "환상박피", "timing": "10월 하순",
+      "items": [ { "label": "기준", "value": "폭 3mm 내외(꽃눈분화 및 꽃달림 향상)" } ] },
+    { "title": "가지유인", "timing": null,
+      "items": [ { "label": "각도", "value": "가지의 영양생장을 고려해 45° 정도가 적당" } ] },
+    { "title": "철사돌리기", "timing": "4~7월",
+      "items": [ { "label": "기준", "value": "접목부 상위 5cm 지점, 1.6mm 철사" } ] },
+    { "title": "열매솎기", "timing": "6월 하순 이후 2~3회",
+      "items": [ { "label": "엽과비", "value": "80~100 정도" } ] }
+  ],
+  "fertilizer": null,
+  "pests": [
+    { "name": "검은무늬병", "kind": "병", "timing": null, "control": null },
+    { "name": "더뎅이병", "kind": "병", "timing": null, "control": null },
+    { "name": "방화해충", "kind": "해충", "timing": null, "control": null },
+    { "name": "잎말이나방", "kind": "해충", "timing": null, "control": null },
+    { "name": "진딧물", "kind": "해충", "timing": null, "control": null },
+    { "name": "깍지벌레", "kind": "해충", "timing": null, "control": null },
+    { "name": "응애류", "kind": "해충", "timing": null, "control": "월동방제" },
+    { "name": "귤응애", "kind": "해충", "timing": null, "control": null },
+    { "name": "녹응애", "kind": "해충", "timing": null, "control": null },
+    { "name": "굴나방", "kind": "해충", "timing": null, "control": null },
+    { "name": "부피과", "kind": "생리장해", "timing": null, "control": "적기 수확, 성숙기 질소질 비료 적정 시용, 착색 초기 탄산칼슘 200배액 살포" },
+    { "name": "일소과", "kind": "생리장해", "timing": null, "control": "과실에 직사광선이 닿지 않도록 차단, 봉지 씌우기, 과실 비대 중기 붕소·칼리 엽면 살포" },
+    { "name": "호반증", "kind": "생리장해", "timing": null, "control": "칼슘 엽면 살포, 가을 가뭄 시 적정 물주기" }
+  ],
+  "disasters": [
+    { "risk": "언피해", "timing": null, "measures": ["병해충 관리로 낙엽 방지", "과다 결실 방지", "월동 전 저장양분 충분히 축적", "월동 전 충분한 물주기", "수관 피복"] },
+    { "risk": "조풍해·한풍해", "timing": null, "measures": ["피해 후 10시간 이내 염분 세척(3톤/10a)", "상처 부위 도포제 처리와 열매솎기", "8월 이내 침수 시 요소 비료 시용", "방풍림 조성 및 방풍망 설치"] }
+  ],
+  "notes": [
+    "생리적 특성: 발아는 4월 초순 시작, 4월 25일 전후 최성기. 세포분열기는 5월 하순경",
+    "개화수와 꽃의 종류(직화, 유엽화)는 개화기의 기온과 영양상태에 따라 결정됨",
+    "생육단계: 가지·뿌리 생장기, 발아기, 개화기, 과실비대기, 수확기",
+    "페이지에 비료 시용량(kg/10a) 표는 없음",
+    "전정·거름주기·병해충 방제의 월·순 시기는 페이지 도표에서 텍스트로 확인되지 않음"
+  ],
+  "source": "https://www.nongsaro.go.kr/portal/ps/psb/psbl/workScheduleDtl.ps?menuId=PS00087&cntntsNo=30666"
+}

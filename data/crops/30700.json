@@ -1,0 +1,76 @@
+{
+  "id": 30700,
+  "name": "강낭콩",
+  "type": "촉성, 조숙(터널), 노지, 일반(보통), 반고랭지, 난지억제",
+  "category": "밭농사",
+  "sciName": null,
+  "family": null,
+  "summary": "직립형과 덩굴성 품종이 있는 콩과 밭작물. 생육기간은 조생종 90일 내외, 만생종 130일 내외이며 질소 고정능력이 약해 질소질 비료를 반드시 시용한다.",
+  "env": [
+    { "label": "재배 적온", "value": "10~25℃ (최적 15~21℃)" },
+    { "label": "발아 최적온도", "value": "26~37℃ (최저 10℃ 내외, 최고 38~42℃)" },
+    { "label": "화분 발아 최적온도", "value": "20~25℃ (35℃ 이상에서는 매우 불량)" },
+    { "label": "적정 토양", "value": "양토~사양토, pH 5.3~7.9" }
+  ],
+  "schedule": [
+    { "task": "파종(촉성)", "kind": "sow", "region": "남부지역", "start": { "m": 9, "p": 1 }, "end": { "m": 2, "p": 1 }, "text": "9월 상순~2월 상순" },
+    { "task": "정식(촉성)", "kind": "plant", "region": "남부지역", "start": null, "end": null, "text": "파종 후 15~25일" },
+    { "task": "수확(촉성)", "kind": "harvest", "region": "남부지역", "start": { "m": 11, "p": 3 }, "end": { "m": 5, "p": 1 }, "text": "11월 하순~5월 상순" },
+    { "task": "파종(조숙·터널)", "kind": "sow", "region": "도시근교 난지", "start": { "m": 3, "p": 1 }, "end": { "m": 3, "p": 2 }, "text": "3월 상중순" },
+    { "task": "정식(조숙·터널)", "kind": "plant", "region": "도시근교 난지", "start": { "m": 3, "p": 3 }, "end": { "m": 3, "p": 3 }, "text": "3월 하순" },
+    { "task": "수확(조숙·터널)", "kind": "harvest", "region": "도시근교 난지", "start": { "m": 4, "p": 3 }, "end": { "m": 5, "p": 3 }, "text": "4월 하순~5월 하순" },
+    { "task": "파종(노지)", "kind": "sow", "region": "도시근교 난지", "start": { "m": 3, "p": 3 }, "end": { "m": 4, "p": 1 }, "text": "3월 하순~4월 상순" },
+    { "task": "정식(노지)", "kind": "plant", "region": "도시근교 난지", "start": { "m": 4, "p": 3 }, "end": { "m": 4, "p": 3 }, "text": "4월 하순" },
+    { "task": "수확(노지)", "kind": "harvest", "region": "도시근교 난지", "start": { "m": 5, "p": null }, "end": { "m": 6, "p": 1 }, "text": "5월~6월 상순" },
+    { "task": "파종(일반·보통)", "kind": "sow", "region": "전국", "start": { "m": 3, "p": 3 }, "end": { "m": 4, "p": 3 }, "text": "3월 하순~4월 하순" },
+    { "task": "수확(일반·보통)", "kind": "harvest", "region": "전국", "start": { "m": 6, "p": null }, "end": { "m": 7, "p": null }, "text": "6~7월" },
+    { "task": "파종(반고랭지)", "kind": "sow", "region": "산간 고랭지", "start": { "m": 5, "p": null }, "end": { "m": 7, "p": null }, "text": "5~7월" },
+    { "task": "수확(반고랭지)", "kind": "harvest", "region": "산간 고랭지", "start": { "m": 8, "p": null }, "end": { "m": 11, "p": null }, "text": "8~11월" },
+    { "task": "파종(난지억제)", "kind": "sow", "region": "전국", "start": { "m": 7, "p": 3 }, "end": { "m": 8, "p": 2 }, "text": "7월 하순~8월 중순" },
+    { "task": "수확(난지억제)", "kind": "harvest", "region": "전국", "start": { "m": 9, "p": null }, "end": { "m": 12, "p": null }, "text": "9~12월" },
+    { "task": "솎기·보식", "kind": "manage", "region": null, "start": null, "end": null, "text": "발아 후부터 복엽 전개기까지" },
+    { "task": "김매기·북주기 및 배수작업", "kind": "manage", "region": null, "start": null, "end": null, "text": "4엽기" },
+    { "task": "병해 방제", "kind": "pest", "region": null, "start": null, "end": null, "text": "개화 10일 전과 개화기에 각 1회" }
+  ],
+  "stages": [
+    { "title": "파종", "timing": "재배 유형별 상이(일반·보통 3월 하순~4월 하순)", "items": [
+      { "label": "파종량", "value": "7~9ℓ/10a" },
+      { "label": "심는 거리(직립형)", "value": "조생종 40×15cm, 만생종 50×15cm" },
+      { "label": "심는 거리(덩굴성)", "value": "75×30~40cm" }
+    ] },
+    { "title": "솎기·보식", "timing": "발아 후부터 복엽 전개기까지", "items": [
+      { "label": "기준", "value": "1~2포기/주 유지" }
+    ] },
+    { "title": "김매기·북주기", "timing": "4엽기", "items": [] },
+    { "title": "지주 세우기(덩굴성 품종)", "timing": "파종 전 설치, 본엽 1~2개가 나올 시기에 유인", "items": [] },
+    { "title": "수확", "timing": "재배 유형별 상이", "items": [
+      { "label": "풋강낭콩 수확", "value": "파종 후 약 60일" },
+      { "label": "수확적기", "value": "꼬투리가 70~80% 마른 때" },
+      { "label": "생육기간", "value": "조생종 90일 내외(키 작은 품종), 만생종 130일 내외" }
+    ] }
+  ],
+  "fertilizer": {
+    "unit": "kg/10a",
+    "columns": ["3요소 N", "3요소 P", "3요소 K", "요소", "용성인비", "염화가리", "석회", "퇴비"],
+    "rows": [
+      { "name": "시비량", "values": [4, 7, 6, 9, 41, 10, 200, 1500] }
+    ],
+    "note": "밑거름·웃거름 구분은 원문에 없음. 지역과 필지별 비옥도에 따라 조정. 질소 고정능력이 약하므로 질소질 비료를 반드시 시용. 원문 표가 한 줄로 풀려 있어 값과 열의 대응은 값 순서에 따른 것임."
+  },
+  "pests": [
+    { "name": "탄저병, 녹병, 각반병, 갈색무늬병, 흰가루병", "kind": "병", "timing": "개화 10일 전, 개화기", "control": "개화 10일 전과 개화기에 각 1회, 총 2회 방제" },
+    { "name": "바이러스병", "kind": "병", "timing": null, "control": "매개충인 진딧물 방제" },
+    { "name": "콩나방, 노린재류, 팥알락명나방", "kind": "해충", "timing": "개화기", "control": "개화기에 방제" },
+    { "name": "연작 피해(선충, 탄저병, 균핵병)", "kind": "병", "timing": null, "control": "연작 피해가 심한 지역은 3~4년 윤작, 선충·탄저병·균핵병 방제 철저" }
+  ],
+  "disasters": [
+    { "risk": "초기 가뭄(발아불량, 생육초기 위조)", "timing": null, "measures": ["비 온 후 파종", "골 피복으로 수분 보존", "적정 입모수 확보를 위한 물주기"] },
+    { "risk": "고온건조(수정결실 저해, 협비대 불량)", "timing": null, "measures": ["골에 물주기", "30℃ 이상에서는 낙화·낙협·불임화분이 늘고 꼬투리가 짧아지며 꼬투리당 종자수가 줄어듦"] },
+    { "risk": "잦은 강우(습해, 웃자람 및 쓰러짐, 협부패·협내발아)", "timing": null, "measures": ["배수구 정비", "지주 설치"] }
+  ],
+  "notes": [
+    "생육과정: 유묘기 → 신장기 → 개화 및 협비대기 → 등숙기 (원문 월별 표는 칸 위치를 확인할 수 없어 시기를 넣지 않음)",
+    "원문 표에서 조숙 재배의 '터널'이 재배 유형 칸인지 적용 지역 칸인지 구분이 불명확함"
+  ],
+  "source": "https://www.nongsaro.go.kr/portal/ps/psb/psbl/workScheduleDtl.ps?menuId=PS00087&cntntsNo=30700"
+}

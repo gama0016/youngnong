@@ -1,0 +1,189 @@
+{
+  "id": 30748,
+  "name": null,
+  "type": null,
+  "category": null,
+  "sciName": null,
+  "family": null,
+  "summary": "원문 페이지에 작목명이 표시되지 않음(제목란 \"-\"). 작업 항목명만 있고 상세 내용 없음",
+  "env": [],
+  "schedule": [
+    {
+      "task": "종자확보",
+      "kind": "etc",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "종자침종",
+      "kind": "etc",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "퇴비사용",
+      "kind": "fert",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "깊이갈이",
+      "kind": "etc",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "밑거름시용",
+      "kind": "fert",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "파종·복토",
+      "kind": "sow",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "제초제시용, 피복 및 피복물 고정",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "관수",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "솎음작업",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "1차 적심",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "2차 적심",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "3차 적심",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "가을파종",
+      "kind": "sow",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "제초제 살포, 피복물 제거",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "1차 추비",
+      "kind": "fert",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "2차 추비",
+      "kind": "fert",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "3차 추비",
+      "kind": "fert",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    }
+  ],
+  "stages": [],
+  "fertilizer": null,
+  "pests": [
+    {
+      "name": "입고병",
+      "kind": "병",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "탄저병",
+      "kind": "병",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "갈색점무늬병",
+      "kind": "병",
+      "timing": null,
+      "control": null
+    }
+  ],
+  "disasters": [
+    {
+      "risk": "가뭄",
+      "timing": null,
+      "measures": []
+    },
+    {
+      "risk": "장마",
+      "timing": null,
+      "measures": []
+    }
+  ],
+  "notes": [
+    "원문 페이지에 작목명이 표시되지 않음(제목란 \"-\"). 작업 항목명만 있고 상세 내용 없음",
+    "월별 일정표(상·중·하순 막대)는 원문에서 칸 위치를 확인할 수 없어 작업별 시기를 비워 둠",
+    "생육 단계: 파종기, 발아기, 유묘기, 생식생장기, 수확기",
+    "예상되는 문제점: 파종지연, 입모율 불량, 습해발생, 병다발생"
+  ],
+  "source": "https://www.nongsaro.go.kr/portal/ps/psb/psbl/workScheduleDtl.ps?menuId=PS00087&cntntsNo=30748"
+}

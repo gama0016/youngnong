@@ -56,8 +56,8 @@ const cats = () => {
 const myCrops = () => CROPS.filter((c) => favs.has(String(c.id)));
 
 // ---------- shared pieces ----------
-const favBtn = (c) => `<button class="fav" data-fav="${c.id}" aria-pressed="${favs.has(String(c.id))}" aria-label="${esc(fullName(c))} 내 작목 ${favs.has(String(c.id)) ? '해제' : '추가'}" title="내 작목">★</button>`;
-const cropCard = (c) => `<div class="crop-card-w" style="position:relative"><a class="crop-card" href="#/crop/${c.id}"><b>${esc(c.name)}</b><span>${esc(c.type || c.category)}</span></a>${favBtn(c)}</div>`;
+const favBtn = (c) => `<button class="fav" data-fav="${c.id}" aria-pressed="${favs.has(String(c.id))}" aria-label="${esc(fullName(c))} 내 작목 ${favs.has(String(c.id)) ? '해제' : '추가'}" title="내 작목"><span class="xun3" aria-hidden="true"><i></i><i></i><i></i></span></button>`;
+const cropCard = (c) => `<div class="crop-card-w"><a class="crop-card" href="#/crop/${c.id}"><b>${esc(c.name)}</b><span>${esc(c.type || c.category)}</span></a>${favBtn(c)}</div>`;
 const kindTag = (k) => `<span class="tag kind" data-kind="${esc(k || 'etc')}">${KINDS[k] || '기타'}</span>`;
 
 function tasksAt(crops, x) {
@@ -71,54 +71,100 @@ function tasksAt(crops, x) {
 }
 
 // ---------- views ----------
+function todoList(list, isNext) {
+  return list.map(({ c, s, ending, starting }) => `
+    <a class="todo-item" href="#/crop/${c.id}">
+      ${kindTag(s.kind)}
+      <div><span class="todo-crop">${esc(fullName(c))}</span><br><b>${esc(s.task)}</b>${s.region ? ` <span class="tag plain">${esc(s.region)}</span>` : ''}
+      <div class="when">${esc(whenText(s))}${isNext ? '' : ending ? ' · <span class="ending">이번 순까지</span>' : starting ? ' · 이번 순 시작' : ''}</div></div>
+    </a>`).join('');
+}
+const slotName = (x) => `${Math.floor(x / 3) + 1}월 ${XUN[x % 3]}`;
+function yearFrag(x) {
+  const mine = myCrops();
+  const all = tasksAt(mine.length ? mine : CROPS, x);
+  const crops = new Set(all.map((t) => t.c.id)).size;
+  return {
+    count: all.length ? `${mine.length ? '내 작목' : '전체 작목'} ${crops}개, 작업 ${all.length}건` : '시기가 적힌 작업이 없는 순입니다',
+    html: all.length ? todoList(all.slice(0, 7), true) + (all.length > 7 ? `<a class="todo-item" href="#/calendar?m=${Math.floor(x / 3) + 1}"><span></span><b>${Math.floor(x / 3) + 1}월 작업 ${all.length}건 모두 보기</b></a>` : '') : '<p class="sub">농사로 원문에 이 순의 작업 시기가 글로 적힌 작목이 없습니다.</p>',
+  };
+}
 function viewHome() {
   const d = today();
   const x = nowSlot();
   const mine = myCrops();
-  const tasks = tasksAt(mine, x);
-  const next = tasksAt(mine, (x + 1) % 36).filter((t) => t.starting);
-  const risks = mine.flatMap((c) => (c.disasters || []).map((r) => ({ c, r }))).slice(0, 6);
-
-  const todo = (list, isNext) => list.map(({ c, s, ending, starting }) => `
-    <a class="todo-item" href="#/crop/${c.id}">
-      ${kindTag(s.kind)}
-      <div><span class="todo-crop">${esc(fullName(c))}</span><br><b>${esc(s.task)}</b>${s.region ? ` <span class="tag">${esc(s.region)}</span>` : ''}
-      <div class="when">${esc(whenText(s))}${isNext ? '' : ending ? ' · <span class="ending">이번 순까지</span>' : starting ? ' · 이번 순 시작' : ''}</div></div>
-    </a>`).join('');
-
-  return `<div class="stack">
+  const tasks = tasksAt(mine.length ? mine : CROPS, x);
+  const yf = yearFrag(x);
+  const area = store.get('area', { v: 1000, u: 'm2' });
+  const py = Math.min(3000, Math.max(10, Math.round(toM2(area.v, area.u) / (400 / 121) / 10) * 10));
+  return `<div class="home">
     <section class="hero">
-      <p class="date">${d.getFullYear()}년 ${d.getMonth() + 1}월 ${d.getDate()}일 · ${d.getMonth() + 1}월 ${XUN[xunOf(d) - 1]}</p>
-      <h1>지금 해야 할 농작업</h1>
-    </section>
-    <form class="search-big" data-search role="search">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.500-3.500"/></svg>
-      <input type="search" name="q" placeholder="작목 검색 (예: 고추, 사과, 벼)" aria-label="작목 검색" autocomplete="off">
-    </form>
-    ${mine.length ? `
-    <div class="grid-2">
-      <section class="card"><h2>이번 순 작업 <small>${d.getMonth() + 1}월 ${XUN[xunOf(d) - 1]} · 내 작목 기준</small></h2>
-        ${tasks.length ? `<div class="todo">${todo(tasks)}</div>` : '<p class="sub">이번 순에 시기가 표기된 작업이 없습니다. 작목 상세에서 전체 일정을 확인하세요.</p>'}
-      </section>
-      <div class="stack">
-        <section class="card"><h2>다음 순에 시작 <small>미리 준비</small></h2>
-          ${next.length ? `<div class="todo">${todo(next, true)}</div>` : '<p class="sub">다음 순에 새로 시작하는 작업이 없습니다.</p>'}
-        </section>
-        <section class="card"><h2>내 작목 <small>${mine.length}개</small></h2>
-          <div class="crop-grid">${mine.map(cropCard).join('')}</div>
-        </section>
+      <div class="hero-copy">
+        <h1>${d.getMonth() + 1}월 ${XUN[xunOf(d) - 1]},<br>밭에서 할 일</h1>
+        <p>농사로 농작업일정을 작목마다 한 화면에 모았습니다. 오늘 날짜가 든 순의 일부터 보여 드립니다.</p>
+        <form class="search-big" data-search role="search">
+          <input type="search" name="q" placeholder="작목 이름 (고추, 사과, 벼)" aria-label="작목 검색" autocomplete="off">
+          <button class="btn" type="submit">찾기</button>
+        </form>
       </div>
-    </div>
-    ${risks.length ? `<section class="card"><h2>내 작목 재해 대비 <small>미리 점검</small></h2>
-      <div class="chips">${risks.map(({ c, r }) => `<a class="chip" href="#/crop/${c.id}?s=risk">${esc(c.name)} · ${esc(r.risk)}</a>`).join('')}</div></section>` : ''}
-    ` : `
-    <section class="card"><h2>내 작목을 먼저 골라 주세요</h2>
-      <p class="sub" style="margin-bottom:14px">재배하는 작목의 ★를 누르면, 이 화면에 그 작목의 <b>이번 순 농작업</b>만 모아서 보여 드립니다. 가입 없이 이 기기에 저장됩니다.</p>
-      <a class="btn primary" href="#/crops">작목 고르기</a>
+      <div class="stage">
+        <h2>${mine.length ? '내 작목, 이번 순' : '전체 작목, 이번 순'}</h2>
+        <div class="frag" data-ui>
+          ${tasks.length ? `<div class="todo">${todoList([...tasks].sort((a, b) => b.ending - a.ending || b.starting - a.starting).slice(0, 5))}</div>` : `<div class="todo"><div class="todo-item"><span></span><div><b>이번 순에 시기가 적힌 작업이 없습니다</b><div class="when">작목 상세에서 연간 달력을 확인하세요</div></div></div></div>`}
+        </div>
+        <p class="more row"><a class="btn" href="${mine.length ? '#/calendar' : '#/crops'}">${mine.length ? `${d.getMonth() + 1}월 달력 열기` : '내 작목 고르기'}</a></p>
+      </div>
     </section>
-    <section class="card"><h2>이번 순 전체 작목 작업 <small>${d.getMonth() + 1}월 ${XUN[xunOf(d) - 1]}</small></h2>
-      ${(() => { const all = tasksAt(CROPS, x).slice(0, 14); return all.length ? `<div class="todo">${todo(all)}</div><p style="margin-top:12px"><a class="btn small" href="#/calendar">달력에서 전체 보기</a></p>` : '<p class="sub">표시할 작업이 없습니다.</p>'; })()}
-    </section>`}
+    ${mine.length ? `<section class="poster" style="margin-top:clamp(64px,9vw,120px)"><h2>내 작목 ${mine.length}개</h2><div class="crop-grid">${mine.map(cropCard).join('')}</div></section>` : ''}
+
+    <section class="year">
+      <div class="year-split">
+        <div class="year-clause">
+          <h2 data-yr-clause>${slotName(x)}</h2>
+          <p data-yr-count>${yf.count}</p>
+        </div>
+        <div class="year-frag"><div class="todo" data-ui data-yr-frag>${yf.html}</div></div>
+      </div>
+      <div class="year-ctl">
+        <input type="range" min="0" max="35" step="1" value="${x}" data-yr aria-label="한 해를 순 단위로 넘겨 보기" aria-valuetext="${slotName(x)}">
+        <div class="year-months" aria-hidden="true">${Array.from({ length: 12 }, (_, i) => `<span class="${Math.floor(x / 3) === i ? 'on' : ''}">${i + 1}월</span>`).join('')}</div>
+      </div>
+    </section>
+
+    <section class="photo-band">
+      <figure class="shutter"><img src="assets/rice-farmer-joam-ri-south-korea.jpg" alt="모내기를 마친 논에서 허리를 굽혀 모를 손보는 농부, 경기도 화성 조암리" loading="lazy" width="1920" height="1440"></figure>
+      <p class="statement">농사는 때를 맞추는 일입니다. 한 달을 상순, 중순, 하순 세 칸으로 나누고 지금 칸에 든 일만 꺼내 보여 드립니다.</p>
+    </section>
+
+    <section class="poster">
+      ${cats().map(([k, n]) => `<a class="poster-line" href="#/crops?cat=${encodeURIComponent(k)}"><b>${esc(k)}</b><span>작목 ${n}개</span></a>`).join('')}
+      <p class="row"><a class="btn primary" href="#/crops">전체 작목 ${CROPS.length}개 보기</a></p>
+    </section>
+
+    <section class="area">
+      <div style="display:grid;gap:28px">
+        <h2>밭이 몇 평인가요?</h2>
+        <div class="area-ctl" data-ui>
+          <label class="f" for="area-range">면적</label>
+          <output data-area-py>${fmt(py, 0)}평</output>
+          <input id="area-range" type="range" min="10" max="3000" step="10" value="${py}" data-area-range>
+        </div>
+      </div>
+      <div class="area-out">
+        <div class="area-fig" data-area-fig>${fmt(py * (400 / 121) / 1000, 2)}<small>× 10a</small></div>
+        <p>농사로의 표준 시비량은 10a(1,000㎡, 약 300평) 기준입니다. 1평을 3.3058㎡로 계산했고, 여기서 정한 면적에 맞춰 작목별 비료 표가 환산됩니다.</p>
+      </div>
+    </section>
+
+    <section class="archive">
+      <p class="statement">1911년 모내기철의 논. 백 년 전에도 농부는 달력의 같은 칸에서 같은 일을 했습니다.</p>
+      <div class="archive-row">
+        <figure><img src="assets/farmers-of-forty-centuries-korean-rice-fields.jpg" alt="소로 써레질하며 모내기 중인 1911년의 한국 논" loading="lazy" width="1350" height="785"></figure>
+        <figure><img src="assets/farmers-of-forty-centuries-rice-paddies-at.jpg" alt="산골짜기 머리에 층층이 놓인 1911년의 논" loading="lazy" width="1473" height="1132"></figure>
+        <figure><img src="assets/farmers-of-forty-centuries-landscape-in-korea.jpg" alt="낮은 논두렁으로 잘게 나뉜 1911년 한국의 들" loading="lazy" width="1400" height="900"></figure>
+      </div>
+      <p class="credits">사진: <a href="https://commons.wikimedia.org/wiki/File:Rice_farmer_(Joam-Ri,_South_Korea).jpg" target="_blank" rel="noopener">Rice farmer (Joam-Ri, South Korea)</a>, 그리고 F. H. King 『Farmers of Forty Centuries』(1911)의 <a href="https://commons.wikimedia.org/wiki/File:Farmers_of_forty_centuries_-_Korean_rice_fields_being_transplanted.jpg" target="_blank" rel="noopener">Korean rice fields being transplanted</a>, <a href="https://commons.wikimedia.org/wiki/File:Farmers_of_forty_centuries_-_Rice_paddies_at_head_of_mountain_valley.jpg" target="_blank" rel="noopener">Rice paddies at head of mountain valley</a>, <a href="https://commons.wikimedia.org/wiki/File:Farmers_of_forty_centuries_-_Landscape_in_Korea.jpg" target="_blank" rel="noopener">Landscape in Korea</a>. 모두 퍼블릭 도메인, Wikimedia Commons.</p>
+    </section>
   </div>`;
 }
 
@@ -132,8 +178,8 @@ function viewCrops(q) {
   return `<div class="stack">
     <h1>작목</h1>
     <form class="search-big" data-search role="search">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.500-3.500"/></svg>
       <input type="search" name="q" value="${esc(term)}" placeholder="작목 이름으로 찾기" aria-label="작목 검색" autocomplete="off">
+      <button class="btn" type="submit">찾기</button>
     </form>
     <div class="chips scroll">
       <a class="chip ${cat ? '' : 'on'}" href="#/crops${term ? '?q=' + encodeURIComponent(term) : ''}">전체 <span class="n">${CROPS.length}</span></a>
@@ -148,22 +194,24 @@ function gantt(c) {
   if (!rows.length) return '';
   const x = nowSlot();
   const m = today().getMonth() + 1;
-  const bar = (a, b, k) => `<i class="g-bar" data-kind="${esc(k || 'etc')}" style="grid-column:${a + 1}/${b + 2}"></i>`;
-  return `<div class="gantt-wrap"><div class="gantt" role="img" aria-label="${esc(fullName(c))} 연간 농작업 달력">
+  const cells = Array.from({ length: 12 }, (_, i) => `<i class="g-m" style="grid-column:${i * 3 + 1}/span 3"></i>`).join('');
+  const bar = (a, b, k) => `<i class="g-bar grow" data-kind="${esc(k || 'etc')}" style="grid-column:${a + 1}/${b + 2}"></i>`;
+  return `<div class="gantt-wrap"><div class="gantt" data-ui role="img" aria-label="${esc(fullName(c))} 연간 농작업 달력">
     <div class="g-row"><span></span><div class="g-months">${Array.from({ length: 12 }, (_, i) => `<span class="${i + 1 === m ? 'now' : ''}">${i + 1}월</span>`).join('')}</div></div>
     ${rows.map(({ s, r }) => `<div class="g-row">
       <div class="g-label">${esc(s.task)}${s.region ? `<small>${esc(s.region)}</small>` : ''}</div>
-      <div class="g-track" title="${esc(whenText(s))}">${r[0] <= r[1] ? bar(r[0], r[1], s.kind) : bar(r[0], 35, s.kind) + bar(0, r[1], s.kind)}<i class="g-now" style="left:${((x + 0.5) / 36) * 100}%"></i></div>
+      <div class="g-track" title="${esc(whenText(s))}">${cells}${r[0] <= r[1] ? bar(r[0], r[1], s.kind) : bar(r[0], 35, s.kind) + bar(0, r[1], s.kind)}<i class="g-now" style="left:${((x + 0.5) / 36) * 100}%"></i></div>
     </div>`).join('')}
   </div></div>
-  <div class="legend">${Object.entries(KINDS).map(([k, v]) => `<span data-kind="${k}"><i></i>${v}</span>`).join('')}<span><i style="background:var(--accent);width:2px"></i>지금</span></div>`;
+  <div class="legend">${Object.entries(KINDS).map(([k, v]) => `<span data-kind="${k}"><i></i>${v}</span>`).join('')}<span><i style="background:var(--ink);width:4px"></i>지금</span></div>`;
 }
 
+// 시비 표 단위의 기준 면적(㎡): kg/10a → 1000, kg/ha → 10000, 그 밖은 환산하지 않음
+const unitBase = (u) => (/10\s*a/i.test(u || '') ? 1000 : /\/\s*ha/i.test(u || '') ? 10000 : 0);
 function fertTable(c, areaM2) {
   const f = c.fertilizer;
   if (!f?.rows?.length) return '';
-  const per10a = /10\s*a/i.test(f.unit || '');
-  const k = per10a ? areaM2 / 1000 : 1;
+  const k = unitBase(f.unit) ? areaM2 / unitBase(f.unit) : 1;
   return `<div class="tbl-wrap"><table>
     <thead><tr><th>구분</th>${(f.columns || []).map((h) => `<th>${esc(h)}</th>`).join('')}</tr></thead>
     <tbody>${f.rows.map((r) => `<tr><th>${esc(r.name)}</th>${(r.values || []).map((v) => `<td>${typeof v === 'number' ? fmt(v * k, 2) : esc(v ?? '–')}</td>`).join('')}</tr>`).join('')}</tbody>
@@ -179,33 +227,32 @@ function viewCrop(id, q) {
   const has = { cal: (c.schedule || []).length, stage: (c.stages || []).length, fert: c.fertilizer?.rows?.length, pest: (c.pests || []).length, risk: (c.disasters || []).length };
   const jump = [['cal', '달력'], ['stage', '작업 방법'], ['fert', '비료'], ['pest', '병해충'], ['risk', '재해 대책']].filter(([k]) => has[k]);
   return `<div class="stack" data-crop="${c.id}">
-    <p class="crumb"><a href="#/crops">작목</a> › <a href="#/crops?cat=${encodeURIComponent(c.category)}">${esc(c.category)}</a></p>
     <header class="crop-head">
       <div class="spread">
-        <h1>${esc(c.name)}${c.type ? `<small>${esc(c.type)}</small>` : ''}</h1>
+        <div><h1>${esc(c.name)}</h1><p class="type"><a href="#/crops?cat=${encodeURIComponent(c.category)}">${esc(c.category)}</a>${c.type ? ' · ' + esc(c.type) : ''}</p></div>
         <div class="row">
-          <button class="btn" data-fav="${c.id}" aria-pressed="${favs.has(String(c.id))}">★ 내 작목</button>
-          <a class="btn" href="#/diary?crop=${c.id}">일지 쓰기</a>
-          <button class="btn" data-print>인쇄</button>
+          <button class="btn" data-fav="${c.id}" aria-pressed="${favs.has(String(c.id))}">내 작목</button>
+          <a class="btn quiet" href="#/diary?crop=${c.id}">일지 쓰기</a>
+          <button class="btn quiet" data-print>인쇄</button>
         </div>
       </div>
       ${c.sciName || c.family ? `<p class="sub">${esc([c.sciName, c.family].filter(Boolean).join(' · '))}</p>` : ''}
-      ${c.summary ? `<p>${esc(c.summary)}</p>` : ''}
+      ${c.summary ? `<p class="lede">${esc(c.summary)}</p>` : ''}
     </header>
     ${jump.length > 1 ? `<nav class="jump chips scroll" aria-label="섹션 이동">${jump.map(([k, v]) => `<button class="chip" data-jump="${k}">${v}</button>`).join('')}</nav>` : ''}
     ${(c.env || []).length ? `<section class="card"><h2>재배 환경 기준</h2><dl class="facts">${c.env.map((e) => `<div class="fact"><dt>${esc(e.label)}</dt><dd>${esc(e.value)}</dd></div>`).join('')}</dl></section>` : ''}
     ${has.cal ? `<section class="card" id="s-cal"><h2>연간 농작업 달력</h2>
       ${gantt(c) || '<p class="sub">농사로 원문에 시기가 명시된 작업이 없습니다.</p>'}
-      ${noPeriod.length ? `<p class="sub" style="margin:14px 0 8px">시기 미표기 작업 (원문 표 참조)</p><div class="chips">${noPeriod.map((s) => `<span class="tag" style="padding:5px 11px">${esc(s.task)}</span>`).join('')}</div>` : ''}
+      ${noPeriod.length ? `<p class="sub" style="margin:14px 0 8px">시기 미표기 작업 (원문 표 참조)</p><div class="chips">${noPeriod.map((s) => `<span class="tag plain" style="padding:6px 12px;background:var(--bg)">${esc(s.task)}</span>`).join('')}</div>` : ''}
     </section>` : ''}
-    ${has.stage ? `<section class="card" id="s-stage"><h2>단계별 작업 방법</h2>${c.stages.map((s) => `<div class="stage">
+    ${has.stage ? `<section class="card" id="s-stage"><h2>단계별 작업 방법</h2><div class="stages">${c.stages.map((s) => `<div class="stage-b">
       <h3>${esc(s.title)}${s.timing ? `<small>${esc(s.timing)}</small>` : ''}</h3>
-      <dl class="kv">${(s.items || []).map((i) => `<dt>${esc(i.label)}</dt><dd>${esc(i.value)}</dd>`).join('')}</dl></div>`).join('')}</section>` : ''}
+      <dl class="kv">${(s.items || []).map((i) => `<dt>${esc(i.label)}</dt><dd>${esc(i.value)}</dd>`).join('')}</dl></div>`).join('')}</div></section>` : ''}
     ${has.fert ? `<section class="card" id="s-fert"><h2>비료 주는 양 <small data-fert-unit></small></h2>
       <div class="calc-bar">
         <label class="f">내 밭 면적<input type="number" inputmode="decimal" min="0" step="any" data-area value="${esc(area.v)}"></label>
         <label class="f">단위<select data-area-unit>${Object.entries(UNITS).map(([k, u]) => `<option value="${k}" ${k === area.u ? 'selected' : ''}>${u.label}</option>`).join('')}</select></label>
-        <button class="btn" data-area-reset>기준(10a)으로</button>
+        <button class="btn quiet" data-area-reset>기준(10a)으로</button>
       </div>
       <div data-fert>${fertTable(c, areaM2)}</div>
       ${c.fertilizer.note ? `<p class="sub" style="margin-top:10px">${esc(c.fertilizer.note)}</p>` : ''}
@@ -216,7 +263,7 @@ function viewCrop(id, q) {
       <tbody>${c.pests.map((p) => `<tr><th>${esc(p.name)}</th><td style="text-align:left">${esc(p.kind || '')}</td><td class="wrap">${esc(p.timing || '–')}</td><td class="wrap">${esc(p.control || '–')}</td></tr>`).join('')}</tbody></table></div>
       <p class="sub" style="margin-top:10px">등록 약제와 안전사용기준은 <a href="https://psis.rda.go.kr" target="_blank" rel="noopener">농약안전정보시스템</a>, 병해충 예찰·진단은 <a href="https://ncpms.rda.go.kr" target="_blank" rel="noopener">국가농작물병해충관리시스템</a>에서 확인하세요.</p>
     </section>` : ''}
-    ${has.risk ? `<section class="card" id="s-risk"><h2>기상재해 대책</h2>${c.disasters.map((r) => `<div class="risk"><h3>${esc(r.risk)}${r.timing ? `<small>${esc(r.timing)}</small>` : ''}</h3><ul class="dots">${(r.measures || []).map((m) => `<li>${esc(m)}</li>`).join('')}</ul></div>`).join('')}</section>` : ''}
+    ${has.risk ? `<section class="card" id="s-risk"><h2>기상재해 대책</h2><div class="risks">${c.disasters.map((r) => `<div class="risk"><h3>${esc(r.risk)}${r.timing ? `<small>${esc(r.timing)}</small>` : ''}</h3><ul class="dots">${(r.measures || []).map((m) => `<li>${esc(m)}</li>`).join('')}</ul></div>`).join('')}</div></section>` : ''}
     ${(c.notes || []).length ? `<section class="card"><h2>참고</h2><ul class="dots">${c.notes.map((n) => `<li>${esc(n)}</li>`).join('')}</ul></section>` : ''}
     <p class="source">출처: 농촌진흥청 농사로 농작업일정 「${esc(fullName(c))}」 · <a href="${esc(c.source)}" target="_blank" rel="noopener">원문 보기</a></p>
   </div>`;
@@ -239,7 +286,7 @@ function viewCalendar(q) {
     <h1>월별 농작업 달력</h1>
     <div class="months">${Array.from({ length: 12 }, (_, i) => `<button data-go="${link({ m: i + 1 })}" aria-pressed="${i + 1 === m}" class="${i + 1 === curM ? 'now' : ''}">${i + 1}월</button>`).join('')}</div>
     <div class="chips scroll">
-      <a class="chip ${scope === 'mine' ? 'on' : ''}" href="${link({ scope: 'mine' })}">★ 내 작목</a>
+      <a class="chip ${scope === 'mine' ? 'on' : ''}" href="${link({ scope: 'mine' })}">내 작목</a>
       <a class="chip ${scope === 'all' ? 'on' : ''}" href="${link({ scope: 'all' })}">전체 작목</a>
       <span style="width:8px;flex:none"></span>
       <a class="chip ${cat ? '' : 'on'}" href="${link({ cat: '' })}">모든 분류</a>
@@ -250,10 +297,10 @@ function viewCalendar(q) {
       ${Object.entries(KINDS).map(([k, v]) => `<a class="chip ${kind === k ? 'on' : ''}" href="${link({ kind: k })}">${v}</a>`).join('')}
     </div>
     <section class="card"><h2>${m}월 작업 <small>${groups.length}개 작목 · 칸은 상순/중순/하순</small></h2>
-      ${groups.length ? groups.map(({ c, ts }) => `<div class="cal-group"><a href="#/crop/${c.id}">${esc(fullName(c))}</a><div class="cal-tasks">
-        ${ts.map(({ s, r }) => `<div class="cal-task" data-kind="${esc(s.kind || 'etc')}">${kindTag(s.kind)}<span>${esc(s.task)}${s.region ? ` <span class="tag">${esc(s.region)}</span>` : ''}</span>
+      ${groups.length ? '<div class="cal-groups">' + groups.map(({ c, ts }) => `<div class="cal-group"><a href="#/crop/${c.id}">${esc(fullName(c))}</a><div class="cal-tasks">
+        ${ts.map(({ s, r }) => `<div class="cal-task" data-kind="${esc(s.kind || 'etc')}">${kindTag(s.kind)}<span>${esc(s.task)}${s.region ? ` <span class="tag plain">${esc(s.region)}</span>` : ''}</span>
           <span class="when"><span class="xun" aria-hidden="true">${[1, 2, 3].map((p) => `<i class="${covers(r, slot(m, p)) ? 'on' : ''}"></i>`).join('')}</span> ${esc(whenText(s))}</span></div>`).join('')}
-      </div></div>`).join('') : `<p class="empty">${scope === 'mine' && !favs.size ? '내 작목이 없습니다. <a href="#/crops">작목에서 ★</a>를 눌러 추가하세요.' : '이 달에 시기가 표기된 작업이 없습니다.'}</p>`}
+      </div></div>`).join('') + '</div>' : `<p class="empty">${scope === 'mine' && !favs.size ? '내 작목이 없습니다. <a href="#/crops">작목</a>에서 이름 옆 세 칸 표시를 눌러 담으세요.' : '이 달에 시기가 표기된 작업이 없습니다.'}</p>`}
     </section>
   </div>`;
 }
@@ -311,9 +358,9 @@ function paintTools() {
   if (!selEl) return;
   const c = BY_ID.get(String(selEl.value));
   store.set('toolCrop', selEl.value);
-  document.querySelector('[data-tool-fert]').innerHTML = `<p class="sub" style="margin-bottom:8px">${fmt(m2, 0)}㎡ 기준 · 단위 ${/10\s*a/i.test(c.fertilizer.unit || '') ? 'kg' : esc(c.fertilizer.unit || '')}</p>` + fertTable(c, m2);
+  document.querySelector('[data-tool-fert]').innerHTML = `<p class="sub" style="margin-bottom:8px">${fmt(m2, 0)}㎡ 기준 · 단위 ${unitBase(c.fertilizer.unit) ? 'kg' : esc(c.fertilizer.unit || '')}</p>` + fertTable(c, m2);
   const fc = store.get('fert', FERT_DEFAULT);
-  const total = (re) => { const r = c.fertilizer.rows.find((x) => re.test(x.name)); const v = r?.values?.find((x) => typeof x === 'number'); return typeof v === 'number' && /10\s*a/i.test(c.fertilizer.unit || '') ? v * m2 / 1000 : null; };
+  const total = (re) => { const r = c.fertilizer.rows.find((x) => re.test(x.name)); const v = r?.values?.find((x) => typeof x === 'number'); return typeof v === 'number' && unitBase(c.fertilizer.unit) ? v * m2 / unitBase(c.fertilizer.unit) : null; };
   const rows = [['질소', /질소/, fc.n], ['인산', /인산/, fc.p], ['칼리', /칼리|칼륨|가리/, fc.k]].map(([n, re, f]) => { const t = total(re); const real = t == null ? null : t / (f.pct / 100); return `<tr><th>${n}</th><td>${fmt(t, 2)}</td><td>${fmt(f.pct, 1)}%</td><td>${fmt(real, 1)}</td><td>${real == null ? '–' : fmt(real / fc.bag, 1)}</td></tr>`; }).join('');
   document.querySelector('[data-tool-real]').innerHTML = `<div class="tbl-wrap"><table><thead><tr><th>성분</th><th>필요 성분량(kg)</th><th>비료 함량</th><th>비료 실물량(kg)</th><th>${fmt(fc.bag, 0)}kg 포대</th></tr></thead><tbody>${rows}</tbody></table></div><p class="sub" style="margin-top:8px">표의 첫 번째 수치 열(${esc(c.fertilizer.columns?.[0] || '합계')}) 기준입니다.</p>`;
 }
@@ -352,15 +399,15 @@ function viewDiary(q) {
         <section class="card"><h2>${year}년 요약</h2>
           <div class="stat"><div><b>${yl.length}</b><span>기록</span></div><div><b>${fmt(hours, 1)}</b><span>작업 시간</span></div><div><b>${fmt(cost, 0)}</b><span>비용(원)</span></div></div>
           <div class="row" style="margin-top:14px">
-            <button class="btn small" data-diary-csv>엑셀용 CSV 내보내기</button>
-            <button class="btn small" data-diary-backup>백업 파일 받기</button>
-            <label class="btn small">백업 불러오기<input type="file" accept="application/json" data-diary-restore hidden></label>
+            <button class="btn small quiet" data-diary-csv>엑셀용 CSV 내보내기</button>
+            <button class="btn small quiet" data-diary-backup>백업 파일 받기</button>
+            <label class="btn small quiet">백업 불러오기<input type="file" accept="application/json" data-diary-restore hidden></label>
           </div>
         </section>
         <section class="card"><h2>기록 <small>${list.length}건</small></h2>
-          ${list.length ? list.map((e) => `<div class="entry"><div class="meta"><b>${esc(e.date)}</b><span class="tag">${esc(e.crop)}</span><span class="tag">${esc(e.work)}</span>${e.field ? `<span>${esc(e.field)}</span>` : ''}${e.hours ? `<span>${fmt(e.hours, 1)}시간</span>` : ''}${e.cost ? `<span>${fmt(e.cost, 0)}원</span>` : ''}</div>
+          ${list.length ? '<div class="entries">' + list.map((e) => `<div class="entry"><div class="meta"><b>${esc(e.date)}</b><span class="tag plain">${esc(e.crop)}</span><span class="tag plain">${esc(e.work)}</span>${e.field ? `<span>${esc(e.field)}</span>` : ''}${e.hours ? `<span>${fmt(e.hours, 1)}시간</span>` : ''}${e.cost ? `<span>${fmt(e.cost, 0)}원</span>` : ''}</div>
             ${e.input ? `<p><b>투입</b> ${esc(e.input)}</p>` : ''}${e.memo ? `<p>${esc(e.memo)}</p>` : ''}
-            <div><button class="btn small danger" data-diary-del="${esc(e.id)}">삭제</button></div></div>`).join('') : '<p class="sub">아직 기록이 없습니다. 왼쪽에서 오늘 작업을 적어 보세요.</p>'}
+            <div><button class="btn small danger" data-diary-del="${esc(e.id)}">삭제</button></div></div>`).join('') + '</div>' : '<p class="sub">아직 기록이 없습니다. 왼쪽에서 오늘 작업을 적어 보세요.</p>'}
         </section>
       </div>
     </div>
@@ -423,6 +470,8 @@ function render() {
   else if (page === 'links') html = viewLinks(META);
   else html = '<p class="empty">페이지를 찾을 수 없습니다. <a href="#/">홈으로</a></p>';
   $app.innerHTML = html;
+  document.body.classList.toggle('is-home', page === 'home');
+  motion();
   const nav = page === 'crop' ? 'crops' : page;
   document.querySelectorAll('[data-nav]').forEach((a) => { const on = a.dataset.nav === nav; a.classList.toggle('on', on); on ? a.setAttribute('aria-current', 'page') : a.removeAttribute('aria-current'); });
   if (page === 'tools') paintTools();
@@ -451,8 +500,23 @@ function paintCropFert() {
   const area = store.get('area', { v: 1000, u: 'm2' });
   const m2 = toM2(area.v, area.u);
   box.innerHTML = fertTable(c, m2);
-  const per10a = /10\s*a/i.test(c.fertilizer.unit || '');
-  root.querySelector('[data-fert-unit]').textContent = per10a ? (m2 === 1000 ? '10a(1,000㎡·약 300평)당 kg' : `내 면적 ${fmt(m2, 0)}㎡ 기준 kg`) : (c.fertilizer.unit || '');
+  const base = unitBase(c.fertilizer.unit);
+  root.querySelector('[data-fert-unit]').textContent = base ? (m2 === base ? `${c.fertilizer.unit} (${fmt(base, 0)}㎡당)` : `내 면적 ${fmt(m2, 0)}㎡ 기준 kg`) : (c.fertilizer.unit || '');
+}
+
+// ---------- motion: 구역의 부분들이 읽는 순서대로 올라온다 (스크립트가 없으면 그대로 보임) ----------
+let io;
+function motion() {
+  if (!('IntersectionObserver' in window) || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  io?.disconnect();
+  io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { rootMargin: '0px 0px -8% 0px' });
+  const mark = (sel, cls) => document.querySelectorAll(sel).forEach((group) => [...group.children].forEach((el, i) => { el.classList.add(cls); el.style.setProperty('--i', i % 12); }));
+  mark('main > .stack, .hero-copy, .stage, .year-clause, .photo-band, .area > div, .area-out, .archive, .archive-row, .crop-head', 'rise');
+  mark('.poster, .stages, .risks, .facts, .link-grid, .cal-groups, .entries, .stage .todo', 'rise');
+  document.querySelectorAll('.photo-band figure').forEach((el) => { el.classList.remove('rise'); });
+  document.querySelectorAll('.g-bar').forEach((el, i) => el.style.setProperty('--i', i % 16));
+  document.querySelectorAll('.foot-mark i').forEach((el, i) => { el.classList.add('growy'); el.style.setProperty('--i', i); });
+  document.querySelectorAll('.rise, .grow, .growy, .shutter').forEach((el) => { if (!el.classList.contains('in')) io.observe(el); });
 }
 
 // ---------- events ----------
@@ -507,6 +571,22 @@ document.addEventListener('input', (e) => {
     const v = Number(t.value);
     if (v > 0) { t.dataset.fc === 'bag' ? (fc.bag = v) : (fc[t.dataset.fc].pct = v); store.set('fert', fc); paintTools(); }
   } else if (t.matches('[data-tool-crop]')) paintTools();
+  else if (t.matches('[data-yr]')) {
+    const x = Number(t.value);
+    const yf = yearFrag(x);
+    t.setAttribute('aria-valuetext', slotName(x));
+    document.querySelector('[data-yr-clause]').textContent = slotName(x);
+    document.querySelector('[data-yr-count]').textContent = yf.count;
+    const frag = document.querySelector('[data-yr-frag]');
+    frag.style.opacity = 0;
+    setTimeout(() => { frag.innerHTML = yf.html; frag.style.opacity = 1; }, 120);
+    document.querySelectorAll('.year-months span').forEach((el, i) => el.classList.toggle('on', i === Math.floor(x / 3)));
+  } else if (t.matches('[data-area-range]')) {
+    const py = Number(t.value);
+    store.set('area', { v: py, u: 'pyeong' });
+    document.querySelector('[data-area-py]').textContent = `${fmt(py, 0)}평`;
+    document.querySelector('[data-area-fig]').firstChild.textContent = fmt(py * (400 / 121) / 1000, 2);
+  }
 });
 document.addEventListener('change', (e) => {
   const t = e.target;

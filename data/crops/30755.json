@@ -1,0 +1,152 @@
+{
+  "id": 30755,
+  "name": null,
+  "type": "봄재배·가을재배",
+  "category": null,
+  "sciName": null,
+  "family": null,
+  "summary": "농사로 원문 페이지 제목이 \"-\"로만 표시되어 작목명이 확인되지 않음. 봄재배와 가을재배 두 작형이 표시됨.",
+  "env": [],
+  "schedule": [
+    {
+      "task": "정식(봄재배)",
+      "kind": "plant",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "중경제초(봄재배)",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "웃거름(봄재배)",
+      "kind": "fert",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "수확(봄재배)",
+      "kind": "harvest",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "조제(봄재배)",
+      "kind": "etc",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "정식(가을재배)",
+      "kind": "plant",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "웃거름(가을재배)",
+      "kind": "fert",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "중경제초(가을재배)",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "부초(가을재배)",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "개화(가을재배)",
+      "kind": "etc",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "수확(가을재배)",
+      "kind": "harvest",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "조제(가을재배)",
+      "kind": "etc",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    }
+  ],
+  "stages": [],
+  "fertilizer": null,
+  "pests": [
+    {
+      "name": "천궁표주박바구미",
+      "kind": "해충",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "당귀길쪽바구미",
+      "kind": "해충",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "줄기썩음병",
+      "kind": "병",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "뿌리썩음병",
+      "kind": "병",
+      "timing": null,
+      "control": null
+    }
+  ],
+  "disasters": [
+    {
+      "risk": "가뭄",
+      "timing": null,
+      "measures": []
+    },
+    {
+      "risk": "장마",
+      "timing": null,
+      "measures": []
+    }
+  ],
+  "notes": [
+    "원문은 월·순(상/중/하) 일정표이나 칸 위치를 확인할 수 없어 작업 시기는 비워 둠."
+  ],
+  "source": "https://www.nongsaro.go.kr/portal/ps/psb/psbl/workScheduleDtl.ps?menuId=PS00087&cntntsNo=30755"
+}

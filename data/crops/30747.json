@@ -1,0 +1,373 @@
+{
+  "id": 30747,
+  "name": "산약(마)",
+  "type": null,
+  "category": "약초",
+  "sciName": null,
+  "family": null,
+  "summary": "산약(마)의 씨마 준비, 아주심기, 지주 설치, 웃거름, 병해충 방제, 수확·저장·조제 요령.",
+  "env": [],
+  "schedule": [
+    {
+      "task": "아주심기",
+      "kind": "plant",
+      "region": "남부",
+      "start": {
+        "m": 4,
+        "p": 1
+      },
+      "end": {
+        "m": 4,
+        "p": 1
+      },
+      "text": "4월 상순"
+    },
+    {
+      "task": "아주심기",
+      "kind": "plant",
+      "region": "중부",
+      "start": {
+        "m": 4,
+        "p": 2
+      },
+      "end": {
+        "m": 4,
+        "p": 2
+      },
+      "text": "4월 중순"
+    },
+    {
+      "task": "토양선충 방제",
+      "kind": "pest",
+      "region": null,
+      "start": {
+        "m": 3,
+        "p": 1
+      },
+      "end": {
+        "m": 4,
+        "p": 3
+      },
+      "text": "3월 상순~4월 하순"
+    },
+    {
+      "task": "1차 웃거름",
+      "kind": "fert",
+      "region": null,
+      "start": {
+        "m": 6,
+        "p": 2
+      },
+      "end": {
+        "m": 6,
+        "p": 2
+      },
+      "text": "6월 중순"
+    },
+    {
+      "task": "2차 웃거름",
+      "kind": "fert",
+      "region": null,
+      "start": {
+        "m": 7,
+        "p": 2
+      },
+      "end": {
+        "m": 7,
+        "p": 2
+      },
+      "text": "7월 중순"
+    },
+    {
+      "task": "탄저병 방제",
+      "kind": "pest",
+      "region": null,
+      "start": {
+        "m": 6,
+        "p": 1
+      },
+      "end": {
+        "m": 6,
+        "p": 1
+      },
+      "text": "6월 상순"
+    },
+    {
+      "task": "시듦병 방제",
+      "kind": "pest",
+      "region": null,
+      "start": {
+        "m": 7,
+        "p": 2
+      },
+      "end": {
+        "m": 7,
+        "p": 2
+      },
+      "text": "7월 중순"
+    },
+    {
+      "task": "수확",
+      "kind": "harvest",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": "낙엽이 진 후(봄 수확은 4월 이전)"
+    },
+    {
+      "task": "주아 수확",
+      "kind": "harvest",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": "서리 오기 전"
+    },
+    {
+      "task": "자재준비",
+      "kind": "etc",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "씨마 준비(싹틔우기)",
+      "kind": "etc",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "받침대(지주) 설치",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": "아주심기 후"
+    },
+    {
+      "task": "제초제 사용",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": "아주심기 후"
+    },
+    {
+      "task": "물주기",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "굼벵이 방제",
+      "kind": "pest",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "저장",
+      "kind": "etc",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    }
+  ],
+  "stages": [
+    {
+      "title": "씨앗",
+      "timing": null,
+      "items": [
+        {
+          "label": "주아",
+          "value": "2g 이상 큰 것 사용"
+        },
+        {
+          "label": "노두",
+          "value": "절단하지 않음"
+        },
+        {
+          "label": "절편",
+          "value": "약 50g 정도, 모양이 좋은 것으로 절단"
+        },
+        {
+          "label": "씨앗 소독",
+          "value": "벤레이트 계열 분제 소독(원문 표기 불명확)"
+        },
+        {
+          "label": "씨마 처리",
+          "value": "절편, 주아, 종근을 에세폰 10,000배액에 30~60분 담그면 발아율 향상"
+        }
+      ]
+    },
+    {
+      "title": "아주심기",
+      "timing": "남부 4월 상순 / 중부 4월 중순",
+      "items": [
+        {
+          "label": "심는 거리(절편)",
+          "value": "60×20cm"
+        },
+        {
+          "label": "심는 거리(노두)",
+          "value": "30×15cm"
+        },
+        {
+          "label": "심는 거리(주아)",
+          "value": "20×10cm"
+        }
+      ]
+    },
+    {
+      "title": "지주 설치",
+      "timing": "아주심기 후",
+      "items": [
+        {
+          "label": "높이",
+          "value": "1.5m"
+        }
+      ]
+    },
+    {
+      "title": "제초",
+      "timing": "아주심기 후",
+      "items": [
+        {
+          "label": "방법",
+          "value": "시마진 수화제 살포"
+        }
+      ]
+    },
+    {
+      "title": "수확·저장",
+      "timing": null,
+      "items": [
+        {
+          "label": "수확",
+          "value": "낙엽이 진 후 수확. 주아는 서리 오기 전, 봄 수확은 4월 이전"
+        },
+        {
+          "label": "저장",
+          "value": "수확 후 2~3일 예비저장하여 상처를 아문 뒤 5℃에서 저장"
+        },
+        {
+          "label": "수량",
+          "value": "생근 3,000kg/10a, 건조 800kg/10a"
+        }
+      ]
+    },
+    {
+      "title": "조제",
+      "timing": null,
+      "items": [
+        {
+          "label": "방법",
+          "value": "껍질을 벗겨 건조실에서 건조 후 조제"
+        },
+        {
+          "label": "품질 불량·부패 우려 시",
+          "value": "수증기로 쪄서 말림"
+        }
+      ]
+    }
+  ],
+  "fertilizer": {
+    "unit": "kg/10a",
+    "columns": [
+      "밑거름(아주심기 전)",
+      "1차 웃거름(6월 중순)",
+      "2차 웃거름(7월 중순)"
+    ],
+    "rows": [
+      {
+        "name": "퇴비",
+        "values": [
+          3000,
+          null,
+          null
+        ]
+      },
+      {
+        "name": "질소",
+        "values": [
+          14,
+          10,
+          10
+        ]
+      },
+      {
+        "name": "인산",
+        "values": [
+          28,
+          null,
+          null
+        ]
+      },
+      {
+        "name": "칼리",
+        "values": [
+          14,
+          7,
+          7
+        ]
+      }
+    ],
+    "note": null
+  },
+  "pests": [
+    {
+      "name": "토양선충",
+      "kind": "해충",
+      "timing": "3월 상순~4월 하순",
+      "control": "방제(약제명 미기재)"
+    },
+    {
+      "name": "굼벵이",
+      "kind": "해충",
+      "timing": null,
+      "control": "방제(약제명 미기재)"
+    },
+    {
+      "name": "탄저병",
+      "kind": "병",
+      "timing": "6월 상순",
+      "control": "예방(약제명 미기재)"
+    },
+    {
+      "name": "시듦병",
+      "kind": "병",
+      "timing": "7월 중순",
+      "control": "예방(약제명 미기재)"
+    },
+    {
+      "name": "마좀나방 등 해충",
+      "kind": "해충",
+      "timing": null,
+      "control": "방제(약제명 미기재)"
+    }
+  ],
+  "disasters": [
+    {
+      "risk": "가뭄",
+      "timing": null,
+      "measures": []
+    },
+    {
+      "risk": "습해",
+      "timing": null,
+      "measures": []
+    }
+  ],
+  "notes": [
+    "월별 일정표(상·중·하순 막대)는 원문에서 칸 위치를 확인할 수 없어 작업별 시기를 비워 둠(본문에 시기가 적힌 작업만 시기 기재)",
+    "일정표 구분: 둥근마, 단마, 주아, 노두, 절편",
+    "예상되는 문제점: 아주심기 지연, 발아율 불량, 생육 부진, 후기 지상부 생장 억제"
+  ],
+  "source": "https://www.nongsaro.go.kr/portal/ps/psb/psbl/workScheduleDtl.ps?menuId=PS00087&cntntsNo=30747"
+}

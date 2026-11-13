@@ -1,0 +1,307 @@
+{
+  "id": 30756,
+  "name": "천마",
+  "type": null,
+  "category": "약초",
+  "sciName": null,
+  "family": null,
+  "summary": "참나무류 원목과 종균, 자마(종마)를 함께 심어 기르는 약초. 자마 식재 18개월 뒤 가을 또는 이듬해 봄에 수확한다.",
+  "env": [
+    {
+      "label": "토양",
+      "value": "모래 함량이 높은 사양토와 양토"
+    },
+    {
+      "label": "토양 pH",
+      "value": "pH 5~6 약산성, 비료성분 많지 않은 곳"
+    },
+    {
+      "label": "방향",
+      "value": "햇볕이 덜 드는 북동향(북향)"
+    },
+    {
+      "label": "경사",
+      "value": "2~7%의 약간 경사진 곳"
+    },
+    {
+      "label": "예정지 토양",
+      "value": "유기물 함량 2~3%, 토양 오염이 없는 곳"
+    },
+    {
+      "label": "식재 가능 지온",
+      "value": "10℃ 이상"
+    },
+    {
+      "label": "토양 수분",
+      "value": "봄·가을 40%, 여름 50~60%, 겨울 25~30%"
+    }
+  ],
+  "schedule": [
+    {
+      "task": "원목 준비",
+      "kind": "etc",
+      "region": null,
+      "start": {
+        "m": 12,
+        "p": null
+      },
+      "end": {
+        "m": 2,
+        "p": null
+      },
+      "text": "벌목 12~2월(휴면기)"
+    },
+    {
+      "task": "천마식재(원목, 종균, 종마) 및 볏짚덮기",
+      "kind": "plant",
+      "region": null,
+      "start": {
+        "m": 4,
+        "p": 2
+      },
+      "end": {
+        "m": 4,
+        "p": 3
+      },
+      "text": "지역별로 다르나 4월 중순~하순, 지온 10℃ 이상 식재 가능"
+    },
+    {
+      "task": "수분관리(물주기·배수)",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "볏짚 덮기",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": "1년 차 가을 풀베기 및 볏짚 보충"
+    },
+    {
+      "task": "원목 건조 및 조제",
+      "kind": "etc",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "굼벵이방제",
+      "kind": "pest",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "수확(가을)",
+      "kind": "harvest",
+      "region": null,
+      "start": {
+        "m": 10,
+        "p": 3
+      },
+      "end": {
+        "m": 11,
+        "p": 2
+      },
+      "text": "자마식재 18개월 뒤, 가을 10월 하순~11월 중순"
+    },
+    {
+      "task": "수확(이듬해 봄)",
+      "kind": "harvest",
+      "region": null,
+      "start": {
+        "m": 3,
+        "p": 3
+      },
+      "end": {
+        "m": 4,
+        "p": 1
+      },
+      "text": "자마식재 18개월 뒤, 이듬해 봄 3월 하순~4월 상순"
+    }
+  ],
+  "stages": [
+    {
+      "title": "원목 준비 및 절단",
+      "timing": "벌목 12~2월(휴면기)",
+      "items": [
+        {
+          "label": "적합 수종",
+          "value": "참나무류(상수리나무, 물참나무 등)"
+        },
+        {
+          "label": "절단 규격",
+          "value": "지름 7~12×30~60cm"
+        },
+        {
+          "label": "필요량",
+          "value": "21~30톤/10a"
+        }
+      ]
+    },
+    {
+      "title": "종균 준비",
+      "timing": "식재 3~4개월 전 종균배양소 신청",
+      "items": [
+        {
+          "label": "필요량",
+          "value": "900~1,000병/10a"
+        },
+        {
+          "label": "절단",
+          "value": "병당 6~8등분"
+        }
+      ]
+    },
+    {
+      "title": "자마(종마) 준비",
+      "timing": null,
+      "items": [
+        {
+          "label": "조건",
+          "value": "상처가 없고 봄에 수확한 자마"
+        },
+        {
+          "label": "크기",
+          "value": "길이 5cm 이상, 무게 10~20g"
+        },
+        {
+          "label": "필요량",
+          "value": "100~150kg/10a"
+        }
+      ]
+    },
+    {
+      "title": "천마 식재",
+      "timing": "4월 중순~하순(지역별로 다름), 지온 10℃ 이상",
+      "items": [
+        {
+          "label": "원목 배열",
+          "value": "90~100cm 이랑에 원목 4~5열, 원목 사이 10~15cm 띄움, 가능하면 1열과 2열을 엇갈려 배열"
+        },
+        {
+          "label": "종균 접종",
+          "value": "식재 전 절단해 마르지 않게 하고 원목 사이에 최대한 밀착 접종"
+        },
+        {
+          "label": "자마 식재",
+          "value": "종균 주위에 자마 2~4개, 자마 하단 부위가 종균 방향을 향하게"
+        },
+        {
+          "label": "종균 활착 기간(노지)",
+          "value": "2~3개월"
+        }
+      ]
+    },
+    {
+      "title": "흙덮기 및 피복",
+      "timing": null,
+      "items": [
+        {
+          "label": "흙덮기",
+          "value": "원목 위 5~10cm(지역, 토성에 따라 다름)"
+        },
+        {
+          "label": "피복",
+          "value": "볏짚 및 낙엽 5~10cm"
+        },
+        {
+          "label": "1년 차 가을",
+          "value": "풀베기 및 볏짚 보충(포장 건조 및 고온·동해 피해 방지)"
+        }
+      ]
+    },
+    {
+      "title": "포장관리",
+      "timing": null,
+      "items": [
+        {
+          "label": "물주기",
+          "value": "식재 후 충분한 물주기로 포화용수량 확보, 오염된 물 사용 금지"
+        },
+        {
+          "label": "수분 기준",
+          "value": "봄·가을 40%, 여름 50~60%, 겨울 25~30%"
+        },
+        {
+          "label": "연차별 수분",
+          "value": "1년 차 수분 많아도 되나, 2년 차 수분 많으면 습해 발생"
+        },
+        {
+          "label": "가뭄 지속 시",
+          "value": "물주기 및 풀베기 작업"
+        },
+        {
+          "label": "집중호우 시",
+          "value": "배수로 정비"
+        }
+      ]
+    },
+    {
+      "title": "수확",
+      "timing": "가을 10월 하순~11월 중순 또는 이듬해 봄 3월 하순~4월 상순",
+      "items": [
+        {
+          "label": "수확 시점",
+          "value": "자마식재 18개월 뒤"
+        }
+      ]
+    }
+  ],
+  "fertilizer": null,
+  "pests": [
+    {
+      "name": "굼벵이",
+      "kind": "해충",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "물천마",
+      "kind": "생리장해",
+      "timing": "2년 차 고온 지속 및 많은 비",
+      "control": null
+    },
+    {
+      "name": "습해",
+      "kind": "생리장해",
+      "timing": "2년 차 수분이 많을 때",
+      "control": null
+    }
+  ],
+  "disasters": [
+    {
+      "risk": "가뭄",
+      "timing": null,
+      "measures": [
+        "물주기 및 풀베기 작업"
+      ]
+    },
+    {
+      "risk": "장마(집중호우)",
+      "timing": null,
+      "measures": [
+        "배수로 정비"
+      ]
+    },
+    {
+      "risk": "포장 건조 및 고온·동해 피해",
+      "timing": null,
+      "measures": [
+        "1년 차 가을 풀베기 및 볏짚 보충"
+      ]
+    }
+  ],
+  "notes": [
+    "가축분퇴비 3,700kg/10a(유기물 함량 0.5% 기준)",
+    "원문 포장관리 항목에 \"지온 25℃ 이상 시 설치\"라고만 적혀 있음(설치 대상은 원문에 명시되지 않음).",
+    "월별 일정표(10월~이듬해 9월)의 칸 위치는 확인할 수 없어, 본문에 시기가 적힌 작업만 시기를 입력함."
+  ],
+  "source": "https://www.nongsaro.go.kr/portal/ps/psb/psbl/workScheduleDtl.ps?menuId=PS00087&cntntsNo=30756"
+}

@@ -1,0 +1,363 @@
+{
+  "id": 30602,
+  "name": "곰취",
+  "type": null,
+  "category": "채소",
+  "sciName": "Ligularia fischeri TURCZ",
+  "family": "국화과",
+  "summary": "원줄기 높이 1m. 4∼6월 연한 녹색 잎을 수확하며 8~9월 꽃대가 신장한 후 노란 꽃이 핀다.",
+  "env": [
+    {
+      "label": "발아적온",
+      "value": "15~21℃"
+    },
+    {
+      "label": "모 기르기 적온",
+      "value": "15~25℃"
+    },
+    {
+      "label": "재배적지",
+      "value": "국내 한냉지, 부식질이 풍부한 사질양토·부식토·식질양토"
+    },
+    {
+      "label": "토양산도",
+      "value": "6.0∼7.0"
+    },
+    {
+      "label": "토심",
+      "value": "30∼50cm"
+    }
+  ],
+  "schedule": [
+    {
+      "task": "밑거름·토양관리",
+      "kind": "fert",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "씨뿌림",
+      "kind": "sow",
+      "region": null,
+      "start": {
+        "m": 2,
+        "p": null
+      },
+      "end": {
+        "m": 3,
+        "p": null
+      },
+      "text": "2~3월"
+    },
+    {
+      "task": "모 기르기",
+      "kind": "nursery",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "아주심기",
+      "kind": "plant",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "웃거름",
+      "kind": "fert",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "김매기",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "수확",
+      "kind": "harvest",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "수확(보통재배)",
+      "kind": "harvest",
+      "region": null,
+      "start": {
+        "m": 4,
+        "p": 3
+      },
+      "end": {
+        "m": 6,
+        "p": 1
+      },
+      "text": "4월 하순~6월 상순"
+    },
+    {
+      "task": "수확(조기재배)",
+      "kind": "harvest",
+      "region": null,
+      "start": {
+        "m": 3,
+        "p": 1
+      },
+      "end": {
+        "m": 5,
+        "p": 2
+      },
+      "text": "3월 상순~5월 중순"
+    },
+    {
+      "task": "수확(촉성재배)",
+      "kind": "harvest",
+      "region": null,
+      "start": {
+        "m": 2,
+        "p": 1
+      },
+      "end": {
+        "m": 3,
+        "p": 3
+      },
+      "text": "2월 상순~3월 하순"
+    },
+    {
+      "task": "지상부 제거",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "퇴비 살포 및 웃거름",
+      "kind": "fert",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "2년 차 수확(35~55% 빛가림망)",
+      "kind": "harvest",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "빛가림망 제거",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    }
+  ],
+  "stages": [
+    {
+      "title": "씨뿌림",
+      "timing": "2~3월",
+      "items": [
+        {
+          "label": "씨앗 처리",
+          "value": "지베렐린 10~30ppm에 30분간 담그기"
+        },
+        {
+          "label": "씨앗 저온처리",
+          "value": "물에 불린 후 4℃ 냉장고에 15일 저장"
+        },
+        {
+          "label": "파종량",
+          "value": "3~4ℓ/10a"
+        }
+      ]
+    },
+    {
+      "title": "모 기르기",
+      "timing": null,
+      "items": [
+        {
+          "label": "용기",
+          "value": "파종상자 또는 105공 플러그판(9cm 포트 가능)"
+        },
+        {
+          "label": "빛가림",
+          "value": "30~50%"
+        },
+        {
+          "label": "물주기",
+          "value": "주기적으로"
+        }
+      ]
+    },
+    {
+      "title": "아주심기",
+      "timing": null,
+      "items": [
+        {
+          "label": "이랑 너비",
+          "value": "100cm"
+        },
+        {
+          "label": "포기 사이",
+          "value": "20cm"
+        }
+      ]
+    },
+    {
+      "title": "웃거름",
+      "timing": null,
+      "items": [
+        {
+          "label": "양",
+          "value": "질소와 칼리 각 5kg씩 (관비 액비 형태 공급 가능)"
+        }
+      ]
+    },
+    {
+      "title": "수확",
+      "timing": null,
+      "items": [
+        {
+          "label": "방법",
+          "value": "2~3매를 남기고 제때 수확, 노화잎과 여름잎은 유지"
+        },
+        {
+          "label": "보관",
+          "value": "데친 다음 –20℃에 급속 냉동 보관"
+        }
+      ]
+    }
+  ],
+  "fertilizer": {
+    "unit": "kg/10a",
+    "columns": [
+      "총량",
+      "밑거름",
+      "웃거름 1회",
+      "웃거름 2회"
+    ],
+    "rows": [
+      {
+        "name": "퇴비",
+        "values": [
+          4000,
+          4000,
+          null,
+          null
+        ]
+      },
+      {
+        "name": "질소",
+        "values": [
+          30,
+          20,
+          5,
+          5
+        ]
+      },
+      {
+        "name": "인산",
+        "values": [
+          60,
+          60,
+          null,
+          null
+        ]
+      },
+      {
+        "name": "칼리",
+        "values": [
+          150,
+          150,
+          null,
+          null
+        ]
+      }
+    ],
+    "note": null
+  },
+  "pests": [
+    {
+      "name": "청벌레",
+      "kind": "해충",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "민달팽이",
+      "kind": "해충",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "진딧물",
+      "kind": "해충",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "풍뎅이",
+      "kind": "해충",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "거세미",
+      "kind": "해충",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "뿌리썩음병",
+      "kind": "병",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "흰가루병",
+      "kind": "병",
+      "timing": "6~8월 다발생",
+      "control": null
+    }
+  ],
+  "disasters": [
+    {
+      "risk": "가뭄 (과습하거나 건조하면 말라 죽음)",
+      "timing": null,
+      "measures": [
+        "이동식 스프링클러 또는 점적관수에 의한 물주기",
+        "웃거름은 관비 액비로 공급"
+      ]
+    },
+    {
+      "risk": "고온 (더위 시듦 또는 로제트 현상, 지상부 생육 불량)",
+      "timing": null,
+      "measures": []
+    },
+    {
+      "risk": "습해 (지하부 생육 불량, 뿌리썩음병 발생)",
+      "timing": null,
+      "measures": [
+        "배수구 정비"
+      ]
+    }
+  ],
+  "notes": [
+    "작형별 출하시기: 보통재배 수확 4월 하순~6월 상순(성출하기 5월 상순) / 조기재배 가온 2월 하순~3월 상순, 수확 3월 상순~5월 중순(성출하기 4월 중순) / 촉성재배 가온 11월 하순~3월 중순, 수확 2월 상순~3월 하순(성출하기 2월 하순)"
+  ],
+  "source": "https://www.nongsaro.go.kr/portal/ps/psb/psbl/workScheduleDtl.ps?menuId=PS00087&cntntsNo=30602"
+}

@@ -1,0 +1,131 @@
+{
+  "id": 30723,
+  "name": "사슴",
+  "type": null,
+  "category": "축산",
+  "sciName": null,
+  "family": null,
+  "summary": "수사슴·암사슴의 사육기별(낙각, 녹용 성장·절각, 발정, 임신, 분만, 포유, 털갈이) 일정.",
+  "env": [],
+  "schedule": [
+    {
+      "task": "수사슴 낙각기(레드디어, 엘크, 꽃사슴순)",
+      "kind": "etc",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "수사슴 녹용성장 및 절각기",
+      "kind": "etc",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "수사슴 발정기(레드디어, 엘크, 꽃사슴순)",
+      "kind": "etc",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "수사슴 구충실시",
+      "kind": "pest",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "암사슴 임신기",
+      "kind": "etc",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "암사슴 분만기(레드디어, 엘크, 꽃사슴순)",
+      "kind": "etc",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "암사슴 발정 및 교배기",
+      "kind": "etc",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "암사슴 포유기",
+      "kind": "etc",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "봄 털갈이",
+      "kind": "etc",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "가을 털갈이",
+      "kind": "etc",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    }
+  ],
+  "stages": [
+    {
+      "title": "녹용성장 및 절각기",
+      "timing": null,
+      "items": [
+        {
+          "label": "절각 시기",
+          "value": "낙각 후 꽃사슴 60일, 레드디어 70일, 엘크 80일"
+        }
+      ]
+    },
+    {
+      "title": "포유기",
+      "timing": null,
+      "items": [
+        {
+          "label": "포유 기간",
+          "value": "약 3개월 이상 젖을 먹임"
+        }
+      ]
+    },
+    {
+      "title": "봄 털갈이",
+      "timing": null,
+      "items": [
+        {
+          "label": "참고",
+          "value": "영양 불량 시 지연"
+        }
+      ]
+    }
+  ],
+  "fertilizer": null,
+  "pests": [],
+  "disasters": [],
+  "notes": [
+    "월별 일정표(상·중·하순 막대)는 원문에서 칸 위치를 확인할 수 없어 작업별 시기를 비워 둠"
+  ],
+  "source": "https://www.nongsaro.go.kr/portal/ps/psb/psbl/workScheduleDtl.ps?menuId=PS00087&cntntsNo=30723"
+}

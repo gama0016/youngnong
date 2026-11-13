@@ -1,0 +1,303 @@
+{
+  "id": 30743,
+  "name": "두충",
+  "type": null,
+  "category": "약초",
+  "sciName": null,
+  "family": null,
+  "summary": "두충의 모 기르기, 임시심기, 아주심기, 수목관리, 웃거름 및 껍질·잎 수확 요령.",
+  "env": [],
+  "schedule": [
+    {
+      "task": "모판 씨뿌림(1년차)",
+      "kind": "sow",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "솎음작업, 김매기(1년차)",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "웃거름(1년차)",
+      "kind": "fert",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "봄 아주심기",
+      "kind": "plant",
+      "region": null,
+      "start": {
+        "m": 3,
+        "p": 3
+      },
+      "end": {
+        "m": 4,
+        "p": 1
+      },
+      "text": "3월 하순~4월 상순"
+    },
+    {
+      "task": "가을 아주심기",
+      "kind": "plant",
+      "region": null,
+      "start": {
+        "m": 10,
+        "p": 3
+      },
+      "end": {
+        "m": 11,
+        "p": 1
+      },
+      "text": "10월 하순~11월 상순"
+    },
+    {
+      "task": "웃거름(2년차)",
+      "kind": "fert",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "김매기(2년차)",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "껍질 수확(6~10년생)",
+      "kind": "harvest",
+      "region": null,
+      "start": {
+        "m": 5,
+        "p": null
+      },
+      "end": {
+        "m": 6,
+        "p": null
+      },
+      "text": "5~6월"
+    },
+    {
+      "task": "두충잎 수확",
+      "kind": "harvest",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": "여름과 가을(다 자란 잎)"
+    }
+  ],
+  "stages": [
+    {
+      "title": "모 기르기 및 씨뿌림",
+      "timing": null,
+      "items": [
+        {
+          "label": "밑거름(1m²당)",
+          "value": "요소 30g, 중과석 30g, 염화칼륨 15g, 토양 살충제"
+        },
+        {
+          "label": "씨뿌림 양",
+          "value": "0.2L/m²"
+        },
+        {
+          "label": "방법",
+          "value": "줄뿌림 또는 점뿌림 후 1~1.2cm 흙덮기"
+        },
+        {
+          "label": "피복",
+          "value": "짚이나 건초를 덮고, 출아하면 제거"
+        },
+        {
+          "label": "해가림",
+          "value": "출아 후 2개월 동안 설치"
+        },
+        {
+          "label": "웃거름",
+          "value": "6월 하순 이전 30g/m² 또는 유기질비료 1kg"
+        }
+      ]
+    },
+    {
+      "title": "임시심기 및 관리",
+      "timing": null,
+      "items": [
+        {
+          "label": "임시심기",
+          "value": "서릿발과 언피해 방지를 위해 양지에 임시심기"
+        },
+        {
+          "label": "묘 길이 60cm 이상",
+          "value": "본밭 아주심기"
+        },
+        {
+          "label": "묘 길이 60cm 이하",
+          "value": "20×20cm 간격으로 심은 뒤 지상 3cm에서 잘라 2년생 묘로 키움"
+        }
+      ]
+    },
+    {
+      "title": "아주심기",
+      "timing": "봄 3월 하순~4월 상순 / 가을 10월 하순~11월 상순",
+      "items": [
+        {
+          "label": "심는 거리",
+          "value": "2×1.5m(330주/10a)"
+        },
+        {
+          "label": "구덩이당 밑거름",
+          "value": "퇴비 4kg, 요소 60g, 용성인비 70g, 염화칼륨 30g"
+        },
+        {
+          "label": "방법",
+          "value": "구덩이를 파고 완숙퇴비를 넣은 뒤 심음"
+        }
+      ]
+    },
+    {
+      "title": "수목관리",
+      "timing": null,
+      "items": [
+        {
+          "label": "묘목",
+          "value": "5cm 정도 잘라 심음"
+        },
+        {
+          "label": "곁눈",
+          "value": "세력이 좋은 2가지만 남기고 제거"
+        },
+        {
+          "label": "곁가지",
+          "value": "수시로 제거"
+        }
+      ]
+    },
+    {
+      "title": "주요 관리",
+      "timing": null,
+      "items": [
+        {
+          "label": "김매기",
+          "value": "아주심기 후 2~3년간 나무 주위 실시. 4년 후에는 잡초를 베고 덮어줌"
+        },
+        {
+          "label": "웃거름(아주심기 2년차부터)",
+          "value": "이른 봄 산림용 고형비료 60g을 나무 주변에 묻음"
+        },
+        {
+          "label": "다 자란 나무(10a당)",
+          "value": "퇴비 1,200~1,500kg, 질소 8~12kg, 인산 8~12kg, 칼리 4~6kg"
+        }
+      ]
+    },
+    {
+      "title": "수확",
+      "timing": null,
+      "items": [
+        {
+          "label": "껍질",
+          "value": "6~10년생, 5~6월"
+        },
+        {
+          "label": "두충잎",
+          "value": "여름과 가을에 다 자란 잎"
+        }
+      ]
+    }
+  ],
+  "fertilizer": {
+    "unit": "kg/10a",
+    "columns": [
+      "다 자란 나무 시용량"
+    ],
+    "rows": [
+      {
+        "name": "퇴비",
+        "values": [
+          "1,200~1,500"
+        ]
+      },
+      {
+        "name": "질소",
+        "values": [
+          "8~12"
+        ]
+      },
+      {
+        "name": "인산",
+        "values": [
+          "8~12"
+        ]
+      },
+      {
+        "name": "칼리",
+        "values": [
+          "4~6"
+        ]
+      }
+    ],
+    "note": "모판 밑거름(1m²당): 요소 30g, 중과석 30g, 염화칼륨 15g / 아주심기 구덩이당: 퇴비 4kg, 요소 60g, 용성인비 70g, 염화칼륨 30g / 아주심기 2년차부터 이른 봄 산림용 고형비료 60g"
+  },
+  "pests": [
+    {
+      "name": "입고병",
+      "kind": "병",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "근부병",
+      "kind": "병",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "탄저병",
+      "kind": "병",
+      "timing": null,
+      "control": "방제(약제·시기 미기재)"
+    },
+    {
+      "name": "갈색무늬병",
+      "kind": "병",
+      "timing": null,
+      "control": "방제(약제·시기 미기재)"
+    }
+  ],
+  "disasters": [
+    {
+      "risk": "가뭄",
+      "timing": null,
+      "measures": []
+    },
+    {
+      "risk": "장마",
+      "timing": null,
+      "measures": []
+    },
+    {
+      "risk": "서릿발·언피해",
+      "timing": null,
+      "measures": [
+        "양지에 임시심기"
+      ]
+    }
+  ],
+  "notes": [
+    "월별 일정표(상·중·하순 막대)는 원문에서 칸 위치를 확인할 수 없어 작업별 시기를 비워 둠(본문에 시기가 적힌 작업만 시기 기재)",
+    "예상되는 문제점: 씨뿌림 및 아주심기 지연, 습해 발생, 생육 불량"
+  ],
+  "source": "https://www.nongsaro.go.kr/portal/ps/psb/psbl/workScheduleDtl.ps?menuId=PS00087&cntntsNo=30743"
+}

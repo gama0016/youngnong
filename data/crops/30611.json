@@ -1,0 +1,336 @@
+{
+  "id": 30611,
+  "name": "마늘",
+  "type": null,
+  "category": "채소",
+  "sciName": "Allium Sativum L.",
+  "family": "백합과",
+  "summary": "마늘쪽 분화에는 5℃ 이하에서 30일 이상 경과가 필요하며, 25℃ 이상 고온에서는 생육이 정지한다.",
+  "env": [
+    {
+      "label": "발아적온",
+      "value": "15~27℃"
+    },
+    {
+      "label": "생육적온",
+      "value": "18~20℃"
+    },
+    {
+      "label": "줄기비대적온",
+      "value": "18~20℃"
+    },
+    {
+      "label": "저장적온",
+      "value": "상온, 저온(0~2℃)"
+    },
+    {
+      "label": "토양산도",
+      "value": "pH 5.5~6.0"
+    }
+  ],
+  "schedule": [
+    {
+      "task": "씨뿌림",
+      "kind": "sow",
+      "region": "중부",
+      "start": {
+        "m": 10,
+        "p": 2
+      },
+      "end": {
+        "m": 10,
+        "p": 3
+      },
+      "text": "10월 중순~10월 하순"
+    },
+    {
+      "task": "씨뿌림",
+      "kind": "sow",
+      "region": "남부",
+      "start": {
+        "m": 9,
+        "p": 1
+      },
+      "end": {
+        "m": 10,
+        "p": 1
+      },
+      "text": "9월 상순~10월 상순"
+    },
+    {
+      "task": "짚 덮기",
+      "kind": "manage",
+      "region": null,
+      "start": {
+        "m": 11,
+        "p": 2
+      },
+      "end": {
+        "m": 11,
+        "p": 3
+      },
+      "text": "11월 중하순"
+    },
+    {
+      "task": "종제거",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "물주기",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "김매기",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "수확(난지)",
+      "kind": "harvest",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "수확(한지)",
+      "kind": "harvest",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "수확(보통재배)",
+      "kind": "harvest",
+      "region": null,
+      "start": {
+        "m": 5,
+        "p": 3
+      },
+      "end": {
+        "m": 6,
+        "p": 3
+      },
+      "text": "5월 하순~6월 하순"
+    }
+  ],
+  "stages": [
+    {
+      "title": "씨뿌림",
+      "timing": "중부 10월 중순~10월 하순 / 남부 9월 상순~10월 상순",
+      "items": [
+        {
+          "label": "씨알 준비",
+          "value": "60~80접/10a (200~220kg)"
+        },
+        {
+          "label": "씨알 소독",
+          "value": "플루퀸코나졸(카스텔란, 파라시트) 500배액 또는 디메토유레(로고, 록숀, 삼공디메토) 1,000배액에 30분~1시간 침지 후 음건"
+        },
+        {
+          "label": "줄 사이",
+          "value": "15~20cm"
+        },
+        {
+          "label": "포기 사이",
+          "value": "10~12cm"
+        }
+      ]
+    },
+    {
+      "title": "관리",
+      "timing": null,
+      "items": [
+        {
+          "label": "짚 덮기",
+          "value": "11월 중하순"
+        },
+        {
+          "label": "종제거",
+          "value": "출현 즉시"
+        },
+        {
+          "label": "물주기",
+          "value": "가물 때"
+        },
+        {
+          "label": "김매기",
+          "value": "제초제 이용"
+        }
+      ]
+    },
+    {
+      "title": "수확",
+      "timing": null,
+      "items": [
+        {
+          "label": "기준",
+          "value": "잎과 줄기가 2/3~1/2 황변할 때"
+        }
+      ]
+    }
+  ],
+  "fertilizer": {
+    "unit": "kg/10a",
+    "columns": [
+      "총량",
+      "밑거름",
+      "웃거름 1회",
+      "웃거름 2회"
+    ],
+    "rows": [
+      {
+        "name": "퇴비",
+        "values": [
+          1200,
+          1200,
+          null,
+          null
+        ]
+      },
+      {
+        "name": "요소",
+        "values": [
+          54,
+          20,
+          17,
+          17
+        ]
+      },
+      {
+        "name": "용과린",
+        "values": [
+          39,
+          39,
+          null,
+          null
+        ]
+      },
+      {
+        "name": "황산칼리",
+        "values": [
+          40,
+          14,
+          13,
+          13
+        ]
+      },
+      {
+        "name": "석회",
+        "values": [
+          200,
+          200,
+          null,
+          null
+        ]
+      }
+    ],
+    "note": "조기재배 시 전량 밑거름"
+  },
+  "pests": [
+    {
+      "name": "뿌리응애",
+      "kind": "해충",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "고자리파리",
+      "kind": "해충",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "잎마름병",
+      "kind": "병",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "녹병",
+      "kind": "병",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "검은무늬병",
+      "kind": "병",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "무름병",
+      "kind": "병",
+      "timing": null,
+      "control": null
+    }
+  ],
+  "disasters": [
+    {
+      "risk": "봄철 잦은 비",
+      "timing": null,
+      "measures": [
+        "배수구 정비로 습해 예방",
+        "살균제 살포",
+        "웃거름 중지"
+      ]
+    },
+    {
+      "risk": "봄 가뭄",
+      "timing": null,
+      "measures": [
+        "이동식 스프링클러로 관수",
+        "고자리파리 방제",
+        "흙이나 짚 덮기",
+        "물비료 주기"
+      ]
+    },
+    {
+      "risk": "장마",
+      "timing": null,
+      "measures": [
+        "배수구 정비",
+        "무름병 방제",
+        "적기 수확 및 수확 후 건조",
+        "건가식 간이저장"
+      ]
+    },
+    {
+      "risk": "가을 가뭄",
+      "timing": null,
+      "measures": [
+        "이동식 스프링클러로 관수",
+        "비닐이나 짚 덮기"
+      ]
+    },
+    {
+      "risk": "저온·혹한",
+      "timing": null,
+      "measures": [
+        "한지형 마늘은 짚이나 비닐 덮기",
+        "배수구 정비로 습해 예방"
+      ]
+    }
+  ],
+  "notes": [
+    "작형별 출하시기: 보통재배 씨뿌림 9월 하순~10월 하순, 수확 5월 하순~6월 하순 / 잎마늘재배 씨뿌림 8월 하순~9월 상순, 수확 12월 하순~5월 상순 / 조숙재배 씨뿌림 9월 중순~9월 하순, 수확 4월 중순~5월 중순",
+    "줄기비대는 장일(12시간)에서 촉진, 단일 조건에서 억제",
+    "우량품종 선발재배: 지방종 대비 34% 증수",
+    "비닐덮기(멀칭) 재배: 무피복 대비 40~56% 증수",
+    "무병씨알 재배: 이병 씨알 대비 31% 증수",
+    "줄기비대기 10일 간격 30mm 물주기: 무관수 대비 22% 증수"
+  ],
+  "source": "https://www.nongsaro.go.kr/portal/ps/psb/psbl/workScheduleDtl.ps?menuId=PS00087&cntntsNo=30611"
+}
