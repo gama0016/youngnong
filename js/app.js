@@ -28,6 +28,125 @@ const nowSlot = () => slot(today().getMonth() + 1, xunOf(today()));
 const slotName = (x) => `${Math.floor(x / 3) + 1}월 ${XUN[x % 3]}`;
 const fullName = (c) => c.name + (c.type ? ` (${c.type})` : '');
 const isFav = (c) => favs.has(String(c.id));
+
+// ---------- 내 설정: 지역, 날씨 위치, 글자 크기 ----------
+const settings = () => ({ region: '', regionAuto: false, big: false, loc: null, ...store.get('settings', {}) });
+const setSetting = (o) => store.set('settings', { ...settings(), ...o });
+const REGION_LIST = ['중부', '남부', '제주', '고랭지'];
+const REGIONS = {
+  중부: /중부|중북부|북부|중남부|평지|전국|그 외/,
+  남부: /남부|이남|해안|난지|호남|영남|전남|경남|평지|전국|그 외/,
+  제주: /제주|난지|해안|전국|그 외/,
+  고랭지: /고랭지|고령지|산간|전국/,
+};
+// 작목 일정에 내 지역 표시가 하나라도 있으면, 다른 지역으로 표시된 작업은 뺀다.
+// 내 지역 표시가 전혀 없는 작목(그 지역 자료가 없는 작목)은 모두 보여 준다. 지역 표시가 없는 작업은 늘 보인다.
+function regionFilter(items) {
+  const reg = settings().region;
+  if (!reg) return items;
+  const re = REGIONS[reg];
+  if (!items.some((s) => s.region && re.test(s.region))) return items;
+  return items.filter((s) => !s.region || re.test(s.region));
+}
+function applyBig() {
+  const big = settings().big;
+  document.documentElement.classList.toggle('big', big);
+  document.querySelectorAll('[data-big]').forEach((b) => { b.setAttribute('aria-pressed', big); b.textContent = big ? '글자 보통' : '글자 크게'; });
+}
+
+// ---------- 할 일 완료 표시 ----------
+const doneMap = () => store.get('done', {});
+// 같은 작업이라도 해마다 따로 체크한다. 해를 넘는 작업(11월~2월 등)은 시작한 해로 묶는다.
+function taskKey(c, s, r, x) {
+  let y = today().getFullYear() - (x > nowSlot() ? 1 : 0);
+  if (r[0] > r[1] && x <= r[1]) y -= 1;
+  return `${y}|${c.id}|${s.task}|${s.region || ''}`;
+}
+const isDone = (k) => !!doneMap()[k];
+const isoDay = (d = today()) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`; // 날짜 입력란 형식
+const workOf = (s) => ({ sow: '파종', nursery: '육묘', plant: '정식·이앙', fert: '비료', pest: '방제', harvest: '수확' }[s.kind]
+  || (/전정|유인|순지르기|적심|솎/.test(s.task) ? '전정·유인' : /물|관수|배수/.test(s.task) ? '물 관리' : /제초|김매기/.test(s.task) ? '제초' : /경운|로터리|정지|밭갈|이랑/.test(s.task) ? '경운·정지' : '기타'));
+
+// ---------- 날씨 (Open-Meteo, 키 없음) ----------
+const CITIES = [['서울', 37.57, 126.98], ['인천', 37.46, 126.71], ['경기 수원', 37.26, 127.03], ['경기 이천', 37.27, 127.44], ['강원 춘천', 37.88, 127.73], ['강원 강릉', 37.75, 128.88], ['강원 평창(고랭지)', 37.37, 128.39], ['충북 청주', 36.64, 127.49], ['충북 충주', 36.99, 127.93], ['충남 천안', 36.81, 127.11], ['충남 논산', 36.19, 127.1], ['대전', 36.35, 127.38], ['세종', 36.48, 127.29], ['전북 전주', 35.82, 127.15], ['전북 김제', 35.8, 126.88], ['광주', 35.16, 126.85], ['전남 나주', 35.02, 126.71], ['전남 해남', 34.57, 126.6], ['경북 안동', 36.57, 128.73], ['경북 상주', 36.41, 128.16], ['대구', 35.87, 128.6], ['경남 진주', 35.18, 128.11], ['경남 밀양', 35.5, 128.75], ['울산', 35.54, 129.31], ['부산', 35.18, 129.08], ['제주', 33.5, 126.53], ['서귀포', 33.25, 126.56]];
+const WX_RULES = [
+  { name: '서리·저온', test: (d, i) => d.temperature_2m_min[i] <= 2, label: (d, i) => `최저 ${fmt(d.temperature_2m_min[i], 0)}℃`, re: /저온|서리|한파|언피해|동해|혹한|냉해|한풍|추위/ },
+  { name: '폭염', test: (d, i) => d.temperature_2m_max[i] >= 33, label: (d, i) => `최고 ${fmt(d.temperature_2m_max[i], 0)}℃`, re: /고온|폭염|더위|일소/ },
+  { name: '많은 비', test: (d, i) => d.precipitation_sum[i] >= 30, label: (d, i) => `비 ${fmt(d.precipitation_sum[i], 0)}mm`, re: /호우|장마|습해|태풍|침수|잦은 비|강우/ },
+  { name: '강한 바람', test: (d, i) => d.wind_speed_10m_max[i] >= 12, label: (d, i) => `바람 초속 ${fmt(d.wind_speed_10m_max[i], 0)}m`, re: /태풍|강풍|바람|쓰러짐|도복|풍해/ },
+];
+const DAYS = ['오늘', '내일', '모레', '글피'];
+async function getWeather(loc, force) {
+  const c = store.get('wx', null);
+  if (!force && c && c.lat === loc.lat && c.lon === loc.lon && Date.now() - c.at < 2 * 3600e3 && c.day === isoDay()) return c;
+  const u = `https://api.open-meteo.com/v1/forecast?latitude=${loc.lat}&longitude=${loc.lon}&daily=temperature_2m_min,temperature_2m_max,precipitation_sum,wind_speed_10m_max&timezone=Asia%2FSeoul&forecast_days=4&wind_speed_unit=ms`;
+  const res = await fetch(u);
+  const j = await res.json();
+  if (!j.daily) throw new Error(j.reason || '날씨 자료가 없습니다');
+  const w = { at: Date.now(), day: isoDay(), lat: loc.lat, lon: loc.lon, elevation: j.elevation, daily: j.daily };
+  store.set('wx', w);
+  return w;
+}
+const cityOpts = () => `<option value="">시·군 고르기</option>${CITIES.map(([n], i) => `<option value="${i}">${n}</option>`).join('')}`;
+const wxSetup = () => `<h2>날씨 경보</h2>
+  <p>농장 위치를 정하면 앞으로 나흘 동안 서리·폭염·많은 비·강한 바람 예보가 있을 때 내 작목의 대책을 여기 띄워 드립니다.</p>
+  <div class="row"><button class="btn" data-geo>지금 있는 곳으로</button><select data-city aria-label="가까운 시·군">${cityOpts()}</select></div>
+  <p class="sub">위치는 이 기기에만 저장됩니다. 날씨를 받을 때 대략의 좌표만 Open-Meteo로 보냅니다.</p>`;
+function wxHtml(w, loc) {
+  const d = w.daily;
+  const n = Math.min(4, d.time.length);
+  const alerts = [];
+  for (const rule of WX_RULES) { for (let i = 0; i < n; i++) if (rule.test(d, i)) { alerts.push({ rule, i }); break; } }
+  const warnDay = (i) => WX_RULES.some((r) => r.test(d, i));
+  const crops = myCrops();
+  return `<h2>날씨 <small>${esc(loc.name)} 기준</small></h2>
+  <div class="wx-days">${Array.from({ length: n }, (_, i) => `<div class="wx-day${warnDay(i) ? ' warn' : ''}"><span>${DAYS[i]}</span><b>${fmt(d.temperature_2m_min[i], 0)}° / ${fmt(d.temperature_2m_max[i], 0)}°</b><span>${d.precipitation_sum[i] >= 1 ? `비 ${fmt(d.precipitation_sum[i], 0)}mm` : '비 없음'}</span></div>`).join('')}</div>
+  ${alerts.length ? alerts.map(({ rule, i }) => {
+    const hits = crops.flatMap((c) => (c.disasters || []).filter((r) => rule.re.test(r.risk)).slice(0, 1).map((r) => ({ c, r }))).slice(0, 4);
+    return `<details class="wx-alert"><summary><b>${DAYS[i]} ${rule.label(d, i)} · ${rule.name} 주의</b><span>${hits.length ? `내 작목 대책 ${hits.length}개 보기` : '내 작목 자료에 대책 없음'}</span></summary>
+      ${hits.map(({ c, r }) => `<a class="wx-crop" href="#/crop/${c.id}?s=risk"><b>${esc(shortName(c))} · ${esc(r.risk)}</b><span>${esc((r.measures || []).slice(0, 3).join(' · '))}</span></a>`).join('')}</details>`;
+  }).join('') : '<p class="wx-ok">앞으로 나흘 서리·폭염·많은 비·강한 바람 예보는 없습니다.</p>'}
+  <p class="sub">${new Date(w.at).getHours()}시 ${String(new Date(w.at).getMinutes()).padStart(2, '0')}분에 받은 예보 · <button class="linkish" data-wx-change>위치 바꾸기</button> · 날씨 자료 <a href="https://open-meteo.com/" target="_blank" rel="noopener">Open-Meteo</a></p>`;
+}
+function paintWxBanner(w) {
+  const el = document.querySelector('[data-wx-banner]');
+  if (!el) return;
+  const d = w.daily;
+  const n = Math.min(4, d.time.length);
+  const hits = [];
+  for (const rule of WX_RULES) for (let i = 0; i < n; i++) if (rule.test(d, i)) { hits.push(`${DAYS[i]} ${rule.name}`); break; }
+  el.innerHTML = hits.length ? `<a class="wx-banner" href="#/?s=wx"><b>${hits.join(', ')} 예보</b><span>내 작목 대책 보기</span></a>` : '';
+}
+async function paintWeather(force) {
+  const box = document.querySelector('[data-weather]');
+  if (!box) return;
+  const loc = settings().loc;
+  if (!loc) { box.innerHTML = wxSetup(); return; }
+  const c = store.get('wx', null);
+  if (c && c.lat === loc.lat && c.lon === loc.lon && c.day === isoDay()) { box.innerHTML = wxHtml(c, loc); paintWxBanner(c); }
+  else box.innerHTML = `<h2>날씨 <small>${esc(loc.name)} 기준</small></h2><p class="sub">예보를 받는 중입니다…</p>`;
+  try {
+    const w = await getWeather(loc, force);
+    if (!document.contains(box)) return;
+    box.innerHTML = wxHtml(w, loc);
+    paintWxBanner(w);
+    const st = settings();
+    if (st.regionAuto && w.elevation >= 400 && st.region !== '고랭지') { setSetting({ region: '고랭지' }); toast(`농장 위치의 해발이 약 ${fmt(w.elevation, 0)}m라 지역을 <b>고랭지</b>로 맞췄습니다. <a href="#/links?s=settings">바꾸기</a>`); }
+  } catch (e) {
+    if (!document.contains(box)) return;
+    if (!(c && c.lat === loc.lat && c.lon === loc.lon)) box.innerHTML = `<h2>날씨 <small>${esc(loc.name)} 기준</small></h2><p class="sub">예보를 받지 못했습니다. 인터넷 연결을 확인해 주세요. <button class="linkish" data-wx-retry>다시 받기</button> · <button class="linkish" data-wx-change>위치 바꾸기</button></p>`;
+  }
+}
+function setLoc(loc) {
+  const st = settings();
+  const o = { loc };
+  if (!st.region || st.regionAuto) { o.region = loc.lat < 34 ? '제주' : loc.lat < 36.1 ? '남부' : '중부'; o.regionAuto = true; }
+  setSetting(o);
+  store.set('wx', null);
+  const y = window.scrollY; render(); window.scrollTo(0, y);
+  toast(`날씨 위치를 <b>${esc(loc.name)}</b>(으)로 정했습니다.${o.regionAuto ? ` 지역은 <b>${o.region}</b>(으)로 맞췄습니다. <a href="#/links?s=settings">바꾸기</a>` : ''}`);
+}
+const regionChips = () => { const cur = settings().region; return `<div class="chips">${REGION_LIST.map((r) => `<button class="chip ${cur === r ? 'on' : ''}" data-region="${r}" aria-pressed="${cur === r}">${r}</button>`).join('')}<button class="chip ${cur ? '' : 'on'}" data-region="" aria-pressed="${!cur}">모든 지역</button></div>`; };
 // 작업 줄처럼 좁은 자리에서는 긴 작형 나열을 줄인다
 const shortName = (c) => c.name + (c.type && c.type.length <= 10 ? ` (${c.type})` : '');
 const bare = (c) => c.name.replace(/\(.*?\)/g, '');
@@ -102,21 +221,35 @@ const estTag = (s) => (s.est ? ' <span class="tag plain" title="원문 본문의
 
 function tasksAt(crops, x) {
   const out = [];
-  for (const c of crops) for (const s of c.schedule || []) {
+  for (const c of crops) for (const s of regionFilter(c.schedule || [])) {
     const r = range(s);
-    if (covers(r, x)) out.push({ c, s, r, ending: r[1] === x, starting: r[0] === x });
+    if (covers(r, x)) out.push({ c, s, r, x, key: taskKey(c, s, r, x), ending: r[1] === x, starting: r[0] === x });
   }
   const ord = Object.keys(KINDS);
   return out.sort((a, b) => b.ending - a.ending || ord.indexOf(a.s.kind) - ord.indexOf(b.s.kind));
 }
-function todoList(list, mark) {
-  return list.map(({ c, s, ending, starting }) => `
-    <a class="todo-item" href="#/crop/${c.id}?s=${sectionOf(s.kind)}">
+// 지난 두 순 안에 기간이 끝났는데 완료 표시가 없는 작업
+function missedTasks(crops, x) {
+  const prev = [(x + 35) % 36, (x + 34) % 36];
+  const out = [];
+  for (const c of crops) for (const s of regionFilter(c.schedule || [])) {
+    const r = range(s);
+    if (!r || covers(r, x) || !prev.includes(r[1])) continue;
+    const key = taskKey(c, s, r, r[1]);
+    if (!isDone(key)) out.push({ c, s, r, x: r[1], key, missed: true });
+  }
+  return out;
+}
+function todoList(list, mark, check) {
+  return list.map(({ c, s, x, ending, starting, missed }) => {
+    const link = `<a class="todo-link" href="#/crop/${c.id}?s=${sectionOf(s.kind)}">
       ${kindTag(s.kind)}
       <div><b>${esc(s.task)}</b>${s.region ? ` <span class="tag plain">${esc(s.region)}</span>` : ''}${estTag(s)}
       <div class="todo-crop">${esc(shortName(c))}</div>
-      <div class="when">${esc(whenText(s))}${!mark ? '' : ending ? ' · <span class="ending">이번 순까지</span>' : starting ? ' · 이번 순 시작' : ''}</div></div>
-    </a>`).join('');
+      <div class="when">${esc(whenText(s))}${missed ? ' · <span class="ending">지난 순에 끝남</span>' : !mark ? '' : ending ? ' · <span class="ending">이번 순까지</span>' : starting ? ' · 이번 순 시작' : ''}</div></div>
+    </a>`;
+    return `<div class="todo-item linked">${link}${check ? `<button class="done-btn" data-done="${c.id}|${c.schedule.indexOf(s)}|${x}" aria-label="${esc(shortName(c))} ${esc(s.task)} 완료">완료</button>` : ''}</div>`;
+  }).join('');
 }
 
 // ---------- 홈 ----------
@@ -139,15 +272,19 @@ function viewHome() {
   const d = today();
   const x = nowSlot();
   const mine = myCrops();
-  const tasks = tasksAt(mine, x);
+  const all = tasksAt(mine, x);
+  const tasks = all.filter((t) => !isDone(t.key));
+  const doneNow = all.filter((t) => isDone(t.key));
+  const missed = missedTasks(mine, x);
+  const st = settings();
   const noData = mine.filter((c) => !hasDates(c));
-  const quiet = mine.filter((c) => hasDates(c) && !tasks.some((t) => t.c.id === c.id));
+  const quiet = mine.filter((c) => hasDates(c) && !all.some((t) => t.c.id === c.id));
   const yx = store.get('yearSlot', null) ?? (x + 1) % 36;
   const yf = yearFrag(yx);
-  const area = store.get('area', { v: 1000, u: 'm2' });
-  const py = Math.round((toM2(area.v, area.u) || 1000) / PY);
+  const area = store.get('area', { v: 300, u: 'pyeong' });
+  const py = Math.round((toM2(area.v, area.u) || 300 * PY) / PY);
   const quick = QUICK.map((id) => BY_ID.get(String(id))).filter(Boolean);
-  return `<div class="home">
+  return `<div class="home${mine.length ? ' has-crops' : ''}">
     <section class="hero">
       <div class="hero-copy">
         <h1>${d.getMonth() + 1}월 ${XUN[xunOf(d) - 1]},<br>밭에서 할 일</h1>
@@ -158,14 +295,17 @@ function viewHome() {
         </form>
       </div>
       <div class="stage">
+        ${mine.length ? '<div data-wx-banner></div>' : ''}
         ${mine.length ? `
-        <h2>내 작목 ${mine.length}개, 이번 순 작업 ${tasks.length}건</h2>
+        <h2>이번 순 할 일 ${tasks.length}건 <small>내 작목 ${mine.length}개 · ${st.region ? `${st.region} 일정` : '모든 지역 일정'}</small></h2>
+        ${st.region ? '' : `<div class="region-ask"><p>지역을 고르면 그 지역 일정만 남겨 목록이 짧아집니다.</p>${regionChips()}</div>`}
         <div class="frag" data-ui><div class="todo">
-          ${tasks.length ? todoList(tasks.slice(0, 8), true) : '<div class="todo-item"><div><b>이번 순에 날짜가 적힌 작업은 없습니다</b><div class="when">아래 작목을 눌러 작업 방법과 연간 달력을 확인하세요.</div></div></div>'}
-          ${tasks.length > 8 ? `<a class="todo-item more" href="#/calendar"><b>이번 순 작업 ${tasks.length}건 모두 보기</b></a>` : ''}
+          ${missed.length ? `<p class="todo-h">지난 순에 끝난 일, 하셨나요?</p>${todoList(missed, false, true)}<p class="todo-h">이번 순</p>` : ''}
+          ${tasks.length ? todoList(tasks, true, true) : `<div class="todo-item"><div><b>${doneNow.length ? '이번 순 할 일을 모두 끝냈습니다' : '이번 순에 날짜가 적힌 작업은 없습니다'}</b><div class="when">${doneNow.length ? '수고하셨습니다. 끝낸 일은 영농일지에 적어 두었습니다.' : '아래 작목을 눌러 작업 방법과 연간 달력을 확인하세요.'}</div></div></div>`}
           ${quiet.map((c) => `<a class="todo-item more" href="#/crop/${c.id}?s=cal"><div><b>${esc(shortName(c))}</b><div class="when">이번 순에 날짜가 적힌 작업 없음 · 연간 달력 보기</div></div></a>`).join('')}
           ${noData.map((c) => `<a class="todo-item more" href="#/crop/${c.id}?s=stage"><div><b>${esc(shortName(c))}</b><div class="when">달력 자료 없음 · 작업 방법 보기</div></div></a>`).join('')}
         </div></div>
+        ${doneNow.length ? `<details class="done-box"><summary>끝낸 일 ${doneNow.length}건</summary><div class="todo">${doneNow.map((t) => `<div class="todo-item done"><div><b>${esc(t.s.task)}</b><div class="todo-crop">${esc(shortName(t.c))}</div><div class="when">${esc(doneMap()[t.key].at)} 완료 · 영농일지에 기록됨</div></div><button class="done-btn undo" data-undone="${esc(t.key)}">되돌리기</button></div>`).join('')}</div></details>` : ''}
         <p class="more row"><a class="btn" href="#/calendar">${d.getMonth() + 1}월 달력 열기</a><a class="btn" href="#/crops">작목 더 담기</a></p>
         ` : `
         <h2>기르는 작목을 골라 주세요</h2>
@@ -174,6 +314,7 @@ function viewHome() {
         <p class="more row"><a class="btn" href="#/crops">전체 작목 ${CROPS.length}개에서 고르기</a></p>
         `}
       </div>
+      ${mine.length ? '<section class="wx" id="s-wx" data-weather aria-live="polite"></section>' : ''}
     </section>
 
     <section class="year">
@@ -191,7 +332,7 @@ function viewHome() {
 
     <section class="area">
       <div class="area-ask">
-        <h2>밭이 몇 평인가요?</h2>
+        <h2>밭이 보통 몇 평인가요?</h2>
         <div class="area-ctl" data-ui>
           <label class="f">면적(평)<input type="number" inputmode="numeric" min="1" step="1" value="${py}" data-area-py></label>
           <input type="range" min="10" max="3000" step="10" value="${Math.min(3000, Math.max(10, py))}" data-area-range aria-label="면적 조절">
@@ -199,7 +340,7 @@ function viewHome() {
       </div>
       <div class="area-out">
         <div class="area-fig"><span data-area-fig>${fmt(py * PY, 0)}</span><small>㎡</small></div>
-        <p>여기서 정한 면적으로 작목마다 비료 주는 양이 자동 계산됩니다. 농사로의 비료 표는 300평(1,000㎡)을 기준으로 적혀 있고, <span data-area-ratio>${fmt(py * PY / 1000, 2)}</span>배로 환산합니다.</p>
+        <p>작목마다 면적을 따로 정하지 않으면 이 면적으로 비료 양을 계산합니다. 작목별 면적은 작목 화면의 ‘비료 주는 양’에서 정합니다. 농사로의 비료 표는 300평(1,000㎡) 기준이고, <span data-area-ratio>${fmt(py * PY / 1000, 2)}</span>배로 환산합니다.</p>
       </div>
     </section>
 
@@ -312,14 +453,14 @@ function fertTable(c, areaM2) {
     return items.length ? `<div class="fert-round"><h3>${esc(h)}</h3><dl class="kv">${items.map((o) => `<dt>${esc(o.n)}</dt><dd>${val(o.v)}</dd>`).join('')}</dl></div>` : '';
   }).join('')}</div>`;
 }
-const areaNow = () => { const a = store.get('area', { v: 1000, u: 'm2' }); return { a, m2: toM2(a.v, a.u) || 1000 }; };
+const areaNow = (cid) => { const per = cid ? store.get('areas', {})[cid] : null; const a = per || store.get('area', { v: 300, u: 'pyeong' }); return { a, m2: toM2(a.v, a.u) || 1000, own: !!per }; };
 const unitOpts = (u) => Object.entries(UNITS).map(([k, o]) => `<option value="${k}" ${k === u ? 'selected' : ''}>${o.label}</option>`).join('');
 
 function viewCrop(id) {
   const c = BY_ID.get(String(id));
   if (!c) return `<div class="stack"><p class="empty">작목을 찾을 수 없습니다. <a href="#/crops">작목 목록으로</a></p></div>`;
   const noPeriod = (c.schedule || []).filter((s) => !range(s));
-  const { a: area, m2 } = areaNow();
+  const { a: area, m2, own } = areaNow(c.id);
   const pestFull = (c.pests || []).filter((p) => p.timing || p.control);
   const pestBare = (c.pests || []).filter((p) => !p.timing && !p.control);
   const has = { cal: (c.schedule || []).length, stage: (c.stages || []).length, fert: c.fertilizer?.rows?.length, pest: (c.pests || []).length, risk: (c.disasters || []).length };
@@ -342,10 +483,10 @@ function viewCrop(id) {
       <h3>${esc(s.title)}${s.timing ? `<small>${esc(s.timing)}</small>` : ''}</h3>
       <dl class="kv">${(s.items || []).map((i) => `<dt>${esc(i.label)}</dt><dd>${esc(i.value)}</dd>`).join('')}</dl></div>`).join('')}</div></section>` : ''}
     ${has.fert ? `<section class="card" id="s-fert"><h2>비료 주는 양 <small data-fert-unit></small></h2>
-      <div class="calc-bar">
-        <label class="f">내 밭 면적<input type="number" inputmode="decimal" min="0" step="any" data-area value="${esc(area.v)}"></label>
+      <div class="calc-bar" data-area-scope="${c.id}">
+        <label class="f">이 작목 밭 면적<input type="number" inputmode="decimal" min="0" step="any" data-area value="${esc(area.v)}"></label>
         <label class="f">단위<select data-area-unit>${unitOpts(area.u)}</select></label>
-        <button class="btn quiet" data-area-reset>표준 300평으로</button>
+        ${own ? '<button class="btn quiet" data-area-reset>기본 면적으로</button>' : ''}
       </div>
       <div data-fert>${fertTable(c, m2)}</div>
       ${c.fertilizer.note ? `<p class="sub">${esc(c.fertilizer.note)}</p>` : ''}
@@ -369,7 +510,7 @@ function paintCropFert() {
   const box = root?.querySelector('[data-fert]');
   if (!box) return;
   const c = BY_ID.get(root.dataset.crop);
-  const { m2 } = areaNow();
+  const { m2 } = areaNow(c.id);
   box.innerHTML = fertTable(c, m2);
   const base = unitBase(c.fertilizer.unit);
   root.querySelector('[data-fert-unit]').textContent = base ? `${fmt(m2 / PY, 0)}평(${fmt(m2, 0)}㎡)에 주는 양, kg` : (c.fertilizer.unit || '');
@@ -390,7 +531,7 @@ function viewCalendar(q) {
   const slots = x ? [slot(m, x)] : [slot(m, 1), slot(m, 2), slot(m, 3)];
   const groups = [];
   for (const c of pool) {
-    const ts = (c.schedule || []).map((s) => ({ s, r: range(s) })).filter(({ s, r }) => r && (!kind || s.kind === kind) && slots.some((sl) => covers(r, sl)));
+    const ts = regionFilter(c.schedule || []).map((s) => ({ s, r: range(s) })).filter(({ s, r }) => r && (!kind || s.kind === kind) && slots.some((sl) => covers(r, sl)));
     if (ts.length) groups.push({ c, ts });
   }
   const shown = more ? groups : groups.slice(0, 20);
@@ -417,6 +558,7 @@ function viewCalendar(q) {
         ${Object.entries(KINDS).map(([k, v]) => `<a class="chip ${kind === k ? 'on' : ''}" href="${link({ kind: k, more: '' })}">${v}</a>`).join('')}
       </div></div>
     </div>
+    ${settings().region ? `<p class="sub"><b>${settings().region}</b> 일정만 보는 중입니다. <a href="#/links?s=settings">지역 바꾸기</a></p>` : ''}
     <section class="card"><h2>${m}월${x ? ' ' + XUN[x - 1] : ''} 작업 <small>작목 ${groups.length}개 · 세 칸은 상순·중순·하순</small></h2>
       ${groups.length ? '<div class="cal-groups">' + shown.map(({ c, ts }) => `<div class="cal-group"><a href="#/crop/${c.id}?s=cal">${esc(fullName(c))}</a><div class="cal-tasks">
         ${ts.map(({ s, r }) => `<div class="cal-task" data-kind="${esc(s.kind || 'etc')}">${kindTag(s.kind)}<span>${esc(s.task)}${s.region ? ` <span class="tag plain">${esc(s.region)}</span>` : ''}${estTag(s)}</span>
@@ -443,16 +585,17 @@ const toM2 = (v, u) => (Number(v) || 0) * (UNITS[u]?.m2 || 1);
 const FERT_DEFAULT = { n: { name: '요소', pct: 46 }, p: { name: '용성인비', pct: 20 }, k: { name: '염화칼리', pct: 60 }, bag: 20 };
 
 function viewTools(q) {
-  const { a: area } = areaNow();
   const fc = store.get('fert', FERT_DEFAULT);
   const withFert = CROPS.filter((c) => c.fertilizer?.rows?.length);
   const mine = withFert.filter(isFav);
-  const sel = q.get('crop') || store.get('toolCrop', '') || (mine[0]?.id ?? withFert[0]?.id ?? '');
+  let sel = q.get('crop') || store.get('toolCrop', '') || (mine[0]?.id ?? withFert[0]?.id ?? '');
+  if (!BY_ID.get(String(sel))?.fertilizer?.rows?.length) sel = withFert[0]?.id ?? '';
+  const { a: area } = areaNow(sel);
   const opt = (c) => `<option value="${c.id}" ${String(c.id) === String(sel) ? 'selected' : ''}>${esc(fullName(c))}</option>`;
   return `<div class="stack">
     <h1>비료 계산기</h1>
-    <section class="card"><h2>내 밭 면적</h2>
-      <div class="form">
+    <section class="card"><h2>${sel ? esc(shortName(BY_ID.get(String(sel)))) + ' ' : ''}밭 면적</h2>
+      <div class="form" data-area-scope="${esc(sel)}">
         <label class="f">면적<input type="number" inputmode="decimal" min="0" step="any" data-area value="${esc(area.v)}"></label>
         <label class="f">단위<select data-area-unit>${unitOpts(area.u)}</select></label>
       </div>
@@ -480,7 +623,7 @@ function viewTools(q) {
   </div>`;
 }
 function paintTools() {
-  const { m2 } = areaNow();
+  const { m2 } = areaNow(document.querySelector('[data-tool-crop]')?.value);
   const out = document.querySelector('[data-area-out]');
   if (out) out.innerHTML = [['평', m2 / PY, 0], ['㎡', m2, 0], ['단보(300평)', m2 / 1000, 2], ['ha', m2 / 10000, 3]].map(([l, v, d]) => `<div class="fact"><dt>${l}</dt><dd>${fmt(v, d)}</dd></div>`).join('');
   const selEl = document.querySelector('[data-tool-crop]');
@@ -529,7 +672,7 @@ function viewDiary(q) {
       </section>
       <div class="stack">
         <section class="card" id="s-diary"><h2>기록 <small>${list.length}건</small></h2>
-          ${list.length ? '<div class="entries">' + list.map((e) => `<div class="entry"><div class="meta"><b>${esc(e.date)}</b><span class="tag plain">${esc(e.crop)}</span><span class="tag plain">${esc(e.work)}</span>${e.field ? `<span>${esc(e.field)}</span>` : ''}${e.hours ? `<span>${fmt(e.hours, 1)}시간</span>` : ''}${e.cost ? `<span>${fmt(e.cost, 0)}원</span>` : ''}</div>
+          ${list.length ? '<div class="entries">' + list.map((e) => `<div class="entry"><div class="meta"><b>${esc(e.date)}</b><span class="tag plain">${esc(e.crop)}</span><span class="tag plain">${esc(e.work)}</span>${e.auto ? '<span class="tag plain">할 일 완료</span>' : ''}${e.field ? `<span>${esc(e.field)}</span>` : ''}${e.hours ? `<span>${fmt(e.hours, 1)}시간</span>` : ''}${e.cost ? `<span>${fmt(e.cost, 0)}원</span>` : ''}</div>
             ${e.input ? `<p><b>쓴 자재</b> ${esc(e.input)}</p>` : ''}${e.memo ? `<p>${esc(e.memo)}</p>` : ''}
             <div><button class="btn small danger" data-diary-del="${esc(e.id)}">삭제</button></div></div>`).join('') + '</div>' : '<p class="sub">아직 기록이 없습니다. 오늘 한 작업을 적어 보세요.</p>'}
         </section>
@@ -578,6 +721,16 @@ function viewLinks(meta) {
   return `<div class="stack">
     <h1>더보기</h1>
     <div class="link-grid top"><a class="link-card" href="#/tools"><b>비료 계산기</b><span>내 면적에 비료 몇 포대가 필요한지</span></a><a class="link-card" href="#/diary"><b>영농일지</b><span>오늘 한 작업, 쓴 자재, 비용 적기</span></a></div>
+    <section class="card" id="s-settings"><h2>내 설정</h2>
+      <h3 class="sub-h">내 지역</h3>
+      <p class="sub">고른 지역의 일정만 ‘오늘’ 화면과 달력에 보여 드립니다. 지역 구분이 없는 작업은 그대로 나오고, 내 지역 자료가 아예 없는 작목은 모든 지역 일정을 보여 드립니다.</p>
+      ${regionChips()}
+      <h3 class="sub-h">날씨 위치</h3>
+      ${settings().loc ? `<p>지금: <b>${esc(settings().loc.name)}</b></p>` : '<p class="sub">아직 정하지 않았습니다.</p>'}
+      <div class="row"><button class="btn quiet" data-geo>지금 있는 곳으로</button><select data-city aria-label="가까운 시·군">${cityOpts()}</select>${settings().loc ? '<button class="btn quiet" data-wx-clear>위치 지우기</button>' : ''}</div>
+      <h3 class="sub-h">글자 크기</h3>
+      <div class="row"><button class="btn quiet" data-big aria-pressed="${settings().big}">${settings().big ? '글자 보통' : '글자 크게'}</button></div>
+    </section>
     <section class="card"><h2>용어 풀이</h2><dl class="words">${WORDS.map(([t, d]) => `<div><dt>${t}</dt><dd>${d}</dd></div>`).join('')}</dl></section>
     <section class="card"><h2>농촌진흥청 서비스</h2>
       <div class="link-grid">${LINKS.map(([t, d, u]) => `<a class="link-card" href="${u}" target="_blank" rel="noopener"><b>${t}</b><span>${d}</span></a>`).join('')}</div>
@@ -632,13 +785,14 @@ function render() {
   motion();
   if (page === 'tools') paintTools();
   if (page === 'calendar') document.querySelectorAll('.filter .chip.on').forEach((el) => { const box = el.parentElement; box.scrollLeft = Math.max(0, el.offsetLeft - box.offsetLeft - 16); });
+  if (page === 'home') paintWeather();
   if (page === 'crop') {
     const c = BY_ID.get(String(seg[1]));
     document.title = c ? `${fullName(c)} — 영농노트` : '영농노트';
     paintCropFert();
-    const s = q.get('s');
-    if (s) requestAnimationFrame(() => document.getElementById('s-' + s)?.scrollIntoView());
   } else document.title = '영농노트 — 농사에 필요한 정보만, 한눈에';
+  const sec = q.get('s');
+  if (sec) requestAnimationFrame(() => document.getElementById('s-' + sec)?.scrollIntoView());
 }
 let lastPath = '';
 window.addEventListener('hashchange', () => {
@@ -672,13 +826,48 @@ function toggleFav(id) {
   toast(on ? `<b>${esc(fullName(c))}</b>을(를) 내 작목에 담았습니다.${route().page === 'home' ? '' : ' <a href="#/">오늘 할 일 보기</a>'}` : `<b>${esc(fullName(c))}</b>을(를) 내 작목에서 뺐습니다. <button data-fav="${id}">되돌리기</button>`);
 }
 document.addEventListener('click', (e) => {
-  const t = e.target.closest('[data-fav],[data-go],[data-jump],[data-print],[data-area-reset],[data-diary-del],[data-diary-csv],[data-diary-backup],[data-reset],[data-yr-step]');
+  const t = e.target.closest('[data-done],[data-undone],[data-region],[data-geo],[data-wx-change],[data-wx-retry],[data-wx-clear],[data-big],[data-fav],[data-go],[data-jump],[data-print],[data-area-reset],[data-diary-del],[data-diary-csv],[data-diary-backup],[data-reset],[data-yr-step]');
   if (!t) return;
-  if (t.dataset.fav) { e.preventDefault(); toggleFav(t.dataset.fav); }
+  if (t.dataset.done) {
+    const [cid, idx, x] = t.dataset.done.split('|');
+    const c = BY_ID.get(cid);
+    const s = c?.schedule[Number(idx)];
+    if (!s) return;
+    const key = taskKey(c, s, range(s), Number(x));
+    const entry = { id: Date.now().toString(36) + Math.random().toString(36).slice(2, 6), date: isoDay(), crop: fullName(c), work: workOf(s), field: '', input: '', hours: '', cost: '', memo: s.task + (s.region ? ` (${s.region})` : ''), auto: true, createdAt: new Date().toISOString() };
+    store.set('diary', [...diary(), entry]);
+    store.set('done', { ...doneMap(), [key]: { at: isoDay(), diaryId: entry.id } });
+    const y = window.scrollY; render(); window.scrollTo(0, y);
+    toast(`<b>${esc(s.task)}</b> 완료. 영농일지에 적었습니다. <button data-undone="${esc(key)}">되돌리기</button>`);
+  } else if (t.dataset.undone) {
+    const dm = doneMap();
+    const rec = dm[t.dataset.undone];
+    if (!rec) return;
+    delete dm[t.dataset.undone];
+    store.set('done', dm);
+    store.set('diary', diary().filter((x) => x.id !== rec.diaryId));
+    const y = window.scrollY; render(); window.scrollTo(0, y);
+    toast('완료 표시와 일지 기록을 되돌렸습니다.');
+  } else if ('region' in t.dataset) {
+    setSetting({ region: t.dataset.region, regionAuto: false });
+    const y = window.scrollY; render(); window.scrollTo(0, y);
+    toast(t.dataset.region ? `<b>${t.dataset.region}</b> 일정만 보여 드립니다.` : '모든 지역 일정을 보여 드립니다.');
+  } else if ('geo' in t.dataset) {
+    if (!navigator.geolocation) { toast('이 기기에서는 위치를 확인할 수 없습니다. 시·군을 골라 주세요.'); return; }
+    toast('위치를 확인하는 중입니다…');
+    navigator.geolocation.getCurrentPosition(
+      (p) => setLoc({ lat: Math.round(p.coords.latitude * 100) / 100, lon: Math.round(p.coords.longitude * 100) / 100, name: '내 위치' }),
+      () => toast('위치를 확인하지 못했습니다. 위치 권한을 허용하거나 시·군을 골라 주세요.'),
+      { timeout: 15000, maximumAge: 3600e3 });
+  } else if ('wxChange' in t.dataset) location.hash = '#/links?s=settings';
+  else if ('wxRetry' in t.dataset) paintWeather(true);
+  else if ('wxClear' in t.dataset) { setSetting({ loc: null }); store.set('wx', null); render(); toast('날씨 위치를 지웠습니다.'); }
+  else if ('big' in t.dataset) { setSetting({ big: !settings().big }); applyBig(); }
+  else if (t.dataset.fav) { e.preventDefault(); toggleFav(t.dataset.fav); }
   else if (t.dataset.go) location.hash = t.dataset.go;
   else if (t.dataset.jump) document.getElementById('s-' + t.dataset.jump)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   else if ('print' in t.dataset) window.print();
-  else if ('areaReset' in t.dataset) { store.set('area', { v: 300, u: 'pyeong' }); const y = window.scrollY; render(); window.scrollTo(0, y); }
+  else if ('areaReset' in t.dataset) { const cid = t.closest('[data-area-scope]')?.dataset.areaScope; const a = store.get('areas', {}); delete a[cid]; store.set('areas', a); const y = window.scrollY; render(); window.scrollTo(0, y); toast('기본 면적으로 계산합니다.'); }
   else if (t.dataset.yrStep) paintYear(Number(document.querySelector('[data-yr]').value) + Number(t.dataset.yrStep));
   else if (t.dataset.diaryDel) { if (confirm('이 기록을 삭제할까요?')) { store.set('diary', diary().filter((x) => x.id !== t.dataset.diaryDel)); render(); toast('기록을 삭제했습니다.'); } }
   else if ('diaryCsv' in t.dataset) {
@@ -711,7 +900,10 @@ document.addEventListener('submit', (e) => {
     toast(`<b>${esc(o.date)} ${esc(o.crop)} ${esc(o.work)}</b> 기록을 저장했습니다. <button data-jump="diary">기록 보기</button>`);
   }
 });
-function setArea(v, u) { store.set('area', { v: Number(v) || 0, u }); }
+function setArea(v, u, cid) {
+  if (cid) { const a = store.get('areas', {}); a[cid] = { v: Number(v) || 0, u }; store.set('areas', a); }
+  else store.set('area', { v: Number(v) || 0, u });
+}
 document.addEventListener('input', (e) => {
   const t = e.target;
   if (t.matches('[data-live]')) {
@@ -719,8 +911,8 @@ document.addEventListener('input', (e) => {
     const p = new URLSearchParams(); if (t.dataset.cat) p.set('cat', t.dataset.cat); if (t.value.trim()) p.set('q', t.value.trim());
     history.replaceState(null, '', '#/crops' + (p.size ? '?' + p : ''));
   } else if (t.matches('[data-area],[data-area-unit]')) {
-    const root = t.closest('section');
-    setArea(root.querySelector('[data-area]').value, root.querySelector('[data-area-unit]').value);
+    const root = t.closest('[data-area-scope]') || t.closest('section');
+    setArea(root.querySelector('[data-area]').value, root.querySelector('[data-area-unit]').value, root.dataset.areaScope);
     paintCropFert(); paintTools();
   } else if (t.matches('[data-area-py],[data-area-range]')) {
     const py = Math.max(0, Number(t.value) || 0);
@@ -733,11 +925,12 @@ document.addEventListener('input', (e) => {
     const fc = store.get('fert', FERT_DEFAULT);
     const v = Number(t.value);
     if (v > 0) { t.dataset.fc === 'bag' ? (fc.bag = v) : (fc[t.dataset.fc].pct = v); store.set('fert', fc); paintTools(); }
-  } else if (t.matches('[data-tool-crop]')) paintTools();
+  } else if (t.matches('[data-tool-crop]')) { store.set('toolCrop', t.value); location.hash = '#/tools?crop=' + t.value; }
   else if (t.matches('[data-yr]')) paintYear(Number(t.value));
 });
 document.addEventListener('change', (e) => {
   const t = e.target;
+  if (t.matches('[data-city]') && t.value !== '') { const [name, lat, lon] = CITIES[Number(t.value)]; setLoc({ lat, lon, name }); return; }
   if (!t.matches('[data-diary-restore]') || !t.files[0]) return;
   t.files[0].text().then((txt) => {
     const b = JSON.parse(txt);
@@ -753,6 +946,7 @@ document.addEventListener('change', (e) => {
 });
 
 // ---------- boot ----------
+applyBig();
 load().then((d) => { META = d; lastPath = location.hash.split('?')[0]; render(); })
   .catch((err) => { $app.innerHTML = `<div class="stack"><p class="empty">${esc(err.message)}. 연결 상태를 확인한 뒤 새로고침해 주세요.</p></div>`; });
 if ('serviceWorker' in navigator && location.protocol === 'https:') navigator.serviceWorker.register('sw.js').catch(() => {});
