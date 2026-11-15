@@ -6,6 +6,7 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+  workflow_call: # 농사로 자료 갱신 워크플로가 커밋한 뒤 이어서 부른다
 
 permissions:
   contents: read
@@ -24,6 +25,8 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: main # 다른 워크플로가 방금 올린 커밋까지 포함해 배포
 
       - uses: actions/setup-node@v4
         with:

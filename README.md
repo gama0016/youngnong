@@ -23,6 +23,15 @@
 처음 한 번만 저장소에서 **Settings → Pages → Build and deployment → Source** 를 **GitHub Actions** 로 바꿔 두면 됩니다.
 배포 때 `data/crops.json` 을 새로 만들고, 사이트에 필요한 파일(index.html, css, js, icons, assets, data/crops.json 등)만 올립니다.
 
+## 농사로 Open API 연동
+
+`.github/workflows/nongsaro-sync.yml` 이 매주 월요일 새벽(한국 시간)과 수동 실행 때 농사로 Open API(농작업일정)에서 원자료를 받아 `data/raw/` 에 저장하고, 바뀐 것이 있으면 main 에 커밋한 뒤 사이트를 다시 배포합니다.
+
+- 인증키: 저장소 **Settings → Secrets and variables → Actions → New repository secret**, 이름 `NONGSARO_API_KEY`. 키가 없으면 이 워크플로는 아무것도 하지 않고 끝납니다.
+- 직접 받기: `NONGSARO_API_KEY=키 node scripts/fetch-nongsaro.mjs` (특정 작목만: `ONLY=30600,30697`)
+- 받는 자료: 분류 목록 → 분류별 작목 목록 → 작목별 농작업일정 본문(HTML)과 작형 정보. 키는 어떤 파일에도 저장되지 않습니다.
+- 다음 단계: 받은 본문 HTML의 월별 작업 표를 읽어 `data/crops/*.json` 의 달력(상순·중순·하순)을 원문 그대로 채웁니다.
+
 ## 실행
 
 빌드 과정이 없는 정적 사이트입니다.
