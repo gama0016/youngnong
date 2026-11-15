@@ -535,3 +535,65 @@ input[type="text"], input[type="search"], input[type="number"], input[type="date
 .year-head { min-height: 132px; }
 .cal-group > a { min-height: 44px; display: flex; align-items: center; padding-block: 4px; }
 .g-label small, .bag b small, .bag-n small { font-size: var(--step-small); }
+
+
+/* ================= 현장 효율 개편 ================= */
+html.big { font-size: 118.75%; }
+.top-in { gap: 12px; }
+.textsize { order: 3; min-height: 44px; padding: 6px 12px; border: 0; background: var(--surface); color: var(--ink); font-weight: 800; font-size: var(--step-small); cursor: pointer; }
+.textsize[aria-pressed="true"] { background: var(--ink); color: var(--bg); }
+@media (min-width: 820px) { .nav { margin-left: auto; } }
+.linkish { background: none; border: 0; padding: 6px 0; font: inherit; font-weight: 700; color: inherit; text-decoration: underline; text-underline-offset: 0.18em; cursor: pointer; }
+
+/* 할 일 줄: 내용(링크) + 완료 버튼 */
+.todo-item.linked { padding: 0; display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: stretch; }
+.todo-link { display: grid; grid-template-columns: 68px minmax(0, 1fr); gap: 2px 14px; padding: 14px 16px; color: inherit; text-decoration: none; align-items: start; transition: background-color 160ms ease; }
+.todo-link:hover { background: var(--surface-2); }
+.todo-link .tag.kind { margin-top: 4px; }
+.done-btn { min-width: 76px; min-height: 56px; border: 0; background: var(--accent); color: var(--accent-ink); font-weight: 800; font-size: var(--step-body); cursor: pointer; transition: background-color 160ms ease, transform 120ms var(--ease-out); }
+.done-btn:hover { background: var(--ink); }
+.done-btn:active { transform: scale(0.95); }
+.done-btn.undo { background: var(--surface-2); color: var(--ink); min-width: 96px; }
+.todo-item.done { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 12px; align-items: center; opacity: 0.85; }
+.todo-item.done b { text-decoration: line-through; text-decoration-thickness: 2px; }
+.todo-h { margin: 10px 0 2px; font-weight: 800; color: inherit; }
+.stage .todo-h { color: var(--accent-ink); }
+.done-box { margin-top: var(--gap); }
+.done-box summary { cursor: pointer; min-height: 52px; display: flex; align-items: center; padding: 0 16px; background: var(--ink); color: var(--bg); font-weight: 800; }
+.done-box .todo { margin-top: var(--gap); }
+.region-ask { background: var(--bg); color: var(--ink); padding: 14px 16px; margin-bottom: var(--gap); display: grid; gap: 10px; max-width: 680px; }
+.stage h2 small { font-size: var(--step-small); font-weight: 600; letter-spacing: 0; opacity: 0.9; margin-left: 6px; }
+
+/* 날씨 */
+.wx { background: var(--surface); padding: 16px; display: grid; gap: 12px; }
+.wx h2 { font-size: var(--step-lead); }
+.wx h2 small { font-size: var(--step-small); font-weight: 600; letter-spacing: 0; margin-left: 6px; color: var(--muted); }
+.wx-days { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--gap); }
+.wx-day { background: var(--bg); padding: 10px 8px; display: grid; gap: 2px; text-align: center; font-size: var(--step-small); }
+.wx-day b { font-size: var(--step-body); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.wx-day.warn { background: var(--danger); color: #fff; }
+.wx-alert { background: var(--bg); padding: 14px 16px; display: grid; gap: 8px; box-shadow: inset 6px 0 0 var(--danger); }
+.wx-alert h3 { color: var(--danger); font-size: var(--step-body); }
+.wx-crop { display: grid; gap: 2px; text-decoration: none; padding: 8px 0; }
+.wx-crop span { font-size: var(--step-small); }
+.wx-ok { font-weight: 700; }
+.wx select { width: auto; flex: 1 1 160px; }
+#s-settings select { width: auto; flex: 1 1 160px; }
+
+.wx-alert { padding: 0; }
+.wx-alert summary { cursor: pointer; list-style: none; display: grid; gap: 2px; padding: 12px 16px; min-height: 56px; }
+.wx-alert summary::-webkit-details-marker { display: none; }
+.wx-alert summary b { color: var(--danger); }
+.wx-alert summary span { font-size: var(--step-small); text-decoration: underline; text-underline-offset: 0.18em; }
+.wx-alert[open] summary span { text-decoration: none; }
+.wx-alert .wx-crop { padding: 8px 16px; }
+.wx-alert .wx-crop:last-child { padding-bottom: 14px; }
+
+.wx-banner { display: grid; gap: 2px; background: var(--danger); color: #fff; padding: 12px 16px; margin-bottom: 16px; text-decoration: none; max-width: 680px; }
+.wx-banner span { font-size: var(--step-small); text-decoration: underline; text-underline-offset: 0.18em; }
+.hero .wx { align-self: start; }
+@media (min-width: 900px) { .home.has-crops .hero .stage { grid-row: span 2; } .home.has-crops .hero-copy { padding-bottom: 0; } }
+@media (max-width: 899px) { .home.has-crops .hero-copy > p { display: none; } .home.has-crops .hero { gap: 16px; } .home.has-crops .stage { padding-top: calc(var(--s) * 2 + 8px); } }
+.wx .linkish { min-height: 44px; display: inline-flex; align-items: center; }
+.stage .done-btn { background: var(--ink); color: var(--bg); }
+.stage .done-btn:hover { background: var(--bg); color: var(--ink); }
