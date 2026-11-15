@@ -134,7 +134,7 @@ async function paintWeather(force) {
     if (st.regionAuto && w.elevation >= 400 && st.region !== '고랭지') { setSetting({ region: '고랭지' }); toast(`농장 위치의 해발이 약 ${fmt(w.elevation, 0)}m라 지역을 <b>고랭지</b>로 맞췄습니다. <a href="#/links?s=settings">바꾸기</a>`); }
   } catch (e) {
     if (!document.contains(box)) return;
-    if (!(c && c.lat === loc.lat && c.lon === loc.lon)) box.innerHTML = `<h2>날씨 <small>${esc(loc.name)} 기준</small></h2><p class="sub">예보를 받지 못했습니다. 인터넷 연결을 확인해 주세요. <button class="linkish" data-wx-retry>다시 받기</button> · <button class="linkish" data-wx-change>위치 바꾸기</button></p>`;
+    if (!(c && c.lat === loc.lat && c.lon === loc.lon)) box.innerHTML = `<h2>날씨 <small>${esc(loc.name)} 기준</small></h2><p class="sub">예보를 받지 못했습니다. 인터넷 연결을 확인하거나 잠시 뒤 다시 받아 주세요. <button class="linkish" data-wx-retry>다시 받기</button> · <button class="linkish" data-wx-change>위치 바꾸기</button></p>`;
   }
 }
 function setLoc(loc) {
