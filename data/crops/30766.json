@@ -1,0 +1,400 @@
+{
+  "id": 30766,
+  "name": "초지",
+  "type": null,
+  "category": "사료작물",
+  "sciName": null,
+  "family": null,
+  "summary": "화본과(오차드그라스, 톨페스큐, 티머시 등)와 두과(알파파, 레드클로버 등) 목초를 혼파해 조성하는 초지의 신규조성 및 기성초지 이용관리 일정. 연간 3~4회 예취가 필수이다.",
+  "env": [
+    {
+      "label": "생육적온",
+      "value": "15~21℃"
+    },
+    {
+      "label": "적정토양 산도범위",
+      "value": "pH 5.5~7.5"
+    },
+    {
+      "label": "조성적지",
+      "value": "조성방법에 따라 경사도 15° 전후, 배수가 비교적 양호한 토양, 토양 깊이 50cm 이상"
+    }
+  ],
+  "schedule": [
+    {
+      "task": "방목이용",
+      "kind": "manage",
+      "region": "북부",
+      "start": {
+        "m": 5,
+        "p": 1
+      },
+      "end": {
+        "m": 10,
+        "p": 1
+      },
+      "text": "방목개시 5월 상순, 최종방목 10월 상순(방목기간 150~160일)"
+    },
+    {
+      "task": "방목이용",
+      "kind": "manage",
+      "region": "중부",
+      "start": {
+        "m": 4,
+        "p": 2
+      },
+      "end": {
+        "m": 10,
+        "p": 2
+      },
+      "text": "방목개시 4월 중순~4월 하순, 최종방목 10월 중순(방목기간 170~180일)"
+    },
+    {
+      "task": "방목이용",
+      "kind": "manage",
+      "region": "남부",
+      "start": {
+        "m": 4,
+        "p": 1
+      },
+      "end": {
+        "m": 11,
+        "p": 1
+      },
+      "text": "방목개시 4월 상순~4월 중순, 최종방목 10월 하순~11월 상순(방목기간 190~210일)"
+    },
+    {
+      "task": "방목이용",
+      "kind": "manage",
+      "region": "제주",
+      "start": {
+        "m": 3,
+        "p": 3
+      },
+      "end": {
+        "m": 11,
+        "p": 2
+      },
+      "text": "방목개시 3월 하순~4월 상순, 최종방목 11월 상순~11월 중순(방목기간 210~232일)"
+    },
+    {
+      "task": "멸강나방 방제(1차 비래시기)",
+      "kind": "pest",
+      "region": null,
+      "start": {
+        "m": 5,
+        "p": 3
+      },
+      "end": {
+        "m": 6,
+        "p": 1
+      },
+      "text": "1차 비래시기: 5월 하순~6월 상순"
+    },
+    {
+      "task": "멸강나방 방제(2차 비래시기)",
+      "kind": "pest",
+      "region": null,
+      "start": {
+        "m": 7,
+        "p": 2
+      },
+      "end": {
+        "m": 7,
+        "p": 3
+      },
+      "text": "2차 비래시기: 7월 중순~7월 하순"
+    },
+    {
+      "task": "대상지조사·조성설계(신규조성)",
+      "kind": "etc",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "자재준비(신규조성)",
+      "kind": "etc",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "식생조사·토양검정(신규조성)",
+      "kind": "etc",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "비료살포 및 파종(신규조성)",
+      "kind": "sow",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "조성작업(신규조성)",
+      "kind": "etc",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "목책설치(신규조성)",
+      "kind": "etc",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "관리방목·진압(신규조성)",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "월동전관리(신규조성)",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "보파용 종자신청",
+      "kind": "etc",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "1~4차 예취(기성초지)",
+      "kind": "harvest",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "석회·퇴비 사용(기성초지)",
+      "kind": "fert",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "웃거름(기성초지)",
+      "kind": "fert",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "목책보수(기성초지)",
+      "kind": "etc",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "보파(기성초지)",
+      "kind": "sow",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    }
+  ],
+  "stages": [
+    {
+      "title": "신규초지 조성",
+      "timing": null,
+      "items": [
+        {
+          "label": "파종량",
+          "value": "30~35kg/ha, 지역별 적기 적량 파종"
+        },
+        {
+          "label": "비료(N:P:K)",
+          "value": "100:250:100kg/ha"
+        },
+        {
+          "label": "조성방법",
+          "value": "경사 심하고 장애물 많은 곳은 불경운 조성"
+        },
+        {
+          "label": "월동기간",
+          "value": "석회 및 퇴구비 시용"
+        },
+        {
+          "label": "월동 전·후",
+          "value": "진압 또는 관리방목 실시"
+        }
+      ]
+    },
+    {
+      "title": "초지조성 첫해관리",
+      "timing": null,
+      "items": [
+        {
+          "label": "1차 방목",
+          "value": "목초가 15cm 정도 자랐을 때 가벼운 방목"
+        },
+        {
+          "label": "2차 방목",
+          "value": "1차 방목 후 20cm 정도일 때"
+        },
+        {
+          "label": "가축두수",
+          "value": "1ha당 3~4두 방목(3회 방목 시)"
+        }
+      ]
+    },
+    {
+      "title": "목초 예취높이",
+      "timing": null,
+      "items": [
+        {
+          "label": "목초가 잘 자랄 때",
+          "value": "6cm"
+        },
+        {
+          "label": "7~8월 고온기",
+          "value": "10cm"
+        },
+        {
+          "label": "월동을 위한 마지막 이용 시",
+          "value": "10cm 초장 유지"
+        }
+      ]
+    },
+    {
+      "title": "방목시설",
+      "timing": null,
+      "items": [
+        {
+          "label": "급수시설",
+          "value": "배수가 용이하고 여러 목구에서 이용 가능한 곳에 배치, 겨울 동결 주의"
+        },
+        {
+          "label": "외책",
+          "value": "가축 이탈 방지를 위해 튼튼하게 설치, 5줄 정도"
+        },
+        {
+          "label": "내책",
+          "value": "목구 구분용 경계목, 3~4줄"
+        },
+        {
+          "label": "급염시설",
+          "value": "염분·미네랄 제공, 빗물에 녹지 않도록 지붕 설치, 쇠와 접하면 부식 주의"
+        },
+        {
+          "label": "피난시설",
+          "value": "강우·바람 회피용, 정상부위나 조성이 곤란한 장소에 설치"
+        },
+        {
+          "label": "간이 우사",
+          "value": "방역 활동, 질병 발생 소의 치료용"
+        }
+      ]
+    }
+  ],
+  "fertilizer": {
+    "unit": "kg/ha",
+    "columns": [
+      "신규초지 조성"
+    ],
+    "rows": [
+      {
+        "name": "질소",
+        "values": [
+          100
+        ]
+      },
+      {
+        "name": "인산",
+        "values": [
+          250
+        ]
+      },
+      {
+        "name": "칼리",
+        "values": [
+          100
+        ]
+      }
+    ],
+    "note": "단위는 kg/ha(10a 아님). 원문 표기: 비료(N:P:K) = 100:250:100kg/ha. 기성초지 웃거름 양과 밑거름·웃거름 배분은 원문에 없음. 고온기에는 질소비료 시용량을 줄임."
+  },
+  "pests": [
+    {
+      "name": "멸강나방",
+      "kind": "해충",
+      "timing": "1차 비래시기 5월 하순~6월 상순, 2차 비래시기 7월 중순~7월 하순",
+      "control": "조기예찰 및 즉시 방제. 살충제 살포 2~3주 경과 후 청초 이용. PLS 위반되지 않도록 약제 사용"
+    },
+    {
+      "name": "광엽잡초",
+      "kind": "잡초",
+      "timing": null,
+      "control": "MCPP 1.5배 약량으로 목초 예취 후 20일경 방제"
+    }
+  ],
+  "disasters": [
+    {
+      "risk": "봄가뭄",
+      "timing": null,
+      "measures": [
+        "면적대비 적정이용 가축두수 확보 유지",
+        "적기 적량 추비시용 및 보파",
+        "방목 및 예취 이용 시 적정 초장 유지",
+        "가벼운 방목실시로 눌러주기(진압) 효과 유도",
+        "이동식 스프링클러 이용 관수"
+      ]
+    },
+    {
+      "risk": "고온건조기",
+      "timing": null,
+      "measures": [
+        "초기관수: 토양건조 및 지온상승 방지, 목초 재생수량 증대 및 잡초발생 억제",
+        "적정초장 유지(10cm 정도)",
+        "충분한 재생기간을 줌(6~7주 이상)",
+        "질소비료 시용량을 줄임"
+      ]
+    },
+    {
+      "risk": "장마",
+      "timing": null,
+      "measures": [
+        "장마 전 목초이용으로 도복 및 습해 방지"
+      ]
+    },
+    {
+      "risk": "가을가뭄",
+      "timing": null,
+      "measures": []
+    }
+  ],
+  "notes": [
+    "우리나라 목초는 대부분 한지형으로 봄·가을 서늘할 때 생육이 왕성함. 조단백질 함량 15%.",
+    "연간 3~4회 예취 필수. 예취 횟수가 너무 많거나 적으면 부실초지의 원인이 됨.",
+    "여름철 적정 예취높이 10cm: 광합성 촉진으로 재생력 증대, 저장양분 확보, 고온장해 방지.",
+    "기타 문제점(원문): 봄철 과다생육 잉여목초 관리(사일리지, 건초 등), 경사지 경운조성 시 토양유실, 적기 파종 및 월동 전후 관리기술 숙지",
+    "기성초지 생육단계 표기(원문): 월동기, 재생개시기, 생육 최성기, 생육부진기, 가을철생육기, 월동준비기, 월동개시기, 생육정지기",
+    "월별 일정표의 칸 위치는 확인할 수 없어, 본문·표에 시기가 적힌 항목만 시기를 입력함."
+  ],
+  "source": "https://www.nongsaro.go.kr/portal/ps/psb/psbl/workScheduleDtl.ps?menuId=PS00087&cntntsNo=30766"
+}

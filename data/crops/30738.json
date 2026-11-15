@@ -1,0 +1,114 @@
+{
+  "id": 30738,
+  "name": null,
+  "type": null,
+  "category": null,
+  "sciName": null,
+  "family": null,
+  "summary": "원문 페이지에 작목명이 표시되지 않음(제목란 \"-\"). 작업 항목명만 있고 상세 내용 없음",
+  "env": [],
+  "schedule": [
+    {
+      "task": "파종",
+      "kind": "sow",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "관수",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "김매기, 솎음",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "웃거름",
+      "kind": "fert",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "복주기",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "충해방제",
+      "kind": "pest",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "수확",
+      "kind": "harvest",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    }
+  ],
+  "stages": [],
+  "fertilizer": null,
+  "pests": [
+    {
+      "name": "거세미",
+      "kind": "해충",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "굼벵이",
+      "kind": "해충",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "땅강아지",
+      "kind": "해충",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "줄기검은썩음병",
+      "kind": "병",
+      "timing": null,
+      "control": null
+    }
+  ],
+  "disasters": [
+    {
+      "risk": "가뭄",
+      "timing": null,
+      "measures": []
+    },
+    {
+      "risk": "습해",
+      "timing": null,
+      "measures": []
+    }
+  ],
+  "notes": [
+    "원문 페이지에 작목명이 표시되지 않음(제목란 \"-\"). 작업 항목명만 있고 상세 내용 없음",
+    "월별 일정표(상·중·하순 막대)는 원문에서 칸 위치를 확인할 수 없어 작업별 시기를 비워 둠 (일정표 범위 4월~3월)",
+    "예상되는 문제점: 파종지연, 발아불량, 습해발생"
+  ],
+  "source": "https://www.nongsaro.go.kr/portal/ps/psb/psbl/workScheduleDtl.ps?menuId=PS00087&cntntsNo=30738"
+}

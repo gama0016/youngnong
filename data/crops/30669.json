@@ -1,0 +1,104 @@
+{
+  "id": 30669,
+  "name": "포도",
+  "type": "무가온(노지재배)",
+  "category": "과수",
+  "sciName": "Vitis labrusca L.",
+  "family": "포도과",
+  "summary": "토양적응 범위가 넓고 척박한 토양에도 견디며 내습성·내건성이 강한 과수. 꽃눈분화는 5월 하순~6월 상순에 시작되고, 성숙기에 비가 많으면 당 함량이 떨어지고 탄저병 등 병해와 열과가 심해진다.",
+  "env": [
+    { "label": "생육온도(발아기·비대기·개화기·성숙기)", "value": "20~25℃" },
+    { "label": "토양 pH", "value": "5.5~6.5가 적당(토양적응 범위가 넓음)" }
+  ],
+  "schedule": [
+    { "task": "발아기", "kind": "etc", "region": null, "start": { "m": 4, "p": 3 }, "end": { "m": 4, "p": 3 }, "text": "4월 하순" },
+    { "task": "개화기", "kind": "etc", "region": null, "start": { "m": 6, "p": 1 }, "end": { "m": 6, "p": 1 }, "text": "6월 상순" },
+    { "task": "수확(캠벨얼리)", "kind": "harvest", "region": null, "start": { "m": 8, "p": 3 }, "end": { "m": 8, "p": 3 }, "text": "8월 하순" },
+    { "task": "수확(거봉)", "kind": "harvest", "region": null, "start": { "m": 9, "p": 2 }, "end": { "m": 9, "p": 2 }, "text": "9월 중순" },
+    { "task": "덕시설 정비, 전정 및 간벌", "kind": "manage", "region": null, "start": null, "end": null, "text": null },
+    { "task": "조피작업, 월동병해충 방제", "kind": "pest", "region": null, "start": null, "end": null, "text": null },
+    { "task": "눈솎기, 신초유인, 꽃송이다듬기, 순지르기", "kind": "manage", "region": null, "start": null, "end": null, "text": null },
+    { "task": "알솎기, 봉지씌우기", "kind": "manage", "region": null, "start": null, "end": null, "text": "송이다듬기: 만개 10일 후~20일까지 지경솎기와 알솎기" },
+    { "task": "신초 및 곁순관리, 열매양조절", "kind": "manage", "region": null, "start": null, "end": null, "text": null },
+    { "task": "병해충 방제", "kind": "pest", "region": null, "start": null, "end": null, "text": null },
+    { "task": "바닥덮기(멀칭) 제거, 간벌, 수세진단", "kind": "manage", "region": null, "start": null, "end": null, "text": "간벌: 수확 직후, 겨울전정 때" },
+    { "task": "1회 웃거름", "kind": "fert", "region": null, "start": null, "end": null, "text": null },
+    { "task": "2회 웃거름", "kind": "fert", "region": null, "start": null, "end": null, "text": null }
+  ],
+  "stages": [
+    { "title": "재식거리(다 자란 나무)", "timing": null,
+      "items": [
+        { "label": "캠벨얼리", "value": "2.7~5.4m" },
+        { "label": "거봉", "value": "3.3~6.6m" }
+      ] },
+    { "title": "전정", "timing": null,
+      "items": [
+        { "label": "겨울전정", "value": "단초전정(2눈 전정)" },
+        { "label": "여름전정", "value": "부초관리" },
+        { "label": "간벌 시기", "value": "수확 직후, 겨울전정 때" }
+      ] },
+    { "title": "송이다듬기·송이솎기", "timing": "만개 10일 후~20일까지",
+      "items": [
+        { "label": "송이다듬기", "value": "만개 10일 후~20일까지 지경솎기와 알솎기" },
+        { "label": "적정 열매양(캠벨얼리)", "value": "1.5송이/신초" },
+        { "label": "적정 열매양(거봉)", "value": "0.5송이/신초" },
+        { "label": "적정 과방중(캠벨얼리)", "value": "400g(75립)" },
+        { "label": "적정 과방중(거봉)", "value": "500g(35립)" },
+        { "label": "적정 엽수", "value": "12잎 확보" },
+        { "label": "결과모지 굵기(캠벨얼리)", "value": "8~10mm" },
+        { "label": "적정 신초 길이(거봉)", "value": "1m 미만" }
+      ] },
+    { "title": "수확기 판정", "timing": "캠벨얼리 8월 하순 / 거봉 9월 중순",
+      "items": [
+        { "label": "캠벨얼리", "value": "당도 15°Bx, 칼라차트 10단계" },
+        { "label": "거봉(무핵)", "value": "당도 18°Bx, 칼라차트 9단계 이상" },
+        { "label": "주의", "value": "캠벨얼리는 껍질색이 당도·산도보다 먼저 성숙기준에 도달하므로 껍질색 위주로 수확하면 신맛 포도가 생산됨" }
+      ] },
+    { "title": "물주기", "timing": null,
+      "items": [
+        { "label": "봄가뭄·저온 시", "value": "1일 1t/10a, 미니스프링클러 및 점적관수 2열 설치" },
+        { "label": "월동 전", "value": "충분한 물주기" },
+        { "label": "수확기", "value": "열과 방지를 위해 단수 금지, 지속적인 물주기" }
+      ] }
+  ],
+  "fertilizer": {
+    "unit": "kg/10a",
+    "columns": ["총량", "밑거름", "웃거름 1회", "웃거름 2회"],
+    "rows": [
+      { "name": "퇴비", "values": [2000, 2000, null, null] },
+      { "name": "질소", "values": [10, 6.0, 2.0, 2.0] },
+      { "name": "인산", "values": [6.0, 6.0, null, null] },
+      { "name": "칼륨", "values": [8.0, 4.0, 4.0, null] },
+      { "name": "석회", "values": [80.0, 80.0, null, null] }
+    ],
+    "note": null
+  },
+  "pests": [
+    { "name": "갈색무늬병", "kind": "병", "timing": null, "control": null },
+    { "name": "새눈무늬병", "kind": "병", "timing": null, "control": null },
+    { "name": "탄저병", "kind": "병", "timing": null, "control": null },
+    { "name": "회색곰팡이병", "kind": "병", "timing": null, "control": null },
+    { "name": "노균병", "kind": "병", "timing": null, "control": null },
+    { "name": "장님노린재", "kind": "해충", "timing": null, "control": null },
+    { "name": "포도호랑하늘소", "kind": "해충", "timing": null, "control": null },
+    { "name": "응애류", "kind": "해충", "timing": null, "control": null },
+    { "name": "깍지벌레", "kind": "해충", "timing": null, "control": null },
+    { "name": "유리나방류", "kind": "해충", "timing": null, "control": null },
+    { "name": "꽃떨이 현상", "kind": "생리장해", "timing": null, "control": "적정 주간거리 확보로 수세 안정(결과모지 굵기 8~10mm), 대립계 포도는 하향유인 전정과 착립증진제 살포" },
+    { "name": "열매터짐(열과)", "kind": "생리장해", "timing": "수확기", "control": "수확기 단수 금지와 지속적인 물주기, 적정 과방중 유지 및 과립밀착에 따른 열과 방지" },
+    { "name": "포장 과습에 따른 생리장해", "kind": "생리장해", "timing": null, "control": "넓고 완만한 이랑 형태 유지, 이랑 사이는 겉도랑 물빼기(명거배수), 심토 파쇄기와 집수정 설치로 배수 유도" }
+  ],
+  "disasters": [
+    { "risk": "혹한 및 건조(언피해)", "timing": null, "measures": ["전년도 조기낙엽·과다 열매달림에 따른 성숙지연 방지", "월동 전 저장양분 충분히 축적", "월동 전 충분한 물주기"] },
+    { "risk": "봄가뭄 및 저온(생장지연)", "timing": null, "measures": ["물주기(1일 1t/10a)", "미니스프링클러 및 점적관수 2열 설치"] },
+    { "risk": "호우 및 태풍", "timing": null, "measures": [] }
+  ],
+  "notes": [
+    "생육 단계: 휴면기, 수액이동기, 발아 및 신초생장기, 개화 및 과립비대기, 성숙기, 수확 및 저장양분축적기, 낙엽기",
+    "꽃눈분화는 5월 하순~6월 상순에 시작되며 그해의 개화·열매맺음과 동시에 진행",
+    "기상재해에 따른 예상 문제점: 휴면병, 발아 불량, 초기생육 불균일, 신초 고사, 꽃떨이현상, 열매터짐(열과), 조기낙엽, 과습에 따른 병해 증가, 시설 파손",
+    "병해충별 방제 약제와 시기는 페이지에서 텍스트로 확인되지 않음",
+    "농작업의 월·순 시기는 출하시기 표 외에는 페이지 도표에서 텍스트로 확인되지 않음"
+  ],
+  "source": "https://www.nongsaro.go.kr/portal/ps/psb/psbl/workScheduleDtl.ps?menuId=PS00087&cntntsNo=30669"
+}

@@ -1,0 +1,279 @@
+{
+  "id": 30735,
+  "name": "양송이",
+  "type": "봄재배·가을재배",
+  "category": "버섯",
+  "sciName": null,
+  "family": null,
+  "summary": "양송이 봄·가을재배의 퇴비 퇴적, 입상·후발효, 종균접종, 흙덮기, 수확 관리.",
+  "env": [
+    {
+      "label": "종균접종 시 퇴비 내 온도",
+      "value": "23~25℃"
+    },
+    {
+      "label": "종균접종 시 실내습도",
+      "value": "95% 유지"
+    },
+    {
+      "label": "입상 시 퇴비 수분",
+      "value": "70%"
+    },
+    {
+      "label": "후발효",
+      "value": "60℃에서 8시간 유지, 발효온도 4~6일간 50~55℃"
+    },
+    {
+      "label": "흙덮기",
+      "value": "수분 65%, 산도(pH) 8.0"
+    },
+    {
+      "label": "흙덮기 후 온도",
+      "value": "15~17℃로 하강"
+    }
+  ],
+  "schedule": [
+    {
+      "task": "봄재배 야외발효",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "봄재배 후발효",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "봄재배 배지입상, 종균접종",
+      "kind": "sow",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "봄재배 흙덮기 및 버섯발생",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "봄재배 생육(온도·습도관리) 및 수확(4~5회)",
+      "kind": "harvest",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "봄재배 폐상",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "가을재배 야외발효",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "가을재배 후발효",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "가을재배 배지입상, 종균접종",
+      "kind": "sow",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "가을재배 흙덮기 및 버섯발생",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "가을재배 생육(온도·습도관리) 및 수확(4~5회)",
+      "kind": "harvest",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "가을재배 폐상",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    }
+  ],
+  "stages": [
+    {
+      "title": "가퇴적",
+      "timing": null,
+      "items": [
+        {
+          "label": "준비",
+          "value": "퇴적장소 준비, 물을 축인 뒤 가퇴적"
+        },
+        {
+          "label": "크기",
+          "value": "가로 180 × 세로 180, 높이 180cm"
+        },
+        {
+          "label": "수분",
+          "value": "흡수량이 최대가 되도록 조절(75%)"
+        }
+      ]
+    },
+    {
+      "title": "본퇴적",
+      "timing": null,
+      "items": [
+        {
+          "label": "첨가제",
+          "value": "가퇴적 2일 후 첨가제 사용(계분, 요소 등)"
+        },
+        {
+          "label": "1~3회 뒤집기",
+          "value": "요소 분시, 온도조절"
+        },
+        {
+          "label": "4~6회 뒤집기",
+          "value": "퇴비더미 균일발효, 마지막 뒤집기 때 석고 첨가"
+        }
+      ]
+    },
+    {
+      "title": "입상 및 후발효",
+      "timing": null,
+      "items": [
+        {
+          "label": "퇴비 수분",
+          "value": "70%"
+        },
+        {
+          "label": "퇴비 두께",
+          "value": "20~25cm"
+        },
+        {
+          "label": "후발효",
+          "value": "60℃에서 8시간 유지"
+        },
+        {
+          "label": "발효온도",
+          "value": "4~6일간 50~55℃"
+        }
+      ]
+    },
+    {
+      "title": "종균접종",
+      "timing": null,
+      "items": [
+        {
+          "label": "방법",
+          "value": "층별 재식"
+        },
+        {
+          "label": "퇴비 내 온도",
+          "value": "23~25℃ 유지"
+        },
+        {
+          "label": "실내습도",
+          "value": "95% 유지"
+        }
+      ]
+    },
+    {
+      "title": "흙덮기 및 균상관리",
+      "timing": null,
+      "items": [
+        {
+          "label": "흙 조건",
+          "value": "수분 65%, 산도 8.0 조절"
+        },
+        {
+          "label": "두께",
+          "value": "2~3cm로 균일하게"
+        },
+        {
+          "label": "소독",
+          "value": "흙덮기 소독(증기 또는 약제). 흙덮기 3~4일 후 적용 약제 살포"
+        },
+        {
+          "label": "온도",
+          "value": "15~17℃로 하강"
+        },
+        {
+          "label": "기타",
+          "value": "물주기 및 환기"
+        }
+      ]
+    },
+    {
+      "title": "수확",
+      "timing": null,
+      "items": [
+        {
+          "label": "1~3주기",
+          "value": "환기량과 물주는 양 증가, 주기 및 균상관리 철저"
+        },
+        {
+          "label": "4~5주기",
+          "value": "버섯개열 방지, 저온관리, 품질관리 철저, 병해충 방제, 물주는 양 감소"
+        }
+      ]
+    }
+  ],
+  "fertilizer": null,
+  "pests": [],
+  "disasters": [
+    {
+      "risk": "온도조절 미흡",
+      "timing": null,
+      "measures": []
+    },
+    {
+      "risk": "종균심기 놓침",
+      "timing": null,
+      "measures": []
+    },
+    {
+      "risk": "불량 흙덮기 사용",
+      "timing": null,
+      "measures": []
+    },
+    {
+      "risk": "병해충 및 온도·습도관리 미흡",
+      "timing": null,
+      "measures": []
+    }
+  ],
+  "notes": [
+    "월별 일정표(상·중·하순 막대)는 원문에서 칸 위치를 확인할 수 없어 작업별 시기를 비워 둠"
+  ],
+  "source": "https://www.nongsaro.go.kr/portal/ps/psb/psbl/workScheduleDtl.ps?menuId=PS00087&cntntsNo=30735"
+}

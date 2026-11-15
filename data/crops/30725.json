@@ -1,0 +1,235 @@
+{
+  "id": 30725,
+  "name": "오리",
+  "type": null,
+  "category": "축산",
+  "sciName": null,
+  "family": null,
+  "summary": "오리 육추(입추 준비~8주) 관리, 사료·급수, 논방사 요령.",
+  "env": [
+    {
+      "label": "육추 온도",
+      "value": "처음 1주간 32℃ 유지, 이후 매주 3~5℃씩 낮추고 3주 이후 폐온"
+    },
+    {
+      "label": "습도",
+      "value": "적정 60~70%"
+    },
+    {
+      "label": "점등",
+      "value": "처음 1주간 24시간 종야점등, 이후 자연일조 포함 14~16시간"
+    },
+    {
+      "label": "육추사 수용 밀도",
+      "value": "3.3m²당 15~20마리"
+    },
+    {
+      "label": "한 무리 적정 규모",
+      "value": "55마리 정도"
+    },
+    {
+      "label": "깔짚 두께",
+      "value": "5~10cm"
+    }
+  ],
+  "schedule": [
+    {
+      "task": "초생추 구입",
+      "kind": "etc",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "육추사 설계 및 시공",
+      "kind": "etc",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "깔짚 준비",
+      "kind": "etc",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "육추사 소독",
+      "kind": "etc",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": "입추 4~5일 전 훈증소독"
+    },
+    {
+      "task": "육추기구 가동 확인",
+      "kind": "etc",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": "입추 하루 전"
+    },
+    {
+      "task": "첫모이 급여",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": "가능한 빠른 시간 내"
+    },
+    {
+      "task": "자동급수기·급수섬 설치",
+      "kind": "etc",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "영양물통 설치",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": "처음 7일간"
+    },
+    {
+      "task": "주기적 체중 측정 및 선별",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "논방사",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": "벼 이앙 후 2주령부터, 벼 이삭이 패기 전 완료"
+    },
+    {
+      "task": "출하",
+      "kind": "harvest",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": "체중 3.0~3.5kg"
+    }
+  ],
+  "stages": [
+    {
+      "title": "입추 준비",
+      "timing": null,
+      "items": [
+        {
+          "label": "초생추",
+          "value": "우수한 품종 및 계통 선택, 오리 전문 부화장에서 직접 구입"
+        },
+        {
+          "label": "육추사",
+          "value": "약간 어둡고 건조하며 통풍이 잘 되도록 설계·시공. 오리는 한데 뭉치므로 밀집 주의"
+        },
+        {
+          "label": "깔짚",
+          "value": "톱밥, 왕겨, 볏짚 등. 처음 2주간은 톱밥이나 왕겨, 이후 볏짚 사용 가능. 두께 5~10cm"
+        },
+        {
+          "label": "소독",
+          "value": "입추 4~5일 전 훈증소독"
+        },
+        {
+          "label": "육추기구",
+          "value": "입추 하루 전 가동 확인"
+        }
+      ]
+    },
+    {
+      "title": "사료·급수",
+      "timing": null,
+      "items": [
+        {
+          "label": "첫모이",
+          "value": "가능한 빨리 급여, 사료 급여 전에 충분히 급수"
+        },
+        {
+          "label": "전기사료(처음 3주)",
+          "value": "2,900kcal/kg, 22%"
+        },
+        {
+          "label": "후기사료(4~8주)",
+          "value": "3,000kcal/kg, 18%"
+        },
+        {
+          "label": "영양",
+          "value": "무기물과 비타민을 충분히 급여해 구루병·골연증 예방. 펠렛 또는 반죽 형태가 좋음"
+        },
+        {
+          "label": "급수",
+          "value": "자동급수기 설치, 깨끗한 물 상시 급수. 급수기는 슬랫 위에 설치, 주변에 단단한 재질의 낮은 울타리 설치"
+        },
+        {
+          "label": "영양물통",
+          "value": "처음 7일간 200마리당 1개"
+        }
+      ]
+    },
+    {
+      "title": "포획 및 취급",
+      "timing": null,
+      "items": [
+        {
+          "label": "포획망",
+          "value": "길이 2.5m, 높이 0.7m의 와이어 메쉬"
+        },
+        {
+          "label": "방법",
+          "value": "병아리는 목 부위를 잡고, 다리를 잡아 들어 올리면 안 됨. 사료 급이 전이나 더위 때를 피해 포획"
+        }
+      ]
+    },
+    {
+      "title": "논방사",
+      "timing": "벼 이앙 후 2주령부터, 벼 이삭이 패기 전 방사 완료",
+      "items": [
+        {
+          "label": "효과",
+          "value": "해충구제, 제초, 배설물에 의한 시비 효과 및 노동력 절감"
+        },
+        {
+          "label": "방사 밀도(10a당)",
+          "value": "어린병아리 20~30수, 중병아리 10~15수, 큰병아리 7~8수"
+        }
+      ]
+    },
+    {
+      "title": "출하",
+      "timing": null,
+      "items": [
+        {
+          "label": "출하 체중",
+          "value": "3.0~3.5kg(탈모 용이)"
+        }
+      ]
+    }
+  ],
+  "fertilizer": null,
+  "pests": [],
+  "disasters": [
+    {
+      "risk": "여름철 더위",
+      "timing": null,
+      "measures": [
+        "그늘막 설치",
+        "더위 때를 피해 포획"
+      ]
+    }
+  ],
+  "notes": [],
+  "source": "https://www.nongsaro.go.kr/portal/ps/psb/psbl/workScheduleDtl.ps?menuId=PS00087&cntntsNo=30725"
+}

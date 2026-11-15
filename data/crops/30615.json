@@ -1,0 +1,320 @@
+{
+  "id": 30615,
+  "name": "무",
+  "type": "고랭지재배",
+  "category": "채소",
+  "sciName": "Raphanus sativus L.",
+  "family": "배추과",
+  "summary": "고랭지·준고랭지 여름재배 작형. 서늘한 기후를 좋아하며 12℃ 이하 저온에서 꽃눈분화가 촉진된다.",
+  "env": [
+    {
+      "label": "발아적온",
+      "value": "15~30℃"
+    },
+    {
+      "label": "개화적온",
+      "value": "12℃ 이하"
+    },
+    {
+      "label": "생육적온",
+      "value": "20℃"
+    },
+    {
+      "label": "토양산도",
+      "value": "pH 5.5~6.8 (중성 내지 약산성)"
+    }
+  ],
+  "schedule": [
+    {
+      "task": "씨뿌림(준고랭지 1기작)",
+      "kind": "sow",
+      "region": "준고랭지",
+      "start": {
+        "m": 4,
+        "p": 3
+      },
+      "end": {
+        "m": 5,
+        "p": 2
+      },
+      "text": "4월 하순~5월 중순"
+    },
+    {
+      "task": "씨뿌림(준고랭지 2기작)",
+      "kind": "sow",
+      "region": "준고랭지",
+      "start": {
+        "m": 7,
+        "p": 1
+      },
+      "end": {
+        "m": 7,
+        "p": 3
+      },
+      "text": "7월 상순~7월 하순"
+    },
+    {
+      "task": "씨뿌림(고랭지 단작)",
+      "kind": "sow",
+      "region": "고랭지",
+      "start": {
+        "m": 6,
+        "p": 1
+      },
+      "end": {
+        "m": 7,
+        "p": 1
+      },
+      "text": "6월 상순~7월 상순"
+    },
+    {
+      "task": "솎음, 김매기, 물주기, 배수",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "웃거름",
+      "kind": "fert",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "수확(준고랭지 1기작)",
+      "kind": "harvest",
+      "region": "준고랭지",
+      "start": {
+        "m": 7,
+        "p": 1
+      },
+      "end": {
+        "m": 8,
+        "p": 1
+      },
+      "text": "7월 상순~8월 상순"
+    },
+    {
+      "task": "수확(준고랭지 2기작)",
+      "kind": "harvest",
+      "region": "준고랭지",
+      "start": {
+        "m": 9,
+        "p": 1
+      },
+      "end": {
+        "m": 10,
+        "p": 2
+      },
+      "text": "9월 상순~10월 중순"
+    },
+    {
+      "task": "수확(고랭지 단작)",
+      "kind": "harvest",
+      "region": "고랭지",
+      "start": {
+        "m": 8,
+        "p": 2
+      },
+      "end": {
+        "m": 9,
+        "p": 3
+      },
+      "text": "8월 중순~9월 하순"
+    }
+  ],
+  "stages": [
+    {
+      "title": "씨뿌림",
+      "timing": "준고랭지 1기작 4월 하순~5월 중순 / 준고랭지 2기작 7월 상순~7월 하순 / 고랭지 단작 6월 상순~7월 상순",
+      "items": [
+        {
+          "label": "씨앗양",
+          "value": "6~7㎗/10a"
+        },
+        {
+          "label": "재식(1조식)",
+          "value": "이랑 간격 60~70cm, 포기 사이 25~30cm"
+        },
+        {
+          "label": "솎음",
+          "value": "본잎 2~3매 때 1~2회, 본잎 6~7매 때까지 종료"
+        },
+        {
+          "label": "김매기",
+          "value": "씨뿌림 직후 전용 제초제 살포"
+        }
+      ]
+    },
+    {
+      "title": "관리",
+      "timing": null,
+      "items": [
+        {
+          "label": "바닥덮기",
+          "value": "멀칭 시 유공흑색 필름, 또는 무피복"
+        },
+        {
+          "label": "물주기",
+          "value": "씨뿌림 직후 및 가물 때"
+        },
+        {
+          "label": "붕소·칼슘 결핍 시",
+          "value": "붕사 또는 칼슘제 0.3% 액을 1주일 간격으로 2~3회 엽면 시비"
+        }
+      ]
+    }
+  ],
+  "fertilizer": {
+    "unit": "kg/10a",
+    "columns": [
+      "총량",
+      "밑거름",
+      "웃거름 1회",
+      "웃거름 2회"
+    ],
+    "rows": [
+      {
+        "name": "요소",
+        "values": [
+          35,
+          13,
+          11,
+          11
+        ]
+      },
+      {
+        "name": "용성인비",
+        "values": [
+          60,
+          60,
+          null,
+          null
+        ]
+      },
+      {
+        "name": "염화칼리",
+        "values": [
+          25,
+          9,
+          8,
+          8
+        ]
+      },
+      {
+        "name": "소석회",
+        "values": [
+          75,
+          75,
+          null,
+          null
+        ]
+      },
+      {
+        "name": "붕사",
+        "values": [
+          2,
+          2,
+          null,
+          null
+        ]
+      },
+      {
+        "name": "퇴비",
+        "values": [
+          1000,
+          1000,
+          null,
+          null
+        ]
+      }
+    ],
+    "note": null
+  },
+  "pests": [
+    {
+      "name": "벼룩잎벌레",
+      "kind": "해충",
+      "timing": "씨뿌림 전",
+      "control": "토양 살충제 살포"
+    },
+    {
+      "name": "배추흰나비",
+      "kind": "해충",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "파방나방",
+      "kind": "해충",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "무름병",
+      "kind": "병",
+      "timing": null,
+      "control": "돌려짓기, 석회 적정 시용, 예방 위주 약제 살포, 웃거름 등 영양관리"
+    },
+    {
+      "name": "무사마귀병",
+      "kind": "병",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "바이러스병(진딧물)",
+      "kind": "병",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "뿌리혹병",
+      "kind": "병",
+      "timing": null,
+      "control": "배추과 연작지 회피(돌려짓기), 집수되는 재배지 회피, 석회 및 적용약제로 예방, 이병 개체는 포장 밖으로 배출하거나 비경작지에 깊이 매몰"
+    }
+  ],
+  "disasters": [
+    {
+      "risk": "저온 꽃대신장",
+      "timing": null,
+      "measures": [
+        "준고랭지는 4월 하순 이후, 고랭지는 6월 상순 이후 씨뿌림"
+      ]
+    },
+    {
+      "risk": "봄가뭄",
+      "timing": null,
+      "measures": [
+        "오전 10시 이전 또는 오후 4시 이후 물주기",
+        "이동식 스프링클러 이용"
+      ]
+    },
+    {
+      "risk": "장마·호우·태풍 (침수해, 습해, 병해충, 밭침식, 밭매몰)",
+      "timing": null,
+      "measures": [
+        "배수구 및 이랑 정비",
+        "살균제·살충제 살포",
+        "칼슘제 엽면 시비",
+        "침수 시 대체품목(열무) 덧뿌림 또는 재파종 고려"
+      ]
+    },
+    {
+      "risk": "폭염·가뭄 (영양장애, 근비대 불량)",
+      "timing": null,
+      "measures": []
+    }
+  ],
+  "notes": [
+    "성출하기: 준고랭지 1기작 7월 하순, 준고랭지 2기작 9월 하순, 고랭지 단작 9월 중순",
+    "적정 토양수분 관리로 석회 부족증 발생 감소 (자연강우 시 발생률 75%)",
+    "붕사 무비 시 70% 장해 발생. 부족 발견 시 붕사 0.3% 액을 2~3회 엽면 시비",
+    "비가림 및 망사 피복재배 시 노지보다 병해충 발생이 줄고 약 15% 증수"
+  ],
+  "source": "https://www.nongsaro.go.kr/portal/ps/psb/psbl/workScheduleDtl.ps?menuId=PS00087&cntntsNo=30615"
+}

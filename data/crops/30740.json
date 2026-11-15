@@ -1,0 +1,337 @@
+{
+  "id": 30740,
+  "name": "길경(도라지)",
+  "type": null,
+  "category": "약초",
+  "sciName": null,
+  "family": null,
+  "summary": "길경(도라지)의 씨뿌림, 솎음, 김매기, 웃거름, 꽃대제거, 수확 및 조제 요령.",
+  "env": [],
+  "schedule": [
+    {
+      "task": "씨뿌림(봄)",
+      "kind": "sow",
+      "region": null,
+      "start": {
+        "m": 3,
+        "p": 2
+      },
+      "end": {
+        "m": 4,
+        "p": 2
+      },
+      "text": "3월 중순~4월 중순"
+    },
+    {
+      "task": "씨뿌림(가을)",
+      "kind": "sow",
+      "region": null,
+      "start": {
+        "m": 11,
+        "p": 1
+      },
+      "end": {
+        "m": 11,
+        "p": 2
+      },
+      "text": "11월 상순~중순"
+    },
+    {
+      "task": "솎음작업",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": "본잎 3~4매 시"
+    },
+    {
+      "task": "김매기 1차",
+      "kind": "manage",
+      "region": null,
+      "start": {
+        "m": 6,
+        "p": 1
+      },
+      "end": {
+        "m": 6,
+        "p": 1
+      },
+      "text": "6월 상순"
+    },
+    {
+      "task": "김매기 2차",
+      "kind": "manage",
+      "region": null,
+      "start": {
+        "m": 7,
+        "p": 1
+      },
+      "end": {
+        "m": 7,
+        "p": 1
+      },
+      "text": "7월 상순"
+    },
+    {
+      "task": "웃거름 1차",
+      "kind": "fert",
+      "region": null,
+      "start": {
+        "m": 6,
+        "p": 3
+      },
+      "end": {
+        "m": 6,
+        "p": 3
+      },
+      "text": "6월 하순"
+    },
+    {
+      "task": "웃거름 2차",
+      "kind": "fert",
+      "region": null,
+      "start": {
+        "m": 7,
+        "p": 3
+      },
+      "end": {
+        "m": 7,
+        "p": 3
+      },
+      "text": "7월 하순"
+    },
+    {
+      "task": "꽃대제거",
+      "kind": "manage",
+      "region": null,
+      "start": {
+        "m": 6,
+        "p": 2
+      },
+      "end": {
+        "m": 6,
+        "p": 3
+      },
+      "text": "6월 중하순"
+    },
+    {
+      "task": "수확 및 조제",
+      "kind": "harvest",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "병해충 방제",
+      "kind": "pest",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    }
+  ],
+  "stages": [
+    {
+      "title": "씨뿌림",
+      "timing": "봄 3월 중순~4월 중순 / 가을 11월 상순~중순",
+      "items": [
+        {
+          "label": "씨앗량",
+          "value": "완숙 정선된 씨앗 3~4ℓ/10a"
+        },
+        {
+          "label": "방법",
+          "value": "90~120cm 두둑에 6~9cm 간격으로 골뿌림 또는 흩뿌림"
+        },
+        {
+          "label": "관리",
+          "value": "얇게 흙을 덮고 볏짚으로 덮은 뒤 충분히 물을 줘 발아 촉진"
+        }
+      ]
+    },
+    {
+      "title": "솎음",
+      "timing": "본잎 3~4매 시",
+      "items": [
+        {
+          "label": "포기 사이",
+          "value": "4~6cm 간격으로 솎음"
+        }
+      ]
+    },
+    {
+      "title": "김매기",
+      "timing": "6월 상순, 7월 상순",
+      "items": [
+        {
+          "label": "시기",
+          "value": "잡초가 크기 전에 실시"
+        }
+      ]
+    },
+    {
+      "title": "꽃대제거",
+      "timing": "6월 중하순",
+      "items": [
+        {
+          "label": "방법",
+          "value": "뿌리 굵기 촉진을 위해 꽃망울이 생길 때 꽃대를 잘라 줌"
+        },
+        {
+          "label": "주의",
+          "value": "너무 일찍 제거하면 꽃대가 다시 발생할 우려"
+        }
+      ]
+    },
+    {
+      "title": "수확 및 조제",
+      "timing": null,
+      "items": [
+        {
+          "label": "수확",
+          "value": "씨뿌리고 2~3년생(일정표에는 2~4년으로 표기)"
+        },
+        {
+          "label": "약재용",
+          "value": "3~4년 이상 재배"
+        },
+        {
+          "label": "백길경",
+          "value": "물에 담갔다가 대칼로 껍질을 벗김"
+        },
+        {
+          "label": "피길경",
+          "value": "물에 씻은 뒤 햇볕에 말림"
+        },
+        {
+          "label": "건조기 건조",
+          "value": "50~60℃ 유지"
+        }
+      ]
+    }
+  ],
+  "fertilizer": {
+    "unit": "kg/10a",
+    "columns": [
+      "밑거름",
+      "웃거름(6월 하순)",
+      "웃거름(7월 하순)"
+    ],
+    "rows": [
+      {
+        "name": "퇴비",
+        "values": [
+          1500,
+          null,
+          null
+        ]
+      },
+      {
+        "name": "계분",
+        "values": [
+          150,
+          null,
+          null
+        ]
+      },
+      {
+        "name": "질소",
+        "values": [
+          9,
+          null,
+          null
+        ]
+      },
+      {
+        "name": "인산",
+        "values": [
+          18,
+          null,
+          null
+        ]
+      },
+      {
+        "name": "칼리",
+        "values": [
+          15,
+          null,
+          null
+        ]
+      },
+      {
+        "name": "요소",
+        "values": [
+          null,
+          14,
+          10
+        ]
+      },
+      {
+        "name": "염가",
+        "values": [
+          null,
+          null,
+          10
+        ]
+      }
+    ],
+    "note": "밑거름은 전면 살포 후 토양갈이 정지"
+  },
+  "pests": [
+    {
+      "name": "담배나방",
+      "kind": "해충",
+      "timing": null,
+      "control": "방제(약제·시기 미기재)"
+    },
+    {
+      "name": "진딧물",
+      "kind": "해충",
+      "timing": null,
+      "control": "방제(약제·시기 미기재)"
+    },
+    {
+      "name": "순마름병",
+      "kind": "병",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "점무늬병",
+      "kind": "병",
+      "timing": null,
+      "control": "방제(약제·시기 미기재)"
+    },
+    {
+      "name": "줄기마름병",
+      "kind": "병",
+      "timing": null,
+      "control": "방제(약제·시기 미기재)"
+    },
+    {
+      "name": "탄저병",
+      "kind": "병",
+      "timing": null,
+      "control": "방제(약제·시기 미기재)"
+    }
+  ],
+  "disasters": [
+    {
+      "risk": "가뭄",
+      "timing": null,
+      "measures": []
+    },
+    {
+      "risk": "습해",
+      "timing": null,
+      "measures": []
+    }
+  ],
+  "notes": [
+    "월별 일정표(상·중·하순 막대)는 원문에서 칸 위치를 확인할 수 없어 작업별 시기를 비워 둠(본문에 시기가 적힌 작업만 시기 기재)",
+    "예상되는 문제점: 씨뿌림 지연, 발아 부진·입모율 저하, 생육 부진·수량 감소",
+    "수확 연수는 본문(2~3년생)과 일정표(2~4년) 표기가 다름"
+  ],
+  "source": "https://www.nongsaro.go.kr/portal/ps/psb/psbl/workScheduleDtl.ps?menuId=PS00087&cntntsNo=30740"
+}

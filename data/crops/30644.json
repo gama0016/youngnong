@@ -1,0 +1,526 @@
+{
+  "id": 30644,
+  "name": "치커리(치콘, 뿌리치커리)",
+  "type": null,
+  "category": "채소",
+  "sciName": "Cichorium intybus L. var. foliosum",
+  "family": "국화과",
+  "summary": "국화과 다년생 초본으로 호냉성 채소이나 더위에 강하고 뿌리는 추위에 강하다. 6℃ 이하 저온에서 꽃눈이 분화하고 고온장일에서 꽃대가 자란다.",
+  "env": [
+    {
+      "label": "발아적온",
+      "value": "20~30℃"
+    },
+    {
+      "label": "모 기르기 적온",
+      "value": "17~18℃"
+    },
+    {
+      "label": "생육적온",
+      "value": "15~20℃"
+    },
+    {
+      "label": "연화적온",
+      "value": "15~20℃"
+    },
+    {
+      "label": "토양산도",
+      "value": "pH 6.0~6.5"
+    },
+    {
+      "label": "광요구도",
+      "value": "약 25,000Lux"
+    },
+    {
+      "label": "재배적지",
+      "value": "배수가 양호한 토양"
+    }
+  ],
+  "schedule": [
+    {
+      "task": "씨뿌림",
+      "kind": "sow",
+      "region": null,
+      "start": {
+        "m": 5,
+        "p": 2
+      },
+      "end": {
+        "m": 7,
+        "p": 2
+      },
+      "text": "5월 중순~7월 중순"
+    },
+    {
+      "task": "모 기르기",
+      "kind": "nursery",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "아주심기",
+      "kind": "plant",
+      "region": null,
+      "start": {
+        "m": 6,
+        "p": 2
+      },
+      "end": {
+        "m": 8,
+        "p": 2
+      },
+      "text": "6월 중순~8월 중순"
+    },
+    {
+      "task": "밑거름",
+      "kind": "fert",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": "아주심기 1주일 전"
+    },
+    {
+      "task": "웃거름 1회",
+      "kind": "fert",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": "아주심기 후 30일경"
+    },
+    {
+      "task": "웃거름 2회",
+      "kind": "fert",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": "1회 후 20일경"
+    },
+    {
+      "task": "뿌리채취·수확",
+      "kind": "harvest",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": "아주심기 후 120일"
+    },
+    {
+      "task": "저장",
+      "kind": "etc",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "연화",
+      "kind": "etc",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "관리(물주기·김매기)",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "씨뿌림(봄재배)",
+      "kind": "sow",
+      "region": null,
+      "start": {
+        "m": 2,
+        "p": null
+      },
+      "end": {
+        "m": 3,
+        "p": null
+      },
+      "text": "2~3월"
+    },
+    {
+      "task": "아주심기(봄재배)",
+      "kind": "plant",
+      "region": null,
+      "start": {
+        "m": 3,
+        "p": null
+      },
+      "end": {
+        "m": 4,
+        "p": null
+      },
+      "text": "3~4월"
+    },
+    {
+      "task": "수확(봄재배)",
+      "kind": "harvest",
+      "region": null,
+      "start": {
+        "m": 4,
+        "p": null
+      },
+      "end": {
+        "m": 6,
+        "p": null
+      },
+      "text": "4~6월"
+    },
+    {
+      "task": "씨뿌림(여름재배)",
+      "kind": "sow",
+      "region": null,
+      "start": {
+        "m": 5,
+        "p": null
+      },
+      "end": {
+        "m": 6,
+        "p": null
+      },
+      "text": "5~6월"
+    },
+    {
+      "task": "아주심기(여름재배)",
+      "kind": "plant",
+      "region": null,
+      "start": {
+        "m": 6,
+        "p": null
+      },
+      "end": {
+        "m": 7,
+        "p": null
+      },
+      "text": "6~7월"
+    },
+    {
+      "task": "수확(여름재배)",
+      "kind": "harvest",
+      "region": null,
+      "start": {
+        "m": 7,
+        "p": null
+      },
+      "end": {
+        "m": 9,
+        "p": null
+      },
+      "text": "7~9월"
+    },
+    {
+      "task": "씨뿌림(가을재배)",
+      "kind": "sow",
+      "region": null,
+      "start": {
+        "m": 7,
+        "p": null
+      },
+      "end": {
+        "m": 8,
+        "p": null
+      },
+      "text": "7~8월"
+    },
+    {
+      "task": "아주심기(가을재배)",
+      "kind": "plant",
+      "region": null,
+      "start": {
+        "m": 8,
+        "p": null
+      },
+      "end": {
+        "m": 9,
+        "p": null
+      },
+      "text": "8~9월"
+    },
+    {
+      "task": "수확(가을재배)",
+      "kind": "harvest",
+      "region": null,
+      "start": {
+        "m": 9,
+        "p": null
+      },
+      "end": {
+        "m": 12,
+        "p": null
+      },
+      "text": "9~12월"
+    },
+    {
+      "task": "씨뿌림(겨울재배)",
+      "kind": "sow",
+      "region": null,
+      "start": {
+        "m": 10,
+        "p": null
+      },
+      "end": {
+        "m": 11,
+        "p": null
+      },
+      "text": "10~11월"
+    },
+    {
+      "task": "아주심기(겨울재배)",
+      "kind": "plant",
+      "region": null,
+      "start": {
+        "m": 11,
+        "p": null
+      },
+      "end": {
+        "m": 12,
+        "p": null
+      },
+      "text": "11~12월"
+    },
+    {
+      "task": "수확(겨울재배)",
+      "kind": "harvest",
+      "region": null,
+      "start": {
+        "m": 12,
+        "p": null
+      },
+      "end": {
+        "m": 3,
+        "p": null
+      },
+      "text": "12~3월"
+    }
+  ],
+  "stages": [
+    {
+      "title": "씨뿌림",
+      "timing": "5월 중순~7월 중순",
+      "items": [
+        {
+          "label": "씨앗양",
+          "value": "60mL/10a"
+        }
+      ]
+    },
+    {
+      "title": "모 기르기",
+      "timing": null,
+      "items": [
+        {
+          "label": "온도",
+          "value": "주간 25℃ / 야간 15℃"
+        },
+        {
+          "label": "물주기",
+          "value": "오전 중 20℃의 물"
+        }
+      ]
+    },
+    {
+      "title": "아주심기",
+      "timing": "6월 중순~8월 중순",
+      "items": [
+        {
+          "label": "이랑 너비",
+          "value": "30cm"
+        },
+        {
+          "label": "포기 사이",
+          "value": "20cm"
+        },
+        {
+          "label": "멀칭",
+          "value": "두께 0.02~0.03mm 흑색비닐"
+        }
+      ]
+    },
+    {
+      "title": "관리",
+      "timing": null,
+      "items": [
+        {
+          "label": "물주기",
+          "value": "가물 때 물주기"
+        },
+        {
+          "label": "김매기",
+          "value": "제초제 사용"
+        }
+      ]
+    },
+    {
+      "title": "수확 및 저장",
+      "timing": "아주심기 후 120일",
+      "items": [
+        {
+          "label": "수확 방법",
+          "value": "생장점 위 4cm를 남기고 뿌리를 캠"
+        },
+        {
+          "label": "조제",
+          "value": "15cm 길이로 균일하게 잘라 저장"
+        },
+        {
+          "label": "장기 저장(6개월 이상)",
+          "value": "피트모스로 채워 -1℃"
+        },
+        {
+          "label": "단기 저장",
+          "value": "0℃"
+        }
+      ]
+    }
+  ],
+  "fertilizer": {
+    "unit": "kg/10a",
+    "columns": [
+      "총량",
+      "밑거름",
+      "웃거름 1회",
+      "웃거름 2회"
+    ],
+    "rows": [
+      {
+        "name": "퇴비",
+        "values": [
+          1500,
+          1500,
+          null,
+          null
+        ]
+      },
+      {
+        "name": "질소",
+        "values": [
+          20,
+          10,
+          5,
+          5
+        ]
+      },
+      {
+        "name": "인산",
+        "values": [
+          23,
+          23,
+          null,
+          null
+        ]
+      },
+      {
+        "name": "칼리",
+        "values": [
+          23,
+          13,
+          null,
+          10
+        ]
+      },
+      {
+        "name": "석회",
+        "values": [
+          200,
+          200,
+          null,
+          null
+        ]
+      }
+    ],
+    "note": "주는 시기: 밑거름 아주심기 1주일 전, 웃거름 1회 아주심기 후 30일경, 2회 1회 후 20일경"
+  },
+  "pests": [
+    {
+      "name": "세균성부패병",
+      "kind": "병",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "무름병",
+      "kind": "병",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "탄저병",
+      "kind": "병",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "균핵병",
+      "kind": "병",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "잿빛곰팡이병",
+      "kind": "병",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "거세미나방류",
+      "kind": "해충",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "뿌리응애",
+      "kind": "해충",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "모잘록병",
+      "kind": "병",
+      "timing": "모 기를 때 저온",
+      "control": "모잘록병 방제"
+    }
+  ],
+  "disasters": [
+    {
+      "risk": "저온(모 기를 때, 초기생육 불량)",
+      "timing": null,
+      "measures": [
+        "제때 씨뿌림",
+        "야간 15℃ 이상 보온",
+        "모잘록병 방제",
+        "예비 육묘상 설치"
+      ]
+    },
+    {
+      "risk": "가뭄(생육 부진)",
+      "timing": null,
+      "measures": [
+        "물주기 후 아주심기",
+        "진딧물·응애 등 해충 방제",
+        "비닐멀칭",
+        "물주기 실시(이동식 스프링클러 또는 점적관수 시설)"
+      ]
+    },
+    {
+      "risk": "장마·호우·태풍(습해, 생육부진)",
+      "timing": null,
+      "measures": [
+        "배수구 정비",
+        "병해충 종합방제(돌려짓기, 배수로 설치, 퇴비 증시)",
+        "엽면 시비"
+      ]
+    }
+  ],
+  "notes": [
+    "작형별 성출하기: 봄재배 5월 중순~6월 상순, 여름재배 8월 중순~9월 상순, 가을재배 10월 중순~11월 중순, 겨울재배 2월 중순~3월 상순",
+    "일정표는 고랭지 재배와 평지재배(씨뿌림, 뿌리채취·수확, 연화)로 나뉘어 있으나 월별 위치는 확인되지 않음",
+    "주요기술: 플러그 모 기르기, 우량품종 선택, 높은 이랑 설치, 비닐멀칭 재배, 무름병·점무늬병 방제",
+    "페이지의 월별 일정표(생육과정·병충해·기상재해 도표)는 수집 과정에서 칸 위치가 확인되지 않아, 본문에 명시된 시기만 기재함. 정확한 시기는 원문 확인 필요."
+  ],
+  "source": "https://www.nongsaro.go.kr/portal/ps/psb/psbl/workScheduleDtl.ps?menuId=PS00087&cntntsNo=30644"
+}

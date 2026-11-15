@@ -1,0 +1,95 @@
+{
+  "id": 30671,
+  "name": "거베라",
+  "type": "묘목재배",
+  "category": "화훼",
+  "sciName": null,
+  "family": null,
+  "summary": "아주심기 후 2~3년간 재배하며 화환과 꽃꽂이용으로 쓰이는 화훼. 주로 조직배양묘를 이용하고, 다양한 꽃색이 적절히 배합되도록 품종을 고르는 것이 중요하다. 주재배지역은 경남 김해, 경북 봉화.",
+  "env": [
+    { "label": "토양", "value": "사양토, pH 6~7, 비옥하고 배수가 잘 되는 토양" },
+    { "label": "낮 온도", "value": "20~22℃" },
+    { "label": "밤 온도", "value": "15℃" },
+    { "label": "광도", "value": "35,000Lux 이상" },
+    { "label": "저온장해 방지", "value": "12℃ 이상 유지" },
+    { "label": "고온장해 방지", "value": "30~40% 빛가림 재배" },
+    { "label": "언 피해 온도", "value": "약 -3℃ 내외" }
+  ],
+  "schedule": [
+    { "task": "아주심기", "kind": "plant", "region": null, "start": { "m": 4, "p": 2 }, "end": { "m": 5, "p": 3 }, "text": "4월 중순~5월 하순" },
+    { "task": "수확", "kind": "harvest", "region": null, "start": { "m": 9, "p": 1 }, "end": { "m": 7, "p": 1 }, "text": "9월 상순~7월 상순(연중 생산 가능)" },
+    { "task": "성출하기", "kind": "harvest", "region": null, "start": { "m": 10, "p": 1 }, "end": { "m": 5, "p": 3 }, "text": "10월 상순~5월 하순" },
+    { "task": "아주심기 준비(깊이갈이, 토양개량, 토양소독, 비료주기)", "kind": "etc", "region": null, "start": null, "end": null, "text": null },
+    { "task": "묘 구입", "kind": "nursery", "region": null, "start": null, "end": null, "text": null },
+    { "task": "물주기 관리", "kind": "manage", "region": null, "start": null, "end": null, "text": null },
+    { "task": "농약 정기 살포", "kind": "pest", "region": null, "start": null, "end": null, "text": null },
+    { "task": "웃거름 개시", "kind": "fert", "region": null, "start": null, "end": null, "text": null },
+    { "task": "난방 및 지중난방", "kind": "manage", "region": null, "start": null, "end": null, "text": null },
+    { "task": "잎솎기", "kind": "manage", "region": null, "start": null, "end": null, "text": null }
+  ],
+  "stages": [
+    { "title": "아주심기", "timing": "4월 중순~5월 하순",
+      "items": [
+        { "label": "심는 거리", "value": "70~80cm 이랑에 30~40cm 간격으로 2줄 아주심기" },
+        { "label": "준비", "value": "깊이갈이, 토양개량, 토양소독, 비료주기" },
+        { "label": "묘", "value": "주로 조직배양묘 사용(번식은 조직배양, 포기나눔, 삽아, 실생 가능)" },
+        { "label": "물주기", "value": "아주심기 직후 충분히 물을 주어 건조하지 않도록 관리" }
+      ] },
+    { "title": "온도·광 관리", "timing": null,
+      "items": [
+        { "label": "온도", "value": "낮 20~22℃, 밤 15℃" },
+        { "label": "광도", "value": "35,000Lux 이상" },
+        { "label": "저온장해", "value": "12℃ 이상 유지" },
+        { "label": "고온장해", "value": "30~40% 빛가림 재배" }
+      ] },
+    { "title": "잎솎기", "timing": null,
+      "items": [
+        { "label": "적정 엽수", "value": "큰 잎 30매 정도 유지" },
+        { "label": "주의", "value": "잎이 많으면 채화량이 줄고, 지나친 잎솎기는 꽃송이 마름의 원인이 됨" }
+      ] },
+    { "title": "꽃 수확", "timing": "9월 상순~7월 상순(연중 생산 가능)",
+      "items": [
+        { "label": "수확 시작", "value": "첫째와 둘째 꽃봉오리는 제거하고 셋째 꽃부터 수확" },
+        { "label": "홑꽃", "value": "통상화의 수술이 2~3줄 보일 때" },
+        { "label": "겹꽃", "value": "꽃잎이 충분히 펼쳐졌을 때" },
+        { "label": "방법", "value": "손으로 비틀어 꽃대 밑동까지 뽑아냄" },
+        { "label": "개화 후 물주기", "value": "물이 꽃에 묻지 않도록 물주기 압력 조절" }
+      ] },
+    { "title": "출하규격", "timing": null,
+      "items": [
+        { "label": "1등급", "value": "풀길이 65 이상" },
+        { "label": "2등급", "value": "풀길이 55 이상" },
+        { "label": "3등급", "value": "풀길이 45 이상" },
+        { "label": "1속 본수", "value": "10본" }
+      ] }
+  ],
+  "fertilizer": null,
+  "pests": [
+    { "name": "총채벌레", "kind": "해충", "timing": "하우스에서 연중 발생", "control": "저항성 품종 선택, 전염원 조기 제거, 과습 방지를 위한 환기, 예방 위주의 약제 방제" },
+    { "name": "차먼지응애", "kind": "해충", "timing": "고온건조 시 발생", "control": "저항성 품종 선택, 전염원 조기 제거, 과습 방지를 위한 환기, 예방 위주의 약제 방제" },
+    { "name": "진딧물", "kind": "해충", "timing": "하우스에서 연중 발생", "control": "저항성 품종 선택, 전염원 조기 제거, 과습 방지를 위한 환기, 예방 위주의 약제 방제" },
+    { "name": "돌림병", "kind": "병", "timing": "배수 불량 시 발생", "control": "저항성 품종 선택, 전염원 조기 제거, 과습 방지를 위한 환기, 예방 위주의 약제 방제" },
+    { "name": "흰가루병", "kind": "병", "timing": "겨울철 하우스 내 과습 및 환기 불량 시 발생", "control": "저항성 품종 선택, 전염원 조기 제거, 과습 방지를 위한 환기, 예방 위주의 약제 방제" },
+    { "name": "경절현상(수절, 경할)", "kind": "생리장해", "timing": "봄·여름의 고온다습기에 많이 발생", "control": "꽃대가 가로로 갈라짐. 원인은 품종 간 차이, 고온다습, 붕소 등 미량원소 결핍, 생육 속도와 양분 흡수의 불균형. 저항성 품종 선택, 급격한 온도 변화 주의, 미량원소 살포" },
+    { "name": "꽃송이 마름현상", "kind": "생리장해", "timing": null, "control": "꽃목이 말라 꽃이 자라지 못하고 시듦. 원인은 지나친 잎솎기로 인한 탄수화물 부족. 개화에 필요한 최소 엽수(큰 잎 약 30매) 유지" }
+  ],
+  "disasters": [
+    { "risk": "저온장해", "timing": null, "measures": ["12℃ 이상 유지"] },
+    { "risk": "고온장해", "timing": null, "measures": ["30~40% 빛가림 재배"] },
+    { "risk": "저온꽃대신장", "timing": null, "measures": ["4월 상순 이후 씨를 뿌림", "생육 초기 저온에 노출되지 않도록 보온 관리"] },
+    { "risk": "봄가뭄", "timing": null, "measures": ["간이 저수장 설치", "이동식 스프링클러 설치", "짚이나 비닐 덮기"] },
+    { "risk": "호우", "timing": null, "measures": ["배수구 정비", "엽면 비료 살포", "살균제 살포"] },
+    { "risk": "가을가뭄", "timing": null, "measures": ["이동식 스프링클러 설치", "짚 덮기", "망사 덮기", "살충제 살포"] },
+    { "risk": "한파", "timing": null, "measures": ["언 피해가 나타나는 온도는 약 -3℃ 내외", "섬피 비닐로 덮기"] }
+  ],
+  "notes": [
+    "품종 - 적색계: 나타샤, 레드벨벳 / 황색계: 레모나, 써니데이 / 백색계: 휘트니, 스노우드림 / 분홍색: 하모니, 핑크홀릭, 샤이핑크 / 오렌지: 선셋오렌지, 시티팝 / 자주색: 퍼플퀸, 브리즈",
+    "생육과정: 1년차 아주심기 준비 → 묘 구입 및 아주심기 → 수확, 2~3년차 수확",
+    "때 아닌 철(단경기): 7월 중순~9월 상순",
+    "출하량은 11월~이듬해 5월에 가장 많고, 가격은 12월~이듬해 3월에 높게 형성됨",
+    "출하규격의 풀길이 단위는 원문에 명시되어 있지 않음",
+    "페이지에 학명·과명, 비료 표는 없음",
+    "난방·잎솎기 등의 월·순 시기는 페이지 도표에서 텍스트로 확인되지 않음"
+  ],
+  "source": "https://www.nongsaro.go.kr/portal/ps/psb/psbl/workScheduleDtl.ps?menuId=PS00087&cntntsNo=30671"
+}

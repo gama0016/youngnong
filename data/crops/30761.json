@@ -1,0 +1,331 @@
+{
+  "id": 30761,
+  "name": "황기",
+  "type": null,
+  "category": "약초",
+  "sciName": null,
+  "family": null,
+  "summary": "씨를 뿌려 1년생 또는 2년생으로 뿌리를 수확하는 약초. 순지르기로 뿌리 발육을 촉진하고 과번무와 쓰러짐을 막는다.",
+  "env": [],
+  "schedule": [
+    {
+      "task": "봄 씨뿌림",
+      "kind": "sow",
+      "region": null,
+      "start": {
+        "m": 3,
+        "p": 3
+      },
+      "end": {
+        "m": 4,
+        "p": 1
+      },
+      "text": "봄: 3월 하순~4월 상순"
+    },
+    {
+      "task": "덧뿌림",
+      "kind": "sow",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": "발아 후 20일 이내 덧뿌림"
+    },
+    {
+      "task": "순지르기·웃거름(1년생)",
+      "kind": "manage",
+      "region": null,
+      "start": {
+        "m": 6,
+        "p": 2
+      },
+      "end": {
+        "m": 6,
+        "p": 2
+      },
+      "text": "6월 중순 1/4 정도"
+    },
+    {
+      "task": "순지르기·웃거름(1년생)",
+      "kind": "manage",
+      "region": null,
+      "start": {
+        "m": 7,
+        "p": 2
+      },
+      "end": {
+        "m": 7,
+        "p": 2
+      },
+      "text": "7월 중순 1/4 정도"
+    },
+    {
+      "task": "순지르기·웃거름(1년생)",
+      "kind": "manage",
+      "region": null,
+      "start": {
+        "m": 8,
+        "p": 2
+      },
+      "end": {
+        "m": 8,
+        "p": 2
+      },
+      "text": "8월 중순 1/4 정도"
+    },
+    {
+      "task": "가을 씨뿌림",
+      "kind": "sow",
+      "region": null,
+      "start": {
+        "m": 10,
+        "p": 3
+      },
+      "end": {
+        "m": 11,
+        "p": 1
+      },
+      "text": "가을: 10월 하순~11월 상순"
+    },
+    {
+      "task": "김매기·웃거름 사용(2년째)",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "순지르기(2년생)",
+      "kind": "manage",
+      "region": null,
+      "start": {
+        "m": 6,
+        "p": 1
+      },
+      "end": {
+        "m": 6,
+        "p": 1
+      },
+      "text": "6월 상순 1/3~1/4 정도"
+    },
+    {
+      "task": "순지르기(2년생)",
+      "kind": "manage",
+      "region": null,
+      "start": {
+        "m": 7,
+        "p": 2
+      },
+      "end": {
+        "m": 7,
+        "p": 2
+      },
+      "text": "7월 중순 1/3~1/4 정도"
+    },
+    {
+      "task": "순지르기(2년생)",
+      "kind": "manage",
+      "region": null,
+      "start": {
+        "m": 8,
+        "p": 2
+      },
+      "end": {
+        "m": 8,
+        "p": 3
+      },
+      "text": "생육이 왕성하면 8월 중하순 1/3~1/4"
+    },
+    {
+      "task": "씨받이",
+      "kind": "etc",
+      "region": null,
+      "start": {
+        "m": 10,
+        "p": 2
+      },
+      "end": {
+        "m": 10,
+        "p": 2
+      },
+      "text": "10월 중순경에 정선된 씨앗을 1~2일 음건 보관하여 씨앗으로 사용"
+    },
+    {
+      "task": "수확",
+      "kind": "harvest",
+      "region": null,
+      "start": {
+        "m": 10,
+        "p": 3
+      },
+      "end": {
+        "m": 11,
+        "p": 3
+      },
+      "text": "10월 하순~11월 하순"
+    }
+  ],
+  "stages": [
+    {
+      "title": "씨뿌림",
+      "timing": "봄 3월 하순~4월 상순 / 가을 10월 하순~11월 상순",
+      "items": [
+        {
+          "label": "씨앗양",
+          "value": "1.4~2.7kg/10a 소요"
+        },
+        {
+          "label": "방법",
+          "value": "90~120cm 두둑에 40cm 높이 이랑"
+        },
+        {
+          "label": "1년생 수확",
+          "value": "15×10cm 점뿌림"
+        },
+        {
+          "label": "2년생 수확",
+          "value": "15×10cm 점뿌림 후 0.5~1cm 흙덮기"
+        }
+      ]
+    },
+    {
+      "title": "주요 관리작업",
+      "timing": null,
+      "items": [
+        {
+          "label": "덧심기",
+          "value": "발아 후 20일 이내 덧뿌림"
+        },
+        {
+          "label": "순지르기 목적",
+          "value": "뿌리발육 촉진 및 과번무와 쓰러짐 방지"
+        },
+        {
+          "label": "순지르기(1년생)",
+          "value": "6월 중순, 7월 중순, 8월 중순 1/4 정도"
+        },
+        {
+          "label": "순지르기(2년생)",
+          "value": "6월 상순, 7월 중순 1/3~1/4 정도, 생육이 왕성하면 8월 중하순 1/3~1/4"
+        },
+        {
+          "label": "웃거름",
+          "value": "순지르기 전 1.2~1.8kg 시용"
+        }
+      ]
+    },
+    {
+      "title": "수확 및 조제",
+      "timing": "10월 하순~11월 하순",
+      "items": [
+        {
+          "label": "씨앗",
+          "value": "10월 중순경에 정선된 씨앗을 1~2일 음건 보관하여 씨앗으로 사용"
+        },
+        {
+          "label": "조제",
+          "value": "수확한 뿌리를 물에 씻어 껍질을 벗겨 단시일 내에 건조하여 품질향상"
+        },
+        {
+          "label": "열풍건조",
+          "value": "40~45℃에서 24시간 건조"
+        }
+      ]
+    }
+  ],
+  "fertilizer": {
+    "unit": "kg/10a",
+    "columns": [
+      "시용량"
+    ],
+    "rows": [
+      {
+        "name": "퇴비",
+        "values": [
+          1000
+        ]
+      },
+      {
+        "name": "질소",
+        "values": [
+          2.4
+        ]
+      },
+      {
+        "name": "인산",
+        "values": [
+          8
+        ]
+      },
+      {
+        "name": "칼리",
+        "values": [
+          9
+        ]
+      }
+    ],
+    "note": "산성토양에는 고토석회 200~300kg 시용. 웃거름: 순지르기 전 1.2~1.8kg 시용(원문에 성분 구분 없음). 밑거름·웃거름 배분은 원문에 표시되지 않음."
+  },
+  "pests": [
+    {
+      "name": "응애류",
+      "kind": "해충",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "나방류",
+      "kind": "해충",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "입고병",
+      "kind": "병",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "진딧물",
+      "kind": "해충",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "흰가루병",
+      "kind": "병",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "시듦병",
+      "kind": "병",
+      "timing": null,
+      "control": null
+    }
+  ],
+  "disasters": [
+    {
+      "risk": "가뭄",
+      "timing": null,
+      "measures": []
+    },
+    {
+      "risk": "장마",
+      "timing": null,
+      "measures": []
+    },
+    {
+      "risk": "습해 발생",
+      "timing": null,
+      "measures": [
+        "과습 피해 방지를 위해 배수 철저"
+      ]
+    }
+  ],
+  "notes": [
+    "예상되는 문제점(원문): 발아 불량·입모율 저하, 응애류·나방류·입고병·진딧물 피해, 습해 발생, 흰가루병·진딧물 피해, 생육 부진, 시듦병",
+    "병해충 발생 시기는 월별 일정표의 칸 위치를 확인할 수 없어 비워 둠."
+  ],
+  "source": "https://www.nongsaro.go.kr/portal/ps/psb/psbl/workScheduleDtl.ps?menuId=PS00087&cntntsNo=30761"
+}

@@ -1,0 +1,403 @@
+{
+  "id": 30733,
+  "name": "느타리버섯",
+  "type": null,
+  "category": "버섯",
+  "sciName": null,
+  "family": null,
+  "summary": "느타리버섯 봄·여름·가을·겨울 재배의 배지 제조, 살균·발효, 종균접종, 버섯 형성 및 수확 관리.",
+  "env": [
+    {
+      "label": "종균접종 시 배지온도",
+      "value": "23~25℃"
+    },
+    {
+      "label": "종균접종 시 배지 수분",
+      "value": "65~67%"
+    },
+    {
+      "label": "버섯형성 온도",
+      "value": "15~18℃"
+    },
+    {
+      "label": "버섯형성 실내습도",
+      "value": "85~90%"
+    },
+    {
+      "label": "수확관리 실내습도",
+      "value": "80~85%"
+    }
+  ],
+  "schedule": [
+    {
+      "task": "봄재배 종균신청",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "봄재배 재료준비",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "봄재배 배지제조",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "봄재배 종균접종",
+      "kind": "sow",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "봄재배 생육(온·습도관리)",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "봄재배 수확(5~6회)",
+      "kind": "harvest",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "봄재배 폐상",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "여름재배 종균신청",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "여름재배 재료준비",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "여름재배 배지제조",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "여름재배 종균접종",
+      "kind": "sow",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "여름재배 생육(온·습도관리)",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "여름재배 수확(3~4회)",
+      "kind": "harvest",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "여름재배 폐상",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "가을재배 종균신청",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "가을재배 볏짚묶기",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "가을재배 배지제조",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "가을재배 종균접종",
+      "kind": "sow",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "가을재배 생육(온·습도관리)",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "가을재배 수확(5~6회)",
+      "kind": "harvest",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "가을재배 폐상",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "겨울재배 종균신청",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "겨울재배 볏짚묶기",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "겨울재배 배지입상",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "겨울재배 종균접종",
+      "kind": "sow",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "겨울재배 온·습도관리",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "겨울재배 수확",
+      "kind": "harvest",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    }
+  ],
+  "stages": [
+    {
+      "title": "폐솜털기 및 물 축이기",
+      "timing": null,
+      "items": [
+        {
+          "label": "작업",
+          "value": "솜털기 실시, 물은 균일하게 축임"
+        },
+        {
+          "label": "수분",
+          "value": "70~75%"
+        }
+      ]
+    },
+    {
+      "title": "야외발효",
+      "timing": null,
+      "items": [
+        {
+          "label": "야적 높이",
+          "value": "150cm(고온기에는 낮게, 저온기에는 높게)"
+        },
+        {
+          "label": "뒤집기",
+          "value": "60℃에서 2~3회"
+        }
+      ]
+    },
+    {
+      "title": "재배사 입상",
+      "timing": null,
+      "items": [
+        {
+          "label": "작업",
+          "value": "과잉수분 조절, 균상 표면을 균일하게 조절"
+        }
+      ]
+    },
+    {
+      "title": "살균 및 발효",
+      "timing": null,
+      "items": [
+        {
+          "label": "살균",
+          "value": "60~65℃에서 12시간"
+        },
+        {
+          "label": "발효",
+          "value": "50~55℃에서 2~3일간"
+        },
+        {
+          "label": "기타",
+          "value": "가온 시 습열 이용, 가스빼기 작업 실시, 바닥에 살충제 살포"
+        }
+      ]
+    },
+    {
+      "title": "종균접종",
+      "timing": null,
+      "items": [
+        {
+          "label": "배지온도",
+          "value": "23~25℃"
+        },
+        {
+          "label": "수분",
+          "value": "65~67%"
+        },
+        {
+          "label": "기타",
+          "value": "청결 유지, 버섯파리 방제 및 약제처리, 표면접종"
+        }
+      ]
+    },
+    {
+      "title": "균사생장",
+      "timing": null,
+      "items": [
+        {
+          "label": "관리",
+          "value": "버섯파리 방제, 재배사 청결 유지"
+        }
+      ]
+    },
+    {
+      "title": "버섯형성",
+      "timing": null,
+      "items": [
+        {
+          "label": "실내습도",
+          "value": "85~90%"
+        },
+        {
+          "label": "온도",
+          "value": "15~18℃"
+        },
+        {
+          "label": "기타",
+          "value": "광선은 밝게, 환기 조절, 환경관리로 발아량 조절, 균상 표면 과습 방지"
+        }
+      ]
+    },
+    {
+      "title": "수확관리",
+      "timing": null,
+      "items": [
+        {
+          "label": "실내습도",
+          "value": "80~85%"
+        },
+        {
+          "label": "기타",
+          "value": "균상 표면 청결 유지"
+        }
+      ]
+    }
+  ],
+  "fertilizer": null,
+  "pests": [
+    {
+      "name": "버섯파리",
+      "kind": "해충",
+      "timing": "종균접종·균사생장 단계",
+      "control": "종균접종 시 방제 및 약제처리, 균사생장 중 방제, 살균·발효 단계에서 바닥에 살충제 살포"
+    }
+  ],
+  "disasters": [
+    {
+      "risk": "불량 배지 사용",
+      "timing": null,
+      "measures": []
+    },
+    {
+      "risk": "종균 심는 시기 놓침",
+      "timing": null,
+      "measures": []
+    },
+    {
+      "risk": "병해충 및 온·습도 관리 소홀",
+      "timing": null,
+      "measures": []
+    },
+    {
+      "risk": "폐상 시 소독 미흡",
+      "timing": null,
+      "measures": []
+    }
+  ],
+  "notes": [
+    "월별 일정표(상·중·하순 막대)는 원문에서 칸 위치를 확인할 수 없어 작업별 시기를 비워 둠",
+    "수확 횟수: 봄·가을재배 5~6회, 여름재배 3~4회"
+  ],
+  "source": "https://www.nongsaro.go.kr/portal/ps/psb/psbl/workScheduleDtl.ps?menuId=PS00087&cntntsNo=30733"
+}

@@ -1,0 +1,86 @@
+{
+  "id": 30670,
+  "name": "한라봉(부지화)",
+  "type": "하우스재배(무가온·가온)",
+  "category": "과수",
+  "sciName": "C. unshiu × C. sinensis × C. reticulata",
+  "family": "운향과",
+  "summary": "청견과 폰칸을 교배해 육성한 만감류로 당도가 높고 품질이 우수하다(300g 내외, 13~14°Bx). 온주밀감보다 추위에 약해 겨울철이 따뜻한 지역에서 재배하며, 열매가 달리기 시작하면 수세가 약해지기 쉽다.",
+  "env": [
+    { "label": "발아적온", "value": "15℃ 이상" },
+    { "label": "모 기르기 적온", "value": "15℃ 이상" },
+    { "label": "비대적온", "value": "20~25℃" },
+    { "label": "저장적온", "value": "4~5℃" },
+    { "label": "재배적지", "value": "겨울철이 따뜻한 지역(-3℃ 이하가 되지 않는 곳), 연평균 기온 16℃ 이상 지역" }
+  ],
+  "schedule": [
+    { "task": "발아기(무가온재배)", "kind": "etc", "region": null, "start": { "m": 3, "p": 3 }, "end": { "m": 3, "p": 3 }, "text": "3월 하순" },
+    { "task": "개화기(무가온재배)", "kind": "etc", "region": null, "start": { "m": 4, "p": 3 }, "end": { "m": 4, "p": 3 }, "text": "4월 하순" },
+    { "task": "숙기(무가온재배)", "kind": "harvest", "region": null, "start": { "m": 2, "p": null }, "end": null, "text": "2월 이후" },
+    { "task": "성출하기(무가온재배)", "kind": "harvest", "region": null, "start": { "m": 2, "p": 2 }, "end": { "m": 2, "p": 2 }, "text": "2월 중순" },
+    { "task": "발아기(가온재배, 2월 가온)", "kind": "etc", "region": null, "start": { "m": 2, "p": 2 }, "end": { "m": 2, "p": 2 }, "text": "2월 중순" },
+    { "task": "개화기(가온재배, 2월 가온)", "kind": "etc", "region": null, "start": { "m": 3, "p": 2 }, "end": { "m": 3, "p": 2 }, "text": "3월 중순" },
+    { "task": "숙기(가온재배, 2월 가온)", "kind": "harvest", "region": null, "start": { "m": 12, "p": null }, "end": null, "text": "12월 이후" },
+    { "task": "성출하기(가온재배, 2월 가온)", "kind": "harvest", "region": null, "start": { "m": 12, "p": 2 }, "end": null, "text": "12월 중순 이후" },
+    { "task": "과실수확, 하우스 개방, 전정 개시", "kind": "manage", "region": null, "start": null, "end": null, "text": null },
+    { "task": "토양만들기(유기물, 고토석회)", "kind": "fert", "region": null, "start": null, "end": null, "text": null },
+    { "task": "시비(연간 사용량의 20%씩)", "kind": "fert", "region": null, "start": null, "end": null, "text": null },
+    { "task": "김매기, 비닐 개폐 시작, 짚깔기", "kind": "manage", "region": null, "start": null, "end": null, "text": null },
+    { "task": "꽃비료 또는 액비 엽면시비", "kind": "fert", "region": null, "start": null, "end": null, "text": null },
+    { "task": "환기 주의, 적과, 가지 매달기, 과실 매달기", "kind": "manage", "region": null, "start": null, "end": null, "text": null },
+    { "task": "장마 후 비닐 개방", "kind": "manage", "region": null, "start": null, "end": null, "text": null },
+    { "task": "절수관리", "kind": "manage", "region": null, "start": null, "end": null, "text": "산도가 1.5%로 내려갈 무렵" },
+    { "task": "착색기 이후 환경관리(고온 주의), 최종 물주기, 부패방지 살포", "kind": "manage", "region": null, "start": null, "end": null, "text": null },
+    { "task": "수확 전 부피방지제 살포", "kind": "manage", "region": null, "start": null, "end": null, "text": null },
+    { "task": "응애 방제(기계유유제)", "kind": "pest", "region": null, "start": null, "end": null, "text": null },
+    { "task": "진딧물·총채벌레·회색곰팡이 방제", "kind": "pest", "region": null, "start": null, "end": null, "text": null },
+    { "task": "칼슘제 엽면살포", "kind": "pest", "region": null, "start": null, "end": null, "text": "발아 전 1회, 발아 후 수차례" }
+  ],
+  "stages": [
+    { "title": "물주기", "timing": null,
+      "items": [
+        { "label": "품질향상(적은듯한 물주기)", "value": "10일 간격 5~10t" },
+        { "label": "나무의 활성과 발아(충분한 물주기)", "value": "7일 간격 20~30t" },
+        { "label": "회색곰팡이 방지(적은듯한 물주기)", "value": "10일 간격 15t" },
+        { "label": "과실 비대(충분한 물주기)", "value": "7일 간격 20~30t" },
+        { "label": "절수", "value": "산도가 1.5%로 내려갈 무렵 절수관리" }
+      ] },
+    { "title": "비료주기", "timing": null,
+      "items": [
+        { "label": "토양만들기", "value": "유기물, 고토석회" },
+        { "label": "시비", "value": "연간 사용량의 20%씩 여러 차례(성분량은 페이지에 없음)" },
+        { "label": "엽면시비", "value": "꽃비료 또는 액비 엽면시비" }
+      ] },
+    { "title": "품질향상 기술", "timing": null,
+      "items": [
+        { "label": "묘목", "value": "고접갱신 과원은 가능한 빨리 일반묘 육성수로 대체" },
+        { "label": "환경", "value": "시기별 적정 수분 및 하우스 온도 관리" },
+        { "label": "토양", "value": "수세 회복을 위해 유기물 시용 등 종합 토양관리" },
+        { "label": "출하", "value": "비파괴 선과로 품질 균일화" }
+      ] }
+  ],
+  "fertilizer": null,
+  "pests": [
+    { "name": "응애(간자와응애·먼지응애)", "kind": "해충", "timing": null, "control": "기계유유제 방제" },
+    { "name": "진딧물", "kind": "해충", "timing": null, "control": null },
+    { "name": "총채벌레", "kind": "해충", "timing": null, "control": null },
+    { "name": "회색곰팡이", "kind": "병", "timing": null, "control": "적은듯한 물주기(10일 간격 15t)" },
+    { "name": "유사역병(유사돌림병)", "kind": "병", "timing": "발아 전 1회, 발아 후 수차례", "control": "칼슘제 엽면살포로 예방" },
+    { "name": "주름과", "kind": "생리장해", "timing": "과실 비대기", "control": "과실 비대기에 나무의 건조예방, 건조와 과습 상태가 반복되지 않도록 물관리 철저" },
+    { "name": "껍질뜬과", "kind": "생리장해", "timing": "착색기 이후", "control": "적절한 질소비료 시용, 착색기 이후 강우와 이슬 등 맞지 않도록 관리" },
+    { "name": "열매터짐·열과", "kind": "생리장해", "timing": null, "control": "과피와 과육이 발육균형 유지(유과기 고온방지), 건조 시 잎과 과실에 물을 뿌려준 후 물주기" },
+    { "name": "수부증", "kind": "생리장해", "timing": "성숙기 이후", "control": "성숙기 이후 과실에 물방울이 묻지 않도록 관리, 과피의 충실도모를 위하여 칼슘제 살포, 착색기 이후 살균제 살포" }
+  ],
+  "disasters": [
+    { "risk": "호우 및 태풍", "timing": null, "measures": ["하우스 외부 배수구 정리", "하우스 버팀줄 고정, 비닐 또는 밴드끈으로 고정", "침수 피해 및 정전 피해 대비"] }
+  ],
+  "notes": [
+    "작형별 출하시기 - 무가온재배: 발아기 3월 하순, 개화기 4월 하순, 숙기 2월 이후, 성출하기 2월 중순",
+    "작형별 출하시기 - 가온재배(2월 가온): 발아기 2월 중순, 개화기 3월 중순, 숙기 12월 이후, 성출하기 12월 중순 이후",
+    "생육과정: 휴면기, 움트기, 발아기, 개화개시, 개화종료, 1차 낙과기, 2차 낙과기, 과실비대기, 과피탈색기, 착색개시, 완전착색기, 과일완숙기",
+    "페이지에 시기별 과실 횡경(3.0, 5.0, 6.0, 7.0, 8.0, 8.5cm), 당도, 산도, 하우스 최고·최저 온도 관리표가 있으나 시기와 값의 대응이 텍스트로 확인되지 않아 수록하지 않음",
+    "페이지에 kg/10a 기준 비료 표는 없음",
+    "농작업과 방제의 월·순 시기는 출하시기 표 외에는 페이지 도표에서 텍스트로 확인되지 않음"
+  ],
+  "source": "https://www.nongsaro.go.kr/portal/ps/psb/psbl/workScheduleDtl.ps?menuId=PS00087&cntntsNo=30670"
+}

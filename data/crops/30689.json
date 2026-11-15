@@ -1,0 +1,76 @@
+{
+  "id": 30689,
+  "name": "철쭉",
+  "type": "조기 출하·보통 출하",
+  "category": "화훼",
+  "sciName": "Rhododendron indicum SWEET",
+  "family": null,
+  "summary": "꺾꽂이로 번식해 분화로 출하하는 화훼. 피트모스와 펄라이트를 1:1로 섞은 pH 4.5~5.5 용토에서 재배하며 생육적온은 15~25℃, 겨울철 최저 8℃를 유지한다.",
+  "env": [
+    { "label": "생육적온", "value": "15~25℃" },
+    { "label": "최저온도(겨울철 최저기온)", "value": "8℃" },
+    { "label": "재배용토", "value": "피트모스(1) + 펄라이트(1)" },
+    { "label": "산도", "value": "pH 4.5~5.5" },
+    { "label": "삽상온도", "value": "18~22℃" },
+    { "label": "환기 기준", "value": "하우스 내 온도가 20℃ 이상이면 환기" },
+    { "label": "여름철 차광", "value": "50% 빛가림" }
+  ],
+  "schedule": [
+    { "task": "꺾꽂이(조기 출하)", "kind": "nursery", "region": null, "start": { "m": 1, "p": 2 }, "end": { "m": 2, "p": 2 }, "text": "1월 중순~2월 중순" },
+    { "task": "아주심기(조기 출하)", "kind": "plant", "region": null, "start": { "m": 3, "p": 1 }, "end": { "m": 3, "p": 2 }, "text": "3월 상순~3월 중순" },
+    { "task": "순지르기(조기 출하)", "kind": "manage", "region": null, "start": { "m": 5, "p": 2 }, "end": { "m": 5, "p": 3 }, "text": "5월 중순~5월 하순" },
+    { "task": "출하(조기 출하)", "kind": "harvest", "region": null, "start": { "m": 1, "p": 2 }, "end": { "m": 3, "p": 2 }, "text": "1월 중순~3월 중순" },
+    { "task": "꺾꽂이(보통 출하)", "kind": "nursery", "region": null, "start": { "m": 4, "p": 1 }, "end": { "m": 4, "p": 2 }, "text": "4월 상순~4월 중순" },
+    { "task": "아주심기(보통 출하)", "kind": "plant", "region": null, "start": { "m": 6, "p": 1 }, "end": { "m": 6, "p": 2 }, "text": "6월 상순~6월 중순~" },
+    { "task": "순지르기(보통 출하)", "kind": "manage", "region": null, "start": { "m": 6, "p": 3 }, "end": { "m": 8, "p": 2 }, "text": "6월 하순~8월 중순" },
+    { "task": "출하(보통 출하)", "kind": "harvest", "region": null, "start": { "m": 4, "p": 1 }, "end": { "m": 5, "p": 1 }, "text": "4월 상순~5월 상순" },
+    { "task": "왜화제 처리", "kind": "manage", "region": null, "start": null, "end": null, "text": null }
+  ],
+  "stages": [
+    { "title": "꺾꽂이", "timing": "조기 출하 1월 중순~2월 중순 / 보통 출하 4월 상순~4월 중순",
+      "items": [
+        { "label": "삽수 조제", "value": "6~7cm" },
+        { "label": "삽목용토", "value": "피트모스(1) + 펄라이트(1)" },
+        { "label": "삽상온도", "value": "18~22℃(재배적 특성 항목에는 18℃ 이상으로 기재)" },
+        { "label": "뿌리 내림률 향상 - 시기", "value": "6~7월, 신초가 약간 굳을 때" },
+        { "label": "뿌리 내림률 향상 - 광", "value": "30~50% 빛가림" },
+        { "label": "뿌리 내림률 향상 - 습도", "value": "꺾꽂이 초기 2주간 시들지 않도록 주간 스프레이" }
+      ] },
+    { "title": "아주심기", "timing": "조기 출하 3월 상순~3월 중순 / 보통 출하 6월 상순~6월 중순~",
+      "items": [
+        { "label": "아주심기 주수", "value": "2~3주/분" },
+        { "label": "재배용토", "value": "피트모스(1) + 펄라이트(1), pH 4.5~5.5" }
+      ] },
+    { "title": "순지르기·왜화제 처리", "timing": "조기 출하 5월 중순~5월 하순 / 보통 출하 6월 하순~8월 중순",
+      "items": [ { "label": "왜화제 처리", "value": "CCC 300배액 엽면 살포" } ] },
+    { "title": "광·온도 관리", "timing": null,
+      "items": [
+        { "label": "환기", "value": "하우스 내 온도가 20℃ 이상이면 환기" },
+        { "label": "개화 촉진", "value": "꽃눈 발달 후 4~7℃에서 40일 처리하면 개화기 촉진" },
+        { "label": "여름철 차광", "value": "50% 빛가림" },
+        { "label": "겨울철", "value": "최저기온 8℃" }
+      ] }
+  ],
+  "fertilizer": null,
+  "pests": [
+    { "name": "근부병", "kind": "병", "timing": null, "control": "잘록병, 돌림병약 살포" },
+    { "name": "떡병", "kind": "병", "timing": null, "control": "옥시동, 리도밀동 등 살포" },
+    { "name": "반점병", "kind": "병", "timing": null, "control": "탄저병약 대체 살포" },
+    { "name": "방패벌레", "kind": "해충", "timing": null, "control": null },
+    { "name": "응애", "kind": "해충", "timing": null, "control": "살비제 살포" },
+    { "name": "진딧물", "kind": "해충", "timing": null, "control": null },
+    { "name": "총채벌레", "kind": "해충", "timing": null, "control": null },
+    { "name": "온실가루이", "kind": "해충", "timing": null, "control": "수프라사이드 등 적용약제를 4~5회 연속 살포" },
+    { "name": "깍지벌레", "kind": "해충", "timing": null, "control": null }
+  ],
+  "disasters": [],
+  "notes": [
+    "작형별 출하시기 표(원문 그대로) - 조기 출하: 꺾꽂이 1월 중순~2월 중순, 아주심기 3월 상순~3월 중순, 순지르기 5월 중순~5월 하순, 출하 1월 중순~3월 중순",
+    "작형별 출하시기 표(원문 그대로) - 보통 출하: 꺾꽂이 4월 상순~4월 중순, 아주심기 6월 상순~6월 중순~, 순지르기 6월 하순~8월 중순, 출하 4월 상순~5월 상순",
+    "꺾꽂이 시기는 출하시기 표(1월 중순~2월 중순, 4월 상순~4월 중순)와 '뿌리 내림률 향상 조건'(6~7월, 신초가 약간 굳을 때)이 다르게 기재되어 있음",
+    "출하는 꺾꽂이 이듬해에 이루어지는 것으로 보이나 원문에 연도 구분은 명시되어 있지 않음",
+    "생육과정 표에는 순지르기가 2회 표기됨",
+    "페이지에 과명, 품종, 비료 표, 출하규격, 생리장해·기상재해 대책은 없음"
+  ],
+  "source": "https://www.nongsaro.go.kr/portal/ps/psb/psbl/workScheduleDtl.ps?menuId=PS00087&cntntsNo=30689"
+}

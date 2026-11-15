@@ -1,0 +1,84 @@
+{
+  "id": 30668,
+  "name": "참다래",
+  "type": "노지재배",
+  "category": "과수",
+  "sciName": "Actinidia deliciosa",
+  "family": "다래나무과",
+  "summary": "연평균기온 14℃ 이상, 최저기온 -10℃ 이상 지역에서 재배하는 과수. 암나무와 수나무가 분리된 자웅이주로 자가결실이 없어 인공수분이 필요하며, 휴면타파에 6~7℃에서 600~800시간의 저온이 필요하다.",
+  "env": [
+    { "label": "연평균기온", "value": "14℃ 이상" },
+    { "label": "최저기온", "value": "-10℃ 이상" },
+    { "label": "강수량", "value": "1,300mm" },
+    { "label": "일조시간", "value": "1,800시간 이상" },
+    { "label": "유효토양층", "value": "40~50cm 이상, 사양토" },
+    { "label": "토양산도", "value": "6.5" },
+    { "label": "휴면타파 저온요구", "value": "6~7℃에서 600~800시간" }
+  ],
+  "schedule": [
+    { "task": "발아기", "kind": "etc", "region": null, "start": { "m": 3, "p": 3 }, "end": { "m": 4, "p": 1 }, "text": "3월 하순~4월 상순" },
+    { "task": "개화기(골드)", "kind": "etc", "region": null, "start": { "m": 5, "p": 2 }, "end": { "m": 5, "p": 2 }, "text": "5월 중순" },
+    { "task": "개화기(그린)", "kind": "etc", "region": null, "start": { "m": 5, "p": 3 }, "end": { "m": 5, "p": 3 }, "text": "5월 하순" },
+    { "task": "수확", "kind": "harvest", "region": null, "start": { "m": 10, "p": 3 }, "end": { "m": 11, "p": 2 }, "text": "10월 하순~11월 중순(골드 인공수분 후 165~175일, 그린 인공수분 후 170~180일)" },
+    { "task": "출하", "kind": "harvest", "region": null, "start": { "m": 12, "p": null }, "end": { "m": 5, "p": null }, "text": "12월~이듬해 5월" },
+    { "task": "열매밑가지(결과모지) 유인 및 결속", "kind": "manage", "region": null, "start": null, "end": null, "text": null },
+    { "task": "꽃봉오리솎기", "kind": "manage", "region": null, "start": null, "end": null, "text": null },
+    { "task": "계절풍 대비 가지 비틀기", "kind": "manage", "region": null, "start": null, "end": null, "text": null },
+    { "task": "인공수분", "kind": "manage", "region": null, "start": null, "end": null, "text": null },
+    { "task": "열매솎기", "kind": "manage", "region": null, "start": null, "end": null, "text": null },
+    { "task": "예비지 유인 및 결속", "kind": "manage", "region": null, "start": null, "end": null, "text": null },
+    { "task": "여름전정", "kind": "manage", "region": null, "start": null, "end": null, "text": null },
+    { "task": "장마 대비 배수 관리", "kind": "manage", "region": null, "start": null, "end": null, "text": null },
+    { "task": "과실생장 후반기 절수 관수", "kind": "manage", "region": null, "start": null, "end": null, "text": null },
+    { "task": "겨울전정", "kind": "manage", "region": null, "start": null, "end": null, "text": null },
+    { "task": "퇴비 시용", "kind": "fert", "region": null, "start": null, "end": null, "text": null },
+    { "task": "묘목재식 및 보식", "kind": "plant", "region": null, "start": null, "end": null, "text": null },
+    { "task": "시설물 보수", "kind": "etc", "region": null, "start": null, "end": null, "text": null },
+    { "task": "월동 병해충 방제", "kind": "pest", "region": null, "start": null, "end": null, "text": null }
+  ],
+  "stages": [
+    { "title": "결과모지 배치", "timing": null,
+      "items": [ { "label": "배치 밀도", "value": "1㎡당 3~4본" } ] },
+    { "title": "인공수분", "timing": "암꽃 개화 후 2일 이내",
+      "items": [
+        { "label": "수꽃 채취", "value": "오전 7시 이전에 완료" },
+        { "label": "인공수분 시간", "value": "오전 10시 이전, 암꽃 개화 후 2일 이내에 완료" },
+        { "label": "꽃가루 증량제", "value": "10~15배로 희석하며 당일 사용량만 희석" }
+      ] },
+    { "title": "열매솎기", "timing": null,
+      "items": [ { "label": "최종 목표", "value": "1㎡당 25~30개" } ] },
+    { "title": "여름전정", "timing": null,
+      "items": [ { "label": "기준", "value": "과수원 바닥에 햇빛이 20~30% 투과되도록 실시" } ] },
+    { "title": "수확 및 저장", "timing": "10월 하순~11월 중순",
+      "items": [
+        { "label": "수확 시간", "value": "오전 10시 이전" },
+        { "label": "수확 당도", "value": "7.5~8.5ºBx" },
+        { "label": "수확 시점", "value": "골드 인공수분 후 165~175일, 그린 인공수분 후 170~180일" }
+      ] },
+    { "title": "월동 병해충 방제", "timing": null,
+      "items": [ { "label": "약제", "value": "기계유유제, 석회유황합제 살포(기계유유제 살포 15일 뒤 석회유황합제)" } ] }
+  ],
+  "fertilizer": null,
+  "pests": [
+    { "name": "깍지벌레 등 월동 병해충", "kind": "해충", "timing": null, "control": "기계유유제, 석회유황합제 살포(기계유유제 살포 15일 뒤 석회유황합제)" },
+    { "name": "궤양병", "kind": "병", "timing": null, "control": null },
+    { "name": "꽃썩음병", "kind": "병", "timing": null, "control": null },
+    { "name": "뽕나무깍지벌레", "kind": "해충", "timing": null, "control": null },
+    { "name": "열매꼭지나방", "kind": "해충", "timing": null, "control": null },
+    { "name": "과실연부병", "kind": "병", "timing": null, "control": null },
+    { "name": "낙엽성반점병", "kind": "병", "timing": null, "control": null },
+    { "name": "흡수나방류", "kind": "해충", "timing": null, "control": null },
+    { "name": "기형과, 일소과, 속빈 과일(공동과)", "kind": "생리장해", "timing": null, "control": "인공수분 후 과실 표면의 수술(꽃밥) 제거, 기부 쪽 과실 열매솎기, 과실의 직사광선 노출 차단, 조기 낙엽 방지. 9월 중순 이전 조기 낙엽 시 열매솎기(50% 이상 낙엽 → 50% 이상 열매솎기). 속 빈 과일은 선별하여 저장·출하, 물에 담가 바닥에서 뜨는 과실 제거" }
+  ],
+  "disasters": [
+    { "risk": "언 피해, 건조해", "timing": null, "measures": ["월동 전 저장양분 충분히 축적", "월동 전 충분한 물주기", "지제부 보온자재 덮기", "과다 열매달림 방지", "미니스프링클러 또는 점적관수 설치"] },
+    { "risk": "계절풍, 태풍", "timing": null, "measures": ["과원 주변 파풍망 또는 방풍벽 설치", "결과지 가지 비틀어 눕히기"] }
+  ],
+  "notes": [
+    "암꽃은 결과지 기부 2~3마디와 6~7마디에 착생, 수꽃은 기부 1~9마디에 착생",
+    "발육 단계: 휴면기, 발아기, 전엽·신초신장기, 골드개화, 그린개화, 과실 1차 비대기(전체 크기의 60~70% 비대생장), 과실 2차 비대기(재배환경에 따라 30~40% 비대성숙), 꽃눈기원형성기, 꽃눈분화기, 수확기, 낙엽·휴면기",
+    "페이지에 비료 표(kg/10a)는 없으며 '퇴비 시용' 작업 항목만 있음",
+    "농작업과 병해충 방제의 월·순 시기는 출하시기 표 외에는 페이지 도표에서 텍스트로 확인되지 않음"
+  ],
+  "source": "https://www.nongsaro.go.kr/portal/ps/psb/psbl/workScheduleDtl.ps?menuId=PS00087&cntntsNo=30668"
+}

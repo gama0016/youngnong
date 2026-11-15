@@ -1,0 +1,84 @@
+{
+  "id": 30664,
+  "name": "살구",
+  "type": null,
+  "category": "과수",
+  "sciName": "Prunus ansu MAXIM",
+  "family": "장미과",
+  "summary": "개화기 전후 늦서리 피해가 없는 지역이 적지인 과수. 뿌리가 침수에 매우 약해 지하수위가 높거나 물빠짐이 나쁜 과원에서는 나무가 말라 죽으며, 최근 도입 품종은 자가 불화합성이 있어 수분수를 20~30% 섞어 심어야 한다.",
+  "env": [
+    { "label": "연평균기온", "value": "11~15℃" },
+    { "label": "생육기(4월~10월) 강수량", "value": "800~1,000mm" },
+    { "label": "한계저온", "value": "-20~-25℃" },
+    { "label": "적지 조건", "value": "개화기 전후 늦서리 피해가 발생하지 않는 지역" }
+  ],
+  "schedule": [
+    { "task": "묘목심기", "kind": "plant", "region": null, "start": null, "end": null, "text": "봄심기 및 가을심기" },
+    { "task": "정지·전정", "kind": "manage", "region": null, "start": null, "end": null, "text": null },
+    { "task": "과실솎기", "kind": "manage", "region": null, "start": null, "end": null, "text": "만개 후 20~30일에 시작하여 40일까지 마침" },
+    { "task": "수확", "kind": "harvest", "region": null, "start": null, "end": null, "text": null },
+    { "task": "밑거름", "kind": "fert", "region": null, "start": null, "end": null, "text": null },
+    { "task": "겨울약제 살포(기계유유제)", "kind": "pest", "region": null, "start": null, "end": null, "text": "만개 50~60일 전" },
+    { "task": "겨울약제 살포(석회유황합제)", "kind": "pest", "region": null, "start": null, "end": null, "text": "만개 20~30일 전" },
+    { "task": "겨울약제 살포(석회보르도액)", "kind": "pest", "region": null, "start": null, "end": null, "text": "만개 직전" }
+  ],
+  "stages": [
+    { "title": "묘목심기", "timing": "봄심기 및 가을심기",
+      "items": [
+        { "label": "심는 거리(정방형식)", "value": "6.0×6.0m" },
+        { "label": "심는 거리(Y자형)", "value": "6.0×1.5~2.0m" },
+        { "label": "수분수", "value": "주품종에 대해 20~30% 섞어 심기" }
+      ] },
+    { "title": "겨울약제 살포", "timing": "만개 50~60일 전 ~ 만개 직전",
+      "items": [
+        { "label": "기계유유제", "value": "만개 50~60일 전 살포" },
+        { "label": "석회유황합제", "value": "만개 20~30일 전 살포" },
+        { "label": "석회보르도액", "value": "만개 직전 살포" }
+      ] },
+    { "title": "결실량 확보", "timing": null,
+      "items": [
+        { "label": "기준", "value": "열매솎기로 결실량 조절, 과도한 질소 비료와 강전정 회피, 수확 후 약제방제로 조기낙엽 방지, 수분수 혼식과 방화곤충 확보" },
+        { "label": "언피해·늦서리 예상지역", "value": "연소법, 살수법, 송풍법으로 피해 예방" }
+      ] },
+    { "title": "결실량 조절(열매솎기)", "timing": "만개 후 20~30일에 시작하여 40일까지 마침",
+      "items": [
+        { "label": "착과량", "value": "안정생산을 위해 열매 수는 개화수의 20~30% 착과" },
+        { "label": "중간 크기 과실", "value": "2~3cm당 1과" },
+        { "label": "큰 품종", "value": "4~7cm에 1과" }
+      ] }
+  ],
+  "fertilizer": {
+    "unit": "kg/10a",
+    "columns": ["총량", "밑거름", "웃거름"],
+    "rows": [
+      { "name": "질소", "values": [12.5, 10, 2.5] },
+      { "name": "인산", "values": [6.2, 6.2, 0] },
+      { "name": "칼리", "values": [10.0, 6, 4] },
+      { "name": "퇴비", "values": [2000, 2000, null] },
+      { "name": "석회", "values": [200, null, null] },
+      { "name": "붕소", "values": [2, null, null] }
+    ],
+    "note": "다 자란 나무 기준. 석회·붕소는 2~3년에 한번. 퇴비·석회·붕소 행은 원문에 일부 칸 값이 없어 값의 순서대로 총량(및 밑거름)에 대응시킴."
+  },
+  "pests": [
+    { "name": "줄기마름병", "kind": "병", "timing": null, "control": null },
+    { "name": "검은별무늬병", "kind": "병", "timing": null, "control": null },
+    { "name": "세균성구멍병", "kind": "병", "timing": null, "control": null },
+    { "name": "잿빛무늬병", "kind": "병", "timing": null, "control": null },
+    { "name": "뽕나무깍지벌레", "kind": "해충", "timing": null, "control": null },
+    { "name": "복숭아유리나방", "kind": "해충", "timing": null, "control": null },
+    { "name": "복숭아심식나방", "kind": "해충", "timing": null, "control": null },
+    { "name": "열매터짐", "kind": "생리장해", "timing": "수확 직전 비가 잦을 때 많이 발생", "control": "원인은 과피와 과육 조직 간 비대속도의 불균형. 열매터짐이 적은 품종 선택, 경핵기 이전 물주기 시설로 토양건조 방지, 수관 밑 바닥덮기(멀칭) 재배, 풀베기로 잡초와의 수분 경쟁 감소" },
+    { "name": "붕소결핍", "kind": "생리장해", "timing": null, "control": "신개간지 토양에서 발생하기 쉬움. 과실 표피 아랫부분이 코르크화되어 과면이 움푹 들어감. 3~4년에 주당 20~100g 붕소 살포" }
+  ],
+  "disasters": [
+    { "risk": "언피해·늦서리", "timing": null, "measures": ["예상지역은 연소법, 살수법, 송풍법으로 피해 예방"] }
+  ],
+  "notes": [
+    "생육과정: 휴면기, 개화기, 신초신장기, 꽃눈분화기",
+    "경사지 재배 시 경사가 남~남서향이면 언피해나 줄기마름병 발생 우려",
+    "병해충별 발생 시기와 방제법은 겨울약제 살포 외에는 페이지에서 텍스트로 확인되지 않음",
+    "각 농작업의 월·순 시기는 페이지 도표에서 텍스트로 확인되지 않음"
+  ],
+  "source": "https://www.nongsaro.go.kr/portal/ps/psb/psbl/workScheduleDtl.ps?menuId=PS00087&cntntsNo=30664"
+}

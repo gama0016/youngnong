@@ -1,0 +1,290 @@
+{
+  "id": 30736,
+  "name": "팽이",
+  "type": null,
+  "category": "버섯",
+  "sciName": null,
+  "family": null,
+  "summary": "팽이버섯 병재배의 배지 준비, 살균, 접종, 배양, 발이유기, 억제, 생육, 수확 과정.",
+  "env": [
+    {
+      "label": "배지 수분",
+      "value": "65%"
+    },
+    {
+      "label": "냉각 시 배지 품온",
+      "value": "17~18℃"
+    },
+    {
+      "label": "배양 온도",
+      "value": "16~18℃"
+    },
+    {
+      "label": "배양 중 탄산가스 농도",
+      "value": "0.2~0.3% 이내"
+    },
+    {
+      "label": "발이유기 온도",
+      "value": "13±1℃"
+    },
+    {
+      "label": "억제 온도",
+      "value": "3~4℃"
+    },
+    {
+      "label": "생육 온도",
+      "value": "6~8℃"
+    }
+  ],
+  "schedule": [
+    {
+      "task": "재료준비",
+      "kind": "etc",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "배지준비",
+      "kind": "etc",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "입병",
+      "kind": "etc",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "살균",
+      "kind": "etc",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "균접종(냉각, 접종)",
+      "kind": "sow",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "배양",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "선별 및 균 긁기",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": "선별은 접종 후 5~10일째"
+    },
+    {
+      "task": "발이유기",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "억제",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "생육",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "수확",
+      "kind": "harvest",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "탈병",
+      "kind": "etc",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    }
+  ],
+  "stages": [
+    {
+      "title": "재료준비",
+      "timing": null,
+      "items": [
+        {
+          "label": "배합",
+          "value": "코브 45% + 신선한 미강 40% + 비트펄프·면실박 15%"
+        }
+      ]
+    },
+    {
+      "title": "배지준비",
+      "timing": null,
+      "items": [
+        {
+          "label": "수분",
+          "value": "65%"
+        }
+      ]
+    },
+    {
+      "title": "입병",
+      "timing": null,
+      "items": [
+        {
+          "label": "작업",
+          "value": "적정량 입병, 병 입구 청결 유지, 청결한 병마개 사용"
+        }
+      ]
+    },
+    {
+      "title": "살균",
+      "timing": null,
+      "items": [
+        {
+          "label": "고압살균",
+          "value": "121℃에서 90~100분"
+        },
+        {
+          "label": "상압멸균",
+          "value": "100℃에서 4~6시간"
+        }
+      ]
+    },
+    {
+      "title": "균접종",
+      "timing": null,
+      "items": [
+        {
+          "label": "냉각",
+          "value": "냉각실 소독, 배지 품온 17~18℃"
+        },
+        {
+          "label": "접종",
+          "value": "접종실 및 접종기 소독, 우량종균을 병당 10~20mL 접종"
+        }
+      ]
+    },
+    {
+      "title": "배양",
+      "timing": null,
+      "items": [
+        {
+          "label": "온도",
+          "value": "16~18℃"
+        },
+        {
+          "label": "탄산가스 농도",
+          "value": "0.2~0.3% 이내"
+        }
+      ]
+    },
+    {
+      "title": "선별 및 균 긁기",
+      "timing": null,
+      "items": [
+        {
+          "label": "선별",
+          "value": "접종 후 5~10일째 잡균 선별"
+        },
+        {
+          "label": "균 긁기",
+          "value": "균 긁기 기구 소독"
+        }
+      ]
+    },
+    {
+      "title": "발이유기",
+      "timing": null,
+      "items": [
+        {
+          "label": "온도",
+          "value": "13±1℃"
+        }
+      ]
+    },
+    {
+      "title": "억제",
+      "timing": null,
+      "items": [
+        {
+          "label": "온도",
+          "value": "3~4℃"
+        }
+      ]
+    },
+    {
+      "title": "생육",
+      "timing": null,
+      "items": [
+        {
+          "label": "온도",
+          "value": "6~8℃"
+        },
+        {
+          "label": "가습",
+          "value": "초음파 가습기 설치"
+        }
+      ]
+    },
+    {
+      "title": "수확",
+      "timing": null,
+      "items": [
+        {
+          "label": "수확 기준",
+          "value": "갓피기 전 대길이 11~13cm"
+        },
+        {
+          "label": "포장",
+          "value": "100g, 150g 단위 랩포장 또는 진공포장"
+        }
+      ]
+    },
+    {
+      "title": "탈병",
+      "timing": null,
+      "items": [
+        {
+          "label": "작업",
+          "value": "수확 후 폐배지는 원거리 처리"
+        }
+      ]
+    }
+  ],
+  "fertilizer": null,
+  "pests": [],
+  "disasters": [],
+  "notes": [
+    "원문에 월별 작업 시기는 없음(공정 순서만 제시)"
+  ],
+  "source": "https://www.nongsaro.go.kr/portal/ps/psb/psbl/workScheduleDtl.ps?menuId=PS00087&cntntsNo=30736"
+}

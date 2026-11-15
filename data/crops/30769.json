@@ -1,0 +1,102 @@
+{
+  "id": 30769,
+  "name": null,
+  "type": "봄재배·가을재배",
+  "category": null,
+  "sciName": null,
+  "family": null,
+  "summary": "농사로 원문 페이지 제목이 \"-\"로만 표시되어 작목명이 확인되지 않음. 봄재배와 가을재배 두 작형이 표시됨.",
+  "env": [],
+  "schedule": [
+    {
+      "task": "파종(봄재배)",
+      "kind": "sow",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "시비(봄재배)",
+      "kind": "fert",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "수확(봄재배)",
+      "kind": "harvest",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "이용(봄재배)",
+      "kind": "etc",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "파종(가을재배)",
+      "kind": "sow",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "시비(가을재배)",
+      "kind": "fert",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "수확(가을재배)",
+      "kind": "harvest",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "이용(가을재배)",
+      "kind": "etc",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    }
+  ],
+  "stages": [],
+  "fertilizer": null,
+  "pests": [],
+  "disasters": [
+    {
+      "risk": "봄가뭄",
+      "timing": null,
+      "measures": []
+    },
+    {
+      "risk": "가뭄",
+      "timing": null,
+      "measures": []
+    },
+    {
+      "risk": "잦은비",
+      "timing": null,
+      "measures": []
+    }
+  ],
+  "notes": [
+    "원문은 월·순(상/중/하) 일정표이나 칸 위치를 확인할 수 없어 작업 시기는 비워 둠.",
+    "생육단계 표기(원문): 발아기, 생육중기, 생육성기",
+    "예상되는 문제점(원문): 파종지연, 입모율 저조, 수확 시 강우 및 도복 / 파종 후 가뭄 시 발아율 저조, 토양 건조 시 생육 저조 및 수량 감소"
+  ],
+  "source": "https://www.nongsaro.go.kr/portal/ps/psb/psbl/workScheduleDtl.ps?menuId=PS00087&cntntsNo=30769"
+}

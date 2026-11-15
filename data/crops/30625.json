@@ -1,0 +1,400 @@
+{
+  "id": 30625,
+  "name": "생강",
+  "type": null,
+  "category": "채소",
+  "sciName": "Zingiber officinale ROSC.",
+  "family": "생강과",
+  "summary": "고온성 작물로 반음지에서 생육이 양호한 내음성 작물. 잔뿌리가 적어 건조와 습해에 약하며, 이어짓기 시 뿌리줄기부패병이 심해 3~4년 간격으로 돌려짓기한다.",
+  "env": [
+    {
+      "label": "움트기 최저온도",
+      "value": "18℃"
+    },
+    {
+      "label": "생육적온",
+      "value": "25~30℃"
+    },
+    {
+      "label": "생리적 언피해 온도",
+      "value": "10℃"
+    },
+    {
+      "label": "저장온도",
+      "value": "15℃"
+    },
+    {
+      "label": "토양산도",
+      "value": "pH 6.0~6.5 (pH 4.3 이하에서는 생육 불량)"
+    },
+    {
+      "label": "토양",
+      "value": "사양토나 양토"
+    }
+  ],
+  "schedule": [
+    {
+      "task": "종강 준비",
+      "kind": "etc",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "종강 소독",
+      "kind": "etc",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "아주심기",
+      "kind": "plant",
+      "region": null,
+      "start": {
+        "m": 4,
+        "p": 3
+      },
+      "end": {
+        "m": 5,
+        "p": 1
+      },
+      "text": "4월 하순~5월 상순"
+    },
+    {
+      "task": "제초제 살포",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "볏짚 덮기",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "덮기물 관리",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "웃거름 1회",
+      "kind": "fert",
+      "region": null,
+      "start": {
+        "m": 6,
+        "p": 3
+      },
+      "end": {
+        "m": 6,
+        "p": 3
+      },
+      "text": "6월 하순"
+    },
+    {
+      "task": "웃거름 2회",
+      "kind": "fert",
+      "region": null,
+      "start": {
+        "m": 9,
+        "p": 1
+      },
+      "end": {
+        "m": 9,
+        "p": 1
+      },
+      "text": "9월 상순"
+    },
+    {
+      "task": "배수구 정비",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "해충방제",
+      "kind": "pest",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "수확",
+      "kind": "harvest",
+      "region": null,
+      "start": {
+        "m": 10,
+        "p": 2
+      },
+      "end": {
+        "m": 11,
+        "p": 1
+      },
+      "text": "10월 중순~11월 상순"
+    }
+  ],
+  "stages": [
+    {
+      "title": "종강 준비",
+      "timing": null,
+      "items": [
+        {
+          "label": "고르기",
+          "value": "싱싱하고 터짐이 없으며 색깔이 선황색으로 선명하고 부패병에 걸리지 않은 것"
+        },
+        {
+          "label": "소요량(재래종)",
+          "value": "170~180kg/10a (개당 20~30g)"
+        },
+        {
+          "label": "소요량(중국종)",
+          "value": "200~220kg/10a (개당 25~35g)"
+        }
+      ]
+    },
+    {
+      "title": "싹 틔우기",
+      "timing": null,
+      "items": [
+        {
+          "label": "온도",
+          "value": "20~25℃인 곳에서 모래나 흙에 묻음"
+        },
+        {
+          "label": "싹길이",
+          "value": "2~3mm"
+        },
+        {
+          "label": "토양 함수량",
+          "value": "50% 이상 유지 시 발아율 향상"
+        }
+      ]
+    },
+    {
+      "title": "아주심기",
+      "timing": "4월 하순~5월 상순",
+      "items": [
+        {
+          "label": "재래종",
+          "value": "30×30cm"
+        },
+        {
+          "label": "중국종",
+          "value": "30×25cm 또는 25×25cm"
+        },
+        {
+          "label": "심는 깊이",
+          "value": "2~3cm로 얕게 심되 땅 위로 노출되지 않도록"
+        }
+      ]
+    },
+    {
+      "title": "관리",
+      "timing": null,
+      "items": [
+        {
+          "label": "토양 살충제",
+          "value": "모캡 3kg/10a 살포"
+        },
+        {
+          "label": "웃거름",
+          "value": "2회 (6월 하순, 9월 상순)"
+        },
+        {
+          "label": "물주기",
+          "value": "가물 때"
+        },
+        {
+          "label": "햇볕 가림",
+          "value": "고온기 30%"
+        }
+      ]
+    },
+    {
+      "title": "수확·저장",
+      "timing": "10월 중순~11월 상순 (저장용은 서리 내리기 전)",
+      "items": [
+        {
+          "label": "큐어링",
+          "value": "저장 전 온도 30~33℃, 습도 90~95%에서 8일 정도"
+        }
+      ]
+    }
+  ],
+  "fertilizer": {
+    "unit": "kg/10a",
+    "columns": [
+      "총량",
+      "밑거름",
+      "웃거름 1회",
+      "웃거름 2회"
+    ],
+    "rows": [
+      {
+        "name": "퇴비",
+        "values": [
+          3000,
+          3000,
+          null,
+          null
+        ]
+      },
+      {
+        "name": "석회",
+        "values": [
+          150,
+          150,
+          null,
+          null
+        ]
+      },
+      {
+        "name": "질소",
+        "values": [
+          25.9,
+          10.1,
+          8.9,
+          6.9
+        ]
+      },
+      {
+        "name": "인산",
+        "values": [
+          9.2,
+          9.2,
+          null,
+          null
+        ]
+      },
+      {
+        "name": "칼리",
+        "values": [
+          21.9,
+          7.3,
+          7.3,
+          7.3
+        ]
+      },
+      {
+        "name": "붕사",
+        "values": [
+          2,
+          2,
+          null,
+          null
+        ]
+      }
+    ],
+    "note": null
+  },
+  "pests": [
+    {
+      "name": "뿌리줄기부패병",
+      "kind": "병",
+      "timing": "습해 시",
+      "control": "배수 관리, 3~4년 간격 돌려짓기"
+    },
+    {
+      "name": "백성병",
+      "kind": "병",
+      "timing": null,
+      "control": "살균제로 방제"
+    },
+    {
+      "name": "도열병",
+      "kind": "병",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "잎집무늬마름병",
+      "kind": "병",
+      "timing": null,
+      "control": "살균제로 방제"
+    },
+    {
+      "name": "파밤나방",
+      "kind": "해충",
+      "timing": "생육 후기 가물 때",
+      "control": "방제"
+    },
+    {
+      "name": "조명나방",
+      "kind": "해충",
+      "timing": "생육 후기 가물 때",
+      "control": "방제"
+    },
+    {
+      "name": "거세미나방",
+      "kind": "해충",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "뿌리응애",
+      "kind": "해충",
+      "timing": null,
+      "control": null
+    }
+  ],
+  "disasters": [
+    {
+      "risk": "저온 (종강 저온 피해)",
+      "timing": null,
+      "measures": [
+        "저장 중 적온 15℃ 유지",
+        "아주심기 전 저온 방지",
+        "너무 일찍 심지 않고 아주심기 후 볏짚 덮기"
+      ]
+    },
+    {
+      "risk": "강우·장마 (아주심기 지연, 부패)",
+      "timing": null,
+      "measures": [
+        "이랑을 높여 심고 배수구 설치",
+        "살균제 살포"
+      ]
+    },
+    {
+      "risk": "고온·다습 (병해 발생)",
+      "timing": null,
+      "measures": [
+        "빛가림망 설치가 가능하면 30% 정도 햇볕 가림",
+        "살균제 살포"
+      ]
+    },
+    {
+      "risk": "가뭄 (초기생육 부진, 뿌리줄기 비대 불량)",
+      "timing": null,
+      "measures": [
+        "적당한 습도 유지",
+        "이랑 물주기 금지",
+        "생육 후기 해충 방제"
+      ]
+    },
+    {
+      "risk": "습해 (뿌리줄기부패병 발생)",
+      "timing": null,
+      "measures": [
+        "배수 관리"
+      ]
+    }
+  ],
+  "notes": [
+    "성출하기: 10월~11월"
+  ],
+  "source": "https://www.nongsaro.go.kr/portal/ps/psb/psbl/workScheduleDtl.ps?menuId=PS00087&cntntsNo=30625"
+}

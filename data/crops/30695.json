@@ -1,0 +1,70 @@
+{
+  "id": 30695,
+  "name": "포인세티아",
+  "type": "전조 및 빛가림재배, 빛가림재배, 자연재배",
+  "category": "화훼",
+  "sciName": null,
+  "family": null,
+  "summary": "꺾꽂이로 번식하여 분화로 출하하는 화훼. 자연일장 재배와 단일처리재배(촉성재배)가 있으며 단일 조건에서 꽃눈이 분화하고 이삭잎이 착색된다.",
+  "env": [
+    { "label": "뿌리내림 배지 pH", "value": "5.5~6.5" },
+    { "label": "뿌리내림 배지온도", "value": "22~24℃" },
+    { "label": "아주심기 용토", "value": "pH 5.5~6.5, 피트와 펄라이트 혼합용토 주로 사용" },
+    { "label": "단일 처리", "value": "개화 기대일 8~10주 전부터 1일 14시간 이상 암막" }
+  ],
+  "schedule": [
+    { "task": "꺾꽂이(전조 및 빛가림재배)", "kind": "nursery", "region": null, "start": { "m": 1, "p": 1 }, "end": { "m": 1, "p": 3 }, "text": "1월 상순~1월 하순" },
+    { "task": "재배(전조 및 빛가림재배)", "kind": "manage", "region": null, "start": { "m": 2, "p": 1 }, "end": { "m": 5, "p": 1 }, "text": "2월 상순~5월 상순" },
+    { "task": "출하(전조 및 빛가림재배)", "kind": "harvest", "region": null, "start": { "m": 5, "p": 2 }, "end": { "m": 6, "p": 2 }, "text": "5월 중순~6월 중순" },
+    { "task": "꺾꽂이(빛가림재배)", "kind": "nursery", "region": null, "start": { "m": 5, "p": 1 }, "end": { "m": 5, "p": 3 }, "text": "5월 상순~5월 하순" },
+    { "task": "재배(빛가림재배)", "kind": "manage", "region": null, "start": { "m": 6, "p": 1 }, "end": { "m": 8, "p": 3 }, "text": "6월 상순~8월 하순" },
+    { "task": "출하(빛가림재배)", "kind": "harvest", "region": null, "start": { "m": 9, "p": 1 }, "end": { "m": 10, "p": 2 }, "text": "9월 상순~10월 중순" },
+    { "task": "꺾꽂이(자연재배)", "kind": "nursery", "region": null, "start": { "m": 7, "p": 3 }, "end": { "m": 8, "p": 2 }, "text": "7월 하순~8월 중순" },
+    { "task": "재배(자연재배)", "kind": "manage", "region": null, "start": { "m": 8, "p": 3 }, "end": { "m": 11, "p": 2 }, "text": "8월 하순~11월 중순" },
+    { "task": "출하(자연재배)", "kind": "harvest", "region": null, "start": { "m": 11, "p": 2 }, "end": { "m": 12, "p": 2 }, "text": "11월 중순~12월 중순" },
+    { "task": "아주심기·순지르기", "kind": "plant", "region": null, "start": null, "end": null, "text": null },
+    { "task": "생장억제제 처리", "kind": "manage", "region": null, "start": null, "end": null, "text": "순지르기 후 신초 길이가 3~5cm일 때" },
+    { "task": "단일처리(꽃눈분화·이삭잎 착색)", "kind": "manage", "region": null, "start": null, "end": null, "text": "개화 기대일 8~10주 전부터" }
+  ],
+  "stages": [
+    { "title": "꺾꽂이", "timing": "전조 및 빛가림재배 1월 상순~1월 하순 / 빛가림재배 5월 상순~5월 하순 / 자연재배 7월 하순~8월 중순 (본문: 가을 출하용 5~6월, 겨울 출하용 7~8월)", "items": [
+      { "label": "삽수", "value": "청결한 칼이나 가위로 5~8cm 길이로 조제" },
+      { "label": "배지", "value": "pH 5.5~6.5의 청결하고 배수성이 좋은 모래, 피트, 펄라이트, 질석, 오아시스 등" },
+      { "label": "배지온도", "value": "22~24℃" },
+      { "label": "관리", "value": "꺾꽂이 직후 미스트를 즉시 가동하여 수분 스트레스를 최소화" }
+    ] },
+    { "title": "아주심기", "timing": null, "items": [
+      { "label": "방법", "value": "뿌리내림묘를 다공성의 깨끗한 용토에 심음" },
+      { "label": "용토", "value": "pH 5.5~6.5, 피트와 펄라이트 혼합용토 주로 사용" }
+    ] },
+    { "title": "순지르기", "timing": null, "items": [
+      { "label": "10cm 분", "value": "4~5마디 위에서 순지르기" },
+      { "label": "15cm 분", "value": "6~7마디 위에서 순지르기" }
+    ] },
+    { "title": "생장억제제 처리", "timing": "순지르기 후 신초 길이가 3~5cm일 때", "items": [
+      { "label": "방법", "value": "살포 또는 토양관주, 이른 아침이나 저녁에 처리" },
+      { "label": "주의", "value": "고온·강광에서 살포하면 잎에 황화현상이 생길 수 있음. 꽃눈분화 이후 처리하면 개화가 지연되고 이삭잎 폭이 줄 수 있음" }
+    ] },
+    { "title": "단일 처리", "timing": "촉성재배 시 개화 기대일 8~10주 전부터", "items": [
+      { "label": "방법", "value": "1일 14시간 이상 암막" }
+    ] }
+  ],
+  "fertilizer": null,
+  "pests": [
+    { "name": "잿빛곰팡이병", "kind": "병", "timing": null, "control": "증상: 잎과 줄기에 갈색의 타원형 반점. 시설 내부 과습 방지, 칼리질 비료 시용, 여러 약제 교호 살포" },
+    { "name": "돌림병", "kind": "병", "timing": "장마철·환절기 등 다습기", "control": "증상: 지제부 줄기 흑변, 지상부 급격한 위조. 다습기에 살균제를 충분히 처리" },
+    { "name": "온실가루이", "kind": "해충", "timing": null, "control": "수프라사이드, 데시스 등 사용. 알·유충·성충이 잎 뒷면에 있으므로 잎 뒷면까지 골고루 살포" },
+    { "name": "꽃노랑총채벌레", "kind": "해충", "timing": null, "control": "코니도, 올스타, 리전트 등을 2~3일 간격으로 연속 방제" },
+    { "name": "세갈래 줄기 갈라짐", "kind": "생리장해", "timing": null, "control": "충분한 일장·광도에서 영양생장 유도. 6~8매 이상 다 자란 잎이 달린 과숙한 가지는 삽수로 쓰지 않음" },
+    { "name": "배상화서 조기 탈락", "kind": "생리장해", "timing": null, "control": "낮은 광도, 고온, 수분 스트레스에서 주로 발생. 충분한 광 조건, 재배 후반기 온도 강하, 수분 스트레스 방지" }
+  ],
+  "disasters": [
+    { "risk": "저온(뿌리내림 지연, 생육 불량)", "timing": null, "measures": [] },
+    { "risk": "고온(뿌리내림묘 웃자람, 풀 길이 과잉 신장)", "timing": null, "measures": [] },
+    { "risk": "일장 부족(꽃눈분화에 영향)", "timing": null, "measures": [] }
+  ],
+  "notes": [
+    "생육과정 작업 순서 - 자연일장 재배: 꺾꽂이 → 아주심기·순지르기 → 꽃눈분화·이삭잎 착색 → 수확 / 단일처리재배: 꺾꽂이 → 아주심기·순지르기 → 단일처리 꽃눈분화·이삭잎 착색 → 수확"
+  ],
+  "source": "https://www.nongsaro.go.kr/portal/ps/psb/psbl/workScheduleDtl.ps?menuId=PS00087&cntntsNo=30695"
+}

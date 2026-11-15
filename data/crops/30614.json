@@ -1,0 +1,323 @@
+{
+  "id": 30614,
+  "name": "무",
+  "type": null,
+  "category": "채소",
+  "sciName": "Raphanus sativus L.",
+  "family": "배추과",
+  "summary": "서늘한 기후를 좋아한다. 꽃눈분화는 모 나이와 관계없이 12℃ 이하 저온에서 촉진된다.",
+  "env": [
+    {
+      "label": "발아적온",
+      "value": "15~30℃"
+    },
+    {
+      "label": "개화적온",
+      "value": "12℃ 이하"
+    },
+    {
+      "label": "생육적온",
+      "value": "15~20℃"
+    },
+    {
+      "label": "토양산도",
+      "value": "pH 5.5~6.8 (중성~약산성)"
+    }
+  ],
+  "schedule": [
+    {
+      "task": "씨뿌림(봄재배, 터널)",
+      "kind": "sow",
+      "region": null,
+      "start": {
+        "m": 2,
+        "p": 2
+      },
+      "end": {
+        "m": 3,
+        "p": 2
+      },
+      "text": "2월 중순~3월 중순"
+    },
+    {
+      "task": "씨뿌림(봄재배, 노지)",
+      "kind": "sow",
+      "region": null,
+      "start": {
+        "m": 3,
+        "p": 2
+      },
+      "end": {
+        "m": 4,
+        "p": 3
+      },
+      "text": "3월 중순~4월 하순"
+    },
+    {
+      "task": "씨뿌림(가을재배)",
+      "kind": "sow",
+      "region": null,
+      "start": {
+        "m": 7,
+        "p": 3
+      },
+      "end": {
+        "m": 9,
+        "p": 1
+      },
+      "text": "7월 하순~9월 상순"
+    },
+    {
+      "task": "김매기·물주기·배수",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "웃거름",
+      "kind": "fert",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "수확(봄무)",
+      "kind": "harvest",
+      "region": null,
+      "start": {
+        "m": 5,
+        "p": 2
+      },
+      "end": {
+        "m": 7,
+        "p": 1
+      },
+      "text": "5월 중순~7월 상순"
+    },
+    {
+      "task": "수확(가을무)",
+      "kind": "harvest",
+      "region": null,
+      "start": {
+        "m": 9,
+        "p": 1
+      },
+      "end": {
+        "m": 12,
+        "p": 2
+      },
+      "text": "9월 상순~12월 중순"
+    },
+    {
+      "task": "저장",
+      "kind": "etc",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    }
+  ],
+  "stages": [
+    {
+      "title": "씨뿌림",
+      "timing": "봄재배: 터널 2월 중순~3월 중순, 노지 3월 중순~4월 하순 / 가을재배: 7월 하순~9월 상순",
+      "items": [
+        {
+          "label": "씨앗양",
+          "value": "8~10㎗/10a"
+        },
+        {
+          "label": "1조식",
+          "value": "이랑 간격 60~70cm, 포기 사이 25~30cm"
+        },
+        {
+          "label": "점뿌림",
+          "value": "파구당 3~4립"
+        },
+        {
+          "label": "솎음",
+          "value": "본잎 3~4매, 본잎 6~7매 때 2회"
+        }
+      ]
+    },
+    {
+      "title": "관리",
+      "timing": null,
+      "items": [
+        {
+          "label": "바닥덮기",
+          "value": "멀칭 시 유공흑색필름, 또는 무피복"
+        },
+        {
+          "label": "김매기",
+          "value": "씨뿌림 직후 전용 제초제 살포"
+        },
+        {
+          "label": "물주기",
+          "value": "씨뿌림 직후 및 가물 때"
+        },
+        {
+          "label": "붕소결핍 시",
+          "value": "붕사 또는 칼슘제 0.3%액을 1주일 간격으로 2~3회 엽면 시비"
+        }
+      ]
+    }
+  ],
+  "fertilizer": {
+    "unit": "kg/10a",
+    "columns": [
+      "총량",
+      "밑거름",
+      "웃거름 1회",
+      "웃거름 2회"
+    ],
+    "rows": [
+      {
+        "name": "퇴비",
+        "values": [
+          1000,
+          1000,
+          null,
+          null
+        ]
+      },
+      {
+        "name": "질소",
+        "values": [
+          28,
+          10,
+          9,
+          9
+        ]
+      },
+      {
+        "name": "인산",
+        "values": [
+          5.9,
+          5.9,
+          null,
+          null
+        ]
+      },
+      {
+        "name": "칼리",
+        "values": [
+          15.4,
+          7.7,
+          4,
+          3.7
+        ]
+      },
+      {
+        "name": "석회",
+        "values": [
+          100,
+          100,
+          null,
+          null
+        ]
+      },
+      {
+        "name": "붕사",
+        "values": [
+          1.5,
+          1.5,
+          null,
+          null
+        ]
+      }
+    ],
+    "note": null
+  },
+  "pests": [
+    {
+      "name": "벼룩잎벌레",
+      "kind": "해충",
+      "timing": "씨뿌림 전",
+      "control": "토양 살충제 살포"
+    },
+    {
+      "name": "배추좀나방",
+      "kind": "해충",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "검은무늬병",
+      "kind": "병",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "무름병",
+      "kind": "병",
+      "timing": null,
+      "control": "돌려짓기, 석회 적정 시용, 예방 위주 약제 살포, 웃거름 등 영양관리"
+    },
+    {
+      "name": "무사마귀병",
+      "kind": "병",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "바이러스병(진딧물 매개)",
+      "kind": "병",
+      "timing": null,
+      "control": null
+    }
+  ],
+  "disasters": [
+    {
+      "risk": "저온 꽃대신장",
+      "timing": null,
+      "measures": [
+        "저온감응이 둔한 품종 선택",
+        "터널 시 주간 25~30℃·야간 15℃ 내외 보온"
+      ]
+    },
+    {
+      "risk": "봄가뭄",
+      "timing": null,
+      "measures": [
+        "물주기",
+        "짚이나 망사 덮기"
+      ]
+    },
+    {
+      "risk": "고온",
+      "timing": null,
+      "measures": [
+        "수확 시 연부병 등 예방 철저"
+      ]
+    },
+    {
+      "risk": "장마·호우·태풍",
+      "timing": null,
+      "measures": [
+        "배수구 및 이랑 정비",
+        "살균제·살충제 살포"
+      ]
+    },
+    {
+      "risk": "한파",
+      "timing": null,
+      "measures": [
+        "보온 철저",
+        "비닐덮기",
+        "움저장 또는 임시저장"
+      ]
+    }
+  ],
+  "notes": [
+    "성출하기: 봄무 5월 하순~6월 중순, 가을무 10월 중순~11월 하순",
+    "작형별 출하시기 표에는 가을재배 씨뿌림이 7월 중순~9월 상순으로 표기되어 있음",
+    "적정 토양 수분관리로 석회 부족증 발생을 줄임 (자연강우 시 발생률 75%)",
+    "붕사 무비 시 70% 장해 발생",
+    "비가림 및 망사 피복 재배 시 노지보다 병해충이 줄고 약 15% 증수"
+  ],
+  "source": "https://www.nongsaro.go.kr/portal/ps/psb/psbl/workScheduleDtl.ps?menuId=PS00087&cntntsNo=30614"
+}

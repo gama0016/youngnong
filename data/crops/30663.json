@@ -1,0 +1,115 @@
+{
+  "id": 30663,
+  "name": "사과",
+  "type": null,
+  "category": "과수",
+  "sciName": "Malus pumila MILL",
+  "family": "장미과",
+  "summary": "양토~사양토, 작토깊이 1m 이상의 토양에서 재배하는 과수. 생육적온은 18~24℃이며 30℃ 이상이면 과실비대와 꽃눈형성이 불량해진다. 토양검정에 따른 비료량 조절, 순차적 열매솎기, 예찰에 따른 적기 방제가 핵심이다.",
+  "env": [
+    { "label": "평균기온", "value": "8~11℃(6~14℃)" },
+    { "label": "생육적온", "value": "18~24℃(30℃ 이상이면 과실비대와 꽃눈형성 불량)" },
+    { "label": "과실 성숙기 생육적온", "value": "20~25℃" },
+    { "label": "착색적온", "value": "일평균 12~13℃, 야간 평균기온 8℃ 전후" },
+    { "label": "일조시간", "value": "2,300시간" },
+    { "label": "강수량", "value": "1,300mm 이하" },
+    { "label": "토성", "value": "양토~사양토" },
+    { "label": "작토깊이", "value": "1m 이상" },
+    { "label": "토양경도", "value": "18mm 이하(24mm 이상은 심한 장해)" },
+    { "label": "투수성", "value": "2.7mm/시간" },
+    { "label": "토양개량 목표 - 유효토심", "value": "60cm 이상" },
+    { "label": "토양개량 목표 - 지하수위", "value": "1m 이하" },
+    { "label": "토양개량 목표 - 토양산도", "value": "pH 5.8~6.3" },
+    { "label": "토양개량 목표 - 염기치환용량", "value": "20me/100g" },
+    { "label": "토양개량 목표 - 염기포화도", "value": "60~80%" },
+    { "label": "토양개량 목표 - 유기물", "value": "3% 이상" },
+    { "label": "토양개량 목표 - 인산", "value": "200ppm" },
+    { "label": "토양개량 목표 - 마그네슘", "value": "2me/100g" },
+    { "label": "토양개량 목표 - 칼슘", "value": "8~10me/100g" },
+    { "label": "토양개량 목표 - 붕소", "value": "0.5ppm" }
+  ],
+  "schedule": [
+    { "task": "묘목심기", "kind": "plant", "region": null, "start": null, "end": null, "text": "봄심기" },
+    { "task": "정지·전정", "kind": "manage", "region": null, "start": null, "end": null, "text": null },
+    { "task": "수분", "kind": "manage", "region": null, "start": null, "end": null, "text": null },
+    { "task": "꽃솎기·열매솎기", "kind": "manage", "region": null, "start": null, "end": null, "text": null },
+    { "task": "봉지씌우기", "kind": "manage", "region": null, "start": null, "end": null, "text": null },
+    { "task": "봉지제거·잎따기", "kind": "manage", "region": null, "start": null, "end": null, "text": null },
+    { "task": "초생관리(예초)", "kind": "manage", "region": null, "start": null, "end": null, "text": null },
+    { "task": "여름전정(웃자람가지 제거, 유인)", "kind": "manage", "region": null, "start": null, "end": null, "text": null },
+    { "task": "밑거름·토양개량", "kind": "fert", "region": null, "start": null, "end": null, "text": null },
+    { "task": "웃거름", "kind": "fert", "region": null, "start": null, "end": null, "text": null },
+    { "task": "조생종 수확", "kind": "harvest", "region": null, "start": null, "end": null, "text": null },
+    { "task": "중생종 수확", "kind": "harvest", "region": null, "start": null, "end": null, "text": null },
+    { "task": "만생종 수확", "kind": "harvest", "region": null, "start": null, "end": null, "text": null }
+  ],
+  "stages": [
+    { "title": "묘목심기", "timing": "봄심기",
+      "items": [
+        { "label": "지력 중 - 홍로 등", "value": "재식거리 3.2×1.2m, 260주/10a" },
+        { "label": "지력 중 - 후지", "value": "재식거리 3.5×1.5m, 190주/10a" },
+        { "label": "지력 고 - 홍로 등", "value": "재식거리 3.8×1.5m, 175주/10a" },
+        { "label": "지력 고 - 후지", "value": "재식거리 3.8×1.8m, 146주/10a" },
+        { "label": "수분수(재배품종)", "value": "5열 중 1열씩 배치" },
+        { "label": "수분수(꽃사과)", "value": "이웃 열과 다이아몬드형(◇)으로 10~13주 건너 나무 사이에 배치" }
+      ] },
+    { "title": "물주기", "timing": null,
+      "items": [
+        { "label": "사질", "value": "물주는 양 20mm, 간격 4일" },
+        { "label": "양토", "value": "물주는 양 30mm, 간격 7일" },
+        { "label": "점토", "value": "물주는 양 35mm, 간격 9일" }
+      ] },
+    { "title": "토양관리", "timing": null,
+      "items": [
+        { "label": "기준", "value": "토양검정에 따른 비료량 조절로 수세 안정, 초생재배 체계 확립, 생육기별 적정 수분 관리" }
+      ] },
+    { "title": "상품과 비율 향상", "timing": null,
+      "items": [
+        { "label": "기준", "value": "소질이 우수한 결과지 갱신 및 광환경 개선, 방화곤충 + 인공수분, 적정 엽수 기준에 따른 순차적 열매솎기" }
+      ] },
+    { "title": "친환경 병해충 관리", "timing": null,
+      "items": [ { "label": "기준", "value": "성페로몬 트랩 등을 이용해 미리 살피고 제때 방제" } ] }
+  ],
+  "fertilizer": {
+    "unit": "g/주",
+    "columns": ["1년", "2년", "3년", "4년", "5년", "6년", "7년 이후"],
+    "rows": [
+      { "name": "질소", "values": [20, 50, 100, 150, 180, 220, 250] },
+      { "name": "인산", "values": [25, 25, 50, 75, 90, 110, 125] },
+      { "name": "칼리", "values": [40, 40, 80, 120, 150, 180, 200] }
+    ],
+    "note": "대목 M.9, M.26 기준 수령별 주당 시비량(g/주). 성목: N:P:K = 12~15 : 6~8 : 10~12kg/10a. 원문 표 머리에 '웃거름' 칸이 있으나 해당 값은 없으며, 밑거름·웃거름 분할 비율은 페이지에 없음. 각 행의 7개 값을 1년~7년 이후 순서로 대응시킴."
+  },
+  "pests": [
+    { "name": "겹무늬썩음병", "kind": "병", "timing": null, "control": null },
+    { "name": "탄저병", "kind": "병", "timing": null, "control": null },
+    { "name": "갈색무늬병", "kind": "병", "timing": null, "control": null },
+    { "name": "반점낙엽병", "kind": "병", "timing": null, "control": null },
+    { "name": "부란병", "kind": "병", "timing": null, "control": null },
+    { "name": "진딧물", "kind": "해충", "timing": null, "control": null },
+    { "name": "응애", "kind": "해충", "timing": null, "control": null },
+    { "name": "잎말이나방", "kind": "해충", "timing": null, "control": null },
+    { "name": "심식나방", "kind": "해충", "timing": null, "control": null },
+    { "name": "굴나방", "kind": "해충", "timing": null, "control": null },
+    { "name": "고두병", "kind": "생리장해", "timing": null, "control": "질소 감비, 수세 안정 및 큰 과실 생산 회피, 소석회·고토석회 200~300kg/10a 시용, 염화칼슘(0.3~0.5%) 수체 살포 및 칼슘함유 봉지 사용" },
+    { "name": "포장 과습에 따른 생리장해", "kind": "생리장해", "timing": null, "control": "넓고 완만한 이랑 조성, 이랑 사이는 겉도랑 물빼기(명거배수), 심토 파쇄기와 집수정형 배수장치로 배수 유도" }
+  ],
+  "disasters": [
+    { "risk": "언피해", "timing": null, "measures": ["주간과 원가지에 백색페인트 도포", "파열 등 피해부에 도포제를 발라 병해충 피해 최소화", "겨울전정 시 언피해가 50% 이상이면 가지를 2배, 50% 이하이면 약 20% 더 남김"] },
+    { "risk": "늦서리 피해", "timing": null, "measures": ["사전: 냉기 유입 차단을 위해 2m 높이 방상림 설치, 경사지 개원 시 경사방향과 같이 심기", "응급: 기상예보에 따라 송풍, 연소, 살수법 이용"] },
+    { "risk": "일소 피해", "timing": null, "measures": ["물주기", "칼슘제(탄산칼슘, 카올린 등) 살포", "31℃ 이상 고온 시 미세살수 장치 가동"] },
+    { "risk": "개화기 저온, 강우, 고온", "timing": null, "measures": [] },
+    { "risk": "여름철 가뭄, 고온", "timing": null, "measures": [] },
+    { "risk": "장마, 태풍", "timing": null, "measures": [] }
+  ],
+  "notes": [
+    "생육과정: 자발휴면, 타발휴면, 발아·전엽, 개화, 꽃눈분화, 생장비대, 성숙·착색, 낙엽",
+    "숙기별 품종 배치 - 조생종: 주력 썸머킹, 쓰가루 / 보조 썸머프린스, 골든볼 / 검토 루비에스, 아리원",
+    "숙기별 품종 배치 - 중생종: 주력 홍로, 감홍, 아리수 / 보조 이지플, 시나노골드 / 검토 후지 조숙계, 피크닉, 황옥, 감로",
+    "숙기별 품종 배치 - 만생종: 주력 후지 착색계 / 보조 컬러플 / 검토 만홍",
+    "기상재해에 따른 예상 문제점: 열매맺음 불량, 생육 및 과실비대 불량, 일소 피해, 진딧물·응애 방제, 습해, 병해충 다발생, 낙과, 쓰러짐",
+    "수확적기 판정 방법은 페이지에 이미지로만 제공됨",
+    "각 농작업의 월·순 시기는 페이지 도표에서 텍스트로 확인되지 않음"
+  ],
+  "source": "https://www.nongsaro.go.kr/portal/ps/psb/psbl/workScheduleDtl.ps?menuId=PS00087&cntntsNo=30663"
+}

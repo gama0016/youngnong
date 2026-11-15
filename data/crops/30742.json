@@ -1,0 +1,124 @@
+{
+  "id": 30742,
+  "name": null,
+  "type": null,
+  "category": null,
+  "sciName": null,
+  "family": null,
+  "summary": "원문 페이지에 작목명이 표시되지 않음(제목란 \"-\"). 작업 항목명만 있고 상세 내용 없음",
+  "env": [],
+  "schedule": [
+    {
+      "task": "약용재배(뿌리) 봄정식",
+      "kind": "plant",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "약용재배(뿌리) 가을정식",
+      "kind": "plant",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "약용재배(뿌리) 김매기",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "약용재배(뿌리) 적화",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "약용재배(뿌리) 웃거름",
+      "kind": "fert",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "약용재배(뿌리) 수확",
+      "kind": "harvest",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "연화재배(줄기) 지상부 제거(흙덮기)",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "연화재배(줄기) 정식",
+      "kind": "plant",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "연화재배(줄기) 흙덮기",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "연화재배(줄기) 수확",
+      "kind": "harvest",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    }
+  ],
+  "stages": [],
+  "fertilizer": null,
+  "pests": [],
+  "disasters": [
+    {
+      "risk": "동해",
+      "timing": null,
+      "measures": []
+    },
+    {
+      "risk": "가뭄",
+      "timing": null,
+      "measures": []
+    },
+    {
+      "risk": "장마",
+      "timing": null,
+      "measures": []
+    },
+    {
+      "risk": "습해피해",
+      "timing": null,
+      "measures": []
+    }
+  ],
+  "notes": [
+    "원문 페이지에 작목명이 표시되지 않음(제목란 \"-\"). 작업 항목명만 있고 상세 내용 없음",
+    "월별 일정표(상·중·하순 막대)는 원문에서 칸 위치를 확인할 수 없어 작업별 시기를 비워 둠",
+    "재배 구분: 약용재배(뿌리), 연화재배(줄기), 측성연화재배",
+    "예상되는 문제점: 생육부진"
+  ],
+  "source": "https://www.nongsaro.go.kr/portal/ps/psb/psbl/workScheduleDtl.ps?menuId=PS00087&cntntsNo=30742"
+}

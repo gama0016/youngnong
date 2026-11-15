@@ -1,0 +1,387 @@
+{
+  "id": 30600,
+  "name": "고추",
+  "type": "보통재배",
+  "category": "채소",
+  "sciName": "Capsicum annuum L.",
+  "family": "가지과",
+  "summary": "가지과에 속하는 중일성 작물. 뿌리가 얕게 퍼져 가뭄과 장마에 약하다.",
+  "env": [
+    {
+      "label": "발아적온",
+      "value": "25~32℃"
+    },
+    {
+      "label": "모기르기 적온",
+      "value": "22~30℃"
+    },
+    {
+      "label": "개화적온",
+      "value": "18~23℃"
+    },
+    {
+      "label": "생육적온",
+      "value": "20~30℃"
+    },
+    {
+      "label": "과비대 적온",
+      "value": "18~23℃"
+    },
+    {
+      "label": "저장적온",
+      "value": "4℃"
+    },
+    {
+      "label": "개화·열매달림 가능온도",
+      "value": "15.5~28.5℃"
+    },
+    {
+      "label": "토양산도",
+      "value": "pH 6.1~7.6 (6.5 정도의 중성이 적당)"
+    }
+  ],
+  "schedule": [
+    {
+      "task": "온상설치",
+      "kind": "nursery",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "씨뿌림",
+      "kind": "sow",
+      "region": "남부",
+      "start": {
+        "m": 2,
+        "p": 1
+      },
+      "end": {
+        "m": 2,
+        "p": 2
+      },
+      "text": "2월 초순~2월 중순"
+    },
+    {
+      "task": "씨뿌림",
+      "kind": "sow",
+      "region": "중부",
+      "start": {
+        "m": 2,
+        "p": 2
+      },
+      "end": {
+        "m": 2,
+        "p": 3
+      },
+      "text": "2월 중순~2월 하순"
+    },
+    {
+      "task": "모기르기",
+      "kind": "nursery",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "아주심기",
+      "kind": "plant",
+      "region": "남부",
+      "start": {
+        "m": 4,
+        "p": 3
+      },
+      "end": {
+        "m": 5,
+        "p": 1
+      },
+      "text": "4월 하순~5월 상순"
+    },
+    {
+      "task": "아주심기",
+      "kind": "plant",
+      "region": "중부",
+      "start": {
+        "m": 5,
+        "p": 1
+      },
+      "end": {
+        "m": 5,
+        "p": 2
+      },
+      "text": "5월 상순~5월 중순"
+    },
+    {
+      "task": "받침대 설치 및 유인",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "웃거름(1~3회)",
+      "kind": "fert",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "풋고추 수확",
+      "kind": "harvest",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "붉은고추 수확",
+      "kind": "harvest",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    }
+  ],
+  "stages": [
+    {
+      "title": "씨뿌림",
+      "timing": "남부 2월 초순~2월 중순 / 중부 2월 중순~2월 하순",
+      "items": [
+        {
+          "label": "씨앗량",
+          "value": "1㎗/10a"
+        }
+      ]
+    },
+    {
+      "title": "모기르기",
+      "timing": null,
+      "items": [
+        {
+          "label": "온도",
+          "value": "낮 22~30℃, 밤 15℃ 이상"
+        },
+        {
+          "label": "기간",
+          "value": "70~80일"
+        },
+        {
+          "label": "물주기",
+          "value": "오전 중 20℃ 정도의 물"
+        },
+        {
+          "label": "아주심을 모종 크기(노지재배)",
+          "value": "본잎 11~13매 전개 시, 1번화 개화"
+        }
+      ]
+    },
+    {
+      "title": "아주심기",
+      "timing": "남부 4월 하순~5월 상순 / 중부 5월 상순~5월 중순",
+      "items": [
+        {
+          "label": "심는 거리(1줄재배)",
+          "value": "100cm×35~40cm"
+        },
+        {
+          "label": "심는 거리(2줄재배)",
+          "value": "150cm×35~40cm"
+        },
+        {
+          "label": "비닐덮기",
+          "value": "0.02~0.03mm 비닐"
+        }
+      ]
+    },
+    {
+      "title": "관리",
+      "timing": null,
+      "items": [
+        {
+          "label": "작업",
+          "value": "지주 세우기, 가물 때 물주기, 김매기(제초제 살포)"
+        }
+      ]
+    }
+  ],
+  "fertilizer": {
+    "unit": "kg/10a",
+    "columns": [
+      "총량",
+      "밑거름",
+      "웃거름 1회",
+      "웃거름 2회",
+      "웃거름 3회"
+    ],
+    "rows": [
+      {
+        "name": "퇴비",
+        "values": [
+          2000,
+          2000,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "name": "질소",
+        "values": [
+          19,
+          10.2,
+          2.8,
+          3.2,
+          2.8
+        ]
+      },
+      {
+        "name": "인산",
+        "values": [
+          11.2,
+          11.2,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "name": "칼리",
+        "values": [
+          15,
+          9,
+          1.8,
+          1.8,
+          2.4
+        ]
+      },
+      {
+        "name": "석회",
+        "values": [
+          150,
+          150,
+          null,
+          null,
+          null
+        ]
+      }
+    ],
+    "note": null
+  },
+  "pests": [
+    {
+      "name": "모잘록병",
+      "kind": "병",
+      "timing": "모기르기 때",
+      "control": "잘록병 방제, 야간 15℃ 이상 보온"
+    },
+    {
+      "name": "돌림병",
+      "kind": "병",
+      "timing": null,
+      "control": "예방 위주로 적기 방제. 장마 시 7~10일 간격 살균제 살포, 돌려짓기"
+    },
+    {
+      "name": "탄저병",
+      "kind": "병",
+      "timing": null,
+      "control": "예방 위주로 적기 방제"
+    },
+    {
+      "name": "풋마늘병",
+      "kind": "병",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "무름병",
+      "kind": "병",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "진딧물(바이러스병)",
+      "kind": "해충",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "담배나방",
+      "kind": "해충",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "석회결핍",
+      "kind": "생리장해",
+      "timing": "토양 건조 또는 염류 농도가 높을 때",
+      "control": "밑거름 석회 100~120kg/10a, 토양 수분관리, 염화칼슘(0.3%) 잎면비료"
+    }
+  ],
+  "disasters": [
+    {
+      "risk": "모 기를 때 저온 (모 기르기 불량, 모잘록병, 아주심기 지연)",
+      "timing": null,
+      "measures": [
+        "적기 씨뿌림",
+        "야간 15℃ 이상 보온",
+        "잘록병 방제",
+        "예비 육묘상 설치"
+      ]
+    },
+    {
+      "risk": "봄 가뭄 (초기생육 불량)",
+      "timing": null,
+      "measures": [
+        "물주기 후 아주심기(이동식 스프링클러)",
+        "비닐 덮기 재배"
+      ]
+    },
+    {
+      "risk": "장마 (습해, 돌림병 다발생)",
+      "timing": null,
+      "measures": [
+        "배수구 정비",
+        "웃거름 과용 금지",
+        "병해충 종합방제(7~10일 간격 살균제 살포)"
+      ]
+    },
+    {
+      "risk": "호우·태풍 (쓰러짐, 낙과, 건조 곤란)",
+      "timing": null,
+      "measures": [
+        "받침대 시설 보완",
+        "쓰러진 그루 세우기",
+        "잎면비료",
+        "배수 철저",
+        "열풍건조기 이용"
+      ]
+    },
+    {
+      "risk": "여름 가뭄 (생육 불량, 낙화·낙과)",
+      "timing": null,
+      "measures": [
+        "물주기",
+        "고랑 짚덮기",
+        "이동식 스프링클러 또는 점적관수 설치"
+      ]
+    },
+    {
+      "risk": "저온 (냉해, 수확기 단축)",
+      "timing": null,
+      "measures": []
+    }
+  ],
+  "notes": [
+    "주당 300~400화가 개화하여 약 200화에 열매가 달리며, 이 중 70~130개를 수확할 수 있음",
+    "꽃피는 주기: 1차 7월 상순, 2차 8월 상순, 3차 9월 중순",
+    "붉은고추 수확이 가능한 개화·결실 한계기: 중부 8월 하순, 남부 9월 상순",
+    "모기르기 일수: 노지재배 70~80일, 반촉성재배 80~90일, 억제재배 50~60일",
+    "관비재배: 관행재배 대비 52% 증수, 웃거름 노력 절감 69%",
+    "높은 이랑 재배: 평이랑 재배 대비 23~28% 증수"
+  ],
+  "source": "https://www.nongsaro.go.kr/portal/ps/psb/psbl/workScheduleDtl.ps?menuId=PS00087&cntntsNo=30600"
+}

@@ -1,0 +1,458 @@
+{
+  "id": 30618,
+  "name": "배추",
+  "type": null,
+  "category": "채소",
+  "sciName": "Brassica rapa L.",
+  "family": "배추과",
+  "summary": "서늘한 기후를 좋아하는 저온성 채소. 씨앗 춘화형으로 12℃ 이하에서 7일 이상 지나면 꽃눈이 분화된다.",
+  "env": [
+    {
+      "label": "발아적온",
+      "value": "20~25℃"
+    },
+    {
+      "label": "모 기르기 적온",
+      "value": "20~22℃"
+    },
+    {
+      "label": "개화적온",
+      "value": "12℃"
+    },
+    {
+      "label": "생육적온",
+      "value": "15~20℃"
+    },
+    {
+      "label": "결구적온",
+      "value": "15~16℃"
+    },
+    {
+      "label": "저장적온",
+      "value": "0~3℃"
+    },
+    {
+      "label": "토양산도",
+      "value": "pH 5.5~6.8 (산성토양에서는 병해 발생 증가)"
+    }
+  ],
+  "schedule": [
+    {
+      "task": "씨뿌림(봄재배)",
+      "kind": "sow",
+      "region": "남부",
+      "start": {
+        "m": 3,
+        "p": 1
+      },
+      "end": {
+        "m": 3,
+        "p": 1
+      },
+      "text": "3월 상순"
+    },
+    {
+      "task": "씨뿌림(봄재배)",
+      "kind": "sow",
+      "region": "중부",
+      "start": {
+        "m": 3,
+        "p": 2
+      },
+      "end": {
+        "m": 3,
+        "p": 2
+      },
+      "text": "3월 중순"
+    },
+    {
+      "task": "아주심기(봄재배)",
+      "kind": "plant",
+      "region": "남부",
+      "start": {
+        "m": 4,
+        "p": 1
+      },
+      "end": {
+        "m": 4,
+        "p": 1
+      },
+      "text": "4월 상순"
+    },
+    {
+      "task": "아주심기(봄재배)",
+      "kind": "plant",
+      "region": "중부",
+      "start": {
+        "m": 4,
+        "p": 2
+      },
+      "end": {
+        "m": 4,
+        "p": 2
+      },
+      "text": "4월 중순"
+    },
+    {
+      "task": "수확(봄재배)",
+      "kind": "harvest",
+      "region": null,
+      "start": {
+        "m": 5,
+        "p": 3
+      },
+      "end": {
+        "m": 6,
+        "p": 2
+      },
+      "text": "5월 하순~6월 중순"
+    },
+    {
+      "task": "씨뿌림(가을재배)",
+      "kind": "sow",
+      "region": "남부",
+      "start": {
+        "m": 8,
+        "p": 2
+      },
+      "end": {
+        "m": 8,
+        "p": 2
+      },
+      "text": "8월 중순"
+    },
+    {
+      "task": "씨뿌림(가을재배)",
+      "kind": "sow",
+      "region": "중부",
+      "start": {
+        "m": 8,
+        "p": 1
+      },
+      "end": {
+        "m": 8,
+        "p": 1
+      },
+      "text": "8월 상순"
+    },
+    {
+      "task": "아주심기(가을재배)",
+      "kind": "plant",
+      "region": "남부",
+      "start": {
+        "m": 9,
+        "p": 2
+      },
+      "end": {
+        "m": 9,
+        "p": 2
+      },
+      "text": "9월 중순"
+    },
+    {
+      "task": "아주심기(가을재배)",
+      "kind": "plant",
+      "region": "중부",
+      "start": {
+        "m": 9,
+        "p": 1
+      },
+      "end": {
+        "m": 9,
+        "p": 1
+      },
+      "text": "9월 상순"
+    },
+    {
+      "task": "수확(가을재배)",
+      "kind": "harvest",
+      "region": null,
+      "start": {
+        "m": 10,
+        "p": 2
+      },
+      "end": {
+        "m": 12,
+        "p": 1
+      },
+      "text": "10월 중순~12월 상순"
+    },
+    {
+      "task": "씨뿌림(시설재배)",
+      "kind": "sow",
+      "region": null,
+      "start": {
+        "m": 1,
+        "p": 1
+      },
+      "end": {
+        "m": 3,
+        "p": 1
+      },
+      "text": "1월 상순~3월 상순"
+    },
+    {
+      "task": "아주심기(시설재배)",
+      "kind": "plant",
+      "region": null,
+      "start": {
+        "m": 2,
+        "p": 1
+      },
+      "end": {
+        "m": 4,
+        "p": 2
+      },
+      "text": "2월 상순~4월 중순"
+    },
+    {
+      "task": "수확(시설재배)",
+      "kind": "harvest",
+      "region": null,
+      "start": {
+        "m": 3,
+        "p": 2
+      },
+      "end": {
+        "m": 5,
+        "p": 3
+      },
+      "text": "3월 중순~5월 하순"
+    },
+    {
+      "task": "김매기, 물주기, 배수",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "웃거름",
+      "kind": "fert",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "저장",
+      "kind": "etc",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    }
+  ],
+  "stages": [
+    {
+      "title": "씨뿌림",
+      "timing": "봄재배: 남부 3월 상순, 중부 3월 중순 / 가을재배: 남부 8월 중순, 중부 8월 상순",
+      "items": [
+        {
+          "label": "씨앗량",
+          "value": "0.6㎗/10a"
+        },
+        {
+          "label": "모 기르는 기간",
+          "value": "약 1개월"
+        },
+        {
+          "label": "아주심기 주수",
+          "value": "3,500~4,000주/10a"
+        }
+      ]
+    },
+    {
+      "title": "아주심기 및 관리",
+      "timing": "봄재배: 남부 4월 상순, 중부 4월 중순 / 가을재배: 남부 9월 중순, 중부 9월 상순",
+      "items": [
+        {
+          "label": "심는 거리",
+          "value": "이랑너비 75cm, 포기사이 45cm"
+        },
+        {
+          "label": "물주기",
+          "value": "가물 때"
+        },
+        {
+          "label": "석회 결핍 시",
+          "value": "염화칼슘 0.3% 엽면 비료주기"
+        },
+        {
+          "label": "붕소 결핍 시",
+          "value": "붕소 0.2% 엽면 비료주기"
+        }
+      ]
+    }
+  ],
+  "fertilizer": {
+    "unit": "kg/10a",
+    "columns": [
+      "총량",
+      "밑거름",
+      "웃거름 1회",
+      "웃거름 2회",
+      "웃거름 3회"
+    ],
+    "rows": [
+      {
+        "name": "퇴비",
+        "values": [
+          3000,
+          3000,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "name": "질소",
+        "values": [
+          32,
+          11,
+          7,
+          7,
+          7
+        ]
+      },
+      {
+        "name": "인산",
+        "values": [
+          7.8,
+          7.8,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "name": "칼리",
+        "values": [
+          19.8,
+          11,
+          null,
+          8.8,
+          null
+        ]
+      },
+      {
+        "name": "석회",
+        "values": [
+          100,
+          100,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "name": "붕사",
+        "values": [
+          1.5,
+          1.5,
+          null,
+          null,
+          null
+        ]
+      }
+    ],
+    "note": null
+  },
+  "pests": [
+    {
+      "name": "벼룩잎벌레",
+      "kind": "해충",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "배추좀나방",
+      "kind": "해충",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "무름병",
+      "kind": "병",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "뿌리혹병",
+      "kind": "병",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "바이러스병(진딧물)",
+      "kind": "병",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "노균병",
+      "kind": "병",
+      "timing": null,
+      "control": null
+    }
+  ],
+  "disasters": [
+    {
+      "risk": "저온꽃대신장",
+      "timing": null,
+      "measures": [
+        "저온감응이 둔한 품종 재배",
+        "배추모 재배 시 야간 10℃ 이상 보온"
+      ]
+    },
+    {
+      "risk": "봄가뭄",
+      "timing": null,
+      "measures": [
+        "물주기",
+        "간이 저수장 설치",
+        "이동식 스프링클러 설치",
+        "짚덮기, 비닐덮기",
+        "살충제 살포"
+      ]
+    },
+    {
+      "risk": "호우 (씨뿌림 지연, 침수·관수, 유실·매몰)",
+      "timing": null,
+      "measures": [
+        "배수구 정비",
+        "다시심기, 덧뿌림(조생종, 반결구종)",
+        "엽면 비료주기",
+        "살균제 살포"
+      ]
+    },
+    {
+      "risk": "가을가뭄",
+      "timing": null,
+      "measures": [
+        "이동식 스프링클러로 물주기",
+        "짚덮기",
+        "모 기르기 아주심기 재배",
+        "살충제 살포"
+      ]
+    },
+    {
+      "risk": "한파 (언 피해 온도 -3~-4℃)",
+      "timing": null,
+      "measures": [
+        "섬피·비닐덮기(멀칭)",
+        "적기수확",
+        "임시저장, 움저장"
+      ]
+    }
+  ],
+  "notes": [
+    "작형별 출하시기 표: 봄재배 씨뿌림 3월 중순~4월 하순, 아주심기 4월 상순~5월 중순 / 가을재배 씨뿌림 8월 상순~8월 하순, 아주심기 8월 하순~9월 상순 (본문 시기 항목과 일부 다름)",
+    "성출하기: 시설재배 4월 중순, 봄재배 6월 중순, 가을재배 10월 중순~12월 상순",
+    "생육 초기에는 고온에 비교적 잘 견디나 결구기에는 내고온성이 약함",
+    "망사 터널재배: 바이러스 이병률 감소(무피복 100% → 망사터널 0%)",
+    "비닐덮기 재배: 안 덮은 곳 대비 7~39% 증수"
+  ],
+  "source": "https://www.nongsaro.go.kr/portal/ps/psb/psbl/workScheduleDtl.ps?menuId=PS00087&cntntsNo=30618"
+}

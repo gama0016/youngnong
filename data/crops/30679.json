@@ -1,0 +1,86 @@
+{
+  "id": 30679,
+  "name": "선인장",
+  "type": "여름재배·겨울재배",
+  "category": "화훼",
+  "sciName": "Gymnocalycium mihanovichii (비모란), Chamaecereus silvestrii (산취)",
+  "family": null,
+  "summary": "비모란·산취 등을 삼각주 등 대목에 접목해 생산하는 접목선인장. 통기성과 배수성이 좋고 보수력이 적당한 용토에서 재배하며, 여름재배와 겨울재배 작형으로 출하한다.",
+  "env": [
+    { "label": "최고온도", "value": "40℃" },
+    { "label": "최저온도", "value": "10~15℃" },
+    { "label": "생육적온", "value": "25~30℃" },
+    { "label": "재배용토", "value": "통기성과 배수성이 좋고 보수력이 적당한 토양" },
+    { "label": "환기 기준", "value": "하우스 내 온도가 30℃ 이상이면 환기" },
+    { "label": "차광률", "value": "봄·가을 15~30%, 여름 45~55%" }
+  ],
+  "schedule": [
+    { "task": "수확·출하(여름재배)", "kind": "harvest", "region": null, "start": { "m": 7, "p": 2 }, "end": { "m": 11, "p": 1 }, "text": "7월 중순~11월 상순" },
+    { "task": "수확(겨울재배)", "kind": "harvest", "region": null, "start": { "m": 2, "p": 1 }, "end": { "m": 4, "p": 3 }, "text": "2월 상순~4월 하순(출하기 2월 중순~4월 하순)" },
+    { "task": "접목", "kind": "nursery", "region": null, "start": null, "end": null, "text": null },
+    { "task": "아주심기", "kind": "plant", "region": null, "start": null, "end": null, "text": null },
+    { "task": "본포관리(여름재배, 빛가림 45~55%)", "kind": "manage", "region": null, "start": null, "end": null, "text": null },
+    { "task": "가온 및 본포관리(겨울재배)", "kind": "manage", "region": null, "start": null, "end": null, "text": null },
+    { "task": "물주기(충분히)", "kind": "manage", "region": null, "start": { "m": 3, "p": null }, "end": { "m": 5, "p": null }, "text": "3~5월: 충분히" },
+    { "task": "물주기(맑은 날 물주고 낮에 환기)", "kind": "manage", "region": null, "start": { "m": 6, "p": null }, "end": { "m": 7, "p": null }, "text": "6~7월, 9~10월: 맑은 날 물을 주고 낮에 환기" },
+    { "task": "물주기(적당량 물주고 낮에 환기)", "kind": "manage", "region": null, "start": { "m": 8, "p": null }, "end": { "m": 8, "p": null }, "text": "8월: 적당량 물주고 낮에 환기" },
+    { "task": "물주기(오전 중 적당량)", "kind": "manage", "region": null, "start": { "m": 11, "p": null }, "end": { "m": 12, "p": null }, "text": "11~12월: 오전 중 적당량" },
+    { "task": "병해충 방제", "kind": "pest", "region": null, "start": null, "end": null, "text": null }
+  ],
+  "stages": [
+    { "title": "접목(비모란)", "timing": null,
+      "items": [
+        { "label": "대목 종류", "value": "삼각주, 귀면각, 쏘데가우라" },
+        { "label": "대목", "value": "윗부분을 8~10cm 길이로 자름" },
+        { "label": "접수", "value": "지름 1.0~1.5cm 자구의 아랫부분을 수평으로 절단" },
+        { "label": "고정", "value": "유관속을 일치시킨 뒤 실 등으로 고정" },
+        { "label": "정치", "value": "정치기간 약 8일, 정치온도 30℃, 습도 80%" },
+        { "label": "접목 건조실 환경", "value": "온도 30℃, 습도 70~90%(뿌리내림률 10% 이상 개선)" },
+        { "label": "소독", "value": "바이러스 감염 시 뿌리내림률이 떨어지므로 접목칼 등을 철저히 소독" }
+      ] },
+    { "title": "배양토·아주심기", "timing": null,
+      "items": [
+        { "label": "배양토", "value": "모래와 돈분을 무게비 50:50으로 조성, 배수성·통기성·보수력이 좋도록 조성" },
+        { "label": "소독", "value": "삼각주를 잘라낸 뒤 아주심기하므로 배양토 소독 권장" },
+        { "label": "빛가림", "value": "아주심기 후 40% 정도의 빛가림망 설치" },
+        { "label": "곁가지", "value": "아주심기 후 삼각주 곁가지 제거" }
+      ] },
+    { "title": "광·온도 관리", "timing": null,
+      "items": [
+        { "label": "환기", "value": "하우스 내 온도가 30℃ 이상이면 환기" },
+        { "label": "차광률", "value": "봄·가을 15~30%, 여름 45~55%" }
+      ] },
+    { "title": "물주기", "timing": null,
+      "items": [
+        { "label": "3~5월", "value": "충분히" },
+        { "label": "6~7월, 9~10월", "value": "맑은 날 물을 주고 낮에 환기" },
+        { "label": "8월", "value": "적당량 물주고 낮에 환기" },
+        { "label": "11~12월", "value": "오전 중 적당량" }
+      ] },
+    { "title": "수확·출하규격(수출 규격품, 대목 길이×접수 지름)", "timing": "여름재배 7월 중순~11월 상순 / 겨울재배 2월 상순~4월 하순",
+      "items": [
+        { "label": "소", "value": "6×2cm" },
+        { "label": "중", "value": "9×3cm" },
+        { "label": "대", "value": "14×4.5cm" }
+      ] }
+  ],
+  "fertilizer": null,
+  "pests": [
+    { "name": "밑둥썩음병", "kind": "병", "timing": null, "control": "전용 약제 살포" },
+    { "name": "줄기썩음병", "kind": "병", "timing": null, "control": "전용 약제 살포" },
+    { "name": "세균성연부병", "kind": "병", "timing": null, "control": "전용 약제 살포" }
+  ],
+  "disasters": [
+    { "risk": "고온장해", "timing": null, "measures": ["환기 주의"] },
+    { "risk": "저온장해", "timing": null, "measures": [] }
+  ],
+  "notes": [
+    "우량 품종: 비모란(설홍, 단홍, 연홍, 색동 등), 산취",
+    "작형별 출하시기 - 여름재배: 수확기·출하기 7월 중순~11월 상순, 성출하기 8월 하순~9월 하순, 단경기 11월 중순~7월 상순",
+    "작형별 출하시기 - 겨울재배: 수확기 2월 상순~4월 하순, 출하기 2월 중순~4월 하순, 성출하기 2월 하순~3월 하순, 단경기 5월 상순~1월 하순",
+    "생육과정 - 여름재배: 접목 → 아주심기 → 본포관리(빛가림 45~55%) → 수확출하(빛가림 15~30%)",
+    "페이지에 과명, 비료 표는 없음",
+    "접목·아주심기의 월·순 시기는 페이지 도표에서 텍스트로 확인되지 않음"
+  ],
+  "source": "https://www.nongsaro.go.kr/portal/ps/psb/psbl/workScheduleDtl.ps?menuId=PS00087&cntntsNo=30679"
+}

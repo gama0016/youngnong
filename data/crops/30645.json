@@ -1,0 +1,306 @@
+{
+  "id": 30645,
+  "name": "토란",
+  "type": null,
+  "category": "채소",
+  "sciName": "Colocasia esculenta SCHOTT.",
+  "family": "천남성과",
+  "summary": "열대 원산으로 고온·다습과 많은 일조량을 요구한다. 침수에는 강하나 건조에 약하며, 노지·멀칭·터널재배가 있다.",
+  "env": [
+    {
+      "label": "발아적온",
+      "value": "25~30℃"
+    },
+    {
+      "label": "발아최저온도",
+      "value": "15℃"
+    },
+    {
+      "label": "생육적온",
+      "value": "20~25℃"
+    },
+    {
+      "label": "저장적온",
+      "value": "5℃ 이상"
+    },
+    {
+      "label": "토양산도",
+      "value": "pH 5.7~7.4"
+    },
+    {
+      "label": "멀칭·터널 내 온도",
+      "value": "35℃ 이하로 관리"
+    }
+  ],
+  "schedule": [
+    {
+      "task": "아주심기(노지재배)",
+      "kind": "plant",
+      "region": null,
+      "start": {
+        "m": 4,
+        "p": 3
+      },
+      "end": {
+        "m": 5,
+        "p": 2
+      },
+      "text": "4월 하순~5월 중순"
+    },
+    {
+      "task": "수확(노지재배)",
+      "kind": "harvest",
+      "region": null,
+      "start": {
+        "m": 9,
+        "p": 2
+      },
+      "end": {
+        "m": 10,
+        "p": 3
+      },
+      "text": "9월 중순~10월 하순"
+    },
+    {
+      "task": "아주심기(멀칭재배)",
+      "kind": "plant",
+      "region": null,
+      "start": {
+        "m": 3,
+        "p": 2
+      },
+      "end": {
+        "m": 4,
+        "p": 1
+      },
+      "text": "3월 중순~4월 상순"
+    },
+    {
+      "task": "수확(멀칭재배)",
+      "kind": "harvest",
+      "region": null,
+      "start": {
+        "m": 8,
+        "p": 1
+      },
+      "end": {
+        "m": 9,
+        "p": 3
+      },
+      "text": "8월 상순~9월 하순"
+    },
+    {
+      "task": "밑거름 및 토양관리",
+      "kind": "fert",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "웃거름",
+      "kind": "fert",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "북주기",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "저장",
+      "kind": "etc",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    }
+  ],
+  "stages": [
+    {
+      "title": "아주심기",
+      "timing": "노지 5월 상순, 피복재배 4월 중순",
+      "items": [
+        {
+          "label": "씨토란 양",
+          "value": "300~400kg/10a(개당 30~40g)"
+        },
+        {
+          "label": "새끼토란용 재식거리",
+          "value": "70~90×30~45cm"
+        },
+        {
+          "label": "어미새끼토란용 재식거리",
+          "value": "90~120×45~60cm"
+        },
+        {
+          "label": "주간 조절",
+          "value": "갈이 흙이 깊을수록 주간을 좁게, 낮을수록 넓게"
+        },
+        {
+          "label": "터널재배",
+          "value": "아주심기 1개월 전 온상에 씨토란을 눕혀 25~30℃ 고온다습 조건에서 발아"
+        },
+        {
+          "label": "멀칭 조숙재배",
+          "value": "싹을 틔운 뒤 아주심기 하고 바닥덮기"
+        }
+      ]
+    },
+    {
+      "title": "관리",
+      "timing": null,
+      "items": [
+        {
+          "label": "온도",
+          "value": "멀칭·터널 35℃ 이하"
+        },
+        {
+          "label": "물주기",
+          "value": "가물 때 물주기 철저"
+        },
+        {
+          "label": "북주기",
+          "value": "1회 5cm, 2회 10cm, 3회 10cm"
+        }
+      ]
+    }
+  ],
+  "fertilizer": {
+    "unit": "kg/10a",
+    "columns": [
+      "총량",
+      "밑거름",
+      "웃거름 1회",
+      "웃거름 2회",
+      "웃거름 3회",
+      "웃거름 4회"
+    ],
+    "rows": [
+      {
+        "name": "퇴비",
+        "values": [
+          2000,
+          2000,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "name": "질소",
+        "values": [
+          16,
+          4,
+          1,
+          3,
+          3,
+          5
+        ]
+      },
+      {
+        "name": "인산",
+        "values": [
+          12,
+          10,
+          1,
+          1,
+          null,
+          null
+        ]
+      },
+      {
+        "name": "칼리",
+        "values": [
+          18,
+          9,
+          2,
+          3,
+          4,
+          null
+        ]
+      }
+    ],
+    "note": null
+  },
+  "pests": [
+    {
+      "name": "돌림병",
+      "kind": "병",
+      "timing": "장마",
+      "control": "돌림병 방제, 배수시설 설치, 돌려짓기"
+    },
+    {
+      "name": "반점세균병",
+      "kind": "병",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "갈색무늬병",
+      "kind": "병",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "부패병",
+      "kind": "병",
+      "timing": null,
+      "control": null
+    }
+  ],
+  "disasters": [
+    {
+      "risk": "저온(아주심기 지연, 초기생육 불량)",
+      "timing": null,
+      "measures": [
+        "터널재배 시 온상 발아 후 아주심기",
+        "멀칭 조숙재배"
+      ]
+    },
+    {
+      "risk": "가뭄(생육불량, 부패)",
+      "timing": null,
+      "measures": [
+        "물주기 후 아주심기 또는 아주심기 후 물주기",
+        "고랑 짚 덮기"
+      ]
+    },
+    {
+      "risk": "장마(돌림병 발생)",
+      "timing": null,
+      "measures": [
+        "배수구 정비",
+        "웃거름 과용 금지",
+        "돌림병 방제 및 배수시설",
+        "돌려짓기"
+      ]
+    },
+    {
+      "risk": "가뭄(수량 감소, 토란알이 갈라져 부패)",
+      "timing": null,
+      "measures": [
+        "후기 생육 촉진",
+        "물주기 실시",
+        "수확 시 배수 철저"
+      ]
+    }
+  ],
+  "notes": [
+    "작형별 성출하기: 노지 10월 중순~11월 상순, 멀칭 9월 상순~10월 상순",
+    "보통재배 시 모구는 7월, 자구와 손구는 8월부터 비대",
+    "멀칭 및 터널재배는 보통재배보다 20% 증수",
+    "침수에 강해 5일 정도 침수되어도 이상 없으나 장기간 습도가 높으면 토란이 길어짐",
+    "기상재해 대책에 '3월 상순 멀칭 제거 후 북주기 및 웃거름'으로 기재되어 있으나 아주심기 시기와 맞지 않아 원문 확인 필요",
+    "기상재해 항목과 대책의 짝은 페이지 나열 순서에 따른 것임",
+    "페이지의 월별 일정표(생육과정·병충해·기상재해 도표)는 수집 과정에서 칸 위치가 확인되지 않아, 본문에 명시된 시기만 기재함. 정확한 시기는 원문 확인 필요."
+  ],
+  "source": "https://www.nongsaro.go.kr/portal/ps/psb/psbl/workScheduleDtl.ps?menuId=PS00087&cntntsNo=30645"
+}

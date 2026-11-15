@@ -1,0 +1,339 @@
+{
+  "id": 30620,
+  "name": "부추",
+  "type": null,
+  "category": "채소",
+  "sciName": "Allium tuberosum ROTT.",
+  "family": "백합과",
+  "summary": "저온단일 조건(10월 하순부터)에 휴면이 시작되고 고온장일에 꽃눈이 분화하며 7~8월에 꽃대가 신장한다. 이어짓기 장해가 있다.",
+  "env": [
+    {
+      "label": "발아적온",
+      "value": "20℃"
+    },
+    {
+      "label": "생육적온",
+      "value": "18~20℃"
+    },
+    {
+      "label": "저장적온",
+      "value": "2~4℃"
+    },
+    {
+      "label": "재배적지",
+      "value": "배수가 잘 되는 사질양토, 양토"
+    }
+  ],
+  "schedule": [
+    {
+      "task": "씨뿌림",
+      "kind": "sow",
+      "region": null,
+      "start": {
+        "m": 3,
+        "p": 3
+      },
+      "end": {
+        "m": 4,
+        "p": 2
+      },
+      "text": "3월 하순~4월 중순"
+    },
+    {
+      "task": "제초",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "웃거름",
+      "kind": "fert",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "수확(시설재배)",
+      "kind": "harvest",
+      "region": null,
+      "start": {
+        "m": 11,
+        "p": 1
+      },
+      "end": {
+        "m": 3,
+        "p": 3
+      },
+      "text": "11월 상순~3월 하순"
+    },
+    {
+      "task": "수확(노지재배)",
+      "kind": "harvest",
+      "region": null,
+      "start": {
+        "m": 3,
+        "p": 2
+      },
+      "end": {
+        "m": 10,
+        "p": 3
+      },
+      "text": "3월 중순~10월 하순"
+    },
+    {
+      "task": "씨받이",
+      "kind": "etc",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "포장 정리 및 퇴비 시용",
+      "kind": "fert",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "휴면",
+      "kind": "etc",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    }
+  ],
+  "stages": [
+    {
+      "title": "씨뿌림",
+      "timing": "3월 하순~4월 중순",
+      "items": [
+        {
+          "label": "씨앗양",
+          "value": "파종구당 씨앗 7~10립 (20ℓ/10a)"
+        },
+        {
+          "label": "재배이랑",
+          "value": "90cm, 통로 30~50cm"
+        },
+        {
+          "label": "줄사이",
+          "value": "20cm"
+        },
+        {
+          "label": "포기 사이",
+          "value": "20cm"
+        },
+        {
+          "label": "유의",
+          "value": "습해 우려 지역은 이랑을 만든 뒤 파종"
+        }
+      ]
+    },
+    {
+      "title": "제초",
+      "timing": null,
+      "items": [
+        {
+          "label": "시기",
+          "value": "수확 후 매번, 초관이 형성되기 전 생육기"
+        }
+      ]
+    },
+    {
+      "title": "수확",
+      "timing": null,
+      "items": [
+        {
+          "label": "횟수",
+          "value": "연 4~5회"
+        },
+        {
+          "label": "웃거름",
+          "value": "수확 후 웃거름을 줌"
+        },
+        {
+          "label": "베는 위치",
+          "value": "낮을수록 재생엽 끝이 깨끗함"
+        }
+      ]
+    },
+    {
+      "title": "생육 관리",
+      "timing": null,
+      "items": [
+        {
+          "label": "물주기",
+          "value": "생육기에 웃자라지 않도록 물주기 양 조절"
+        },
+        {
+          "label": "꽃대",
+          "value": "꽃대신장이 시작되면 예취기로 꽃대 제거"
+        }
+      ]
+    },
+    {
+      "title": "씨받이",
+      "timing": null,
+      "items": [
+        {
+          "label": "유의",
+          "value": "양분 소모가 많음. 활력이 떨어진 5~6년생 포기는 씨받이 후 폐기"
+        }
+      ]
+    }
+  ],
+  "fertilizer": {
+    "unit": "kg/10a",
+    "columns": [
+      "총량",
+      "밑거름",
+      "웃거름 1회",
+      "웃거름 2회"
+    ],
+    "rows": [
+      {
+        "name": "퇴비",
+        "values": [
+          1500,
+          1500,
+          null,
+          null
+        ]
+      },
+      {
+        "name": "질소",
+        "values": [
+          57,
+          19,
+          19,
+          19
+        ]
+      },
+      {
+        "name": "인산",
+        "values": [
+          10.7,
+          10.7,
+          null,
+          null
+        ]
+      },
+      {
+        "name": "칼리",
+        "values": [
+          31.2,
+          10.7,
+          10.4,
+          10.4
+        ]
+      },
+      {
+        "name": "석회",
+        "values": [
+          200,
+          200,
+          null,
+          null
+        ]
+      }
+    ],
+    "note": null
+  },
+  "pests": [
+    {
+      "name": "잿빛곰팡이병",
+      "kind": "병",
+      "timing": null,
+      "control": "시설재배 시 환기를 철저히 하여 습도 유지"
+    },
+    {
+      "name": "흰잎마름병",
+      "kind": "병",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "시듦병",
+      "kind": "병",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "민달팽이",
+      "kind": "해충",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "파굴파리",
+      "kind": "해충",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "파잎벌레",
+      "kind": "해충",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "파밤나방",
+      "kind": "해충",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "파혹진딧물",
+      "kind": "해충",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "잎끝 말라 죽음",
+      "kind": "생리장해",
+      "timing": null,
+      "control": "하우스 내 급격한 온도 상승 방지를 위해 환기"
+    }
+  ],
+  "disasters": [
+    {
+      "risk": "혹한 (동사)",
+      "timing": null,
+      "measures": [
+        "늦가을 포장 정리 후 볏짚 등으로 덮기"
+      ]
+    },
+    {
+      "risk": "가뭄 (섬유질 증가로 품질 저하)",
+      "timing": null,
+      "measures": [
+        "주기적으로 물주기"
+      ]
+    },
+    {
+      "risk": "침수/과습 (생육 저조, 말라 죽음)",
+      "timing": null,
+      "measures": [
+        "이랑을 높이고 배수로 정비"
+      ]
+    },
+    {
+      "risk": "봄가뭄 (재생기 생육 저조, 잎끝 마름)",
+      "timing": null,
+      "measures": [
+        "노지 초봄에 건조하면 충분히 물주기"
+      ]
+    }
+  ],
+  "notes": [
+    "작형별 출하시기 표의 성출하기: 시설재배 10월 상순~5월 하순 / 노지재배 3월 상순~11월 중순, 6월 중순~9월 하순",
+    "단위생식으로 씨앗을 맺으므로 씨받이 씨앗도 유전적으로 균일함"
+  ],
+  "source": "https://www.nongsaro.go.kr/portal/ps/psb/psbl/workScheduleDtl.ps?menuId=PS00087&cntntsNo=30620"
+}

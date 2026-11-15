@@ -1,0 +1,485 @@
+{
+  "id": 30624,
+  "name": "상추",
+  "type": null,
+  "category": "채소",
+  "sciName": "Lactuca sativa L.",
+  "family": "국화과",
+  "summary": "서늘한 기후에서 잘 자라는 호냉성 채소로 더위에 약하다. 고온기에는 꽃대신장, 쓴맛 증가, 생리장해가 늘어난다.",
+  "env": [
+    {
+      "label": "발아적온",
+      "value": "15~20℃"
+    },
+    {
+      "label": "모 기르기 적온",
+      "value": "18~20℃"
+    },
+    {
+      "label": "생육적온",
+      "value": "15~20℃"
+    },
+    {
+      "label": "최적지온",
+      "value": "20℃"
+    },
+    {
+      "label": "저장적온",
+      "value": "0℃"
+    },
+    {
+      "label": "토양산도",
+      "value": "pH 6.6~7.2 (pH 5 이하 산성토양에서는 생육 저하)"
+    }
+  ],
+  "schedule": [
+    {
+      "task": "씨뿌림(시설 봄재배)",
+      "kind": "sow",
+      "region": null,
+      "start": {
+        "m": 1,
+        "p": 1
+      },
+      "end": {
+        "m": 2,
+        "p": 2
+      },
+      "text": "1월 상순~2월 중순"
+    },
+    {
+      "task": "아주심기(시설 봄재배)",
+      "kind": "plant",
+      "region": null,
+      "start": {
+        "m": 2,
+        "p": 1
+      },
+      "end": {
+        "m": 3,
+        "p": 2
+      },
+      "text": "2월 상순~3월 중순"
+    },
+    {
+      "task": "수확(시설 봄재배)",
+      "kind": "harvest",
+      "region": null,
+      "start": {
+        "m": 3,
+        "p": 3
+      },
+      "end": {
+        "m": 5,
+        "p": 3
+      },
+      "text": "3월 하순~5월 하순"
+    },
+    {
+      "task": "씨뿌림(여름재배)",
+      "kind": "sow",
+      "region": null,
+      "start": {
+        "m": 5,
+        "p": 1
+      },
+      "end": {
+        "m": 5,
+        "p": 2
+      },
+      "text": "5월 상순~5월 중순"
+    },
+    {
+      "task": "아주심기(여름재배)",
+      "kind": "plant",
+      "region": null,
+      "start": {
+        "m": 6,
+        "p": 1
+      },
+      "end": {
+        "m": 6,
+        "p": 2
+      },
+      "text": "6월 상순~6월 중순"
+    },
+    {
+      "task": "수확(여름재배)",
+      "kind": "harvest",
+      "region": null,
+      "start": {
+        "m": 7,
+        "p": 1
+      },
+      "end": {
+        "m": 8,
+        "p": 1
+      },
+      "text": "7월 상순~8월 상순"
+    },
+    {
+      "task": "씨뿌림(고랭지재배)",
+      "kind": "sow",
+      "region": null,
+      "start": {
+        "m": 4,
+        "p": 1
+      },
+      "end": {
+        "m": 4,
+        "p": 3
+      },
+      "text": "4월 상순~4월 하순"
+    },
+    {
+      "task": "아주심기(고랭지재배)",
+      "kind": "plant",
+      "region": null,
+      "start": {
+        "m": 5,
+        "p": 2
+      },
+      "end": {
+        "m": 5,
+        "p": 3
+      },
+      "text": "5월 중순~5월 하순"
+    },
+    {
+      "task": "수확(고랭지재배)",
+      "kind": "harvest",
+      "region": null,
+      "start": {
+        "m": 6,
+        "p": 2
+      },
+      "end": {
+        "m": 8,
+        "p": 2
+      },
+      "text": "6월 중순~8월 중순"
+    },
+    {
+      "task": "씨뿌림(가을재배)",
+      "kind": "sow",
+      "region": null,
+      "start": {
+        "m": 7,
+        "p": 3
+      },
+      "end": {
+        "m": 8,
+        "p": 1
+      },
+      "text": "7월 하순~8월 상순"
+    },
+    {
+      "task": "아주심기(가을재배)",
+      "kind": "plant",
+      "region": null,
+      "start": {
+        "m": 8,
+        "p": 2
+      },
+      "end": {
+        "m": 8,
+        "p": 3
+      },
+      "text": "8월 중순~8월 하순"
+    },
+    {
+      "task": "수확(가을재배)",
+      "kind": "harvest",
+      "region": null,
+      "start": {
+        "m": 9,
+        "p": 2
+      },
+      "end": {
+        "m": 11,
+        "p": 1
+      },
+      "text": "9월 중순~11월 상순"
+    },
+    {
+      "task": "씨뿌림(겨울재배)",
+      "kind": "sow",
+      "region": null,
+      "start": {
+        "m": 10,
+        "p": 2
+      },
+      "end": {
+        "m": 10,
+        "p": 3
+      },
+      "text": "10월 중순~10월 하순"
+    },
+    {
+      "task": "아주심기(겨울재배)",
+      "kind": "plant",
+      "region": null,
+      "start": {
+        "m": 11,
+        "p": 3
+      },
+      "end": {
+        "m": 12,
+        "p": 1
+      },
+      "text": "11월 하순~12월 상순"
+    },
+    {
+      "task": "수확(겨울재배)",
+      "kind": "harvest",
+      "region": null,
+      "start": {
+        "m": 1,
+        "p": 1
+      },
+      "end": {
+        "m": 3,
+        "p": 3
+      },
+      "text": "1월 상순~3월 하순"
+    }
+  ],
+  "stages": [
+    {
+      "title": "씨뿌림",
+      "timing": null,
+      "items": [
+        {
+          "label": "씨앗량",
+          "value": "0.4~0.6㎗/10a"
+        },
+        {
+          "label": "파종상",
+          "value": "3.3㎡/10a (200공 플러그 모 기르기 시 40㎡/10a)"
+        }
+      ]
+    },
+    {
+      "title": "모 기르기",
+      "timing": null,
+      "items": [
+        {
+          "label": "플러그트레이",
+          "value": "128공, 200공"
+        }
+      ]
+    },
+    {
+      "title": "아주심기",
+      "timing": null,
+      "items": [
+        {
+          "label": "이랑 너비",
+          "value": "150~180cm"
+        },
+        {
+          "label": "포기 사이",
+          "value": "20×20cm 내외"
+        },
+        {
+          "label": "10a당 주수",
+          "value": "약 20,000주"
+        }
+      ]
+    },
+    {
+      "title": "관리",
+      "timing": null,
+      "items": [
+        {
+          "label": "물주기",
+          "value": "스프링클러, 분수호스, 점적관수"
+        },
+        {
+          "label": "고온기 빛가림",
+          "value": "30%"
+        },
+        {
+          "label": "웃거름",
+          "value": "10일 간격"
+        },
+        {
+          "label": "밑거름",
+          "value": "50% (퇴비, 석회, 인산은 100%)"
+        }
+      ]
+    },
+    {
+      "title": "수확 후 관리",
+      "timing": null,
+      "items": [
+        {
+          "label": "저장",
+          "value": "저온저장고 이용(0℃)"
+        },
+        {
+          "label": "포장",
+          "value": "표준출하규격에 맞춰 포장"
+        }
+      ]
+    }
+  ],
+  "fertilizer": {
+    "unit": "kg/10a",
+    "columns": [
+      "총량",
+      "밑거름",
+      "웃거름 1회",
+      "웃거름 2회",
+      "웃거름 3회"
+    ],
+    "rows": [
+      {
+        "name": "퇴비",
+        "values": [
+          1500,
+          1500,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "name": "질소",
+        "values": [
+          7,
+          3.5,
+          1.5,
+          1,
+          1
+        ]
+      },
+      {
+        "name": "인산",
+        "values": [
+          3,
+          3,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "name": "칼리",
+        "values": [
+          3.6,
+          1.8,
+          0.6,
+          0.6,
+          0.6
+        ]
+      },
+      {
+        "name": "석회",
+        "values": [
+          200,
+          200,
+          null,
+          null,
+          null
+        ]
+      }
+    ],
+    "note": "노지재배 기준: 질소 20.0, 인산 5.9, 칼리 12.8, 퇴비 1,500, 석회 200"
+  },
+  "pests": [
+    {
+      "name": "노균병",
+      "kind": "병",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "균핵병",
+      "kind": "병",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "회색곰팡이병",
+      "kind": "병",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "무름병",
+      "kind": "병",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "총채벌레",
+      "kind": "해충",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "잎굴파리",
+      "kind": "해충",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "나방류",
+      "kind": "해충",
+      "timing": null,
+      "control": "시설상추에서 곤충병원성 선충을 이용한 밤나방류 생물적 방제 가능"
+    },
+    {
+      "name": "석회결핍",
+      "kind": "생리장해",
+      "timing": "건조 후 수분이 많아져 생육이 빨라질 때 많이 발생",
+      "control": "충분한 석회 시용, 적습 유지, 질소·칼리 과다 시용 금지"
+    }
+  ],
+  "disasters": [
+    {
+      "risk": "봄가뭄",
+      "timing": null,
+      "measures": [
+        "흑색 PE필름 바닥덮기",
+        "물주기(스프링클러, 점적)"
+      ]
+    },
+    {
+      "risk": "고온 다습",
+      "timing": null,
+      "measures": [
+        "35% 이하 흑색 빛가림망 이용",
+        "환기 철저",
+        "예방적 병해충 방제"
+      ]
+    },
+    {
+      "risk": "호우, 태풍",
+      "timing": null,
+      "measures": [
+        "시설 안전관리 철저",
+        "예방적 병해충 방제",
+        "엽면시비",
+        "배수 철저"
+      ]
+    },
+    {
+      "risk": "저온, 혹한",
+      "timing": null,
+      "measures": [
+        "보온 덮개 또는 터널 이용",
+        "수막재배",
+        "투광성·보온성 높은 덮기자재 설치"
+      ]
+    }
+  ],
+  "notes": [
+    "성출하기: 시설 봄재배 4월 상순~5월 중순 / 여름재배 7월 중순~7월 하순 / 고랭지재배 6월 하순~7월 하순 / 가을재배 9월 중순~10월 하순 / 겨울재배 2월 하순~3월 상순",
+    "꽃대신장은 적산온도 1,400~1,700℃에서 나타남",
+    "병해충 방제: 농약안전사용기준 준수, 휴경기 담수로 선충밀도 경감, 돌려짓기 및 유기물 시용",
+    "품종군별 염류저항성: 적치마 > 청치마 > 청축면 ≒ 적축면"
+  ],
+  "source": "https://www.nongsaro.go.kr/portal/ps/psb/psbl/workScheduleDtl.ps?menuId=PS00087&cntntsNo=30624"
+}

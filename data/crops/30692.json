@@ -1,0 +1,78 @@
+{
+  "id": 30692,
+  "name": "칼랑코에",
+  "type": null,
+  "category": "화훼",
+  "sciName": "Kalanchoe blossfeldiana V. Poelln 등",
+  "family": null,
+  "summary": "꺾꽂이로 번식하고 단일처리로 개화를 조절하여 주년 출하하는 분화용 다육식물. 재배적온은 20~25℃이다.",
+  "env": [
+    { "label": "재배적온", "value": "20~25℃" },
+    { "label": "재배배지", "value": "pH 6.0~6.5, 피트모스:펄라이트 = 1:1" },
+    { "label": "광도(모주 양성)", "value": "40,000~45,000Lux" },
+    { "label": "전조", "value": "10~3월까지 백열등 161Lux 정도" },
+    { "label": "온도 한계", "value": "10℃ 이하에서는 화경이 출현하지 않고, 30℃에서는 신장하기 시작한 화서가 말라 죽음" }
+  ],
+  "schedule": [
+    { "task": "모주관리: 장일처리(전조)", "kind": "manage", "region": null, "start": { "m": 10, "p": null }, "end": { "m": 3, "p": null }, "text": "10~3월" },
+    { "task": "모주관리: 빛가림관리", "kind": "manage", "region": null, "start": null, "end": null, "text": null },
+    { "task": "꺾꽂이", "kind": "nursery", "region": null, "start": null, "end": null, "text": null },
+    { "task": "순지르기", "kind": "manage", "region": null, "start": null, "end": null, "text": null },
+    { "task": "단일처리", "kind": "manage", "region": null, "start": null, "end": null, "text": null },
+    { "task": "출하", "kind": "harvest", "region": null, "start": null, "end": null, "text": null }
+  ],
+  "stages": [
+    { "title": "번식 - 씨앗 번식(품종 육성 시)", "timing": null, "items": [
+      { "label": "배지", "value": "피트:펄라이트(1:1)" },
+      { "label": "파종 후", "value": "고운 모래로 덮은 후 곰팡이 약제 살포" },
+      { "label": "옮겨심기", "value": "모종이 약 3mm 자라면 옮겨심기" }
+    ] },
+    { "title": "번식 - 영양번식(상품용), 모주 양성", "timing": null, "items": [
+      { "label": "배지", "value": "피트:펄라이트(1:1), pH 6.0~6.5" },
+      { "label": "광도", "value": "40,000~45,000Lux" },
+      { "label": "전조", "value": "10~3월 백열등 약 161Lux" }
+    ] },
+    { "title": "영양생장기 관리", "timing": null, "items": [
+      { "label": "순지르기", "value": "잎이 7~8매 전개되면 아랫잎 4~6장을 남기고 순지르기" },
+      { "label": "비료", "value": "칼랑코에 관비용 양액 1회/주(1,000ℓ 기준) 또는 하이포넥스 1,000배 기준 주 1회" }
+    ] },
+    { "title": "개화 조절 - 단일 처리", "timing": "순지르기 후 새순이 1~1.5cm 될 때", "items": [
+      { "label": "일장", "value": "9~11시간" },
+      { "label": "빛가림", "value": "4월 이후~9월까지는 일장이 길어지므로 빛가림 필요" },
+      { "label": "소요 기간", "value": "품종에 따라 4~8주" }
+    ] },
+    { "title": "개화 조절 - 왜화제 살포", "timing": "단일 시기 진입 시", "items": [
+      { "label": "횟수", "value": "10~15일 간격으로 약 2회" },
+      { "label": "약제", "value": "Paclobutrazol 8~10ppm 살포 (CCC는 효과 없음)" }
+    ] }
+  ],
+  "fertilizer": {
+    "unit": "g/1,000ℓ (관비용 양액, 1주 1회)",
+    "columns": ["NH4NO3", "Ca(NO3)2", "KH2PO4", "KNO3", "MgSO4", "NaCl", "MnSO4", "ZnSO4", "Na2B4O7", "CuSO4(mg)", "FeSO4"],
+    "rows": [
+      { "name": "1기 (뿌리내림 후 재배 초기, 단일 처리 전)", "values": [8, 164, 68, 50.5, 120, 58, 1.5, 0.24, 6.1, 12.5, 3.8] },
+      { "name": "2기 (단일 처리 동안, 4~5주)", "values": [8, 328, 82, 101, 180, 145, 1.5, 0.24, 6.1, 12.5, 3.8] },
+      { "name": "3기 (2기 후 개화 2주 전까지)", "values": [8, 328, 82, 303, 240, 232, 1.5, 0.24, 6.1, 12.5, 3.8] }
+    ],
+    "note": "kg/10a 시비표가 아닌 양액 처방표임. 단위는 1기 행에만 표기(g, CuSO4만 mg)되어 있고 2기·3기 행에는 단위가 명시되어 있지 않음."
+  },
+  "pests": [
+    { "name": "잘록병, 돌림병, 회색곰팡이병", "kind": "병", "timing": null, "control": null },
+    { "name": "진디류, 섬충류, 총채벌레", "kind": "해충", "timing": null, "control": null },
+    { "name": "과습 피해", "kind": "생리장해", "timing": "고온기", "control": "다육식물이라 수분 없이도 오래 견디나 고온기 과습 시 기부 부패" },
+    { "name": "고온 장해", "kind": "생리장해", "timing": "여름 고온기", "control": "개화 소요일수 증가 또는 꽃눈분화가 전혀 안 되는 경우가 있음. 일부 품종은 꽃의 판통이 갈라짐" },
+    { "name": "광 장해", "kind": "생리장해", "timing": null, "control": "겨울철 광 부족 시 기부 어린싹 발생이 적음. 강광에서는 잎 끝이 안토시아닌 착색으로 붉어지며 심하면 잎 뒷면 전체가 붉어짐" }
+  ],
+  "disasters": [
+    { "risk": "고온(35℃ 이상)", "timing": null, "measures": ["환기나 에어쿨 등으로 극복"] },
+    { "risk": "겨울 저온", "timing": null, "measures": ["겨울 저온관리 유의"] }
+  ],
+  "notes": [
+    "재배원종(꽃을 관상): Kalanchoe blossfeldiana V. Poelln, K. mangini Hamet.et Perr, K. uniflora(Stapf) Hamet",
+    "재배원종(잎을 관상): K. beharensis Drake, K. daigremontiana Hamet et Perr, K. eriophylla Hilsenb. et Bojer, K. marmorata Baker, K. pinnata(Lam) Pers, K. thyrsiflora Harv., K. tomentosa Bak, K. tubiflora(Harvey) Hamet",
+    "개화 특성: 화경의 분지수와 화경당 소화수는 15℃에서 많아짐. 꽃눈형성과 개화 속도는 고온, 꽃송이 증가는 저온에서 촉진",
+    "상품출하용 작형(꺾꽂이→순지르기→단일처리→출하)으로 주년 출하",
+    "원문 페이지 하단의 '기상재해 및 생리장해 대책' 표에는 목초 관련 내용(봄가뭄, 멸강나방 등)이 들어 있어 칼랑코에 내용이 아니므로 수록하지 않음"
+  ],
+  "source": "https://www.nongsaro.go.kr/portal/ps/psb/psbl/workScheduleDtl.ps?menuId=PS00087&cntntsNo=30692"
+}

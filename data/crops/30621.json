@@ -1,0 +1,379 @@
+{
+  "id": 30621,
+  "name": "브로콜리",
+  "type": "녹색꽃양배추 고랭지재배",
+  "category": "채소",
+  "sciName": "Brassica oleracea var. italica PLENCK",
+  "family": "배추과",
+  "summary": "꽃눈분화에 저온 경과가 필요하며, 꽃봉오리 비대충실기에 저온을 거치면 밥풀현상이 발생한다.",
+  "env": [
+    {
+      "label": "발아적온",
+      "value": "15~20℃"
+    },
+    {
+      "label": "모 기르기 적온",
+      "value": "18~20℃"
+    },
+    {
+      "label": "꽃분화적온",
+      "value": "5~20℃"
+    },
+    {
+      "label": "생육적온",
+      "value": "12~20℃"
+    },
+    {
+      "label": "꽃눈발육적온",
+      "value": "15~20℃"
+    },
+    {
+      "label": "저장적온",
+      "value": "0℃"
+    },
+    {
+      "label": "토양산도",
+      "value": "pH 5.5~6.5"
+    }
+  ],
+  "schedule": [
+    {
+      "task": "씨뿌림",
+      "kind": "sow",
+      "region": null,
+      "start": {
+        "m": 3,
+        "p": 2
+      },
+      "end": {
+        "m": 5,
+        "p": 2
+      },
+      "text": "3월 중순~5월 중순"
+    },
+    {
+      "task": "모 기르기",
+      "kind": "nursery",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "아주심기",
+      "kind": "plant",
+      "region": null,
+      "start": {
+        "m": 5,
+        "p": 2
+      },
+      "end": {
+        "m": 6,
+        "p": 3
+      },
+      "text": "5월 중순~6월 하순"
+    },
+    {
+      "task": "웃거름",
+      "kind": "fert",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "수확(고랭지 봄재배)",
+      "kind": "harvest",
+      "region": null,
+      "start": {
+        "m": 6,
+        "p": 3
+      },
+      "end": {
+        "m": 8,
+        "p": 3
+      },
+      "text": "6월 하순~8월 하순"
+    },
+    {
+      "task": "씨뿌림(여름재배)",
+      "kind": "sow",
+      "region": null,
+      "start": {
+        "m": 6,
+        "p": 3
+      },
+      "end": {
+        "m": 7,
+        "p": 1
+      },
+      "text": "6월 하순~7월 상순"
+    },
+    {
+      "task": "아주심기(여름재배)",
+      "kind": "plant",
+      "region": null,
+      "start": {
+        "m": 7,
+        "p": 3
+      },
+      "end": {
+        "m": 8,
+        "p": 1
+      },
+      "text": "7월 하순~8월 상순"
+    },
+    {
+      "task": "수확(여름재배)",
+      "kind": "harvest",
+      "region": null,
+      "start": {
+        "m": 9,
+        "p": 2
+      },
+      "end": {
+        "m": 11,
+        "p": 2
+      },
+      "text": "9월 중순~11월 중순"
+    }
+  ],
+  "stages": [
+    {
+      "title": "씨뿌림",
+      "timing": "3월 중순~5월 중순 (작형별 출하시기 표의 고랭지 봄재배는 4월 상순~5월 중순)",
+      "items": [
+        {
+          "label": "씨앗양",
+          "value": "40㎖/10a"
+        }
+      ]
+    },
+    {
+      "title": "모 기르기",
+      "timing": null,
+      "items": [
+        {
+          "label": "온도관리",
+          "value": "낮 25℃, 밤 10~18℃"
+        },
+        {
+          "label": "물주기",
+          "value": "오전 중 20℃ 정도의 물"
+        },
+        {
+          "label": "방식",
+          "value": "플러그 모 기르기(128공) 권장"
+        }
+      ]
+    },
+    {
+      "title": "아주심기",
+      "timing": "5월 중순~6월 하순 (작형별 출하시기 표의 고랭지 봄재배는 5월 중순~6월 중순)",
+      "items": [
+        {
+          "label": "이랑 너비",
+          "value": "80cm(1줄), 120cm(2줄)"
+        },
+        {
+          "label": "포기 사이",
+          "value": "40~45cm"
+        },
+        {
+          "label": "비닐덮기(멀칭)",
+          "value": "두께 0.02~0.03mm, 흑색비닐"
+        }
+      ]
+    },
+    {
+      "title": "관리",
+      "timing": null,
+      "items": [
+        {
+          "label": "물주기",
+          "value": "가물 때"
+        },
+        {
+          "label": "김매기",
+          "value": "제초제 사용"
+        },
+        {
+          "label": "피복",
+          "value": "망사를 이용한 피복재배로 병해충 발생을 줄일 수 있음"
+        }
+      ]
+    }
+  ],
+  "fertilizer": {
+    "unit": "kg/10a",
+    "columns": [
+      "총량",
+      "밑거름",
+      "웃거름 1회",
+      "웃거름 2회",
+      "웃거름 3회"
+    ],
+    "rows": [
+      {
+        "name": "퇴비",
+        "values": [
+          2000,
+          2000,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "name": "질소",
+        "values": [
+          12,
+          7,
+          2,
+          2,
+          1
+        ]
+      },
+      {
+        "name": "인산",
+        "values": [
+          7,
+          3,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "name": "칼리",
+        "values": [
+          7,
+          4,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "name": "석회",
+        "values": [
+          200,
+          200,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "name": "붕사",
+        "values": [
+          1,
+          1,
+          null,
+          null,
+          null
+        ]
+      }
+    ],
+    "note": "비료주는 시기: 밑거름 아주심기 15~20일 전, 웃거름 1회 아주심기 후 20일경, 2회 1회 웃거름 후 20일경, 3회 2회 웃거름 후 20일경. 인산은 페이지 표에 총량 7, 밑거름 3으로 표기되어 있음."
+  },
+  "pests": [
+    {
+      "name": "모잘록병",
+      "kind": "병",
+      "timing": "모 기를 때 저온",
+      "control": "모잘록병 방제, 야간 10~18℃ 유지"
+    },
+    {
+      "name": "검은썩음병",
+      "kind": "병",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "노균병",
+      "kind": "병",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "세균성검은무늬병",
+      "kind": "병",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "무름병",
+      "kind": "병",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "도둑나방",
+      "kind": "해충",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "배추흰나비",
+      "kind": "해충",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "좀나방",
+      "kind": "해충",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "진딧물, 응애",
+      "kind": "해충",
+      "timing": "가뭄 때",
+      "control": "방제"
+    },
+    {
+      "name": "이상 꽃봉오리",
+      "kind": "생리장해",
+      "timing": null,
+      "control": "저온기 보온, 고온기 환기 철저"
+    }
+  ],
+  "disasters": [
+    {
+      "risk": "모 기를 때 저온 (모잘록병 발생, 아주심기 지연)",
+      "timing": null,
+      "measures": [
+        "제때 씨뿌림",
+        "야간 10~18℃ 유지",
+        "모잘록병 방제",
+        "예비 육묘상 설치"
+      ]
+    },
+    {
+      "risk": "가뭄 (꽃눈 형성 불량)",
+      "timing": null,
+      "measures": [
+        "물주기 후 아주심기",
+        "진딧물·응애 방제",
+        "비닐덮기",
+        "물주기 실시(이동식 스프링클러, 점적관수 시설)"
+      ]
+    },
+    {
+      "risk": "장마, 호우 및 태풍 (습해, 이상 꽃봉오리 발생)",
+      "timing": null,
+      "measures": [
+        "배수구 정비",
+        "병해충 종합방제",
+        "돌려짓기",
+        "배수 철저",
+        "엽면비료 주기"
+      ]
+    }
+  ],
+  "notes": [
+    "성출하기: 고랭지 봄재배 7월 중순~8월 중순"
+  ],
+  "source": "https://www.nongsaro.go.kr/portal/ps/psb/psbl/workScheduleDtl.ps?menuId=PS00087&cntntsNo=30621"
+}

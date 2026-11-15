@@ -1,0 +1,377 @@
+{
+  "id": 30654,
+  "name": "감귤(노지재배)",
+  "type": "노지재배",
+  "category": "과수",
+  "sciName": "Citrus Unshiu Marcov.",
+  "family": "운향과",
+  "summary": "평균기온이 높게 유지되는 지역에서 품질이 높고, 건조한 토양 조건에서 성숙해야 당도가 올라간다. 보통재배(조생·극조생) 기준이다.",
+  "env": [
+    {
+      "label": "발아적온",
+      "value": "15℃ 이상"
+    },
+    {
+      "label": "비대적온",
+      "value": "20~25℃"
+    },
+    {
+      "label": "평균온도",
+      "value": "19~22℃"
+    },
+    {
+      "label": "재배적지",
+      "value": "연평균 15~18℃ 지역"
+    },
+    {
+      "label": "동결 온도",
+      "value": "-4~5℃"
+    }
+  ],
+  "schedule": [
+    {
+      "task": "발아기",
+      "kind": "etc",
+      "region": null,
+      "start": {
+        "m": 4,
+        "p": 1
+      },
+      "end": {
+        "m": 4,
+        "p": 1
+      },
+      "text": "4월 상순"
+    },
+    {
+      "task": "개화기(조생)",
+      "kind": "etc",
+      "region": null,
+      "start": {
+        "m": 5,
+        "p": 1
+      },
+      "end": {
+        "m": 5,
+        "p": 2
+      },
+      "text": "5월 상중순"
+    },
+    {
+      "task": "개화기(극조생)",
+      "kind": "etc",
+      "region": null,
+      "start": {
+        "m": 5,
+        "p": 1
+      },
+      "end": {
+        "m": 5,
+        "p": 1
+      },
+      "text": "5월 상순"
+    },
+    {
+      "task": "성숙기(조생)",
+      "kind": "harvest",
+      "region": null,
+      "start": {
+        "m": 10,
+        "p": 2
+      },
+      "end": null,
+      "text": "10월 중순 이후"
+    },
+    {
+      "task": "성숙기(극조생)",
+      "kind": "harvest",
+      "region": null,
+      "start": {
+        "m": 10,
+        "p": 1
+      },
+      "end": null,
+      "text": "10월 상순 이후"
+    },
+    {
+      "task": "다공질 필름 바닥덮기(멀칭)",
+      "kind": "manage",
+      "region": null,
+      "start": {
+        "m": 6,
+        "p": 1
+      },
+      "end": {
+        "m": 6,
+        "p": 1
+      },
+      "text": "6월 초순(장마 전)"
+    },
+    {
+      "task": "방풍수 정리",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "정지전정",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "봄비료",
+      "kind": "fert",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "여름비료",
+      "kind": "fert",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "가을비료",
+      "kind": "fert",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "1~7차 방제",
+      "kind": "pest",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "열매솎기",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "수상선과",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "수확",
+      "kind": "harvest",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    }
+  ],
+  "stages": [
+    {
+      "title": "과원 개원 및 간벌",
+      "timing": null,
+      "items": [
+        {
+          "label": "개원 시 재식거리",
+          "value": "2.7×2.7m"
+        },
+        {
+          "label": "1차 간벌",
+          "value": "5.4m×2.7m"
+        },
+        {
+          "label": "2차 간벌",
+          "value": "5.4m×5.4m(1차 간벌 후 4~5년 뒤)"
+        }
+      ]
+    },
+    {
+      "title": "과원 구조 개선",
+      "timing": null,
+      "items": [
+        {
+          "label": "외곽 방풍나무 키",
+          "value": "5~6m"
+        },
+        {
+          "label": "방풍 보강",
+          "value": "보강 심기 및 파풍망 설치"
+        }
+      ]
+    },
+    {
+      "title": "성숙기 멀칭 및 물주기",
+      "timing": "6월 초순(멀칭)",
+      "items": [
+        {
+          "label": "바닥덮기",
+          "value": "다공질 필름을 장마 전 선선할 때 덮음"
+        },
+        {
+          "label": "물주기",
+          "value": "9월 초 당도 8.0°Bx 이상이면 2일 간격으로 4톤/10a 기준"
+        }
+      ]
+    }
+  ],
+  "fertilizer": {
+    "unit": "kg/10a",
+    "columns": [
+      "총량",
+      "봄비료",
+      "여름비료",
+      "가을비료"
+    ],
+    "rows": [
+      {
+        "name": "퇴비",
+        "values": [
+          2000,
+          2000,
+          null,
+          null
+        ]
+      },
+      {
+        "name": "질소",
+        "values": [
+          23,
+          11.5,
+          4.6,
+          6.9
+        ]
+      },
+      {
+        "name": "인산",
+        "values": [
+          20,
+          20,
+          null,
+          null
+        ]
+      },
+      {
+        "name": "칼리",
+        "values": [
+          19,
+          5.7,
+          7.6,
+          5.7
+        ]
+      }
+    ],
+    "note": "페이지 표 머리글은 '총량, 봄비료, 웃거름, 여름비료, 가을비료'이나 각 행의 값은 4개뿐이어서 '웃거름'을 여름·가을비료의 상위 머리글로 보고 배치함. 열 대응은 원문 확인 필요."
+  },
+  "pests": [
+    {
+      "name": "더뎅이병",
+      "kind": "병",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "잿빛곰팡이병",
+      "kind": "병",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "궤양병",
+      "kind": "병",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "검은점무늬병",
+      "kind": "병",
+      "timing": "장마, 강풍·태풍 시",
+      "control": "방제"
+    },
+    {
+      "name": "진딧물",
+      "kind": "해충",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "귤굴나방",
+      "kind": "해충",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "귤응애",
+      "kind": "해충",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "부피현상",
+      "kind": "생리장해",
+      "timing": null,
+      "control": "수관 상부 과실은 수확 전 수상 선과, 칼슘제 등 부피 방제 약제 3회 살포, 우려 계통은 제때 수확"
+    },
+    {
+      "name": "일소증상",
+      "kind": "생리장해",
+      "timing": null,
+      "control": "일소 우려 과실을 봉지·천·섬유로 덮기, 파라핀 코팅 피막제 살포, 수관 상부 및 외곽 열매량 조절, 발육지 발생 유도"
+    }
+  ],
+  "disasters": [
+    {
+      "risk": "한풍해",
+      "timing": null,
+      "measures": [
+        "방풍나무 정비",
+        "방풍망 설치",
+        "냉기류 침체지 외곽 방풍나무 키 낮추기"
+      ]
+    },
+    {
+      "risk": "강풍·태풍",
+      "timing": null,
+      "measures": [
+        "방풍망 및 외곽 방풍나무 정비",
+        "검은점무늬병 방제"
+      ]
+    },
+    {
+      "risk": "장마",
+      "timing": null,
+      "measures": [
+        "검은점무늬병 방제",
+        "배수로 및 배수구 정비"
+      ]
+    },
+    {
+      "risk": "조풍해",
+      "timing": null,
+      "measures": [
+        "신선한 물로 세척",
+        "열매가 과다하게 달린 나무는 열매솎기"
+      ]
+    }
+  ],
+  "notes": [
+    "성출하기: 조생 11월 중순 이후, 극조생 10월 중순 이후",
+    "저장적온은 페이지에 4~5℃와 10~12℃가 함께 표기되어 있음",
+    "나무에서 완숙시켜 수확하면 당도 향상, 높은 이랑과 배수로를 조성한 뒤 필름을 덮으면 당도 향상 효과가 커짐",
+    "페이지의 월별 일정표(생육과정·병충해·기상재해 도표)는 수집 과정에서 칸 위치가 확인되지 않아, 본문에 명시된 시기만 기재함. 정확한 시기는 원문 확인 필요."
+  ],
+  "source": "https://www.nongsaro.go.kr/portal/ps/psb/psbl/workScheduleDtl.ps?menuId=PS00087&cntntsNo=30654"
+}

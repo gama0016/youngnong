@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>영농노트 — 농사에 필요한 정보만, 한눈에</title>
+<meta name="description" content="농촌진흥청 농사로의 농작업일정·시비·병해충·재해 대책 정보를 작목별로 한 화면에 정리한 영농인용 사이트">
+<meta name="theme-color" content="#ffffff">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icons/icon.svg">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<a class="skip" href="#app">본문 바로가기</a>
+<header class="top">
+  <div class="top-in">
+    <a class="brand" href="#/" aria-label="영농노트 홈">
+      <span class="xun3" aria-hidden="true"><i></i><i></i><i></i></span>
+      <span>영농노트</span>
+    </a>
+    <nav class="nav" aria-label="주 메뉴">
+      <a href="#/" data-nav="home">오늘</a>
+      <a href="#/crops" data-nav="crops">작목</a>
+      <a href="#/calendar" data-nav="calendar">달력</a>
+      <a href="#/diary" data-nav="diary">일지</a>
+      <a href="#/links" data-nav="links">더보기</a>
+    </nav>
+  </div>
+</header>
+<main id="app" tabindex="-1"><p class="loading">불러오는 중…</p></main>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<footer class="foot">
+  <div class="foot-mark" aria-label="영농노트"><i>영</i><i>농</i><i>노트</i></div>
+  <div class="foot-text">
+    <p>자료 출처: 농촌진흥청 농사로(<a href="https://www.nongsaro.go.kr" target="_blank" rel="noopener">nongsaro.go.kr</a>) 농작업일정. 공공누리 제2유형(출처표시, 상업적 이용금지).</p>
+    <p>재배 환경과 품종에 따라 시기와 시비량은 달라집니다. 농약은 반드시 해당 작물의 등록 약제와 안전사용기준을 확인하세요.</p>
+  </div>
+</footer>
+<script src="js/app.js" type="module"></script>
+</body>
+</html>

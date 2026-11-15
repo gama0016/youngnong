@@ -1,0 +1,461 @@
+{
+  "id": 30749,
+  "name": "오미자",
+  "type": null,
+  "category": "약초",
+  "sciName": null,
+  "family": null,
+  "summary": "오미자의 재배 적지, 심기, 유인·전정, 비료 주기, 병해충 관리, 수확 후 처리 요령.",
+  "env": [
+    {
+      "label": "재배 적지 표고",
+      "value": "중북부 250m 이상, 남부 300m 이상"
+    },
+    {
+      "label": "기후",
+      "value": "여름철 기온이 서늘한 지역(백두대간 주변 지역)"
+    },
+    {
+      "label": "토양 pH",
+      "value": "5.5~6.5(산성토양은 개량)"
+    },
+    {
+      "label": "토양",
+      "value": "배수·통풍이 좋고 부식질이 많은 사질양토"
+    },
+    {
+      "label": "미량요소",
+      "value": "마그네슘, 붕소 결핍·과다 주의"
+    }
+  ],
+  "schedule": [
+    {
+      "task": "봄 심기",
+      "kind": "plant",
+      "region": null,
+      "start": {
+        "m": 3,
+        "p": 1
+      },
+      "end": {
+        "m": 3,
+        "p": 3
+      },
+      "text": "3월 상·하순"
+    },
+    {
+      "task": "가을 심기",
+      "kind": "plant",
+      "region": null,
+      "start": {
+        "m": 10,
+        "p": 3
+      },
+      "end": {
+        "m": 12,
+        "p": 1
+      },
+      "text": "10월 하순~12월 상순"
+    },
+    {
+      "task": "수확(조중생종)",
+      "kind": "harvest",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": "개화 후 120일"
+    },
+    {
+      "task": "수확(중만생종)",
+      "kind": "harvest",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": "개화 후 125~140일"
+    },
+    {
+      "task": "줄기유인",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "겨울 전지·전정",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "과실송이 솎음",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "햇줄기 솎기",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "움튼 가지 제거",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "볏짚깔기",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "유인틀 설치",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "묘목 관리",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "잡초방제(부직포 덮기)",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "개화기 서리 피해 대책 수립",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "수확물 관리",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "퇴비 주기",
+      "kind": "fert",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "토양 개량제 주기",
+      "kind": "fert",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "밑거름",
+      "kind": "fert",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "1차 웃거름",
+      "kind": "fert",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "2차 웃거름",
+      "kind": "fert",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "밭갈이",
+      "kind": "etc",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    }
+  ],
+  "stages": [
+    {
+      "title": "자재 준비",
+      "timing": null,
+      "items": [
+        {
+          "label": "시설 형태",
+          "value": "아치형"
+        },
+        {
+          "label": "씨모",
+          "value": "1,200주"
+        },
+        {
+          "label": "파이프",
+          "value": "ø25mm, 9m"
+        },
+        {
+          "label": "물주기 시설",
+          "value": "스프링클러"
+        },
+        {
+          "label": "유인줄",
+          "value": "2줄"
+        }
+      ]
+    },
+    {
+      "title": "심기",
+      "timing": "봄 3월 상·하순 / 가을 10월 하순~12월 상순",
+      "items": [
+        {
+          "label": "2줄재배",
+          "value": "4.5m×40cm(공간초생재배)"
+        },
+        {
+          "label": "3줄재배",
+          "value": "2.3m×40cm(3년 후 가운데 줄 제거)"
+        },
+        {
+          "label": "멀칭",
+          "value": "0.02~0.03mm 흑색 PE(조기 수분 유지에 양호, 결주 방지)"
+        }
+      ]
+    },
+    {
+      "title": "생육기 관리",
+      "timing": null,
+      "items": [
+        {
+          "label": "줄기 유인",
+          "value": "1주 1본 원칙, 30cm 이상부터 유인"
+        },
+        {
+          "label": "관수",
+          "value": "가물 때 스프링클러 또는 점적관수"
+        },
+        {
+          "label": "가지 관리",
+          "value": "웃자란 가지와 움튼 가지는 수시로 제거"
+        },
+        {
+          "label": "김매기",
+          "value": "부직포 또는 4중직 빛가림막 덮기"
+        }
+      ]
+    },
+    {
+      "title": "줄기 관리(연중)",
+      "timing": null,
+      "items": [
+        {
+          "label": "유인시설",
+          "value": "울타리, 덕, 아치형 유인시설을 갖춘 뒤 유인"
+        },
+        {
+          "label": "새줄기",
+          "value": "땅에서 올라오는 새줄기 중 세력이 강한 1~2개를 유인"
+        },
+        {
+          "label": "결실가지",
+          "value": "2년생 결실가지는 굵고 강하게 키움"
+        }
+      ]
+    },
+    {
+      "title": "수확 및 수확 후 처리",
+      "timing": "조중생종 개화 후 120일 / 중만생종 개화 후 125~140일",
+      "items": [
+        {
+          "label": "생오미자",
+          "value": "4℃ 저장"
+        },
+        {
+          "label": "건오미자",
+          "value": "40℃ 열풍건조 3일"
+        },
+        {
+          "label": "즙액",
+          "value": "오미자와 설탕을 1:1로 섞어 100일 후 추출·보관"
+        },
+        {
+          "label": "건오미자 보관",
+          "value": "플라스틱 용기에 넣어 4℃ 저장고에서 6개월 보관"
+        },
+        {
+          "label": "수확 후 관리",
+          "value": "수세 회복을 위해 질소를 약간 줌. 낙엽기에는 수세 회복을 위해 유기물을 줌"
+        }
+      ]
+    }
+  ],
+  "fertilizer": {
+    "unit": "kg/10a",
+    "columns": [
+      "1년생",
+      "2년생",
+      "3년 이상"
+    ],
+    "rows": [
+      {
+        "name": "요소",
+        "values": [
+          9.4,
+          14,
+          23.7
+        ]
+      },
+      {
+        "name": "용성인비",
+        "values": [
+          11,
+          16,
+          27
+        ]
+      },
+      {
+        "name": "염화칼리",
+        "values": [
+          4.6,
+          6.9,
+          11.6
+        ]
+      }
+    ],
+    "note": "나누어 주는 방법(%) 표의 값: 요소 50/25/25, 용성인비 100/-/-, 염화칼리 70/-/30. 원문 추출상 이 표의 행 구분(시기)은 확인하지 못함"
+  },
+  "pests": [
+    {
+      "name": "검은점애바구미",
+      "kind": "해충",
+      "timing": null,
+      "control": "노목 주변 서식 환경을 깨끗이 유지"
+    },
+    {
+      "name": "흰가루병",
+      "kind": "병",
+      "timing": null,
+      "control": "고온건조 주의, 배게 심기 피하기, 질소 과잉 주의, 병든 잔재물 제거"
+    },
+    {
+      "name": "점무늬병",
+      "kind": "병",
+      "timing": null,
+      "control": "전정으로 과번무 억제, 고온다습 주의"
+    },
+    {
+      "name": "탄저병",
+      "kind": "병",
+      "timing": null,
+      "control": "전정으로 과번무 억제, 고온다습 주의"
+    },
+    {
+      "name": "초파리",
+      "kind": "해충",
+      "timing": "수확기",
+      "control": "수확 후 바로 저온저장고로 이동"
+    },
+    {
+      "name": "깍지벌레",
+      "kind": "해충",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "갈색날개매미충",
+      "kind": "해충",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "자벌레 유충",
+      "kind": "해충",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "응애류",
+      "kind": "해충",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "푸른곰팡이병",
+      "kind": "병",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "갈반병",
+      "kind": "병",
+      "timing": null,
+      "control": null
+    }
+  ],
+  "disasters": [
+    {
+      "risk": "초기 가뭄",
+      "timing": null,
+      "measures": [
+        "심은 뒤 볏짚이나 흑색 PE로 바닥을 덮어 수분 증발 억제"
+      ]
+    },
+    {
+      "risk": "장마기 습해",
+      "timing": null,
+      "measures": [
+        "배수구 정비",
+        "조기 낙엽 방지"
+      ]
+    },
+    {
+      "risk": "개화기 서리 피해",
+      "timing": null,
+      "measures": []
+    },
+    {
+      "risk": "태풍",
+      "timing": null,
+      "measures": []
+    }
+  ],
+  "notes": [
+    "월별 일정표(상·중·하순 막대)는 원문에서 칸 위치를 확인할 수 없어 작업별 시기를 비워 둠(본문에 시기가 적힌 작업만 시기 기재)",
+    "예상되는 문제점: 낙과, 파종·정식 지연, 생육 부진, 생리적 장해",
+    "원문 수확·저장 문구의 날짜 표기(\"9월 20일 한\", \"10월 20일 한\", 생오미자 \"4℃, 9일 한\")는 추출 텍스트만으로 뜻이 불분명하여 일정에 반영하지 않음"
+  ],
+  "source": "https://www.nongsaro.go.kr/portal/ps/psb/psbl/workScheduleDtl.ps?menuId=PS00087&cntntsNo=30749"
+}

@@ -1,0 +1,99 @@
+{
+  "id": 30771,
+  "name": null,
+  "type": null,
+  "category": null,
+  "sciName": null,
+  "family": null,
+  "summary": "농사로 원문 페이지 제목이 \"-\"로만 표시되어 작목명이 확인되지 않음. 벼베기~모내기 사이(9월~이듬해 8월)에 재배하는 작물의 일정표.",
+  "env": [],
+  "schedule": [
+    {
+      "task": "벼 베기",
+      "kind": "etc",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "파종",
+      "kind": "sow",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "진압 및 유기물 피복",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "웃거름",
+      "kind": "fert",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "배수로 정비",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "수확적기",
+      "kind": "harvest",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "모내기",
+      "kind": "etc",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    }
+  ],
+  "stages": [],
+  "fertilizer": null,
+  "pests": [],
+  "disasters": [
+    {
+      "risk": "가뭄",
+      "timing": null,
+      "measures": []
+    },
+    {
+      "risk": "잦은비",
+      "timing": null,
+      "measures": []
+    },
+    {
+      "risk": "저온",
+      "timing": null,
+      "measures": []
+    },
+    {
+      "risk": "봄가뭄",
+      "timing": null,
+      "measures": []
+    }
+  ],
+  "notes": [
+    "원문은 월·순(상/중/하) 일정표이나 칸 위치를 확인할 수 없어 작업 시기는 비워 둠.",
+    "생육단계 표기(원문): 유묘기, 재생기, 생육정지기, 분열최성기, 신장기, 출수기, 유숙기, 호숙기, 황숙기",
+    "예상되는 문제점(원문): 파종 지연, 파종작업 조잡, 종자 발아율 저조, 입모수 부족, 잡초 발생 / 습해 및 동해, 입모수 부족, 서릿발 피해, 월동 후 생육 부진 / 이용기술 부족, 일시 수확, 사일리지 조제기술 미흡"
+  ],
+  "source": "https://www.nongsaro.go.kr/portal/ps/psb/psbl/workScheduleDtl.ps?menuId=PS00087&cntntsNo=30771"
+}

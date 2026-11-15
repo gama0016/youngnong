@@ -1,0 +1,336 @@
+{
+  "id": 30607,
+  "name": "들깨(잎)",
+  "type": null,
+  "category": "밭농사",
+  "sciName": null,
+  "family": null,
+  "summary": "전형적인 단일성 작물로 일장 반응이 매우 예민하다. 내건성이 강하나 지나치게 습하면 도장하기 쉽다.",
+  "env": [
+    {
+      "label": "발아적온",
+      "value": "15~20℃"
+    },
+    {
+      "label": "생육적온",
+      "value": "20~30℃ (생육 최저온도 5℃)"
+    },
+    {
+      "label": "개화 한계일장",
+      "value": "15시간"
+    },
+    {
+      "label": "토양",
+      "value": "배수가 비교적 잘 되는 사질양토 또는 양토"
+    },
+    {
+      "label": "하우스 온도",
+      "value": "야간 10~20℃, 주간 20~30℃ (야간 최저 10℃ 유지, 주간 25℃ 이상이면 환기)"
+    }
+  ],
+  "schedule": [
+    {
+      "task": "하우스소독",
+      "kind": "etc",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "종자준비",
+      "kind": "etc",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "파종(촉성재배)",
+      "kind": "sow",
+      "region": "남부",
+      "start": {
+        "m": 8,
+        "p": 2
+      },
+      "end": {
+        "m": 9,
+        "p": 1
+      },
+      "text": "8월 중순~9월 초순"
+    },
+    {
+      "task": "파종(반촉성재배)",
+      "kind": "sow",
+      "region": "중부",
+      "start": {
+        "m": 1,
+        "p": 2
+      },
+      "end": {
+        "m": 2,
+        "p": 1
+      },
+      "text": "1월 중순~2월 초순"
+    },
+    {
+      "task": "파종(노지재배)",
+      "kind": "sow",
+      "region": null,
+      "start": {
+        "m": 4,
+        "p": 3
+      },
+      "end": {
+        "m": 5,
+        "p": 1
+      },
+      "text": "4월 하순~5월 상순"
+    },
+    {
+      "task": "관수·입모관리",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "주수고정",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "수확(촉성재배)",
+      "kind": "harvest",
+      "region": "남부",
+      "start": {
+        "m": 10,
+        "p": 1
+      },
+      "end": {
+        "m": 5,
+        "p": 3
+      },
+      "text": "10월 상순~5월 하순"
+    },
+    {
+      "task": "수확(반촉성재배)",
+      "kind": "harvest",
+      "region": "중부",
+      "start": {
+        "m": 3,
+        "p": 1
+      },
+      "end": {
+        "m": 11,
+        "p": 2
+      },
+      "text": "3월 상순~11월 중순"
+    },
+    {
+      "task": "수확(노지재배)",
+      "kind": "harvest",
+      "region": null,
+      "start": {
+        "m": 6,
+        "p": 2
+      },
+      "end": {
+        "m": 9,
+        "p": 3
+      },
+      "text": "6월 중순~9월 하순"
+    }
+  ],
+  "stages": [
+    {
+      "title": "품종",
+      "timing": null,
+      "items": [
+        {
+          "label": "선택",
+          "value": "잎들깨 전용품종 재배 (잎 수확량이 많고 일장에 둔감해 개화가 늦음)"
+        },
+        {
+          "label": "발아 시험",
+          "value": "휴면 기간이 있는 품종이 있으므로 미리 발아 시험 후 파종"
+        }
+      ]
+    },
+    {
+      "title": "파종",
+      "timing": null,
+      "items": [
+        {
+          "label": "파종량",
+          "value": "3kg/10a (파종구당 5~6립)"
+        },
+        {
+          "label": "육묘이식",
+          "value": "300~500g/10a"
+        },
+        {
+          "label": "이랑",
+          "value": "90~120cm × 통로 30~50cm"
+        },
+        {
+          "label": "재식",
+          "value": "조간 5~7cm × 주간 7~10cm"
+        }
+      ]
+    },
+    {
+      "title": "솎음",
+      "timing": null,
+      "items": [
+        {
+          "label": "1차",
+          "value": "본엽 전개 시"
+        },
+        {
+          "label": "최종",
+          "value": "경장 5cm 정도에서 1본만 남김"
+        }
+      ]
+    },
+    {
+      "title": "전조처리(화아분화 억제)",
+      "timing": "5~7월을 제외하고 연중 필요",
+      "items": [
+        {
+          "label": "방법",
+          "value": "본엽 전개 후 야간조명 실시"
+        },
+        {
+          "label": "조도",
+          "value": "조생종 75lux, 만생종 25lux 이상"
+        }
+      ]
+    },
+    {
+      "title": "수확과 저장",
+      "timing": null,
+      "items": [
+        {
+          "label": "수확 시기",
+          "value": "4본엽 이후부터 가능"
+        },
+        {
+          "label": "종자 저장",
+          "value": "2~4℃"
+        },
+        {
+          "label": "잎 저장",
+          "value": "7~10℃"
+        }
+      ]
+    }
+  ],
+  "fertilizer": {
+    "unit": "kg/10a",
+    "columns": [
+      "N",
+      "P",
+      "K",
+      "요소",
+      "용성인비",
+      "염화가리",
+      "석회",
+      "퇴비"
+    ],
+    "rows": [
+      {
+        "name": "밑거름",
+        "values": [
+          1.9,
+          3,
+          2.7,
+          4.1,
+          15,
+          4.5,
+          150,
+          5000
+        ]
+      },
+      {
+        "name": "웃거름",
+        "values": [
+          4.5,
+          0,
+          4.1,
+          9.8,
+          0,
+          6.8,
+          null,
+          null
+        ]
+      }
+    ],
+    "note": "N·P·K는 3요소량, 요소 이하는 시비량. 생육을 관찰하면서 부족한 영양소는 엽면시비 등으로 웃거름."
+  },
+  "pests": [
+    {
+      "name": "곰팡이병(잿빛곰팡이, 노균병)",
+      "kind": "병",
+      "timing": null,
+      "control": "하우스 내 과습이 원인, 적절한 환기로 습도 유지"
+    },
+    {
+      "name": "응애, 진딧물, 민달팽이",
+      "kind": "해충",
+      "timing": null,
+      "control": "주기적 예찰로 예방하고 사전 방제 철저"
+    },
+    {
+      "name": "토양전염병",
+      "kind": "병",
+      "timing": null,
+      "control": "토양소독, 녹비작물 재배"
+    }
+  ],
+  "disasters": [
+    {
+      "risk": "화아분화(불시 화뢰)",
+      "timing": null,
+      "measures": [
+        "야간조명 확인",
+        "조명시간 4시간 이상으로 확대",
+        "온도 유지",
+        "잎 전용 품종 재배"
+      ]
+    },
+    {
+      "risk": "고온 (도장 및 병충해 우려)",
+      "timing": "생육초기(8~9월)",
+      "measures": [
+        "적절한 시기에 솎음 작업",
+        "꾸준한 관찰로 초기 방제"
+      ]
+    },
+    {
+      "risk": "저온 (과도한 냉수 관수나 갑작스러운 환기로 동해·냉해)",
+      "timing": null,
+      "measures": [
+        "찬물과 찬 공기가 직접 닿지 않도록 주의",
+        "수막재배",
+        "적절한 피복자재 구비"
+      ]
+    },
+    {
+      "risk": "혹한",
+      "timing": null,
+      "measures": [
+        "열풍난방기, 온수보일러 설치"
+      ]
+    }
+  ],
+  "notes": [
+    "노지재배는 후기에 종실 수확",
+    "가온을 위해 수막시설, 온수보일러 등 보온 준비"
+  ],
+  "source": "https://www.nongsaro.go.kr/portal/ps/psb/psbl/workScheduleDtl.ps?menuId=PS00087&cntntsNo=30607"
+}

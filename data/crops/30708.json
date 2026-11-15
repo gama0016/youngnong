@@ -1,0 +1,73 @@
+{
+  "id": 30708,
+  "name": "수수",
+  "type": "높은 이랑재배(노지, 비닐피복), 육묘이식 재배",
+  "category": "밭농사",
+  "sciName": null,
+  "family": null,
+  "summary": "고온을 좋아하고 침수지·건조지 적응성이 강한 밭작물. 직파 또는 육묘이식으로 재배하며 약해가 잘 발생하므로 약제 살포 시 기상조건을 고려해야 한다.",
+  "env": [
+    { "label": "적정토양", "value": "모래참흙(사양토)~질참흙(식양토)" },
+    { "label": "토양산도", "value": "pH 6.5~7.8" },
+    { "label": "발아 최적온도", "value": "32~35℃" },
+    { "label": "생육적온", "value": "27~30℃" }
+  ],
+  "schedule": [
+    { "task": "퇴비살포", "kind": "fert", "region": null, "start": null, "end": null, "text": null },
+    { "task": "비료·토양살충제 살포", "kind": "fert", "region": null, "start": null, "end": null, "text": null },
+    { "task": "파종·육묘", "kind": "sow", "region": null, "start": null, "end": null, "text": null },
+    { "task": "이식·관수", "kind": "plant", "region": null, "start": null, "end": null, "text": null },
+    { "task": "솎음", "kind": "manage", "region": null, "start": null, "end": null, "text": "발아 후 2~3회" },
+    { "task": "제초 겸 북주기", "kind": "manage", "region": null, "start": null, "end": null, "text": "솎음작업 후 2회" },
+    { "task": "웃거름", "kind": "fert", "region": null, "start": null, "end": null, "text": "싹튼 후 약 1개월 뒤 질소부족 증상이 보이면" },
+    { "task": "수확", "kind": "harvest", "region": null, "start": null, "end": null, "text": null }
+  ],
+  "stages": [
+    { "title": "종자 준비", "timing": null, "items": [
+      { "label": "파종량", "value": "1~2kg/10a" },
+      { "label": "우량 씨앗 선별", "value": "종자크기 3.15mm 이상 선별 및 염수선" },
+      { "label": "염수선", "value": "소금 51.0g(비중 1.035)/물 1L에 씨앗을 넣고 저은 뒤 가라앉은 씨앗을 골라 소금기를 씻고 그늘에서 말려 사용" }
+    ] },
+    { "title": "파종·이식", "timing": null, "items": [
+      { "label": "직파 1조식", "value": "조간 60cm, 주간 20cm, 포기당 7~8립" },
+      { "label": "직파 2조식", "value": "이랑넓이 110cm, 조간 30cm, 주간 15cm 내외" },
+      { "label": "이식재배", "value": "육묘용 트레이(128구)에 구멍당 2~3립 파종, 육묘기간 15~20일 내외" },
+      { "label": "가뭄 시", "value": "관수 가능 지역은 관수 후 파종·이식" }
+    ] },
+    { "title": "솎음·제초·북주기", "timing": "솎음은 발아 후 2~3회, 제초 겸 북주기는 솎음작업 후 2회", "items": [
+      { "label": "솎음", "value": "충실한 개체 1~2본만 남기고 솎으면서 제초·배토 실시" },
+      { "label": "북주기 효과", "value": "새뿌리 발생 촉진, 무효경 억제, 쓰러짐 경감" },
+      { "label": "잡초", "value": "볏과 잡초를 방제하지 않으면 수량 20% 감소" }
+    ] },
+    { "title": "수확", "timing": null, "items": [
+      { "label": "수확 적기", "value": "씨껍질이 붉게 변하고 씨눈 뒷면에 검은층의 둥근점이 나타날 때" }
+    ] }
+  ],
+  "fertilizer": {
+    "unit": "kg/10a",
+    "columns": ["3요소 N", "3요소 P", "3요소 K", "요소", "용과린", "염화가리", "퇴비"],
+    "rows": [
+      { "name": "시비량", "values": [10, 7, 8, 22, 35, 13, 1000] }
+    ],
+    "note": "밑거름·웃거름 구분은 표에 없음. 웃거름: 싹튼 후 약 1개월 뒤 질소부족 증상이 보이면 질소 5~10kg/10a(요소 11~22kg) 살포."
+  },
+  "pests": [
+    { "name": "탄저병, 줄무늬세균병, 이삭곰팡이병, 겉깜부기병", "kind": "병", "timing": null, "control": "윤작, 질소 과용 금지, 적용약제 살포" },
+    { "name": "왕담배나방, 조명나방, 멸강나방, 노린재, 기장테두리진딧물", "kind": "해충", "timing": null, "control": "친환경농자재 방제, 적용약제 살포. 수수는 약해가 잘 발생하므로 약제 살포 시 기상조건 고려" },
+    { "name": "볏과 잡초", "kind": "잡초", "timing": null, "control": "방제하지 않으면 수량 20% 감소. 제초 겸 김매기·북주기" },
+    { "name": "개화기 불임", "kind": "생리장해", "timing": "개화기", "control": "개화기에 강우가 장기간 지속되거나 저온다습하면 불임피해 발생" }
+  ],
+  "disasters": [
+    { "risk": "가뭄", "timing": null, "measures": ["관수 가능 지역은 관수 후 파종·이식", "제초 겸 김매기·북주기로 새뿌리 촉진"] },
+    { "risk": "잦은 강우·장마(과습해)", "timing": null, "measures": ["배수구 정비로 습해 사전 예방", "토양 유실로 뿌리가 노출되면 흙덮기 작업"] },
+    { "risk": "태풍·강풍(도복)", "timing": null, "measures": ["도복 우려 시 몇 대씩 중간을 묶어줌"] },
+    { "risk": "강우 지속(수발아)", "timing": null, "measures": [] },
+    { "risk": "조류피해", "timing": null, "measures": [] }
+  ],
+  "notes": [
+    "수수는 한 이삭에 약 1,000~3,000개의 씨알이 달려 충실도가 다양하므로 우량 씨앗 선별이 필요함",
+    "생육 단계: 5~10엽기, 출수기, 개화기, 유숙기, 호숙기, 성숙기 (원문 월별 표는 칸 위치를 확인할 수 없어 파종·수확을 포함한 모든 작업의 시기를 넣지 않음)",
+    "해충명 '기장테두리진딧물'은 원문 추출 텍스트에 '가장테두리진딧물'로 표기되어 있음"
+  ],
+  "source": "https://www.nongsaro.go.kr/portal/ps/psb/psbl/workScheduleDtl.ps?menuId=PS00087&cntntsNo=30708"
+}

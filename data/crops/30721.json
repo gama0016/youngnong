@@ -1,0 +1,19 @@
+{
+  "id": 30721,
+  "name": "돼지(번식)",
+  "type": null,
+  "category": "축산",
+  "sciName": null,
+  "family": null,
+  "summary": "원문 페이지는 제목과 작업 일정표 이미지 1장으로만 구성되어 있어 텍스트로 확인되는 내용이 없음.",
+  "env": [],
+  "schedule": [],
+  "stages": [],
+  "fertilizer": null,
+  "pests": [],
+  "disasters": [],
+  "notes": [
+    "일정표가 이미지(/ps/img/workSchedule/119/image01.png)로만 제공되어 내용을 추출하지 못함"
+  ],
+  "source": "https://www.nongsaro.go.kr/portal/ps/psb/psbl/workScheduleDtl.ps?menuId=PS00087&cntntsNo=30721"
+}

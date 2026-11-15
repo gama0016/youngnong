@@ -1,0 +1,426 @@
+{
+  "id": 30605,
+  "name": "당근",
+  "type": null,
+  "category": "채소",
+  "sciName": "Daucus carota L.",
+  "family": "산형과",
+  "summary": "서늘한 기후를 좋아하며 추위와 더위에 강한 편은 아니다. 12℃ 이하 저온에 감응해 꽃눈분화가 촉진되고 고온에서 꽃대신장이 촉진된다.",
+  "env": [
+    {
+      "label": "발아적온",
+      "value": "15~21℃"
+    },
+    {
+      "label": "꽃눈분화",
+      "value": "10℃"
+    },
+    {
+      "label": "생육적온",
+      "value": "18~21℃"
+    },
+    {
+      "label": "뿌리비대적온",
+      "value": "16~21℃"
+    },
+    {
+      "label": "토양산도",
+      "value": "pH 6.0~6.5 (중성 내지 약산성)"
+    },
+    {
+      "label": "토양수분(뿌리 발육)",
+      "value": "포장 용수량의 65~80%"
+    }
+  ],
+  "schedule": [
+    {
+      "task": "씨뿌림(하우스 재배)",
+      "kind": "sow",
+      "region": "남해안",
+      "start": {
+        "m": 11,
+        "p": null
+      },
+      "end": {
+        "m": 1,
+        "p": null
+      },
+      "text": "11~1월"
+    },
+    {
+      "task": "씨뿌림(터널 재배)",
+      "kind": "sow",
+      "region": "남해안",
+      "start": {
+        "m": 1,
+        "p": null
+      },
+      "end": {
+        "m": 2,
+        "p": null
+      },
+      "text": "1~2월"
+    },
+    {
+      "task": "씨뿌림(봄 재배)",
+      "kind": "sow",
+      "region": null,
+      "start": {
+        "m": 3,
+        "p": null
+      },
+      "end": {
+        "m": 4,
+        "p": null
+      },
+      "text": "3~4월"
+    },
+    {
+      "task": "씨뿌림(여름 재배)",
+      "kind": "sow",
+      "region": "고령지",
+      "start": {
+        "m": 4,
+        "p": null
+      },
+      "end": {
+        "m": 5,
+        "p": null
+      },
+      "text": "4~5월"
+    },
+    {
+      "task": "씨뿌림(가을 재배)",
+      "kind": "sow",
+      "region": null,
+      "start": {
+        "m": 7,
+        "p": null
+      },
+      "end": {
+        "m": 7,
+        "p": null
+      },
+      "text": "7월"
+    },
+    {
+      "task": "씨뿌림(월동 재배)",
+      "kind": "sow",
+      "region": "제주도",
+      "start": {
+        "m": 7,
+        "p": null
+      },
+      "end": {
+        "m": 8,
+        "p": null
+      },
+      "text": "7~8월"
+    },
+    {
+      "task": "웃거름",
+      "kind": "fert",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "김매기·물대기·배수",
+      "kind": "manage",
+      "region": null,
+      "start": null,
+      "end": null,
+      "text": null
+    },
+    {
+      "task": "수확(하우스 재배)",
+      "kind": "harvest",
+      "region": "남해안",
+      "start": {
+        "m": 4,
+        "p": null
+      },
+      "end": {
+        "m": 5,
+        "p": null
+      },
+      "text": "4~5월"
+    },
+    {
+      "task": "수확(터널 재배)",
+      "kind": "harvest",
+      "region": "남해안",
+      "start": {
+        "m": 5,
+        "p": null
+      },
+      "end": {
+        "m": 6,
+        "p": null
+      },
+      "text": "5~6월"
+    },
+    {
+      "task": "수확(봄 재배)",
+      "kind": "harvest",
+      "region": null,
+      "start": {
+        "m": 7,
+        "p": null
+      },
+      "end": {
+        "m": 8,
+        "p": null
+      },
+      "text": "7~8월"
+    },
+    {
+      "task": "수확(여름 재배)",
+      "kind": "harvest",
+      "region": "고령지",
+      "start": {
+        "m": 8,
+        "p": null
+      },
+      "end": {
+        "m": 9,
+        "p": null
+      },
+      "text": "8~9월"
+    },
+    {
+      "task": "수확(가을 재배)",
+      "kind": "harvest",
+      "region": null,
+      "start": {
+        "m": 11,
+        "p": null
+      },
+      "end": {
+        "m": 11,
+        "p": null
+      },
+      "text": "11월"
+    },
+    {
+      "task": "수확(월동 재배)",
+      "kind": "harvest",
+      "region": "제주도",
+      "start": {
+        "m": 12,
+        "p": null
+      },
+      "end": {
+        "m": 3,
+        "p": null
+      },
+      "text": "12~3월"
+    }
+  ],
+  "stages": [
+    {
+      "title": "씨뿌림",
+      "timing": "촉성재배: 하우스 11월 하순, 터널 1월 중순 / 봄 재배 3월(노지) / 가을 재배: 중부 7월 중순, 남부 7월 하순",
+      "items": [
+        {
+          "label": "파종량",
+          "value": "1~2ℓ/10a"
+        },
+        {
+          "label": "이랑 너비",
+          "value": "80~120cm"
+        },
+        {
+          "label": "포기 사이",
+          "value": "8~10cm"
+        },
+        {
+          "label": "솎음",
+          "value": "본잎 3~4매 때 시작해 5~6매 때 종료, 1~2회"
+        },
+        {
+          "label": "김매기",
+          "value": "씨뿌림 직후 제초제 사용"
+        }
+      ]
+    },
+    {
+      "title": "관리",
+      "timing": null,
+      "items": [
+        {
+          "label": "바닥 덮기",
+          "value": "유공필름, 왕겨, 짚 등"
+        },
+        {
+          "label": "물주기",
+          "value": "씨뿌림 직후 및 가물 때"
+        },
+        {
+          "label": "웃거름",
+          "value": "씨뿌림 후 20일부터 20일 간격"
+        }
+      ]
+    }
+  ],
+  "fertilizer": {
+    "unit": "kg/10a",
+    "columns": [
+      "총량",
+      "밑거름",
+      "웃거름 1회",
+      "웃거름 2회",
+      "웃거름 3회"
+    ],
+    "rows": [
+      {
+        "name": "퇴비",
+        "values": [
+          1000,
+          1000,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "name": "질소",
+        "values": [
+          20,
+          6,
+          4.7,
+          4.7,
+          4.6
+        ]
+      },
+      {
+        "name": "인산",
+        "values": [
+          9.6,
+          9.6,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "name": "칼리",
+        "values": [
+          12.2,
+          7.9,
+          1.5,
+          1.4,
+          1.4
+        ]
+      },
+      {
+        "name": "붕사",
+        "values": [
+          100,
+          100,
+          null,
+          null,
+          null
+        ]
+      }
+    ],
+    "note": "웃거름 시기: 씨뿌림 후 20일부터 20일 간격"
+  },
+  "pests": [
+    {
+      "name": "무름병",
+      "kind": "병",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "검은무늬병",
+      "kind": "병",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "응애",
+      "kind": "해충",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "선충",
+      "kind": "해충",
+      "timing": null,
+      "control": null
+    },
+    {
+      "name": "바이러스병(진딧물)",
+      "kind": "병",
+      "timing": null,
+      "control": null
+    }
+  ],
+  "disasters": [
+    {
+      "risk": "저온 꽃대신장",
+      "timing": null,
+      "measures": [
+        "저온감응이 둔한 품종 재배"
+      ]
+    },
+    {
+      "risk": "봄가뭄",
+      "timing": null,
+      "measures": [
+        "간이저수장 설치",
+        "이동식 스프링클러 설치",
+        "짚·비닐덮기(멀칭)",
+        "살충제 살포"
+      ]
+    },
+    {
+      "risk": "호우 (씨뿌림 지연, 유실)",
+      "timing": null,
+      "measures": [
+        "배수구 정비",
+        "다시 뿌림·덧뿌림",
+        "엽면 비료주기",
+        "살균제 살포"
+      ]
+    },
+    {
+      "risk": "가을가뭄",
+      "timing": null,
+      "measures": [
+        "물주기(이동식 스프링클러 설치)"
+      ]
+    },
+    {
+      "risk": "한파 (언 피해 온도 0℃)",
+      "timing": null,
+      "measures": [
+        "섬피 비닐덮기(멀칭)",
+        "제때 수확"
+      ]
+    },
+    {
+      "risk": "저온 및 혹한 (발아불량, 초기생육불량, 저온감응에 따른 꽃대신장, 언피해)",
+      "timing": null,
+      "measures": []
+    },
+    {
+      "risk": "고온다습 (생육불량, 뿌리비대 불량, 착색 불량)",
+      "timing": null,
+      "measures": []
+    },
+    {
+      "risk": "고온·건조 (뿌리비대 불량, 병해충 다발생, 착색 불량)",
+      "timing": null,
+      "measures": []
+    }
+  ],
+  "notes": [
+    "고온에서 품질을 떨어뜨리는 페놀화합물이 축적됨",
+    "적정 토양수분 관리로 석회 부족증 발생률을 줄일 수 있음 (자연 강우 시 발생률 75%)"
+  ],
+  "source": "https://www.nongsaro.go.kr/portal/ps/psb/psbl/workScheduleDtl.ps?menuId=PS00087&cntntsNo=30605"
+}

@@ -1,0 +1,96 @@
+{
+  "id": 30665,
+  "name": "양앵두(체리)",
+  "type": null,
+  "category": "과수",
+  "sciName": "Prunus avium L.",
+  "family": "장미과",
+  "summary": "내한성이 약해 겨울 최저기온이 -20℃ 이하로 떨어지지 않는 곳에서 재배하는 과수. 일조량이 많을수록 좋고, 수분수를 섞어 심으며 비가림 재배로 열과를 방지하고 병해충을 줄인다.",
+  "env": [
+    { "label": "연평균기온", "value": "12~15℃" },
+    { "label": "개화기 온도", "value": "10℃ 이상" },
+    { "label": "생육기 적온", "value": "20℃ 내외" },
+    { "label": "성숙기 적온", "value": "20~25℃" },
+    { "label": "토양", "value": "pH 6.0~6.5, 사질양토" },
+    { "label": "겨울철 최저기온", "value": "-20℃ 이하로 떨어지지 않는 곳(추풍령 이북 내륙은 언피해에 불안정)" },
+    { "label": "뿌리 발육 토양수분", "value": "포장 용수량의 65~80%" },
+    { "label": "일조", "value": "일조량이 많을수록 좋음" }
+  ],
+  "schedule": [
+    { "task": "정지·전정", "kind": "manage", "region": null, "start": null, "end": null, "text": null },
+    { "task": "언피해·설해방지", "kind": "manage", "region": null, "start": null, "end": null, "text": null },
+    { "task": "봉오리따기", "kind": "manage", "region": null, "start": null, "end": null, "text": null },
+    { "task": "착과수확보", "kind": "manage", "region": null, "start": null, "end": null, "text": null },
+    { "task": "열매솎기", "kind": "manage", "region": null, "start": null, "end": null, "text": "만개 3~4주 후(생리낙과 종료 후)" },
+    { "task": "순지르기", "kind": "manage", "region": null, "start": null, "end": null, "text": "만개 3~4주 후" },
+    { "task": "비가림하우스 덮기", "kind": "manage", "region": null, "start": null, "end": null, "text": null },
+    { "task": "착색관리", "kind": "manage", "region": null, "start": null, "end": null, "text": "잎솎기 수확 전 7~10일, 반사필름 착색개시기" },
+    { "task": "수확", "kind": "harvest", "region": null, "start": null, "end": null, "text": null },
+    { "task": "하우스덮기 제거", "kind": "manage", "region": null, "start": null, "end": null, "text": null },
+    { "task": "수형개선", "kind": "manage", "region": null, "start": null, "end": null, "text": null },
+    { "task": "월동준비", "kind": "manage", "region": null, "start": null, "end": null, "text": null },
+    { "task": "밑거름", "kind": "fert", "region": null, "start": null, "end": null, "text": null }
+  ],
+  "stages": [
+    { "title": "개원 전 주의사항", "timing": null,
+      "items": [
+        { "label": "과수원 선정", "value": "재배 안전 지역 우선, 논전환 시 배수 대책 철저" },
+        { "label": "묘목", "value": "제뿌리 대목묘 선정, 이중 접목묘 피함" },
+        { "label": "수분수", "value": "25~30% 섞어 심기(생리적 특성 항목에는 20~30%로 기재)" }
+      ] },
+    { "title": "열매솎기", "timing": "만개 3~4주 후(생리낙과 종료 후)",
+      "items": [
+        { "label": "정도", "value": "1화속 상단과지당 3~4과 남김" },
+        { "label": "남기는 과실", "value": "가로·위 방향의 큰 과실" }
+      ] },
+    { "title": "순지르기", "timing": "만개 3~4주 후",
+      "items": [ { "label": "주의", "value": "곁가지, 원가지 등 연장지는 순지르기하지 않음" } ] },
+    { "title": "착색관리", "timing": "수확 전 7~10일(잎솎기), 착색개시기(반사필름)",
+      "items": [
+        { "label": "잎솎기", "value": "수확 전 7~10일" },
+        { "label": "반사필름", "value": "착색개시기에 설치, 면적은 포장 용적의 50% 정도" }
+      ] },
+    { "title": "여름전정", "timing": null,
+      "items": [ { "label": "기준", "value": "절상면 유합이 빠르고 수세 반발이 약함. 수세가 강한 나무는 여름전정 위주로 실시" } ] },
+    { "title": "비가림 재배", "timing": "변색기",
+      "items": [
+        { "label": "효과", "value": "열과 방지 및 병해충 경감" },
+        { "label": "시설 높이", "value": "변색기 비가림 시설은 나무 키의 1.5~2m 위에 설치" }
+      ] }
+  ],
+  "fertilizer": {
+    "unit": "kg/10a",
+    "columns": ["비옥지", "척박지"],
+    "rows": [
+      { "name": "질소", "values": [15, 20] },
+      { "name": "인산", "values": [6, 8] },
+      { "name": "칼륨", "values": [12, 16] }
+    ],
+    "note": "다 자란 나무 기준. 밑거름·웃거름 분배 비율은 페이지에 없음."
+  },
+  "pests": [
+    { "name": "회성병", "kind": "병", "timing": null, "control": null },
+    { "name": "탄저병", "kind": "병", "timing": null, "control": null },
+    { "name": "수지병", "kind": "병", "timing": null, "control": null },
+    { "name": "천공갈반병", "kind": "병", "timing": null, "control": null },
+    { "name": "깍지벌레", "kind": "해충", "timing": null, "control": null },
+    { "name": "응애", "kind": "해충", "timing": null, "control": null },
+    { "name": "복숭아유리나방", "kind": "해충", "timing": null, "control": null },
+    { "name": "마그네슘 결핍", "kind": "생리장해", "timing": "5월 하순부터 신초 기부엽에서 엽맥 간 황록~황색 증상", "control": "원인은 토양 치환성 마그네슘 부족, 칼륨 과잉흡수에 의한 길항작용. 고토석회 시용(늦가을~이른 봄), 황산마그네슘 1.5% 엽면 살포, 칼륨 과잉 공급 회피" },
+    { "name": "붕소 결핍", "kind": "생리장해", "timing": null, "control": "증상은 열매지름 단축, 결실률 저하, 꽃눈착생 불량, 과실비대기 축과 증상, 배 발달 불량. 원인은 붕소 부족, 토양 산성화에 따른 용탈. 붕소 시용(과잉 시용 금지), 엽면 시비(붕사 0.2%), 토양 건조 방지 및 퇴비 시용" },
+    { "name": "열매터짐(열과)", "kind": "생리장해", "timing": "성숙기 및 수확 직전", "control": "원인은 강우에 따른 수분 흡수로 과실 표면 팽창. 토양수분 급변 방지, 변색기 비가림 시설 설치" }
+  ],
+  "disasters": [
+    { "risk": "언피해, 설해, 만상 피해", "timing": null, "measures": [] },
+    { "risk": "열매터짐(열과) 및 조류 피해", "timing": "성숙기 및 수확 전", "measures": ["비가림 재배로 열과 방지", "토양수분의 급격한 변화 방지"] },
+    { "risk": "강우 등 배수 불량 피해", "timing": null, "measures": [] },
+    { "risk": "조기낙엽 등 화아분화 불량", "timing": null, "measures": [] }
+  ],
+  "notes": [
+    "생육 단계: 휴면기, 발아기, 개화기, 과실비대기, 수확기, 신초정지기, 꽃눈분화기, 양분축적기, 낙엽기",
+    "고품질 기술: 햇빛을 충분히 받도록 수형 유인 철저, 꽃봉오리따기·열매솎기로 대과 생산, 비가림재배로 열과 방지 및 병해충 경감, 성숙기 잎솎기와 반사필름으로 착색 증진, 수세가 강한 나무는 여름전정으로 수세 안정화",
+    "병해충별 방제 약제와 시기는 페이지에서 텍스트로 확인되지 않음",
+    "각 농작업의 월·순 시기는 페이지 도표에서 텍스트로 확인되지 않음"
+  ],
+  "source": "https://www.nongsaro.go.kr/portal/ps/psb/psbl/workScheduleDtl.ps?menuId=PS00087&cntntsNo=30665"
+}

@@ -1,0 +1,82 @@
+{
+  "id": 30713,
+  "name": "조",
+  "type": null,
+  "category": "밭농사",
+  "sciName": null,
+  "family": null,
+  "summary": "습해에 약하고 흡비력이 강하며 척박지에도 강한 잡곡. 물빠짐이 좋은 토양에서 재배하고 연작 시 지력 소모가 커 윤작이 필요하다.",
+  "env": [
+    { "label": "발아적온", "value": "30~31℃ (최저 4~6℃, 최고 44~45℃)" },
+    { "label": "토성", "value": "사양질~식양질, 물빠짐이 좋은 토양" },
+    { "label": "유효 토심", "value": "50cm 이상" },
+    { "label": "지하수위", "value": "1m 이하" },
+    { "label": "토양 산도", "value": "pH 4.9~6.5" }
+  ],
+  "schedule": [
+    { "task": "파종", "kind": "sow", "region": "남부평야지(밀양)", "start": { "m": 6, "p": 1 }, "end": { "m": 6, "p": 2 }, "text": "6월 상순~중순" },
+    { "task": "수확", "kind": "harvest", "region": "남부평야지(밀양)", "start": { "m": 9, "p": 3 }, "end": { "m": 10, "p": 2 }, "text": "9월 하순~10월 중순" },
+    { "task": "파종", "kind": "sow", "region": "서남부해안지(고창)", "start": { "m": 5, "p": 3 }, "end": { "m": 6, "p": 2 }, "text": "5월 하순~6월 중순" },
+    { "task": "수확", "kind": "harvest", "region": "서남부해안지(고창)", "start": { "m": 9, "p": 1 }, "end": { "m": 9, "p": 2 }, "text": "9월 상순~중순" },
+    { "task": "파종", "kind": "sow", "region": "중부내륙평야지(괴산)", "start": { "m": 6, "p": 1 }, "end": { "m": 6, "p": 2 }, "text": "6월 상순~중순" },
+    { "task": "수확", "kind": "harvest", "region": "중부내륙평야지(괴산)", "start": { "m": 10, "p": 1 }, "end": { "m": 10, "p": 2 }, "text": "10월 상순~중순" },
+    { "task": "포장성형·피복", "kind": "etc", "region": null, "start": null, "end": null, "text": null },
+    { "task": "솎음·보식", "kind": "manage", "region": null, "start": null, "end": null, "text": "1차 출아 후 2주일, 2차 1차 솎음 후 2주일" },
+    { "task": "제초(중경제초)", "kind": "manage", "region": null, "start": null, "end": null, "text": "파종 후 20일과 40일 2회" },
+    { "task": "병해충 방제", "kind": "pest", "region": null, "start": null, "end": null, "text": null },
+    { "task": "조수피해 방지(방조망 설치)", "kind": "manage", "region": null, "start": null, "end": null, "text": "유숙기 이후" }
+  ],
+  "stages": [
+    { "title": "파종 준비", "timing": "파종 전", "items": [
+      { "label": "정선(염수선)", "value": "비중 1.030 (소금 43.30g/1L)" },
+      { "label": "종자소독", "value": "베노밀 및 티람 수화제 200배액" }
+    ] },
+    { "title": "파종", "timing": "남부평야지(밀양) 6월 상순~중순 / 서남부해안지(고창) 5월 하순~6월 중순 / 중부내륙평야지(괴산) 6월 상순~중순. 대파작물로 이용 시 파종한계기 7월 30일", "items": [
+      { "label": "점파(조간×주간)", "value": "60cm × 10cm" },
+      { "label": "조파(이랑너비)", "value": "15cm" },
+      { "label": "산파(파종량)", "value": "1.0~1.5kg/10a" },
+      { "label": "이식재배", "value": "트레이상자에 15일 육묘 후 이식" },
+      { "label": "재식본수", "value": "2본/1주" },
+      { "label": "강우·한발 시", "value": "관수 후 파종, 파종 후 복토 및 진압" }
+    ] },
+    { "title": "솎음·북주기·제초", "timing": "1차 솎음 출아 후 2주일 / 2차 솎음 1차 후 2주일 / 중경제초 파종 후 20일과 40일", "items": [
+      { "label": "2차 솎음", "value": "1주 2본으로 조정" },
+      { "label": "솎음을 겸한 북주기", "value": "도복 경감. 손제초 또는 출아 후 24일 후 관리기 이용" },
+      { "label": "잡초 방제", "value": "중경제초, 파종 후 20일과 40일 2회 실시" }
+    ] },
+    { "title": "수확 및 탈곡", "timing": "남부평야지 9월 하순~10월 중순 / 서남부해안지 9월 상순~중순 / 중부내륙평야지 10월 상순~중순", "items": [
+      { "label": "적기 수확", "value": "출수 후 45일(조생종)~55일(만생종)" },
+      { "label": "탈곡", "value": "건조 후 회전식 탈곡기 또는 콤바인 이용 (수망크기 Φ 8mm)" }
+    ] }
+  ],
+  "fertilizer": {
+    "unit": "kg/10a",
+    "columns": ["3요소 N", "3요소 P", "3요소 K", "요소", "용성인비", "염화가리", "퇴비"],
+    "rows": [
+      { "name": "표준 시비량", "values": [10, 7, 8, 19.6, 40, 12, 1000] }
+    ],
+    "note": "밑거름·웃거름 구분은 원문에 없음. 지역·필지별 비옥도에 따라 조정."
+  },
+  "pests": [
+    { "name": "세균줄무늬병", "kind": "병", "timing": "6월 하순~9월 상순", "control": "파종 전 종자소독, 잡초 매개 전염 방지를 위한 적기 제초" },
+    { "name": "줄무늬잎마름병", "kind": "병", "timing": "5월 하순~8월 중·하순", "control": "애멸구 매개 피해가 많으므로 애멸구 살충제 적기 살포" },
+    { "name": "조도열병", "kind": "병", "timing": "5월 하순~8월 하순", "control": "피해개체 조기 제거" },
+    { "name": "노균병", "kind": "병", "timing": "6월 하순~9월 상순", "control": "피해개체 조기 제거" },
+    { "name": "조명나방", "kind": "해충", "timing": null, "control": "등록 살충제 살포" },
+    { "name": "멸강나방", "kind": "해충", "timing": null, "control": "등록 살충제 살포" },
+    { "name": "노린재", "kind": "해충", "timing": "출수기~수확기", "control": "등록 살충제 살포" }
+  ],
+  "disasters": [
+    { "risk": "파종기 강우·한발(파종 지연, 발아 불균일, 습해 발생)", "timing": "파종기", "measures": ["관수 후 파종", "파종 후 복토 및 진압"] },
+    { "risk": "장마(습해, 잡초·병해충 다발생)", "timing": "영양생장기", "measures": ["배수구 정비", "솎음을 겸한 김매기"] },
+    { "risk": "고온·다습(불임 발생, 등숙 불량, 출수·개화 지연)", "timing": "개화기", "measures": [] },
+    { "risk": "태풍(쓰러짐, 곰팡이 발생, 임실 불량)", "timing": "유수형성기~등숙기", "measures": [] },
+    { "risk": "조류피해", "timing": "유숙기 이후", "measures": ["참새 등 조류 퇴치용 방조망 설치"] }
+  ],
+  "notes": [
+    "윤작 체계: 연작 시 지력 소모로 윤작 필요. 2년 3작 체계 콩 → 보리 → 조",
+    "남부지역(영남, 호남) 작부: 보리·마늘·완두 → 팥/조/기장/수수",
+    "생육 단계: 출아기 → 영양생장기 → 유수 형성기 → 출수기 → 유숙기 → 등숙기 → 수확기"
+  ],
+  "source": "https://www.nongsaro.go.kr/portal/ps/psb/psbl/workScheduleDtl.ps?menuId=PS00087&cntntsNo=30713"
+}
