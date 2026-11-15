@@ -15,6 +15,14 @@
 
 가입·서버 없이 동작합니다. 내 작목·면적·일지는 사용자의 브라우저(localStorage)에만 저장됩니다. 홈 화면에 설치(PWA)할 수 있고, 한 번 열면 통신이 약한 곳에서도 열립니다.
 
+## 배포 (GitHub Pages)
+
+`main` 브랜치에 푸시되면 `.github/workflows/pages.yml` 이 사이트를 GitHub Pages 로 배포합니다.
+주소: https://gama0016.github.io/youngnong/
+
+처음 한 번만 저장소에서 **Settings → Pages → Build and deployment → Source** 를 **GitHub Actions** 로 바꿔 두면 됩니다.
+배포 때 `data/crops.json` 을 새로 만들고, 사이트에 필요한 파일(index.html, css, js, icons, assets, data/crops.json 등)만 올립니다.
+
 ## 실행
 
 빌드 과정이 없는 정적 사이트입니다.
