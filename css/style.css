@@ -137,6 +137,7 @@ main > .stack { max-width: 1240px; padding-top: clamp(20px, 4vw, 56px); }
 .chip[aria-pressed="true"], .chip.on { background: var(--ink); color: var(--bg); }
 .chip .n { font-weight: 500; opacity: .65; font-variant-numeric: tabular-nums; }
 .card .chip { background: var(--bg); }
+.card .chip[aria-pressed="true"], .card .chip.on { background: var(--ink); color: var(--bg); }
 
 .tag { display: inline-flex; align-items: center; gap: 6px; font-size: var(--step-small); font-weight: 700; white-space: nowrap; color: var(--muted); }
 .tag.plain { background: var(--surface-2); padding: 2px 8px; color: var(--ink); }
@@ -417,6 +418,7 @@ input[type="text"], input[type="search"], input[type="number"], input[type="date
 /* 알림 */
 .toast { position: fixed; left: 12px; right: 12px; bottom: calc(76px + env(safe-area-inset-bottom)); z-index: 60; background: var(--ink); color: var(--bg); padding: 16px 18px; display: flex; gap: 12px; align-items: center; justify-content: space-between; flex-wrap: wrap; transform: translateY(16px); opacity: 0; visibility: hidden; transition: transform 260ms var(--ease-out), opacity 200ms ease, visibility 0s 260ms; }
 .toast.on { transform: none; opacity: 1; visibility: visible; transition-delay: 0s; }
+.toast .msg { flex: 1 1 14em; min-width: 0; }
 .toast a, .toast button { color: inherit; background: none; border: 0; padding: 8px 0; font-weight: 800; text-decoration: underline; text-underline-offset: 0.18em; cursor: pointer; }
 @media (min-width: 820px) { .toast { left: auto; right: 24px; bottom: 24px; max-width: 460px; } }
 
@@ -654,3 +656,57 @@ html.big { font-size: 118.75%; }
 .acct-box { display: grid; gap: 10px; }
 .move-bar { display: grid; gap: 2px; background: var(--accent); color: var(--accent-ink); padding: 12px var(--m); margin: 0 calc(-1 * var(--m)); text-decoration: none; }
 .move-bar span { font-size: var(--step-small); }
+
+/* 지역 고르기: 시·도 → 시·군·구 → 읍·면·동 */
+.rpick { display: grid; gap: 12px; }
+.rpick-row { display: grid; gap: 10px; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+@media (max-width: 599px) { .rpick-row { grid-template-columns: 1fr; } }
+.rpick select:disabled { opacity: 0.55; }
+.rpick-hits { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.rpick-hits:empty { display: none; }
+.rpick-hits .chip { background: var(--bg); }
+
+/* 기상특보 */
+.wx-warn { display: grid; gap: 8px; margin-bottom: 12px; }
+.wx-warn:empty { display: none; }
+.wx-alert.official { box-shadow: inset 6px 0 0 var(--danger); background: color-mix(in srgb, var(--danger) 8%, var(--bg)); }
+.wx-alert.official summary span { text-decoration: none; }
+.wx-banner.official { background: var(--danger); color: #fff; }
+
+/* 말로 기록하기 */
+.voice-btn::before { content: ""; width: 10px; height: 10px; border-radius: 50%; background: currentColor; margin-right: 8px; display: inline-block; }
+.mic { display: flex; align-items: center; justify-content: center; gap: 14px; width: 100%; min-height: 96px; border: 0; background: var(--accent); color: var(--accent-ink); font: inherit; font-size: var(--step-lead); cursor: pointer; }
+.mic-dot { width: 22px; height: 22px; border-radius: 50%; background: currentColor; }
+.mic[aria-pressed="true"] { background: var(--danger); color: #fff; }
+.mic[aria-pressed="true"] .mic-dot { animation: pulse 1s ease-in-out infinite alternate; }
+@keyframes pulse { from { transform: scale(0.8); opacity: 0.6; } to { transform: scale(1.15); opacity: 1; } }
+.voice textarea { min-height: 96px; }
+.vcards { display: grid; gap: 10px; }
+.vcard { background: var(--surface); padding: 14px 16px; display: grid; gap: 8px; box-shadow: inset 6px 0 0 var(--accent); }
+.vcard.need { box-shadow: inset 6px 0 0 #e0a100; }
+.vcard-h { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.vcard p { margin: 0; }
+.vmiss b { color: #8a5a00; }
+.vpick { background: var(--surface); padding: 14px 16px; }
+.vpick .chips { flex-wrap: wrap; }
+.vbanner { background: var(--bg); padding: 12px 14px; margin: 0; }
+input.miss, select.miss { outline: 3px solid #e0a100; outline-offset: 1px; }
+
+/* 제출용 영농일지 */
+.sheet { background: #fff; color: #111; padding: clamp(16px, 3vw, 32px); overflow-x: auto; }
+.sheet h1.sheet-title { text-align: center; font-size: 1.6rem; letter-spacing: 0.4em; margin: 0 0 16px; }
+.sheet h2 { font-size: 1.05rem; margin: 20px 0 6px; }
+.sheet table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+.sheet th, .sheet td { border: 1px solid #888; padding: 5px 7px; text-align: left; vertical-align: top; }
+.sheet thead th, .sheet .meta-t th { background: #eee; color: #111; white-space: nowrap; }
+.sheet tr.sum th, .sheet tr.sum td { font-weight: 800; background: #f6f6f6; }
+.sheet-foot { font-size: 0.8rem; color: #555; margin-top: 14px; }
+@media print {
+  .no-print, .move-bar, .toast { display: none !important; }
+  .report .sheet { padding: 0; overflow: visible; }
+  .sheet table { font-size: 9pt; }
+  .sheet tr { break-inside: avoid; }
+  @page { size: A4; margin: 12mm; }
+}
+.farm-quick .voice-btn { grid-column: 1 / -1; }
+.report .form input { min-width: 0; width: 100%; }

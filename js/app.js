@@ -283,8 +283,7 @@ const isoDay = (d = today()) => `${d.getFullYear()}-${String(d.getMonth() + 1).p
 const workOf = (s) => ({ sow: '파종', nursery: '육묘', plant: '정식·이앙', fert: '비료', pest: '방제', harvest: '수확' }[s.kind]
   || (/전정|유인|순지르기|적심|솎/.test(s.task) ? '전정·유인' : /물|관수|배수/.test(s.task) ? '물 관리' : /제초|김매기/.test(s.task) ? '제초' : /경운|로터리|정지|밭갈|이랑/.test(s.task) ? '경운·정지' : '기타'));
 
-// ---------- 날씨 (Open-Meteo, 키 없음) ----------
-const CITIES = [['서울', 37.57, 126.98], ['인천', 37.46, 126.71], ['경기 수원', 37.26, 127.03], ['경기 이천', 37.27, 127.44], ['강원 춘천', 37.88, 127.73], ['강원 강릉', 37.75, 128.88], ['강원 평창(고랭지)', 37.37, 128.39], ['충북 청주', 36.64, 127.49], ['충북 충주', 36.99, 127.93], ['충남 천안', 36.81, 127.11], ['충남 논산', 36.19, 127.1], ['대전', 36.35, 127.38], ['세종', 36.48, 127.29], ['전북 전주', 35.82, 127.15], ['전북 김제', 35.8, 126.88], ['광주', 35.16, 126.85], ['전남 나주', 35.02, 126.71], ['전남 해남', 34.57, 126.6], ['경북 안동', 36.57, 128.73], ['경북 상주', 36.41, 128.16], ['대구', 35.87, 128.6], ['경남 진주', 35.18, 128.11], ['경남 밀양', 35.5, 128.75], ['울산', 35.54, 129.31], ['부산', 35.18, 129.08], ['제주', 33.5, 126.53], ['서귀포', 33.25, 126.56]];
+// ---------- 날씨 (리프노트에서는 기상청 단기예보, 그 밖에서는 Open-Meteo) ----------
 const WX_RULES = [
   { name: '서리·저온', test: (d, i) => d.temperature_2m_min[i] != null && d.temperature_2m_min[i] <= 2, label: (d, i) => `최저 ${fmt(d.temperature_2m_min[i], 0)}℃`, re: /저온|서리|한파|언피해|동해|혹한|냉해|한풍|추위/ },
   { name: '폭염', test: (d, i) => d.temperature_2m_max[i] != null && d.temperature_2m_max[i] >= 33, label: (d, i) => `최고 ${fmt(d.temperature_2m_max[i], 0)}℃`, re: /고온|폭염|더위|일소/ },
@@ -295,10 +294,11 @@ const DAYS = ['오늘', '내일', '모레', '글피'];
 async function getWeather(loc, force) {
   const c = store.get('wx', null);
   if (!force && c && c.lat === loc.lat && c.lon === loc.lon && Date.now() - c.at < 2 * 3600e3 && c.day === isoDay() && c.v === 3) return c;
+  const q = loc.nx && loc.ny ? `nx=${loc.nx}&ny=${loc.ny}` : `lat=${loc.lat}&lon=${loc.lon}`;
   // 리프노트에서 열렸으면 기상청 단기예보(리프노트 서버가 인증키를 가지고 받아 옴)를 먼저 쓴다. 안 되면 Open-Meteo로 대신한다.
   if (SERVER) {
     try {
-      const r = await fetch(`/api/nong/weather?lat=${loc.lat}&lon=${loc.lon}`, { headers: { accept: 'application/json' } });
+      const r = await fetch(`/api/nong/weather?${q}`, { headers: { accept: 'application/json' } });
       if (r.ok) {
         const k = await r.json();
         if (k?.daily?.time?.length) {
@@ -317,11 +317,10 @@ async function getWeather(loc, force) {
   store.set('wx', w);
   return w;
 }
-const cityOpts = () => `<option value="">시·군 고르기</option>${CITIES.map(([n], i) => `<option value="${i}">${n}</option>`).join('')}`;
 const wxSetup = () => `<h2>날씨 경보</h2>
-  <p>농장 위치를 정하면 앞으로 나흘 동안 서리·폭염·많은 비·강한 바람 예보가 있을 때 내 작목의 대책을 여기 띄워 드립니다.</p>
-  <div class="row"><button class="btn" data-geo>지금 있는 곳으로</button><select data-city aria-label="가까운 시·군">${cityOpts()}</select></div>
-  <p class="sub">위치는 이 기기에 저장됩니다(로그인하면 계정에도). 날씨는 대략의 좌표로 ${SERVER ? '기상청 단기예보를 받아 오고, 받을 수 없을 때만 Open-Meteo를 씁니다' : 'Open-Meteo 예보를 받아 옵니다'}.</p>`;
+  <p>농장이 있는 읍·면·동을 정하면 앞으로 나흘 동안 서리·폭염·많은 비·강한 바람 예보${SERVER ? '와 기상청 기상특보' : ''}가 있을 때 내 작목의 대책을 여기 띄워 드립니다.</p>
+  ${rpickHtml(null)}
+  <p class="sub">위치는 이 기기에 저장됩니다(로그인하면 계정에도). 날씨는 고른 읍·면·동의 대표 좌표로 ${SERVER ? '기상청 단기예보를 받아 오고, 받을 수 없을 때만 Open-Meteo를 씁니다' : 'Open-Meteo 예보를 받아 옵니다'}.</p>`;
 function wxHtml(w, loc) {
   const d = w.daily;
   const n = Math.min(4, d.time.length);
@@ -330,13 +329,15 @@ function wxHtml(w, loc) {
   const warnDay = (i) => WX_RULES.some((r) => r.test(d, i));
   const crops = myCrops();
   return `<h2>날씨 <small>${esc(loc.name)} 기준</small></h2>
+  <div data-wx-warn>${warnCache ? warnHtml(warnCache.data, loc) : ''}</div>
   <div class="wx-days">${Array.from({ length: n }, (_, i) => `<div class="wx-day${warnDay(i) ? ' warn' : ''}"><span>${DAYS[i]}</span><b>${fmt(d.temperature_2m_min[i], 0)}° / ${fmt(d.temperature_2m_max[i], 0)}°</b><span>${d.precipitation_sum[i] == null ? '비 –' : d.precipitation_sum[i] >= 1 ? `비 ${fmt(d.precipitation_sum[i], 0)}mm` : '비 없음'}</span></div>`).join('')}</div>
   ${alerts.length ? alerts.map(({ rule, i }) => {
-    const hits = crops.flatMap((c) => (c.disasters || []).filter((r) => rule.re.test(r.risk)).slice(0, 1).map((r) => ({ c, r }))).slice(0, 4);
+    const hits = crops.flatMap((c) => (c.disasters || []).filter((r) => rule.re.test(r.risk) && seasonFits(c, r)).slice(0, 1).map((r) => ({ c, r }))).slice(0, 4);
     return `<details class="wx-alert"><summary><b>${DAYS[i]} ${rule.label(d, i)} · ${rule.name} 주의</b><span>${hits.length ? `내 작목 대책 ${hits.length}개 보기` : '내 작목 자료에 대책 없음'}</span></summary>
       ${hits.map(({ c, r }) => `<a class="wx-crop" href="#/crop/${c.id}?s=risk"><b>${esc(shortName(c))} · ${esc(r.risk)}</b><span>${esc((r.measures || []).slice(0, 3).join(' · '))}</span></a>`).join('')}</details>`;
   }).join('') : '<p class="wx-ok">앞으로 나흘 서리·폭염·많은 비·강한 바람 예보는 없습니다.</p>'}
   ${sprayHtml(w)}
+  ${SERVER && !loc.sido ? '<p class="sub">읍·면·동까지 고르면 기상청 <b>기상특보</b>도 내 시·군에 맞춰 보여 드립니다. <button class="linkish" data-wx-change>지역 고르기</button></p>' : ''}
   <p class="sub">${new Date(w.at).getHours()}시 ${String(new Date(w.at).getMinutes()).padStart(2, '0')}분에 받은 예보 · <button class="linkish" data-wx-change>위치 바꾸기</button> · 날씨 자료 ${w.src === 'kma' ? '<a href="https://www.weather.go.kr" target="_blank" rel="noopener">기상청 단기예보</a>' : '<a href="https://open-meteo.com/" target="_blank" rel="noopener">Open-Meteo</a>'}</p>`;
 }
 function paintWxBanner(w) {
@@ -346,7 +347,9 @@ function paintWxBanner(w) {
   const n = Math.min(4, d.time.length);
   const hits = [];
   for (const rule of WX_RULES) for (let i = 0; i < n; i++) if (rule.test(d, i)) { hits.push(`${DAYS[i]} ${rule.name}`); break; }
-  el.innerHTML = hits.length ? `<a class="wx-banner" href="#/?s=wx"><b>${hits.join(', ')} 예보</b><span>내 작목 대책 보기</span></a>` : '';
+  const official = warnHits(warnCache?.data, settings().loc).mine.map(({ w: x }) => `${x.kind}${x.when ? ` ${x.when}` : ''}`);
+  const all = [...new Set(official)].concat(hits.length ? [`${hits.join(', ')} 예보`] : []);
+  el.innerHTML = all.length ? `<a class="wx-banner${official.length ? ' official' : ''}" href="#/?s=wx"><b>${esc(all.join(' · '))}</b><span>내 작목 대책 보기</span></a>` : '';
 }
 async function paintWeather(force) {
   const box = document.querySelector('[data-weather]');
@@ -361,6 +364,7 @@ async function paintWeather(force) {
     if (!document.contains(box)) return;
     box.innerHTML = wxHtml(w, loc);
     paintWxBanner(w);
+    getWarnings().then((data) => { const el = document.querySelector('[data-wx-warn]'); if (data && el) { el.innerHTML = warnHtml(data, loc); paintWxBanner(w); } });
     const st = settings();
     if (st.regionAuto && w.elevation >= 400 && st.region !== '고랭지') { setSetting({ region: '고랭지' }); toast(`농장 위치의 해발이 약 ${fmt(w.elevation, 0)}m라 지역을 <b>고랭지</b>로 맞췄습니다. <a href="#/links?s=settings">바꾸기</a>`); }
   } catch (e) {
@@ -371,7 +375,7 @@ async function paintWeather(force) {
 function setLoc(loc) {
   const st = settings();
   const o = { loc };
-  if (!st.region || st.regionAuto) { o.region = loc.lat < 34 ? '제주' : loc.lat < 36.1 ? '남부' : '중부'; o.regionAuto = true; }
+  if (!st.region || st.regionAuto) { o.region = loc.sido ? regionOfSido(loc.sido) : loc.lat < 34 ? '제주' : loc.lat < 36.1 ? '남부' : '중부'; o.regionAuto = true; }
   setSetting(o);
   store.set('wx', null);
   const y = window.scrollY; render(); window.scrollTo(0, y);
@@ -915,7 +919,7 @@ function viewDiary(q) {
   const cost = yl.reduce((s, e) => s + (Number(e.cost) || 0), 0);
   const names = [...new Set([...myCrops().map(fullName), ...CROPS.map(fullName)])];
   return `<div class="stack">
-    <h1>영농일지</h1>
+    <div class="spread"><h1>영농일지</h1><a class="btn primary" href="#/voice">말로 기록</a></div>
     <div class="grid-2">
       <section class="card"><h2>오늘 작업 기록</h2>
         <form class="form" data-diary-form>
@@ -941,6 +945,7 @@ function viewDiary(q) {
             <button class="btn quiet" data-diary-backup>백업 파일 받기</button>
             <label class="btn quiet">백업 불러오기<input type="file" accept="application/json" data-diary-restore hidden></label>
             <button class="btn quiet" data-diary-csv>엑셀용 파일 받기</button>
+            <a class="btn quiet" href="#/report">제출용 영농일지(인쇄)</a>
           </div>
         </section>
       </div>
@@ -986,7 +991,8 @@ function viewLinks(meta) {
       ${regionChips()}
       <h3 class="sub-h">날씨 위치</h3>
       ${settings().loc ? `<p>지금: <b>${esc(settings().loc.name)}</b></p>` : '<p class="sub">아직 정하지 않았습니다.</p>'}
-      <div class="row"><button class="btn quiet" data-geo>지금 있는 곳으로</button><select data-city aria-label="가까운 시·군">${cityOpts()}</select>${settings().loc ? '<button class="btn quiet" data-wx-clear>위치 지우기</button>' : ''}</div>
+      ${rpickHtml(settings().loc)}
+      ${settings().loc ? '<div class="row"><button class="btn quiet" data-wx-clear>위치 지우기</button></div>' : ''}
       <h3 class="sub-h">글자 크기</h3>
       <div class="row"><button class="btn quiet" data-big aria-pressed="${settings().big}">${settings().big ? '글자 보통' : '글자 크게'}</button></div>
     </section>
@@ -1250,7 +1256,7 @@ function phiOf(pid) {
 }
 const phiHtml = (pid) => { const w = phiOf(pid); return w ? `<p class="phi">수확 금지: <b>${md(w.safe)}부터 수확 가능</b> (${md(parseDay(w.e.date))} ${esc(w.e.pesticide || '방제')} 살포, 안전일수 ${esc(w.e.phi)}일)</p>` : ''; };
 const REC = { spray: '방제 기록', fert: '비료 기록', harvest: '수확·출하 기록', work: '작업 기록' };
-const quickRec = (p) => `<div class="farm-quick">${Object.entries(REC).map(([k, v]) => `<a class="btn quiet" href="#/farm/${p.id}/rec/${k}">${v.replace(' 기록', '')}</a>`).join('')}</div>`;
+const quickRec = (p) => `<div class="farm-quick"><a class="btn primary voice-btn" href="#/voice?pid=${esc(p.id)}">말로 기록</a>${Object.entries(REC).map(([k, v]) => `<a class="btn quiet" href="#/farm/${p.id}/rec/${k}">${v.replace(' 기록', '')}</a>`).join('')}</div>`;
 
 // ---------- 비료 계획: 회차별 포대 수 ----------
 function fertPlan(c, m2) {
@@ -1306,7 +1312,7 @@ function viewFarm() {
   const act = activePlantings();
   const ended = plantings().filter((p) => p.ended);
   return `<div class="stack">
-    <div class="spread"><h1>내 농사</h1><a class="btn primary" href="#/farm/new">작기 등록</a></div>
+    <div class="spread"><h1>내 농사</h1><div class="row"><a class="btn quiet" href="#/voice">말로 기록</a><a class="btn primary" href="#/farm/new">작기 등록</a></div></div>
     <p class="sub">필지나 하우스 동마다 <b>심은 날</b>을 등록하면, 농사로 표준 일정을 내 날짜에 맞춰 옮기고 방제·비료·수확 기록과 결산을 함께 관리합니다.</p>
     ${act.length ? `<div class="farm-list">${act.map((p) => farmCard(p)).join('')}</div>` : `<div class="empty-box"><p><b>아직 등록한 작기가 없습니다.</b></p><p>예: 고추 · 앞밭 · 1,200평 · 아주심기 5월 8일. 같은 작목이라도 심은 날이 다르면 따로 등록하세요.</p><p><a class="btn primary" href="#/farm/new">첫 작기 등록하기</a></p></div>`}
     ${ended.length ? `<details class="done-box"><summary>끝난 작기 ${ended.length}개</summary><div class="todo">${ended.map((p) => { const c = BY_ID.get(String(p.cropId)); return `<a class="todo-item more" href="#/farm/${p.id}"><div><b>${esc(c ? shortName(c) : '작목')} ${esc(p.field || '')}</b><div class="when">${p.date ? esc(p.date) + ' 시작 · ' : ''}${esc(p.ended)} 끝냄</div></div></a>`; }).join('')}</div></details>` : ''}
@@ -1391,7 +1397,7 @@ function viewPlanting(id) {
       ${recs.length ? `<div class="entries">${recs.slice(0, 30).map(entryHtml).join('')}</div>` : '<p class="sub">위의 방제·비료·수확·작업 버튼으로 기록하세요. 영농일지에도 함께 쌓입니다.</p>'}
     </section>
     ${past.length ? `<details class="done-box"><summary>지난 일·끝낸 일 ${past.length}건</summary><div class="todo">${planItemsHtml(p, past, { std: true })}</div></details>` : ''}
-    <div class="row"><a class="btn quiet" href="#/farm/new?edit=${esc(p.id)}">작기 고치기</a><button class="btn quiet" data-plant-end="${esc(p.id)}">${p.ended ? '다시 진행 중으로' : '작기 끝내기'}</button><button class="btn danger" data-plant-del="${esc(p.id)}">작기 삭제</button></div>
+    <div class="row"><a class="btn quiet" href="#/report?pid=${esc(p.id)}">제출용 영농일지</a><a class="btn quiet" href="#/farm/new?edit=${esc(p.id)}">작기 고치기</a><button class="btn quiet" data-plant-end="${esc(p.id)}">${p.ended ? '다시 진행 중으로' : '작기 끝내기'}</button><button class="btn danger" data-plant-del="${esc(p.id)}">작기 삭제</button></div>
   </div>`;
 }
 
@@ -1499,11 +1505,463 @@ function sprayHtml(w) {
   return `<p class="spray-win"><b>방제하기 좋은 때</b> ${good.length ? good.map((d) => `${d.label} ${d.best.from}~${d.best.to}시`).join(' · ') : '오늘·내일은 비나 바람 때문에 마땅한 때가 없습니다'}<span class="when">비 올 확률 30% 이하, 바람 초속 4m 이하가 3시간 넘게 이어지고 뒤이어 4시간 비 소식이 없는 낮 시간</span></p>`;
 }
 
+// ---------- 지역: 기상청 격자_위경도 자료(시·도 → 시·군·구 → 읍·면·동) ----------
+let REGION_DATA = null;
+async function loadRegions() {
+  if (!REGION_DATA) REGION_DATA = await (await fetch('data/regions.json')).json();
+  return REGION_DATA;
+}
+// 시·군·구 이름 다듬기: '수원시장안구' → '수원시 장안구'
+const sggLabel = (s) => String(s).replace(/^(.+?시)(.+구)$/, '$1 $2');
+// 특보 문장의 짧은 이름과 맞추기 위한 별칭
+const SIDO_ALIAS = {
+  서울특별시: ['서울특별시', '서울'], 부산광역시: ['부산광역시', '부산'], 대구광역시: ['대구광역시', '대구'], 인천광역시: ['인천광역시', '인천'],
+  광주광역시: ['광주광역시', '광주'], 대전광역시: ['대전광역시', '대전'], 울산광역시: ['울산광역시', '울산'], 세종특별자치시: ['세종특별자치시', '세종'],
+  경기도: ['경기도', '경기'], 강원특별자치도: ['강원특별자치도', '강원도', '강원'], 충청북도: ['충청북도', '충북'], 충청남도: ['충청남도', '충남'],
+  전북특별자치도: ['전북특별자치도', '전북자치도', '전라북도', '전북'], 전라남도: ['전라남도', '전남'], 경상북도: ['경상북도', '경북'], 경상남도: ['경상남도', '경남'],
+  제주특별자치도: ['제주특별자치도', '제주도', '제주'],
+};
+const SOUTH = /전북|전라|광주|경상|대구|부산|울산/;
+// 제주 특보구역은 시가 아니라 방위로 나뉜다(산지·추자도는 따로)
+const JEJU = { 제주시: /제주도(북부|동부|서부)/, 서귀포시: /제주도(남부|동부|서부)/ };
+const regionOfSido = (sido) => (/제주/.test(sido) ? '제주' : SOUTH.test(sido) ? '남부' : '중부');
+const sggShort = (sgg) => (String(sgg || '').match(/^(.+?)(시|군|구)/) || [])[1] || '';
+function rpickHtml(cur) {
+  return `<div class="rpick" data-rpick>
+    <div class="rpick-row">
+      <label class="f">시·도<select data-rp="sido" aria-label="시·도"><option value="">고르기</option></select></label>
+      <label class="f">시·군·구<select data-rp="sgg" aria-label="시·군·구" disabled><option value="">고르기</option></select></label>
+      <label class="f">읍·면·동<select data-rp="emd" aria-label="읍·면·동" disabled><option value="">시·군·구 전체</option></select></label>
+    </div>
+    <label class="f">또는 이름으로 찾기<input type="search" data-rp-q placeholder="예: 우정읍, 성산읍, 상당구" autocomplete="off" enterkeyhint="search"></label>
+    <div class="rpick-hits" data-rp-hits></div>
+    <div class="row"><button class="btn primary" data-rp-apply disabled>이 지역으로 정하기</button><button class="btn quiet" data-geo>지금 있는 곳으로</button></div>
+    <p class="sub">${cur ? `지금: <b>${esc(cur.name)}</b> · ` : ''}기상청이 동네예보에 쓰는 시·군·구 256곳, 읍·면·동 3,565곳 기준(기상청 격자_위경도 자료, 2026-09-30)</p>
+  </div>`;
+}
+async function paintRpick(root) {
+  const box = root || document.querySelector('[data-rpick]');
+  if (!box) return;
+  const R = await loadRegions();
+  const cur = settings().loc;
+  const sel = (k) => box.querySelector(`[data-rp="${k}"]`);
+  const sidoSel = sel('sido');
+  sidoSel.innerHTML = '<option value="">고르기</option>' + Object.keys(R.sido).map((s) => `<option${cur?.sido === s ? ' selected' : ''}>${esc(s)}</option>`).join('');
+  fillSgg(box, cur);
+}
+function fillSgg(box, cur) {
+  const sido = box.querySelector('[data-rp="sido"]').value;
+  const sgg = box.querySelector('[data-rp="sgg"]');
+  const g = REGION_DATA?.sido[sido]?.g || {};
+  sgg.disabled = !sido;
+  sgg.innerHTML = '<option value="">고르기</option>' + Object.keys(g).map((n) => `<option value="${esc(n)}"${cur?.sgg === n ? ' selected' : ''}>${esc(sggLabel(n))}</option>`).join('');
+  fillEmd(box, cur);
+}
+function fillEmd(box, cur) {
+  const sido = box.querySelector('[data-rp="sido"]').value;
+  const sggName = box.querySelector('[data-rp="sgg"]').value;
+  const emd = box.querySelector('[data-rp="emd"]');
+  const list = REGION_DATA?.sido[sido]?.g[sggName]?.d || [];
+  emd.disabled = !sggName;
+  emd.innerHTML = '<option value="">시·군·구 전체</option>' + list.map((d) => `<option${cur?.emd === d[0] ? ' selected' : ''}>${esc(d[0])}</option>`).join('');
+  box.querySelector('[data-rp-apply]').disabled = !sggName && !sido;
+}
+function rpickValue(box) {
+  const sido = box.querySelector('[data-rp="sido"]').value;
+  const sgg = box.querySelector('[data-rp="sgg"]').value;
+  const emd = box.querySelector('[data-rp="emd"]').value;
+  const S = REGION_DATA?.sido[sido];
+  if (!S) return null;
+  const G = sgg ? S.g[sgg] : null;
+  const D = G && emd ? G.d.find((x) => x[0] === emd) : null;
+  const c = D ? D.slice(1) : G ? G.c : S.c;
+  if (!c) return null;
+  return { lat: c[0], lon: c[1], nx: c[2], ny: c[3], sido, sgg: sgg || '', emd: emd || '', name: [regionName(sido), sgg ? sggLabel(sgg) : '', emd].filter(Boolean).join(' ') };
+}
+// 현재 위치 → 가장 가까운 읍·면·동(자료를 못 받으면 좌표만)
+function nearestLoc(lat, lon) {
+  if (!REGION_DATA) return { lat, lon, name: '내 위치' };
+  let best = null;
+  const k = Math.cos((lat * Math.PI) / 180);
+  for (const [sido, S] of Object.entries(REGION_DATA.sido)) for (const [sgg, G] of Object.entries(S.g)) for (const d of G.d) {
+    const dist = (d[1] - lat) ** 2 + ((d[2] - lon) * k) ** 2;
+    if (!best || dist < best.dist) best = { dist, sido, sgg, d };
+  }
+  if (!best || best.dist > 0.04) return { lat, lon, name: '내 위치' };
+  const { sido, sgg, d } = best;
+  return { lat: d[1], lon: d[2], nx: d[3], ny: d[4], sido, sgg, emd: d[0], name: `${regionName(sido)} ${sggLabel(sgg)} ${d[0]} 부근` };
+}
+const regionName = (sido) => sido.replace(/특별자치|특별|광역/, '');
+function rpickSearch(box, q) {
+  const hits = box.querySelector('[data-rp-hits]');
+  q = q.trim().replace(/\s+/g, '');
+  if (q.length < 2 || !REGION_DATA) { hits.innerHTML = ''; return; }
+  const out = [];
+  for (const [sido, S] of Object.entries(REGION_DATA.sido)) for (const [sgg, G] of Object.entries(S.g)) {
+    if (sgg.includes(q)) out.push([sido, sgg, '']);
+    for (const d of G.d) if (d[0].includes(q)) out.push([sido, sgg, d[0]]);
+    if (out.length > 40) break;
+  }
+  // 농사짓는 곳(읍·면·군)을 먼저, 도시의 동은 뒤로
+  const rank = ([, b, c]) => (/[읍면]$/.test(c) ? 0 : !c ? 1 : 2) + (/군$/.test(b) ? 0 : 0.5);
+  out.sort((x, y) => rank(x) - rank(y));
+  hits.innerHTML = out.length ? out.slice(0, 12).map(([a, b, c]) => `<button class="chip" data-rp-pick="${esc(a)}|${esc(b)}|${esc(c)}">${esc([a, sggLabel(b), c].filter(Boolean).join(' '))}</button>`).join('') + (out.length > 12 ? `<span class="sub">${out.length > 40 ? '40곳 넘게' : `${out.length}곳`} 찾음 · 더 자세히 적어 주세요</span>` : '') : '<span class="sub">찾는 이름이 없습니다. 읍·면·동 이름(예: 우정읍)으로 적어 보세요.</span>';
+}
+
+// ---------- 기상특보: 전국 특보 현황에서 내 시·군에 걸린 것만 ----------
+let warnCache = null;
+async function getWarnings() {
+  if (!SERVER) return null;
+  if (warnCache && Date.now() - warnCache.at < 600e3) return warnCache.data;
+  try {
+    const r = await fetch('/api/nong/warnings', { headers: { accept: 'application/json' } });
+    if (!r.ok) return null;
+    const data = await r.json();
+    warnCache = { at: Date.now(), data };
+    return data;
+  } catch { return null; }
+}
+// 특보 종류 → 작목 재해 이름을 고르는 말
+const WARN_RISK = [[/한파|서리/, /저온|서리|한파|언피해|동해|혹한|냉해|한풍|추위/], [/호우|태풍/, /호우|장마|습해|태풍|침수|잦은 비|강우/], [/강풍|태풍/, /태풍|강풍|바람|쓰러짐|도복|풍해/], [/대설/, /폭설|대설|눈/], [/폭염/, /고온|폭염|더위|일소/], [/건조/, /가뭄|건조/]];
+function warnHits(data, loc) {
+  if (!data || !loc?.sido) return { mine: [], near: [] };
+  const alias = SIDO_ALIAS[loc.sido] || [loc.sido];
+  const short = sggShort(loc.sgg);
+  const mine = [];
+  const near = [];
+  for (const w of [...(data.warnings || []), ...(data.pre || [])]) {
+    for (const a of w.areas) {
+      const sameSido = alias.includes(a.name);
+      const partHit = (p) => (short.length >= 2 && p.startsWith(short)) || (JEJU[loc.sgg] && JEJU[loc.sgg].test(p));
+      const hit = sameSido && (!a.parts.length || !loc.sgg || a.parts.some(partHit));
+      if (hit) { mine.push({ w, a }); break; }
+      if (sameSido && a.parts.length) near.push({ w, a });
+    }
+  }
+  return { mine, near };
+}
+function warnHtml(data, loc) {
+  const { mine, near } = warnHits(data, loc);
+  if (!mine.length && !near.length) return '';
+  const crops = myCrops();
+  return `<div class="wx-warn">${mine.map(({ w, a }) => {
+    const re = (WARN_RISK.find(([k]) => k.test(w.kind)) || [])[1];
+    const hits = re ? crops.flatMap((c) => (c.disasters || []).filter((r) => re.test(r.risk) && seasonFits(c, r)).slice(0, 1).map((r) => ({ c, r }))).slice(0, 4) : [];
+    return `<details class="wx-alert official" open><summary><b>${esc(w.kind)}${w.when ? ` · ${esc(w.when)}` : ' 발효 중'}</b><span>기상청 · ${esc(a.name)}${a.parts.length ? `(${esc(a.parts.join(', '))})` : ''}</span></summary>
+      ${hits.map(({ c, r }) => `<a class="wx-crop" href="#/crop/${c.id}?s=risk"><b>${esc(shortName(c))} · ${esc(r.risk)}</b><span>${esc((r.measures || []).slice(0, 3).join(' · '))}</span></a>`).join('')}</details>`;
+  }).join('')}${near.length && !mine.length ? `<p class="sub">같은 도의 다른 특보구역에 ${[...new Set(near.map(({ w }) => w.kind))].map(esc).join('·')}이(가) 있습니다(${esc([...new Set(near.flatMap(({ a }) => a.parts))].slice(0, 4).join(', '))}). 산지·해안 구역은 시·군과 딱 맞지 않을 수 있으니 <a href="https://www.weather.go.kr/w/special-report/overall.do" target="_blank" rel="noopener">기상청 특보</a>에서 확인하세요.</p>` : ''}</div>`;
+}
+
+// ---------- 철 거르기: 다른 철을 적은 재해, 밭에 작물이 없는 철의 생육 단계 대책은 뺀다 ----------
+const STAGE_EARLY = /모내기|이앙|아주심기|정식|씨뿌림|파종|모기르기|모 기를|모 생육|육묘|못자리|싹틔우기|발아|출아/;
+const STAGE_LATE = /이삭|개화|꽃|착과|비대|수확|여뭄|결실|낙과|성숙|착색/;
+const STAGE_ANY = new RegExp(`${STAGE_EARLY.source}|${STAGE_LATE.source}|새끼칠|분얼|웃거름|생육`);
+// 작목이 밭에 있는 달: 날짜가 적힌 일정이 덮는 달 + 그 뒤(수확 날짜가 비는 자료가 많아서 심거나 씨뿌린 뒤 넉 달, 그 밖의 작업 뒤 한 달)
+const SEASON_EXT = { plant: 4, sow: 4, nursery: 4, harvest: 0 };
+function inSeason(c) {
+  const t = today();
+  if (activePlantings().some((p) => String(p.cropId) === String(c.id) && (!p.date || dayDiff(t, parseDay(p.date)) > -30))) return true;
+  const on = new Set();
+  const next = (m) => (m % 12) + 1;
+  for (const s of regionFilter(c.schedule || [])) {
+    const a = s.start?.m;
+    const b = s.end?.m || a;
+    if (!a) continue;
+    let m = a;
+    for (let k = 0; k < 12; k++) { on.add(m); if (m === b) break; m = next(m); }
+    for (let k = 0; k < (SEASON_EXT[s.kind] ?? 1); k++) { m = next(m); on.add(m); }
+  }
+  return !on.size || on.size >= 10 || on.has(t.getMonth() + 1);
+}
+function seasonFits(c, r) {
+  const head = `${r.risk || ''} ${r.timing || ''}`;
+  const all = `${head} ${(r.measures || []).join(' ')}`;
+  const season = seasonOf(today().getMonth() + 1);
+  const ownWord = season.name === '여름' ? /여름|장마/ : new RegExp(season.name);
+  const otherWord = new RegExp(['봄', '여름', '가을', '겨울', '장마'].filter((w) => !ownWord.test(w)).join('|'));
+  if (otherWord.test(head) && !ownWord.test(head)) return false;
+  if (STAGE_ANY.test(all) && !inSeason(c)) return false;
+  // 모·심기 때만의 재해(이삭·수확 같은 뒤 단계가 없는 것)는 심을 무렵에만
+  if (STAGE_EARLY.test(head) && !STAGE_LATE.test(head)) {
+    const t = today();
+    if (activePlantings().some((p) => String(p.cropId) === String(c.id) && p.date && Math.abs(dayDiff(t, parseDay(p.date))) <= 30)) return true;
+    const x = nowSlot();
+    return (c.schedule || []).some((s) => ['sow', 'nursery', 'plant'].includes(s.kind) && [-3, -2, -1, 0, 1, 2, 3].some((k) => covers(range(s), (x + k + 36) % 36)));
+  }
+  return true;
+}
+
+// ---------- 말로 기록하기 (농부노트에서 가져온 방식: 말 → 날짜·동·작업·자재 정리 → 빠진 것만 되묻기) ----------
+const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+function korNum(raw) {
+  const s = String(raw).replace(/[,\s]/g, '');
+  if (/^\d+(\.\d+)?$/.test(s)) return Number(s);
+  const D = { 영: 0, 공: 0, 일: 1, 한: 1, 이: 2, 두: 2, 삼: 3, 세: 3, 사: 4, 네: 4, 오: 5, 육: 6, 칠: 7, 팔: 8, 구: 9 };
+  const U = { 십: 10, 백: 100, 천: 1000 };
+  let total = 0;
+  let sect = 0;
+  let cur = null;
+  let num = '';
+  const flush = () => { if (num) { cur = Number(num); num = ''; } };
+  for (const ch of s) {
+    if (/[\d.]/.test(ch)) { num += ch; continue; }
+    flush();
+    if (ch in D) cur = D[ch];
+    else if (ch in U) { sect += (cur ?? 1) * U[ch]; cur = null; }
+    else if (ch === '만') { total += (sect + (cur ?? 0) || 1) * 10000; sect = 0; cur = null; }
+    else return null;
+  }
+  flush();
+  return total + sect + (cur ?? 0);
+}
+const NUM = '([\\d.,]+\\s*[만천백십]*|[일이삼사오육칠팔구십백천만]+)';
+const grab = (text, unit) => { const m = text.match(new RegExp(`${NUM}\\s*(?:${unit})`)); return m ? korNum(m[1]) : null; };
+const TYPE_RE = [
+  ['spray', /방제|농약|살포|살균|살충|소독|약제|약\s?(?:을|를)?\s*(?:쳤|줬|뿌|했|쳐|쳤다)|약\s?\d|(?:천|이천|오백|\d+)\s*배/],
+  ['fert', /비료|거름|요소|퇴비|복합|칼리|인비|유박|석회|시비|붕사/],
+  ['harvest', /수확|땄|따냈|캤|캐냈|출하|팔았|판매|납품|공판장|경매|상자|박스/],
+  ['work', /물\s?(?:을|를)?\s*(?:줬|주|댔|대)|관수|제초|풀|김매기|전정|유인|순지르기|적엽|적과|솎|정식|심었|이앙|모내기|파종|씨\s?뿌|경운|로터리|밭갈|이랑|멀칭|비닐|환기|보온|하우스|작업|일했/],
+];
+const WORK_OF = [[/물|관수/, '물 관리'], [/제초|풀|김매기/, '제초'], [/전정|유인|순지르기|적엽|적과|솎/, '전정·유인'], [/정식|심었|이앙|모내기/, '정식·이앙'], [/파종|씨\s?뿌/, '파종'], [/경운|로터리|밭갈|이랑/, '경운·정지']];
+const BUYERS = /가락시장|공판장|농협|로컬푸드|직거래|도매시장|경매|공판|마트|택배/;
+function voiceDate(text) {
+  const t = today();
+  if (/그저께|그제/.test(text)) return isoDay(addDays(t, -2));
+  if (/어제/.test(text)) return isoDay(addDays(t, -1));
+  const m = text.match(/(\d{1,2})\s*일(?!\s*(?:전|후|째|간))/);
+  if (m) { const d = Number(m[1]); let dt = new Date(t.getFullYear(), t.getMonth(), d); if (dt > t) dt = new Date(t.getFullYear(), t.getMonth() - 1, d); return isoDay(dt); }
+  return isoDay(t);
+}
+function voicePlanting(text) {
+  const act = activePlantings();
+  if (!act.length) return { p: null, many: false };
+  const dongs = [...text.matchAll(/(\d+)\s*동/g)].map((m) => m[1]);
+  const scored = act.map((p) => {
+    const c = BY_ID.get(String(p.cropId));
+    let s = 0;
+    if (p.field && text.replace(/\s/g, '').includes(p.field.replace(/\s/g, ''))) s += 4;
+    if (p.field && dongs.some((n) => new RegExp(`(^|\\D)${n}(\\D|$)`).test(p.field) || (/~/.test(p.field) && (() => { const r = p.field.match(/(\d+)\s*~\s*(\d+)/); return r && Number(n) >= Number(r[1]) && Number(n) <= Number(r[2]); })()))) s += 3;
+    if (c && text.includes(bare(c))) s += 2;
+    return { p, s };
+  }).sort((a, b) => b.s - a.s);
+  if (scored[0].s > 0 && (scored.length === 1 || scored[0].s > scored[1].s)) return { p: scored[0].p, many: false };
+  if (act.length === 1) return { p: act[0], many: false };
+  return { p: null, many: true };
+}
+// 말 한 줄 → 기록 여러 개(작업마다 하나). 정리되지 않은 칸은 missing에 남겨 되묻는다.
+function parseVoice(text) {
+  const clean = text.replace(/\s+/g, ' ').trim();
+  const date = voiceDate(clean);
+  const where = voicePlanting(clean);
+  const c = where.p ? BY_ID.get(String(where.p.cropId)) : CROPS.find((x) => clean.includes(bare(x)));
+  // 문장을 동작 단위로 자른다: "물 줬고 비료 20키로 넣었다"
+  const parts = clean.split(/(?<=[가-힣]고)\s+|그리고|[,.]\s*/).map((s) => s.trim()).filter(Boolean);
+  const segs = [];
+  for (const part of parts) {
+    const hit = TYPE_RE.map(([k, re]) => ({ k, i: part.search(re) })).filter((o) => o.i >= 0).sort((a, b) => a.i - b.i)[0];
+    if (hit && (!segs.length || segs[segs.length - 1].type !== hit.k)) segs.push({ type: hit.k, text: part });
+    else if (segs.length) segs[segs.length - 1].text += ` ${part}`;
+    else segs.push({ type: null, text: part });
+  }
+  if (segs.length > 1 && segs[0].type === null) { segs[1].text = `${segs[0].text} ${segs[1].text}`; segs.shift(); }
+  if (!segs.length || !segs[0].type) segs.splice(0, segs.length, { type: 'work', text: clean });
+  return segs.map(({ type, text: t }) => {
+    const v = { date, memo: t };
+    const missing = [];
+    const won = (() => { const m = t.match(new RegExp(`${NUM}\\s*원`)); return m ? korNum(m[1]) : null; })();
+    if (type === 'spray') {
+      const ratio = grab(t, '배(?!추|나무)');
+      const water = grab(t, '리터|L|ℓ');
+      const nm = t.match(/([가-힣A-Za-z][가-힣A-Za-z0-9-]{1,14})\s*(?:을|를|으로|로)?\s*(?:[\d.,]+\s*[만천백]*|[이삼사오육칠팔구]?천|오백)\s*배/);
+      const target = c ? (c.pests || []).map((p) => p.name.replace(/\(.*\)/, '')).find((n) => n && t.includes(n)) : null;
+      if (nm && !/^(약|농약|약제|물)$/.test(nm[1])) v.pesticide = nm[1];
+      if (ratio) v.ratio = ratio;
+      if (water) v.water = water;
+      if (target) v.target = target;
+      if (!v.pesticide) missing.push('약제 이름');
+      if (!v.ratio) missing.push('희석 배수');
+      if (!v.water) missing.push('물 양');
+    } else if (type === 'fert') {
+      const product = PRODUCTS.find((n) => t.includes(n.replace(/\(.*\)/, ''))) || (t.match(/(요소|퇴비|유박|석회|복합비료|칼리|인비|붕사)/) || [])[1];
+      const bags = grab(t, '포대|포');
+      const kgv = grab(t, '키로|킬로|kg|킬로그램|키로그램');
+      if (product) v.product = product;
+      if (bags) { v.qty = bags; v.qunit = '포대'; } else if (kgv) { v.qty = kgv; v.qunit = 'kg'; }
+      const r = t.match(/(웃거름|밑거름)\s*(\d)?\s*(회|차)?/);
+      if (r) v.round = r[0];
+      if (!v.product) missing.push('비료 이름');
+      if (!v.qty) missing.push('양');
+    } else if (type === 'harvest') {
+      const kgv = grab(t, '키로|킬로|kg|킬로그램|키로그램|톤');
+      const boxes = grab(t, '상자|박스|짝');
+      if (kgv) v.kg = /톤/.test(t) && kgv < 100 ? kgv * 1000 : kgv;
+      if (boxes) v.boxes = boxes;
+      if (won) v.price = won;
+      const b = t.match(BUYERS);
+      if (b) v.buyer = b[0];
+      if (!v.kg) missing.push('수확량(kg)');
+    } else {
+      v.work = (WORK_OF.find(([re]) => re.test(t)) || [, '기타'])[1];
+      const ppl = grab(t, '명');
+      const hrs = grab(t, '시간');
+      if (ppl) v.people = ppl;
+      if (hrs) v.hours = hrs;
+      if (won) v.cost = won;
+    }
+    if (type !== 'harvest' && won && v.cost == null) v.cost = won;
+    return { type, pid: where.p?.id || null, many: where.many, crop: c, values: v, missing };
+  });
+}
+let voiceDraft = null; // 정리된 기록들 — 화면을 다시 그려도 남게
+function viewVoice(q) {
+  const pid = q.get('pid') || '';
+  return `<div class="stack voice">
+    <h1>말로 기록하기</h1>
+    <p class="lede">작업한 것을 그대로 말하면 날짜·필지·작업·자재로 정리해 드립니다. 빠진 것만 다시 묻습니다.</p>
+    <p class="sub">예: “3동 딸기 오늘 물 줬고 비료 요소 2포대 넣었다” · “고추 앞밭 탄저병 약 2천배로 물 500리터 쳤다” · “어제 딸기 80키로 따서 공판장에 40만원 받았다”</p>
+    ${SR ? '<button class="mic" data-mic aria-pressed="false"><span class="mic-dot" aria-hidden="true"></span><b data-mic-label>누르고 말하기</b></button>' : '<p class="notice">이 브라우저는 바로 받아쓰기를 지원하지 않습니다. 아래 칸을 누른 뒤 휴대폰 키보드의 <b>마이크</b> 버튼으로 말하면 됩니다.</p>'}
+    <label class="f">알아들은 말 (고쳐도 됩니다)<textarea data-voice-text rows="3" placeholder="여기에 말한 내용이 적힙니다"></textarea></label>
+    <div class="row"><button class="btn primary" data-voice-go data-pid="${esc(pid)}">정리하기</button><a class="btn quiet" href="${pid ? `#/farm/${esc(pid)}` : '#/farm'}">닫기</a></div>
+    <div data-voice-out></div>
+  </div>`;
+}
+function voiceResultHtml(recs) {
+  const act = activePlantings();
+  const needP = recs.some((r) => !r.pid) && act.length > 0;
+  const card = (r, i) => {
+    const pl = r.pid ? getPlanting(r.pid) : null;
+    const lab = r.type ? REC[r.type].replace(' 기록', '') : '작업';
+    const v = r.values;
+    const sum = r.type === 'spray' ? [v.pesticide, v.ratio && `${fmt(v.ratio, 0)}배`, v.water && `물 ${fmt(v.water, 0)}L`, v.ratio && v.water && `약 ${mixText(mixAmount(v.ratio, v.water))}`, v.target].filter(Boolean).join(' · ')
+      : r.type === 'fert' ? [v.product, v.qty && `${fmt(v.qty, 1)}${v.qunit}`, v.round].filter(Boolean).join(' · ')
+      : r.type === 'harvest' ? [v.kg && `${fmt(v.kg, 1)}kg`, v.boxes && `${fmt(v.boxes, 0)}상자`, v.price && `${fmt(v.price, 0)}원`, v.buyer].filter(Boolean).join(' · ')
+      : [v.work, v.people && `${fmt(v.people, 0)}명`, v.hours && `${fmt(v.hours, 1)}시간`, v.cost && `${fmt(v.cost, 0)}원`].filter(Boolean).join(' · ');
+    return `<div class="vcard${r.missing.length ? ' need' : ''}">
+      <div class="vcard-h"><span class="tag plain">${lab}</span><b>${esc(v.date)}</b>${pl ? `<span>${esc(shortName(BY_ID.get(String(pl.cropId))))}${pl.field ? ` · ${esc(pl.field)}` : ''}</span>` : ''}</div>
+      <p>${esc(sum || v.memo)}</p>
+      ${r.missing.length ? `<p class="vmiss">빠진 것: <b>${r.missing.map(esc).join(', ')}</b></p>` : ''}
+      <div class="row">${r.pid ? (r.missing.length ? `<button class="btn primary" data-voice-fill="${i}">빠진 것 채우기</button>` : `<button class="btn primary" data-voice-save="${i}">저장</button><button class="btn quiet" data-voice-fill="${i}">고쳐서 저장</button>`) : ''}</div>
+    </div>`;
+  };
+  return `<h2 class="sub-h">이렇게 정리했습니다</h2>
+    ${needP ? `<div class="vpick"><p><b>어느 작기의 기록인가요?</b></p><div class="chips">${act.map((p) => `<button class="chip" data-voice-pid="${esc(p.id)}">${esc(shortName(BY_ID.get(String(p.cropId))))}${p.field ? ` · ${esc(p.field)}` : ''}</button>`).join('')}</div></div>` : ''}
+    ${!act.length ? '<p class="notice">등록한 작기가 없어 영농일지에 바로 적습니다. 필지별로 모으려면 <a href="#/farm/new">작기 등록</a>을 먼저 하세요.</p>' : ''}
+    <div class="vcards">${recs.map(card).join('')}</div>
+    ${recs.filter((r) => r.pid && !r.missing.length).length > 1 ? '<p class="row"><button class="btn primary" data-voice-saveall>정리된 것 모두 저장</button></p>' : ''}
+    ${!act.length ? '<p class="row"><button class="btn primary" data-voice-diary>영농일지에 저장</button></p>' : ''}`;
+}
+function voiceSave(r) {
+  const p = getPlanting(r.pid);
+  if (!p) return null;
+  const f = document.createElement('form');
+  const vals = { cost: '', memo: '', hours: '', ...r.values };
+  if (r.type === 'spray') { vals.water ??= ''; vals.target ??= ''; vals.phi ??= ''; }
+  if (r.type === 'fert') { vals.round ??= ''; vals.qunit ??= '포대'; }
+  if (r.type === 'harvest') { vals.boxes ??= ''; vals.price ??= ''; vals.buyer ??= ''; }
+  if (r.type === 'work') { vals.people ??= ''; vals.work ??= '기타'; }
+  for (const [k, v] of Object.entries(vals)) { const i = document.createElement('input'); i.name = k; i.value = v ?? ''; f.appendChild(i); }
+  const e = recordFromForm(f, r.type || 'work', p);
+  e.voice = true;
+  store.set('diary', [...diary(), e]);
+  return e;
+}
+let recognizer = null;
+function toggleMic(btn) {
+  if (recognizer) { recognizer.stop(); return; }
+  const ta = document.querySelector('[data-voice-text]');
+  const rec = new SR();
+  rec.lang = 'ko-KR';
+  rec.interimResults = true;
+  rec.continuous = false;
+  const base = ta.value ? `${ta.value} ` : '';
+  rec.onresult = (ev) => { ta.value = base + [...ev.results].map((x) => x[0].transcript).join(''); };
+  rec.onerror = (ev) => toast(ev.error === 'not-allowed' ? '마이크 사용을 허용해 주세요(브라우저 주소창의 자물쇠 → 마이크).' : '말을 알아듣지 못했습니다. 다시 눌러 말해 주세요.');
+  rec.onend = () => { recognizer = null; btn.setAttribute('aria-pressed', 'false'); btn.querySelector('[data-mic-label]').textContent = '누르고 말하기'; if (ta.value.trim()) document.querySelector('[data-voice-go]')?.click(); };
+  recognizer = rec;
+  btn.setAttribute('aria-pressed', 'true');
+  btn.querySelector('[data-mic-label]').textContent = '듣는 중… 다 말하면 다시 누르기';
+  rec.start();
+}
+// 기록 화면에 말로 정리한 값 채우기(빠진 칸 표시)
+function applyPrefill() {
+  let pf;
+  try { pf = JSON.parse(sessionStorage.getItem('yn:prefill') || 'null'); } catch { pf = null; }
+  const form = document.querySelector('[data-rec-form]');
+  if (!pf || !form || form.dataset.recForm !== pf.type || form.dataset.pid !== pf.pid) return;
+  sessionStorage.removeItem('yn:prefill');
+  for (const [k, v] of Object.entries(pf.values || {})) { const el = form.elements[k]; if (el && v != null && v !== '') el.value = v; }
+  const need = { '약제 이름': 'pesticide', '희석 배수': 'ratio', '물 양': 'water', '비료 이름': 'product', '양': 'qty', '수확량(kg)': 'kg' };
+  (pf.missing || []).forEach((m) => { const el = form.elements[need[m]]; if (el) { el.value = ''; el.classList.add('miss'); } });
+  form.insertAdjacentHTML('afterbegin', `<p class="wide vbanner">말한 내용: “${esc(pf.text)}”${pf.missing?.length ? `<br><b>빠진 것: ${pf.missing.map(esc).join(', ')}</b> — 표시된 칸을 채워 주세요.` : ''}</p>`);
+  form.querySelector('.miss')?.focus();
+  paintMix();
+}
+
+// ---------- 제출용 영농일지 (지원사업·GAP 인증 준비용 인쇄 양식) ----------
+function viewReport(q) {
+  const st = settings();
+  const all = plantings();
+  const pid = q.get('pid') || '';
+  const p = pid ? getPlanting(pid) : null;
+  const t = today();
+  const from = q.get('from') || (p?.date ? (p.date < isoDay(addDays(t, -365)) ? isoDay(addDays(t, -365)) : p.date) : `${t.getFullYear()}-01-01`);
+  const to = q.get('to') || isoDay(t);
+  const recs = diary().filter((e) => (!pid || e.plantingId === pid) && e.date >= from && e.date <= to).sort((a, b) => (a.date < b.date ? -1 : a.date > b.date ? 1 : 0));
+  const c = p ? BY_ID.get(String(p.cropId)) : null;
+  const m2 = p ? areaNow('P' + p.id).m2 : 0;
+  const sprays = recs.filter((e) => e.type === 'spray' || /방제/.test(e.work));
+  const ferts = recs.filter((e) => e.type === 'fert' || /비료/.test(e.work));
+  const harvests = recs.filter((e) => e.type === 'harvest');
+  const sum = (arr, k) => arr.reduce((a, e) => a + (Number(e[k]) || 0), 0);
+  const td = (v) => `<td>${esc(v ?? '')}</td>`;
+  return `<div class="stack report">
+    <div class="no-print card">
+      <h1>제출용 영농일지</h1>
+      <p class="sub">청년후계농·지원사업 정산, GAP 인증 준비 때 내는 영농일지 양식으로 정리합니다. 기간과 작기를 고르고 <b>인쇄</b>(또는 PDF로 저장)를 누르세요.</p>
+      <form class="form" data-report-form>
+        <label class="f">작기<select name="pid"><option value="">전체 기록</option>${all.map((x) => `<option value="${esc(x.id)}"${x.id === pid ? ' selected' : ''}>${esc(shortName(BY_ID.get(String(x.cropId)) || { name: '작목' }))}${x.field ? ` · ${esc(x.field)}` : ''}</option>`).join('')}</select></label>
+        <label class="f">시작일<input type="date" name="from" value="${esc(from)}"></label>
+        <label class="f">끝일<input type="date" name="to" value="${esc(to)}"></label>
+        <label class="f">경영주 이름<input type="text" name="farmer" value="${esc(st.farmer || '')}" placeholder="인쇄물에 적힐 이름"></label>
+        <div class="wide row"><button class="btn quiet" type="submit">다시 정리</button><button class="btn primary" type="button" data-print>인쇄 · PDF 저장</button></div>
+      </form>
+    </div>
+    <article class="sheet">
+      <h1 class="sheet-title">영농일지</h1>
+      <table class="meta-t"><tbody>
+        <tr><th>경영주</th>${td(st.farmer || '')}<th>기간</th>${td(`${from} ~ ${to}`)}</tr>
+        <tr><th>작목</th>${td(c ? fullName(c) : '전체')}<th>필지·시설</th>${td(p ? `${p.field || ''}${m2 ? ` (${fmt(m2 / PY, 0)}평·${fmt(m2, 0)}㎡)` : ''}` : '')}</tr>
+        ${p?.date ? `<tr><th>기준일</th>${td(`${p.date}${p.memo ? ` · ${p.memo}` : ''}`)}<th>기록 수</th>${td(`${recs.length}건`)}</tr>` : ''}
+      </tbody></table>
+      <h2>1. 작업 기록</h2>
+      <table><thead><tr><th>날짜</th><th>작목·필지</th><th>작업</th><th>내용(자재·사용량)</th><th>인원·시간</th><th>비용(원)</th><th>비고</th></tr></thead><tbody>
+        ${recs.length ? recs.map((e) => `<tr>${td(e.date)}${td([e.crop, e.field].filter(Boolean).join(' · '))}${td(e.work)}${td(e.input)}${td([e.people && `${e.people}명`, e.hours && `${e.hours}시간`].filter(Boolean).join(' '))}${td(e.cost ? fmt(e.cost, 0) : '')}${td(e.memo)}</tr>`).join('') : '<tr><td colspan="7">기록 없음</td></tr>'}
+      </tbody></table>
+      <h2>2. 농약 사용 기록</h2>
+      <table><thead><tr><th>살포일</th><th>약제(상표명)</th><th>희석 배수</th><th>물 양(L)</th><th>대상 병해충</th><th>안전사용 일수</th><th>수확 가능일</th></tr></thead><tbody>
+        ${sprays.length ? sprays.map((e) => `<tr>${td(e.date)}${td(e.pesticide || e.input)}${td(e.ratio ? `${e.ratio}배` : '')}${td(e.water || '')}${td(e.target || '')}${td(e.phi ? `${e.phi}일` : '')}${td(e.phi ? isoDay(addDays(parseDay(e.date), Number(e.phi))) : '')}</tr>`).join('') : '<tr><td colspan="7">기록 없음</td></tr>'}
+      </tbody></table>
+      <h2>3. 비료 사용 기록</h2>
+      <table><thead><tr><th>날짜</th><th>비료</th><th>사용량</th><th>회차</th><th>비고</th></tr></thead><tbody>
+        ${ferts.length ? ferts.map((e) => `<tr>${td(e.date)}${td(e.product || e.input)}${td(e.qty ? `${e.qty}${e.qunit || ''}` : '')}${td(e.round || '')}${td(e.memo)}</tr>`).join('') : '<tr><td colspan="5">기록 없음</td></tr>'}
+      </tbody></table>
+      <h2>4. 수확·출하 기록</h2>
+      <table><thead><tr><th>날짜</th><th>수확량(kg)</th><th>상자</th><th>판매 금액(원)</th><th>출하처</th></tr></thead><tbody>
+        ${harvests.length ? harvests.map((e) => `<tr>${td(e.date)}${td(e.kg ? fmt(e.kg, 1) : '')}${td(e.boxes || '')}${td(e.price ? fmt(e.price, 0) : '')}${td(e.buyer || '')}</tr>`).join('') : '<tr><td colspan="5">기록 없음</td></tr>'}
+        ${harvests.length ? `<tr class="sum"><th>합계</th>${td(fmt(sum(harvests, 'kg'), 1))}${td(fmt(sum(harvests, 'boxes'), 0))}${td(fmt(sum(harvests, 'price'), 0))}<td></td></tr>` : ''}
+      </tbody></table>
+      <p class="sheet-foot">들인 비용 합계 ${fmt(sum(recs, 'cost'), 0)}원 · 판매 금액 합계 ${fmt(sum(harvests, 'price'), 0)}원 · 작성: 영농노트(leafnote.kr/nong), ${isoDay(t)}</p>
+    </article>
+  </div>`;
+}
+
 // ---------- 알림 ----------
 let toastTimer;
 function toast(html) {
   const el = document.getElementById('toast');
-  el.innerHTML = html;
+  // 글과 끝의 단추(되돌리기·바꾸기)를 나눠, 글 안의 굵은 글씨가 따로 줄을 차지하지 않게
+  const m = String(html).match(/^([^]*?)\s*((?:<(?:button|a)\b[^>]*>[^<]*<\/(?:button|a)>\s*)*)$/);
+  el.innerHTML = `<span class="msg">${m ? m[1] : html}</span>${m ? m[2] : ''}`;
   el.classList.add('on');
   clearTimeout(toastTimer);
   toastTimer = setTimeout(() => el.classList.remove('on'), 4000);
@@ -1527,18 +1985,22 @@ function render() {
   else if (page === 'diary') html = viewDiary(q);
   else if (page === 'links') html = viewLinks(META);
   else if (page === 'import') html = viewImport();
+  else if (page === 'voice') html = viewVoice(q);
+  else if (page === 'report') html = viewReport(q);
   else if (page === 'farm') html = !seg[1] ? viewFarm() : seg[1] === 'new' ? viewFarmNew(q) : seg[2] === 'rec' ? viewRecord(seg[1], seg[3]) : viewPlanting(seg[1]);
   else html = '<div class="stack"><p class="empty">페이지를 찾을 수 없습니다. <a href="#/">오늘 화면으로</a></p></div>';
   $app.innerHTML = html;
   paintAccount();
   document.body.classList.toggle('is-home', page === 'home');
-  const nav = page === 'crop' || page === 'calendar' ? 'crops' : page === 'tools' ? 'links' : page;
+  const nav = page === 'crop' || page === 'calendar' ? 'crops' : page === 'tools' ? 'links' : page === 'voice' ? 'farm' : page === 'report' ? 'diary' : page;
   document.querySelectorAll('[data-nav]').forEach((a) => { const on = a.dataset.nav === nav; a.classList.toggle('on', on); on ? a.setAttribute('aria-current', 'page') : a.removeAttribute('aria-current'); });
   motion();
   if (page === 'tools') paintTools();
   if (page === 'calendar') document.querySelectorAll('.filter .chip.on').forEach((el) => { const box = el.parentElement; box.scrollLeft = Math.max(0, el.offsetLeft - box.offsetLeft - 16); });
   if (page === 'home') paintWeather();
-  if (page === 'farm') paintMix();
+  if (page === 'farm') { paintMix(); if (seg[2] === 'rec') applyPrefill(); }
+  if (document.querySelector('[data-rpick]')) paintRpick();
+  if (page === 'voice' && voiceDraft && voiceDraft.text) { document.querySelector('[data-voice-text]').value = voiceDraft.text; document.querySelector('[data-voice-out]').innerHTML = voiceResultHtml(voiceDraft.recs); }
   if (page === 'crop') {
     const c = BY_ID.get(String(seg[1]));
     document.title = c ? `${fullName(c)} — 영농노트` : '영농노트';
@@ -1579,8 +2041,56 @@ function toggleFav(id) {
   toast(on ? `<b>${esc(fullName(c))}</b>을(를) 내 작목에 담았습니다.${route().page === 'home' ? '' : ' <a href="#/">오늘 할 일 보기</a>'}` : `<b>${esc(fullName(c))}</b>을(를) 내 작목에서 뺐습니다. <button data-fav="${id}">되돌리기</button>`);
 }
 document.addEventListener('click', (e) => {
-  const t = e.target.closest('[data-sync-now],[data-migrate],[data-pdone],[data-plant-end],[data-plant-del],[data-mix-set],[data-done],[data-undone],[data-region],[data-geo],[data-wx-change],[data-wx-retry],[data-wx-clear],[data-big],[data-fav],[data-go],[data-jump],[data-print],[data-area-reset],[data-diary-del],[data-diary-csv],[data-diary-backup],[data-reset],[data-yr-step]');
+  const t = e.target.closest('[data-rp-apply],[data-rp-pick],[data-mic],[data-voice-go],[data-voice-pid],[data-voice-save],[data-voice-fill],[data-voice-saveall],[data-voice-diary],[data-sync-now],[data-migrate],[data-pdone],[data-plant-end],[data-plant-del],[data-mix-set],[data-done],[data-undone],[data-region],[data-geo],[data-wx-change],[data-wx-retry],[data-wx-clear],[data-big],[data-fav],[data-go],[data-jump],[data-print],[data-area-reset],[data-diary-del],[data-diary-csv],[data-diary-backup],[data-reset],[data-yr-step]');
   if (!t) return;
+  if ('rpApply' in t.dataset) { const loc = rpickValue(t.closest('[data-rpick]')); if (loc) setLoc(loc); return; }
+  if (t.dataset.rpPick) {
+    const box = t.closest('[data-rpick]');
+    const [a, b, c] = t.dataset.rpPick.split('|');
+    box.querySelector('[data-rp="sido"]').value = a; fillSgg(box, null);
+    box.querySelector('[data-rp="sgg"]').value = b; fillEmd(box, null);
+    box.querySelector('[data-rp="emd"]').value = c;
+    const loc = rpickValue(box); if (loc) setLoc(loc);
+    return;
+  }
+  if ('mic' in t.dataset) { toggleMic(t); return; }
+  if ('voiceGo' in t.dataset || t.dataset.voicePid) {
+    const text = document.querySelector('[data-voice-text]').value.trim();
+    if (!text) { toast('기록할 내용을 말하거나 적어 주세요.'); return; }
+    const recs = parseVoice(text);
+    const pid = t.dataset.voicePid || t.dataset.pid;
+    if (pid) recs.forEach((r) => { if (!r.pid) { r.pid = pid; r.many = false; } });
+    voiceDraft = { text, recs };
+    document.querySelector('[data-voice-out]').innerHTML = voiceResultHtml(recs);
+    document.querySelector('[data-voice-out]').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    return;
+  }
+  if (t.dataset.voiceSave || 'voiceSaveall' in t.dataset) {
+    const list = t.dataset.voiceSave ? [voiceDraft.recs[Number(t.dataset.voiceSave)]] : voiceDraft.recs.filter((r) => r.pid && !r.missing.length);
+    const saved = list.map(voiceSave).filter(Boolean);
+    voiceDraft.recs = voiceDraft.recs.filter((r) => !list.includes(r));
+    const out = document.querySelector('[data-voice-out]');
+    if (!voiceDraft.recs.length) { const pid = saved[0]?.plantingId; voiceDraft = null; location.hash = pid ? `#/farm/${pid}?s=recs` : '#/diary'; }
+    else out.innerHTML = voiceResultHtml(voiceDraft.recs);
+    toast(`기록 ${saved.length}건을 저장했습니다.`);
+    return;
+  }
+  if (t.dataset.voiceFill) {
+    const r = voiceDraft.recs[Number(t.dataset.voiceFill)];
+    sessionStorage.setItem('yn:prefill', JSON.stringify({ type: r.type || 'work', pid: r.pid, values: r.values, missing: r.missing, text: r.values.memo }));
+    voiceDraft.recs = voiceDraft.recs.filter((x) => x !== r);
+    if (!voiceDraft.recs.length) voiceDraft = null;
+    location.hash = `#/farm/${r.pid}/rec/${r.type || 'work'}`;
+    return;
+  }
+  if ('voiceDiary' in t.dataset) {
+    const add = voiceDraft.recs.map((r) => ({ id: Date.now().toString(36) + Math.random().toString(36).slice(2, 6), createdAt: new Date().toISOString(), date: r.values.date, crop: r.crop ? fullName(r.crop) : '', field: '', work: r.type === 'spray' ? '방제' : r.type === 'fert' ? '비료' : r.type === 'harvest' ? '수확' : r.values.work || '기타', input: '', hours: r.values.hours || '', cost: r.values.cost || r.values.price || '', memo: r.values.memo, voice: true }));
+    store.set('diary', [...diary(), ...add]);
+    voiceDraft = null;
+    location.hash = '#/diary?s=diary';
+    toast(`영농일지에 ${add.length}건을 적었습니다.`);
+    return;
+  }
   if ('syncNow' in t.dataset) { syncNow(); return; }
   if ('migrate' in t.dataset) { startMigrate(); return; }
   if (t.dataset.pdone) {
@@ -1639,10 +2149,11 @@ document.addEventListener('click', (e) => {
     const y = window.scrollY; render(); window.scrollTo(0, y);
     toast(t.dataset.region ? `<b>${t.dataset.region}</b> 일정만 보여 드립니다.` : '모든 지역 일정을 보여 드립니다.');
   } else if ('geo' in t.dataset) {
-    if (!navigator.geolocation) { toast('이 기기에서는 위치를 확인할 수 없습니다. 시·군을 골라 주세요.'); return; }
+    if (!navigator.geolocation) { toast('이 기기에서는 위치를 확인할 수 없습니다. 시·군·읍·면을 골라 주세요.'); return; }
     toast('위치를 확인하는 중입니다…');
+    loadRegions().catch(() => null);
     navigator.geolocation.getCurrentPosition(
-      (p) => setLoc({ lat: Math.round(p.coords.latitude * 100) / 100, lon: Math.round(p.coords.longitude * 100) / 100, name: '내 위치' }),
+      (p) => setLoc(nearestLoc(Math.round(p.coords.latitude * 100) / 100, Math.round(p.coords.longitude * 100) / 100)),
       () => toast('위치를 확인하지 못했습니다. 위치 권한을 허용하거나 시·군을 골라 주세요.'),
       { timeout: 15000, maximumAge: 3600e3 });
   } else if ('wxChange' in t.dataset) location.hash = '#/links?s=settings';
@@ -1700,6 +2211,13 @@ document.addEventListener('submit', (e) => {
     toast(`${REC[e2.type]}을 저장했습니다.${phi}`);
     return;
   }
+  if ('reportForm' in f.dataset) {
+    const o = Object.fromEntries(new FormData(f));
+    if ((o.farmer || '') !== (settings().farmer || '')) setSetting({ farmer: o.farmer.trim() });
+    const p = new URLSearchParams(); for (const k of ['pid', 'from', 'to']) if (o[k]) p.set(k, o[k]);
+    location.hash = '#/report?' + p;
+    return;
+  }
   if ('search' in f.dataset) {
     if (f.q.hasAttribute('data-live')) f.q.blur();
     else location.hash = '#/crops?q=' + encodeURIComponent(f.q.value.trim());
@@ -1718,6 +2236,7 @@ function setArea(v, u, cid) {
 }
 document.addEventListener('input', (e) => {
   const t = e.target;
+  if (t.matches('[data-rp-q]')) { loadRegions().then(() => rpickSearch(t.closest('[data-rpick]'), t.value)); return; }
   if (t.matches('[data-live]')) {
     document.querySelector('[data-results]').innerHTML = cropResults(t.value, t.dataset.cat);
     const p = new URLSearchParams(); if (t.dataset.cat) p.set('cat', t.dataset.cat); if (t.value.trim()) p.set('q', t.value.trim());
@@ -1745,7 +2264,9 @@ document.addEventListener('input', (e) => {
 });
 document.addEventListener('change', (e) => {
   const t = e.target;
-  if (t.matches('[data-city]') && t.value !== '') { const [name, lat, lon] = CITIES[Number(t.value)]; setLoc({ lat, lon, name }); return; }
+  if (t.matches('[data-rp="sido"]')) { fillSgg(t.closest('[data-rpick]'), null); return; }
+  if (t.matches('[data-rp="sgg"]')) { fillEmd(t.closest('[data-rpick]'), null); return; }
+  if (t.matches('[data-report-form] [name="farmer"]')) { setSetting({ farmer: t.value.trim() }); document.querySelectorAll('.meta-t td').forEach((td, i) => { if (i === 0) td.textContent = t.value.trim(); }); return; }
   if (!t.matches('[data-diary-restore]') || !t.files[0]) return;
   t.files[0].text().then((txt) => {
     const b = JSON.parse(txt);
