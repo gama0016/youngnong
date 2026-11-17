@@ -286,20 +286,34 @@ const workOf = (s) => ({ sow: '파종', nursery: '육묘', plant: '정식·이�
 // ---------- 날씨 (Open-Meteo, 키 없음) ----------
 const CITIES = [['서울', 37.57, 126.98], ['인천', 37.46, 126.71], ['경기 수원', 37.26, 127.03], ['경기 이천', 37.27, 127.44], ['강원 춘천', 37.88, 127.73], ['강원 강릉', 37.75, 128.88], ['강원 평창(고랭지)', 37.37, 128.39], ['충북 청주', 36.64, 127.49], ['충북 충주', 36.99, 127.93], ['충남 천안', 36.81, 127.11], ['충남 논산', 36.19, 127.1], ['대전', 36.35, 127.38], ['세종', 36.48, 127.29], ['전북 전주', 35.82, 127.15], ['전북 김제', 35.8, 126.88], ['광주', 35.16, 126.85], ['전남 나주', 35.02, 126.71], ['전남 해남', 34.57, 126.6], ['경북 안동', 36.57, 128.73], ['경북 상주', 36.41, 128.16], ['대구', 35.87, 128.6], ['경남 진주', 35.18, 128.11], ['경남 밀양', 35.5, 128.75], ['울산', 35.54, 129.31], ['부산', 35.18, 129.08], ['제주', 33.5, 126.53], ['서귀포', 33.25, 126.56]];
 const WX_RULES = [
-  { name: '서리·저온', test: (d, i) => d.temperature_2m_min[i] <= 2, label: (d, i) => `최저 ${fmt(d.temperature_2m_min[i], 0)}℃`, re: /저온|서리|한파|언피해|동해|혹한|냉해|한풍|추위/ },
-  { name: '폭염', test: (d, i) => d.temperature_2m_max[i] >= 33, label: (d, i) => `최고 ${fmt(d.temperature_2m_max[i], 0)}℃`, re: /고온|폭염|더위|일소/ },
-  { name: '많은 비', test: (d, i) => d.precipitation_sum[i] >= 30, label: (d, i) => `비 ${fmt(d.precipitation_sum[i], 0)}mm`, re: /호우|장마|습해|태풍|침수|잦은 비|강우/ },
-  { name: '강한 바람', test: (d, i) => d.wind_speed_10m_max[i] >= 12, label: (d, i) => `바람 초속 ${fmt(d.wind_speed_10m_max[i], 0)}m`, re: /태풍|강풍|바람|쓰러짐|도복|풍해/ },
+  { name: '서리·저온', test: (d, i) => d.temperature_2m_min[i] != null && d.temperature_2m_min[i] <= 2, label: (d, i) => `최저 ${fmt(d.temperature_2m_min[i], 0)}℃`, re: /저온|서리|한파|언피해|동해|혹한|냉해|한풍|추위/ },
+  { name: '폭염', test: (d, i) => d.temperature_2m_max[i] != null && d.temperature_2m_max[i] >= 33, label: (d, i) => `최고 ${fmt(d.temperature_2m_max[i], 0)}℃`, re: /고온|폭염|더위|일소/ },
+  { name: '많은 비', test: (d, i) => d.precipitation_sum[i] != null && d.precipitation_sum[i] >= 30, label: (d, i) => `비 ${fmt(d.precipitation_sum[i], 0)}mm`, re: /호우|장마|습해|태풍|침수|잦은 비|강우/ },
+  { name: '강한 바람', test: (d, i) => d.wind_speed_10m_max[i] != null && d.wind_speed_10m_max[i] >= 12, label: (d, i) => `바람 초속 ${fmt(d.wind_speed_10m_max[i], 0)}m`, re: /태풍|강풍|바람|쓰러짐|도복|풍해/ },
 ];
 const DAYS = ['오늘', '내일', '모레', '글피'];
 async function getWeather(loc, force) {
   const c = store.get('wx', null);
-  if (!force && c && c.lat === loc.lat && c.lon === loc.lon && Date.now() - c.at < 2 * 3600e3 && c.day === isoDay() && c.v === 2) return c;
+  if (!force && c && c.lat === loc.lat && c.lon === loc.lon && Date.now() - c.at < 2 * 3600e3 && c.day === isoDay() && c.v === 3) return c;
+  // 리프노트에서 열렸으면 기상청 단기예보(리프노트 서버가 인증키를 가지고 받아 옴)를 먼저 쓴다. 안 되면 Open-Meteo로 대신한다.
+  if (SERVER) {
+    try {
+      const r = await fetch(`/api/nong/weather?lat=${loc.lat}&lon=${loc.lon}`, { headers: { accept: 'application/json' } });
+      if (r.ok) {
+        const k = await r.json();
+        if (k?.daily?.time?.length) {
+          const w = { v: 3, src: 'kma', base: k.base, at: Date.now(), day: isoDay(), lat: loc.lat, lon: loc.lon, daily: k.daily, hourly: k.hourly };
+          store.set('wx', w);
+          return w;
+        }
+      }
+    } catch { /* Open-Meteo로 */ }
+  }
   const u = `https://api.open-meteo.com/v1/forecast?latitude=${loc.lat}&longitude=${loc.lon}&daily=temperature_2m_min,temperature_2m_max,precipitation_sum,wind_speed_10m_max&hourly=precipitation_probability,precipitation,wind_speed_10m&timezone=Asia%2FSeoul&forecast_days=4&wind_speed_unit=ms`;
   const res = await fetch(u);
   const j = await res.json();
   if (!j.daily) throw new Error(j.reason || '날씨 자료가 없습니다');
-  const w = { v: 2, at: Date.now(), day: isoDay(), lat: loc.lat, lon: loc.lon, elevation: j.elevation, daily: j.daily, hourly: j.hourly };
+  const w = { v: 3, src: 'om', at: Date.now(), day: isoDay(), lat: loc.lat, lon: loc.lon, elevation: j.elevation, daily: j.daily, hourly: j.hourly };
   store.set('wx', w);
   return w;
 }
@@ -307,7 +321,7 @@ const cityOpts = () => `<option value="">시·군 고르기</option>${CITIES.map
 const wxSetup = () => `<h2>날씨 경보</h2>
   <p>농장 위치를 정하면 앞으로 나흘 동안 서리·폭염·많은 비·강한 바람 예보가 있을 때 내 작목의 대책을 여기 띄워 드립니다.</p>
   <div class="row"><button class="btn" data-geo>지금 있는 곳으로</button><select data-city aria-label="가까운 시·군">${cityOpts()}</select></div>
-  <p class="sub">위치는 이 기기에만 저장됩니다. 날씨를 받을 때 대략의 좌표만 Open-Meteo로 보냅니다.</p>`;
+  <p class="sub">위치는 이 기기에 저장됩니다(로그인하면 계정에도). 날씨는 대략의 좌표로 ${SERVER ? '기상청 단기예보를 받아 오고, 받을 수 없을 때만 Open-Meteo를 씁니다' : 'Open-Meteo 예보를 받아 옵니다'}.</p>`;
 function wxHtml(w, loc) {
   const d = w.daily;
   const n = Math.min(4, d.time.length);
@@ -316,14 +330,14 @@ function wxHtml(w, loc) {
   const warnDay = (i) => WX_RULES.some((r) => r.test(d, i));
   const crops = myCrops();
   return `<h2>날씨 <small>${esc(loc.name)} 기준</small></h2>
-  <div class="wx-days">${Array.from({ length: n }, (_, i) => `<div class="wx-day${warnDay(i) ? ' warn' : ''}"><span>${DAYS[i]}</span><b>${fmt(d.temperature_2m_min[i], 0)}° / ${fmt(d.temperature_2m_max[i], 0)}°</b><span>${d.precipitation_sum[i] >= 1 ? `비 ${fmt(d.precipitation_sum[i], 0)}mm` : '비 없음'}</span></div>`).join('')}</div>
+  <div class="wx-days">${Array.from({ length: n }, (_, i) => `<div class="wx-day${warnDay(i) ? ' warn' : ''}"><span>${DAYS[i]}</span><b>${fmt(d.temperature_2m_min[i], 0)}° / ${fmt(d.temperature_2m_max[i], 0)}°</b><span>${d.precipitation_sum[i] == null ? '비 –' : d.precipitation_sum[i] >= 1 ? `비 ${fmt(d.precipitation_sum[i], 0)}mm` : '비 없음'}</span></div>`).join('')}</div>
   ${alerts.length ? alerts.map(({ rule, i }) => {
     const hits = crops.flatMap((c) => (c.disasters || []).filter((r) => rule.re.test(r.risk)).slice(0, 1).map((r) => ({ c, r }))).slice(0, 4);
     return `<details class="wx-alert"><summary><b>${DAYS[i]} ${rule.label(d, i)} · ${rule.name} 주의</b><span>${hits.length ? `내 작목 대책 ${hits.length}개 보기` : '내 작목 자료에 대책 없음'}</span></summary>
       ${hits.map(({ c, r }) => `<a class="wx-crop" href="#/crop/${c.id}?s=risk"><b>${esc(shortName(c))} · ${esc(r.risk)}</b><span>${esc((r.measures || []).slice(0, 3).join(' · '))}</span></a>`).join('')}</details>`;
   }).join('') : '<p class="wx-ok">앞으로 나흘 서리·폭염·많은 비·강한 바람 예보는 없습니다.</p>'}
   ${sprayHtml(w)}
-  <p class="sub">${new Date(w.at).getHours()}시 ${String(new Date(w.at).getMinutes()).padStart(2, '0')}분에 받은 예보 · <button class="linkish" data-wx-change>위치 바꾸기</button> · 날씨 자료 <a href="https://open-meteo.com/" target="_blank" rel="noopener">Open-Meteo</a></p>`;
+  <p class="sub">${new Date(w.at).getHours()}시 ${String(new Date(w.at).getMinutes()).padStart(2, '0')}분에 받은 예보 · <button class="linkish" data-wx-change>위치 바꾸기</button> · 날씨 자료 ${w.src === 'kma' ? '<a href="https://www.weather.go.kr" target="_blank" rel="noopener">기상청 단기예보</a>' : '<a href="https://open-meteo.com/" target="_blank" rel="noopener">Open-Meteo</a>'}</p>`;
 }
 function paintWxBanner(w) {
   const el = document.querySelector('[data-wx-banner]');
