@@ -597,3 +597,43 @@ html.big { font-size: 118.75%; }
 .wx .linkish { min-height: 44px; display: inline-flex; align-items: center; }
 .stage .done-btn { background: var(--ink); color: var(--bg); }
 .stage .done-btn:hover { background: var(--bg); color: var(--ink); }
+
+
+/* ================= 내 농사 ================= */
+.farm-list { display: grid; gap: clamp(16px, 2vw, 24px); }
+.farm-card { background: var(--surface); display: grid; gap: var(--gap); padding: 0 0 var(--gap); }
+.stage .farm-card { background: var(--bg); color: var(--ink); }
+.farm-head { display: grid; gap: 2px; padding: 14px 16px 10px; text-decoration: none; }
+.farm-head b { font-size: var(--step-lead); font-weight: 800; letter-spacing: -0.03em; line-height: 1.15; }
+.farm-head span { font-size: var(--step-small); font-weight: 600; }
+.farm-head:hover b { text-decoration: underline; text-underline-offset: 0.15em; }
+.farm-card .todo { padding: 0 var(--gap); }
+.farm-card .todo-item { background: var(--surface); }
+.stage .farm-card .todo-item { background: var(--surface); }
+.farm-quick { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--gap); padding: 0 var(--gap); }
+.farm-quick .btn { padding: 8px 4px; font-size: var(--step-small); min-height: 52px; }
+.stack > .farm-quick { padding: 0; }
+.farm-cta { display: grid; gap: 4px; background: var(--bg); color: var(--ink); padding: 14px 16px; margin-bottom: 16px; text-decoration: none; max-width: 680px; }
+.farm-cta b { font-size: var(--step-body); }
+.farm-cta span { font-size: var(--step-small); }
+.farm-cta:hover { background: var(--ink); color: var(--bg); }
+.home-farm { margin-bottom: 28px; max-width: 760px; }
+.pdate { font-weight: 800; color: var(--ink); }
+.is-done b { text-decoration: line-through; }
+.phi { background: var(--danger); color: #fff; padding: 12px 16px; margin: 0 var(--gap); }
+.stack > .phi { margin: 0; }
+.spray-win { background: var(--surface); padding: 12px 16px; display: grid; gap: 4px; }
+.wx .spray-win { background: var(--bg); }
+.spray-win .when { font-size: var(--step-small); color: var(--muted); }
+.anchor-pick { border: 0; padding: 0; margin: 0; display: grid; gap: var(--gap); }
+.anchor-pick legend { font-size: var(--step-small); font-weight: 700; margin-bottom: 8px; }
+.radio { display: grid; grid-template-columns: 28px 1fr; gap: 10px; align-items: start; background: var(--bg); padding: 12px 14px; cursor: pointer; }
+.radio input { width: 24px; height: 24px; margin: 2px 0 0; accent-color: var(--accent); }
+.radio .when { display: block; font-size: var(--step-small); color: var(--muted); }
+.mix-out { font-size: var(--step-lead); margin-top: 10px; }
+.mix-out b { font-size: var(--step-head); letter-spacing: -0.04em; }
+.bag-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+.bag-list .when { font-size: var(--step-small); color: var(--muted); }
+.card .bags .bag { background: var(--bg); }
+@media (max-width: 420px) { .farm-quick { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.todo-item > div:only-child { grid-column: 1 / -1; }
