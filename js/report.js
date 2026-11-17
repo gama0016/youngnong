@@ -86,7 +86,7 @@ function build() {
     submit.disabled = true;
     say('보내는 중입니다…');
     try {
-      const res = await fetch(ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
+      const res = await fetch(ENDPOINT, { method: 'POST', credentials: 'omit', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
       if (res.ok) {
         say('보냈습니다. 알려 주셔서 고맙습니다.', 'ok');
         form.reset(); count.textContent = '0';
