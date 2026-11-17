@@ -521,9 +521,9 @@ input[type="text"], input[type="search"], input[type="number"], input[type="date
 .bag .when { font-size: var(--step-small); color: var(--muted); }
 
 /* 더보기 */
-.link-grid.top .link-card { background: var(--ink); color: var(--bg); }
-.link-grid.top .link-card span { color: var(--surface-2); }
-.link-grid.top .link-card:hover { background: var(--accent); }
+.link-grid.lead .link-card { background: var(--ink); color: var(--bg); }
+.link-grid.lead .link-card span { color: var(--surface-2); }
+.link-grid.lead .link-card:hover { background: var(--accent); }
 .words { display: grid; gap: var(--gap); }
 .words > div { background: var(--bg); padding: 14px 16px; display: grid; gap: 4px; }
 .words dt { font-weight: 800; }
@@ -644,3 +644,13 @@ html.big { font-size: 118.75%; }
 .brief .fert-round { margin-bottom: var(--gap); }
 .brief-line { display: flex; align-items: center; min-height: 44px; margin: 0 var(--gap); padding: 10px 14px; background: var(--ink); color: var(--bg); text-decoration: none; font-size: var(--step-small); }
 .brief-line b { color: #ffd166; margin-right: 6px; }
+
+/* 계정 표시 */
+.acct { order: 2; margin-left: auto; min-height: 44px; display: inline-flex; align-items: center; padding: 6px 12px; background: var(--surface); color: var(--ink); font-weight: 800; font-size: var(--step-small); text-decoration: none; white-space: nowrap; }
+.acct[data-state="login"], .acct[data-state="onboard"], .acct[data-state="move"] { background: var(--accent); color: var(--accent-ink); }
+.acct[data-state="error"], .acct[data-state="toolarge"] { background: var(--danger); color: #fff; }
+@media (min-width: 820px) { .acct { order: 3; margin-left: 0; } .textsize { order: 4; } }
+.top-in .textsize { margin-left: 0; }
+.acct-box { display: grid; gap: 10px; }
+.move-bar { display: grid; gap: 2px; background: var(--accent); color: var(--accent-ink); padding: 12px var(--m); margin: 0 calc(-1 * var(--m)); text-decoration: none; }
+.move-bar span { font-size: var(--step-small); }

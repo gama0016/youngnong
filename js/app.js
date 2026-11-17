@@ -12,10 +12,226 @@ const ALIAS = { 꼬추: '고추', 나락: '벼', 쌀: '벼', 도라지: '길경'
 // ---------- storage ----------
 const store = {
   get(k, d) { try { const v = localStorage.getItem('yn:' + k); return v == null ? d : JSON.parse(v); } catch { return d; } },
-  set(k, v) { try { localStorage.setItem('yn:' + k, JSON.stringify(v)); } catch { /* 저장 불가 환경 */ } },
+  set(k, v) {
+    try { localStorage.setItem('yn:' + k, JSON.stringify(v)); } catch { /* 저장 불가 환경 */ }
+    if (SYNC_KEYS.includes(k)) { if (SYNC_LWW.includes(k)) markTime(k); schedulePush(); }
+  },
 };
 let favs = new Set(store.get('favs', []));
 const saveFavs = () => store.set('favs', [...favs]);
+
+
+// ---------- 리프노트 계정 동기화 ----------
+// 영농노트는 리프노트(leafnote.kr/nong)에서 같은 카카오 계정으로 쓴다. 기록은 언제나 이 기기에 먼저
+// 저장하고(밭에서 통신이 끊겨도 되게), 로그인돼 있으면 리프노트 서버의 내 문서와 합친다.
+// 서버 쪽 형식 검사는 leafnote의 src/lib/nong.ts — 아래 SYNC 칸 목록을 바꾸면 그쪽도 같이 바꾼다.
+const TEST = window.__YN_TEST || {};
+const LEAF_ORIGIN = TEST.leafOrigin || 'https://leafnote.kr';
+const OLD_ORIGIN = TEST.oldOrigin || 'https://gama0016.github.io';
+const NEW_URL = `${LEAF_ORIGIN}/nong/`;
+const SERVER = location.origin === LEAF_ORIGIN; // 리프노트가 내보낸 화면일 때만 계정 기능을 켠다
+const IS_OLD = location.origin === OLD_ORIGIN;
+const API = '/api/nong/data';
+const LOGIN_URL = `/login?callbackUrl=${encodeURIComponent('/nong/')}`;
+const ONBOARD_URL = `/onboarding?callbackUrl=${encodeURIComponent('/nong/')}`;
+const SYNC_LWW = ['favs', 'settings', 'area', 'areas', 'fert', 'sprayPer10a', 'tankL', 'mixRatio', 'toolCrop'];
+const SYNC_KEYS = [...SYNC_LWW, 'diary', 'plantings', 'done'];
+const TOMB_DAYS = 180;
+const raw = {
+  get(k, d) { try { const v = localStorage.getItem('yn:' + k); return v == null ? d : JSON.parse(v); } catch { return d; } },
+  set(k, v) { try { v === undefined ? localStorage.removeItem('yn:' + k) : localStorage.setItem('yn:' + k, JSON.stringify(v)); } catch { /* 저장 불가 */ } },
+};
+function markTime(k) { const mt = raw.get('_mt', {}); mt[k] = Date.now(); raw.set('_mt', mt); }
+// 지운 것은 지운 시각을 남겨 둔다 — 다른 기기의 옛 사본이 되살리지 못하게
+function tomb(kind, id) { const t = raw.get('_tomb', {}); (t[kind] ||= {})[id] = Date.now(); raw.set('_tomb', t); schedulePush(); }
+function localDoc() {
+  const d = { v: 1, mt: raw.get('_mt', {}), tomb: raw.get('_tomb', {}) };
+  for (const k of SYNC_KEYS) { const v = raw.get(k, undefined); if (v !== undefined) d[k] = v; }
+  return d;
+}
+function applyDoc(doc) {
+  for (const k of SYNC_KEYS) raw.set(k, doc[k]);
+  raw.set('_mt', doc.mt || {});
+  raw.set('_tomb', doc.tomb || {});
+  favs = new Set((doc.favs || []).map(String));
+}
+// 두 문서 합치기: 설정류는 나중에 바꾼 쪽, 기록류는 합집합(지운 표시가 있으면 뺀다)
+function mergeDocs(a, b) {
+  const out = { v: 1, mt: {}, tomb: {} };
+  const cut = Date.now() - TOMB_DAYS * 864e5;
+  for (const kind of ['diary', 'plantings', 'done']) {
+    const t = {};
+    for (const src of [b.tomb?.[kind] || {}, a.tomb?.[kind] || {}]) for (const [id, ts] of Object.entries(src)) if (ts > cut && ts > (t[id] || 0)) t[id] = ts;
+    out.tomb[kind] = t;
+  }
+  for (const k of SYNC_LWW) {
+    const ta = a.mt?.[k] || 0;
+    const tb = b.mt?.[k] || 0;
+    const src = a[k] === undefined ? b : b[k] === undefined ? a : ta >= tb ? a : b;
+    if (src[k] !== undefined) { out[k] = src[k]; out.mt[k] = Math.max(ta, tb); }
+  }
+  const stamp = (e) => e.updatedAt || e.createdAt || e.created || '';
+  for (const kind of ['diary', 'plantings']) {
+    const m = new Map();
+    for (const e of [...(b[kind] || []), ...(a[kind] || [])]) { if (!e || !e.id) continue; const cur = m.get(e.id); if (!cur || stamp(e) >= stamp(cur)) m.set(e.id, e); }
+    const gone = out.tomb[kind];
+    out[kind] = [...m.values()].filter((e) => !gone[e.id]);
+  }
+  const done = {};
+  for (const src of [b.done || {}, a.done || {}]) for (const [k, v] of Object.entries(src)) { if (!done[k] || (v.ts || 0) >= (done[k].ts || 0)) done[k] = v; }
+  for (const [k, v] of Object.entries(done)) if ((out.tomb.done[k] || 0) > (v.ts || 0)) delete done[k];
+  out.done = done;
+  return out;
+}
+const canon = (v) => (Array.isArray(v) ? `[${v.map(canon).join(',')}]` : v && typeof v === 'object' ? `{${Object.keys(v).sort().map((k) => `${JSON.stringify(k)}:${canon(v[k])}`).join(',')}}` : JSON.stringify(v));
+const sameDoc = (a, b) => canon({ ...a, v: 1 }) === canon({ ...b, v: 1 });
+
+const sync = { status: SERVER ? 'checking' : 'off', user: null, at: raw.get('_syncAt', 0) };
+const SYNC_TEXT = {
+  checking: ['확인 중', '리프노트 계정을 확인하는 중입니다.'],
+  login: ['로그인', '로그인하지 않았습니다. 기록은 이 기기에만 저장됩니다.'],
+  onboard: ['가입 마치기', '리프노트 약관 동의를 마치면 기록이 계정에 저장됩니다.'],
+  syncing: ['저장 중', '리프노트 계정에 저장하는 중입니다.'],
+  ok: ['저장됨', '리프노트 계정에 저장돼 있습니다.'],
+  offline: ['기기에 저장', '인터넷이 끊겨 이 기기에 먼저 저장했습니다. 연결되면 계정에 맞춥니다.'],
+  error: ['저장 대기', '계정에 저장하지 못했습니다. 잠시 뒤 다시 시도합니다.'],
+  notready: ['기기에 저장', '계정 저장소를 준비하는 중입니다. 그동안은 이 기기에 저장됩니다.'],
+  toolarge: ['저장 공간 초과', '기록이 계정 한 사람 몫의 저장 한도를 넘었습니다. 이 기기에는 그대로 있습니다.'],
+  off: ['', ''],
+};
+let pushTimer;
+let syncing = false;
+let syncAgain = false;
+let viewStale = false;
+function schedulePush() {
+  if (!SERVER || ['login', 'onboard', 'checking'].includes(sync.status)) return;
+  clearTimeout(pushTimer);
+  pushTimer = setTimeout(syncNow, 2000);
+}
+function setSync(status) {
+  sync.status = status;
+  paintAccount();
+}
+function refreshView() {
+  const a = document.activeElement;
+  if (a && /^(INPUT|TEXTAREA|SELECT)$/.test(a.tagName) && a.closest('#app')) { viewStale = true; return; }
+  viewStale = false;
+  const y = window.scrollY;
+  render();
+  window.scrollTo(0, y);
+}
+async function syncNow() {
+  if (!SERVER) return;
+  if (syncing) { syncAgain = true; return; }
+  syncing = true;
+  const before = canon(localDoc());
+  if (sync.status !== 'checking') setSync('syncing');
+  try {
+    const res = await fetch(API, { credentials: 'same-origin', headers: { accept: 'application/json' } });
+    if (res.status === 401) return setSync('login');
+    if (res.status === 403) return setSync('onboard');
+    if (res.status === 503) return setSync('notready');
+    if (!res.ok) throw new Error(String(res.status));
+    let { data, rev } = await res.json();
+    for (let i = 0; i < 4; i++) {
+      const merged = data ? mergeDocs(localDoc(), data) : localDoc();
+      applyDoc(merged);
+      if (data && sameDoc(merged, data)) break;
+      const put = await fetch(API, { method: 'PUT', credentials: 'same-origin', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ data: merged, baseRev: rev }) });
+      if (put.status === 409) { const j = await put.json(); data = j.data; rev = j.rev; continue; }
+      if (put.status === 413) return setSync('toolarge');
+      if (put.status === 401) return setSync('login');
+      if (!put.ok) throw new Error(String(put.status));
+      rev = (await put.json()).rev;
+      break;
+    }
+    sync.at = Date.now();
+    raw.set('_syncAt', sync.at);
+    setSync('ok');
+    if (canon(localDoc()) !== before && CROPS.length) refreshView();
+  } catch {
+    setSync(navigator.onLine === false ? 'offline' : 'error');
+    clearTimeout(pushTimer);
+    pushTimer = setTimeout(syncNow, 60000);
+  } finally {
+    syncing = false;
+    if (syncAgain) { syncAgain = false; schedulePush(); }
+  }
+}
+async function startSync() {
+  if (!SERVER) return;
+  try {
+    const r = await fetch('/api/auth/session', { credentials: 'same-origin', headers: { accept: 'application/json' } });
+    const j = r.ok ? await r.json() : null;
+    sync.user = j?.user ? (j.user.nickname || j.user.name || '회원') : null;
+  } catch { sync.user = null; }
+  await syncNow();
+  document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible') syncNow(); });
+  window.addEventListener('online', () => syncNow());
+  document.addEventListener('focusout', () => { if (viewStale) setTimeout(() => { if (viewStale) refreshView(); }, 300); });
+}
+function paintAccount() {
+  const chip = document.querySelector('[data-acct]');
+  if (chip) {
+    if (SERVER) {
+      const [label] = SYNC_TEXT[sync.status] || ['', ''];
+      chip.hidden = false;
+      chip.textContent = label;
+      chip.dataset.state = sync.status;
+      chip.href = sync.status === 'login' ? LOGIN_URL : sync.status === 'onboard' ? ONBOARD_URL : '#/links?s=account';
+    } else if (IS_OLD) {
+      chip.hidden = false;
+      chip.textContent = '새 주소';
+      chip.dataset.state = 'move';
+      chip.href = '#/links?s=account';
+    } else chip.hidden = true;
+  }
+  const box = document.querySelector('[data-sync-box]');
+  if (box) box.innerHTML = accountBody();
+}
+function accountBody() {
+  if (SERVER) {
+    const [, text] = SYNC_TEXT[sync.status] || ['', ''];
+    const when = sync.at ? `마지막 저장 ${new Date(sync.at).toLocaleString('ko-KR', { month: 'long', day: 'numeric', hour: 'numeric', minute: '2-digit' })}` : '';
+    return `<p><b>${sync.user ? `${esc(sync.user)}님` : '리프노트 계정'}</b> · ${esc(text)}</p>${when && sync.status === 'ok' ? `<p class="sub">${when}</p>` : ''}
+      <p class="sub">로그인하면 작기·영농일지·설정이 리프노트 계정에 저장되어, 휴대폰을 바꾸거나 PC에서 열어도 이어집니다. 밭에서 통신이 끊겨도 이 기기에 먼저 저장했다가 연결되면 맞춥니다.</p>
+      <div class="row">${sync.status === 'login' ? `<a class="btn primary" href="${LOGIN_URL}">카카오로 로그인</a>` : sync.status === 'onboard' ? `<a class="btn primary" href="${ONBOARD_URL}">가입 마치기</a>` : `<button class="btn quiet" data-sync-now>지금 저장하기</button><a class="btn quiet" href="/me">리프노트 마이페이지</a>`}</div>`;
+  }
+  if (IS_OLD) {
+    return `<p><b>영농노트가 리프노트로 옮겼습니다.</b> 새 주소: <a href="${NEW_URL}">leafnote.kr/nong</a></p>
+      <p class="sub">새 주소에서 리프노트 카카오 계정으로 로그인하면 기록이 계정에 저장되어 휴대폰을 바꿔도 이어집니다. 이 주소에 저장된 기록은 새 주소로 자동으로 넘어가지 않으니, 아래 버튼으로 한 번 옮겨 주세요.</p>
+      <div class="row"><button class="btn primary" data-migrate>내 기록 가지고 옮기기</button><a class="btn quiet" href="${NEW_URL}">새 주소로 가기</a></div>`;
+  }
+  return '<p class="sub">로그인과 기기 간 저장은 리프노트(leafnote.kr/nong)에서 쓸 수 있습니다.</p>';
+}
+// 옛 주소(github.io) → 새 주소(leafnote.kr/nong)로 이 기기의 기록을 넘긴다. 두 창이 서로의 주소를 확인한다.
+function startMigrate() {
+  const w = window.open(`${NEW_URL}#/import`, '_blank');
+  if (!w) { toast('새 창이 막혔습니다. 브라우저의 팝업 차단을 풀고 다시 눌러 주세요.'); return; }
+  const doc = localDoc();
+  const onMsg = (e) => {
+    if (e.origin !== LEAF_ORIGIN || e.source !== w) return;
+    if (e.data?.type === 'yn-ready') w.postMessage({ type: 'yn-import', doc }, LEAF_ORIGIN);
+    if (e.data?.type === 'yn-imported') { window.removeEventListener('message', onMsg); toast(`새 주소로 기록을 옮겼습니다(영농일지 ${Number(e.data.diary) || 0}건). 이제 새 주소에서 쓰세요.`); }
+  };
+  window.addEventListener('message', onMsg);
+}
+function viewImport() {
+  if (!window.opener) return '<div class="stack"><h1>기록 옮기기</h1><p>옛 영농노트 주소(gama0016.github.io/youngnong)의 <b>더보기 → 내 기록 가지고 옮기기</b>를 누르면 이 화면이 열리며 기록을 받습니다.</p><p><a class="btn" href="#/">오늘 화면으로</a></p></div>';
+  const onMsg = (e) => {
+    if (e.origin !== OLD_ORIGIN || e.source !== window.opener || e.data?.type !== 'yn-import' || !e.data.doc || typeof e.data.doc !== 'object') return;
+    window.removeEventListener('message', onMsg);
+    applyDoc(mergeDocs(localDoc(), e.data.doc));
+    const n = (raw.get('diary', []) || []).length;
+    try { window.opener.postMessage({ type: 'yn-imported', diary: n }, OLD_ORIGIN); } catch { /* 옛 창이 닫혔으면 그만 */ }
+    location.hash = '#/';
+    toast(`옛 주소의 기록을 받았습니다(영농일지 ${n}건).${SERVER && sync.status !== 'ok' ? ' 로그인하면 계정에도 저장됩니다.' : ''}`);
+    schedulePush();
+  };
+  window.addEventListener('message', onMsg);
+  setTimeout(() => { try { window.opener.postMessage({ type: 'yn-ready' }, OLD_ORIGIN); } catch { /* 무시 */ } }, 50);
+  return '<div class="stack"><h1>기록 옮기기</h1><p>옛 주소에서 기록을 받는 중입니다…</p></div>';
+}
 
 // ---------- utils ----------
 const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
@@ -70,20 +286,34 @@ const workOf = (s) => ({ sow: '파종', nursery: '육묘', plant: '정식·이�
 // ---------- 날씨 (Open-Meteo, 키 없음) ----------
 const CITIES = [['서울', 37.57, 126.98], ['인천', 37.46, 126.71], ['경기 수원', 37.26, 127.03], ['경기 이천', 37.27, 127.44], ['강원 춘천', 37.88, 127.73], ['강원 강릉', 37.75, 128.88], ['강원 평창(고랭지)', 37.37, 128.39], ['충북 청주', 36.64, 127.49], ['충북 충주', 36.99, 127.93], ['충남 천안', 36.81, 127.11], ['충남 논산', 36.19, 127.1], ['대전', 36.35, 127.38], ['세종', 36.48, 127.29], ['전북 전주', 35.82, 127.15], ['전북 김제', 35.8, 126.88], ['광주', 35.16, 126.85], ['전남 나주', 35.02, 126.71], ['전남 해남', 34.57, 126.6], ['경북 안동', 36.57, 128.73], ['경북 상주', 36.41, 128.16], ['대구', 35.87, 128.6], ['경남 진주', 35.18, 128.11], ['경남 밀양', 35.5, 128.75], ['울산', 35.54, 129.31], ['부산', 35.18, 129.08], ['제주', 33.5, 126.53], ['서귀포', 33.25, 126.56]];
 const WX_RULES = [
-  { name: '서리·저온', test: (d, i) => d.temperature_2m_min[i] <= 2, label: (d, i) => `최저 ${fmt(d.temperature_2m_min[i], 0)}℃`, re: /저온|서리|한파|언피해|동해|혹한|냉해|한풍|추위/ },
-  { name: '폭염', test: (d, i) => d.temperature_2m_max[i] >= 33, label: (d, i) => `최고 ${fmt(d.temperature_2m_max[i], 0)}℃`, re: /고온|폭염|더위|일소/ },
-  { name: '많은 비', test: (d, i) => d.precipitation_sum[i] >= 30, label: (d, i) => `비 ${fmt(d.precipitation_sum[i], 0)}mm`, re: /호우|장마|습해|태풍|침수|잦은 비|강우/ },
-  { name: '강한 바람', test: (d, i) => d.wind_speed_10m_max[i] >= 12, label: (d, i) => `바람 초속 ${fmt(d.wind_speed_10m_max[i], 0)}m`, re: /태풍|강풍|바람|쓰러짐|도복|풍해/ },
+  { name: '서리·저온', test: (d, i) => d.temperature_2m_min[i] != null && d.temperature_2m_min[i] <= 2, label: (d, i) => `최저 ${fmt(d.temperature_2m_min[i], 0)}℃`, re: /저온|서리|한파|언피해|동해|혹한|냉해|한풍|추위/ },
+  { name: '폭염', test: (d, i) => d.temperature_2m_max[i] != null && d.temperature_2m_max[i] >= 33, label: (d, i) => `최고 ${fmt(d.temperature_2m_max[i], 0)}℃`, re: /고온|폭염|더위|일소/ },
+  { name: '많은 비', test: (d, i) => d.precipitation_sum[i] != null && d.precipitation_sum[i] >= 30, label: (d, i) => `비 ${fmt(d.precipitation_sum[i], 0)}mm`, re: /호우|장마|습해|태풍|침수|잦은 비|강우/ },
+  { name: '강한 바람', test: (d, i) => d.wind_speed_10m_max[i] != null && d.wind_speed_10m_max[i] >= 12, label: (d, i) => `바람 초속 ${fmt(d.wind_speed_10m_max[i], 0)}m`, re: /태풍|강풍|바람|쓰러짐|도복|풍해/ },
 ];
 const DAYS = ['오늘', '내일', '모레', '글피'];
 async function getWeather(loc, force) {
   const c = store.get('wx', null);
-  if (!force && c && c.lat === loc.lat && c.lon === loc.lon && Date.now() - c.at < 2 * 3600e3 && c.day === isoDay() && c.v === 2) return c;
+  if (!force && c && c.lat === loc.lat && c.lon === loc.lon && Date.now() - c.at < 2 * 3600e3 && c.day === isoDay() && c.v === 3) return c;
+  // 리프노트에서 열렸으면 기상청 단기예보(리프노트 서버가 인증키를 가지고 받아 옴)를 먼저 쓴다. 안 되면 Open-Meteo로 대신한다.
+  if (SERVER) {
+    try {
+      const r = await fetch(`/api/nong/weather?lat=${loc.lat}&lon=${loc.lon}`, { headers: { accept: 'application/json' } });
+      if (r.ok) {
+        const k = await r.json();
+        if (k?.daily?.time?.length) {
+          const w = { v: 3, src: 'kma', base: k.base, at: Date.now(), day: isoDay(), lat: loc.lat, lon: loc.lon, daily: k.daily, hourly: k.hourly };
+          store.set('wx', w);
+          return w;
+        }
+      }
+    } catch { /* Open-Meteo로 */ }
+  }
   const u = `https://api.open-meteo.com/v1/forecast?latitude=${loc.lat}&longitude=${loc.lon}&daily=temperature_2m_min,temperature_2m_max,precipitation_sum,wind_speed_10m_max&hourly=precipitation_probability,precipitation,wind_speed_10m&timezone=Asia%2FSeoul&forecast_days=4&wind_speed_unit=ms`;
   const res = await fetch(u);
   const j = await res.json();
   if (!j.daily) throw new Error(j.reason || '날씨 자료가 없습니다');
-  const w = { v: 2, at: Date.now(), day: isoDay(), lat: loc.lat, lon: loc.lon, elevation: j.elevation, daily: j.daily, hourly: j.hourly };
+  const w = { v: 3, src: 'om', at: Date.now(), day: isoDay(), lat: loc.lat, lon: loc.lon, elevation: j.elevation, daily: j.daily, hourly: j.hourly };
   store.set('wx', w);
   return w;
 }
@@ -91,7 +321,7 @@ const cityOpts = () => `<option value="">시·군 고르기</option>${CITIES.map
 const wxSetup = () => `<h2>날씨 경보</h2>
   <p>농장 위치를 정하면 앞으로 나흘 동안 서리·폭염·많은 비·강한 바람 예보가 있을 때 내 작목의 대책을 여기 띄워 드립니다.</p>
   <div class="row"><button class="btn" data-geo>지금 있는 곳으로</button><select data-city aria-label="가까운 시·군">${cityOpts()}</select></div>
-  <p class="sub">위치는 이 기기에만 저장됩니다. 날씨를 받을 때 대략의 좌표만 Open-Meteo로 보냅니다.</p>`;
+  <p class="sub">위치는 이 기기에 저장됩니다(로그인하면 계정에도). 날씨는 대략의 좌표로 ${SERVER ? '기상청 단기예보를 받아 오고, 받을 수 없을 때만 Open-Meteo를 씁니다' : 'Open-Meteo 예보를 받아 옵니다'}.</p>`;
 function wxHtml(w, loc) {
   const d = w.daily;
   const n = Math.min(4, d.time.length);
@@ -100,14 +330,14 @@ function wxHtml(w, loc) {
   const warnDay = (i) => WX_RULES.some((r) => r.test(d, i));
   const crops = myCrops();
   return `<h2>날씨 <small>${esc(loc.name)} 기준</small></h2>
-  <div class="wx-days">${Array.from({ length: n }, (_, i) => `<div class="wx-day${warnDay(i) ? ' warn' : ''}"><span>${DAYS[i]}</span><b>${fmt(d.temperature_2m_min[i], 0)}° / ${fmt(d.temperature_2m_max[i], 0)}°</b><span>${d.precipitation_sum[i] >= 1 ? `비 ${fmt(d.precipitation_sum[i], 0)}mm` : '비 없음'}</span></div>`).join('')}</div>
+  <div class="wx-days">${Array.from({ length: n }, (_, i) => `<div class="wx-day${warnDay(i) ? ' warn' : ''}"><span>${DAYS[i]}</span><b>${fmt(d.temperature_2m_min[i], 0)}° / ${fmt(d.temperature_2m_max[i], 0)}°</b><span>${d.precipitation_sum[i] == null ? '비 –' : d.precipitation_sum[i] >= 1 ? `비 ${fmt(d.precipitation_sum[i], 0)}mm` : '비 없음'}</span></div>`).join('')}</div>
   ${alerts.length ? alerts.map(({ rule, i }) => {
     const hits = crops.flatMap((c) => (c.disasters || []).filter((r) => rule.re.test(r.risk)).slice(0, 1).map((r) => ({ c, r }))).slice(0, 4);
     return `<details class="wx-alert"><summary><b>${DAYS[i]} ${rule.label(d, i)} · ${rule.name} 주의</b><span>${hits.length ? `내 작목 대책 ${hits.length}개 보기` : '내 작목 자료에 대책 없음'}</span></summary>
       ${hits.map(({ c, r }) => `<a class="wx-crop" href="#/crop/${c.id}?s=risk"><b>${esc(shortName(c))} · ${esc(r.risk)}</b><span>${esc((r.measures || []).slice(0, 3).join(' · '))}</span></a>`).join('')}</details>`;
   }).join('') : '<p class="wx-ok">앞으로 나흘 서리·폭염·많은 비·강한 바람 예보는 없습니다.</p>'}
   ${sprayHtml(w)}
-  <p class="sub">${new Date(w.at).getHours()}시 ${String(new Date(w.at).getMinutes()).padStart(2, '0')}분에 받은 예보 · <button class="linkish" data-wx-change>위치 바꾸기</button> · 날씨 자료 <a href="https://open-meteo.com/" target="_blank" rel="noopener">Open-Meteo</a></p>`;
+  <p class="sub">${new Date(w.at).getHours()}시 ${String(new Date(w.at).getMinutes()).padStart(2, '0')}분에 받은 예보 · <button class="linkish" data-wx-change>위치 바꾸기</button> · 날씨 자료 ${w.src === 'kma' ? '<a href="https://www.weather.go.kr" target="_blank" rel="noopener">기상청 단기예보</a>' : '<a href="https://open-meteo.com/" target="_blank" rel="noopener">Open-Meteo</a>'}</p>`;
 }
 function paintWxBanner(w) {
   const el = document.querySelector('[data-wx-banner]');
@@ -287,7 +517,7 @@ function viewHome() {
   const area = store.get('area', { v: 300, u: 'pyeong' });
   const py = Math.round((toM2(area.v, area.u) || 300 * PY) / PY);
   const quick = QUICK.map((id) => BY_ID.get(String(id))).filter(Boolean);
-  return `<div class="home${mine.length ? ' has-crops' : ''}">
+  return `${IS_OLD ? `<a class="move-bar" href="#/links?s=account"><b>영농노트가 leafnote.kr/nong으로 옮겼습니다</b><span>리프노트 계정으로 로그인하면 휴대폰을 바꿔도 기록이 이어집니다 · 내 기록 가지고 옮기기</span></a>` : ''}<div class="home${mine.length ? ' has-crops' : ''}">
     <section class="hero">
       <div class="hero-copy">
         <h1>${d.getMonth() + 1}월 ${XUN[xunOf(d) - 1]},<br>밭에서 할 일</h1>
@@ -748,7 +978,8 @@ function viewLinks(meta) {
   const dated = CROPS.filter(hasDates).length;
   return `<div class="stack">
     <h1>더보기</h1>
-    <div class="link-grid top"><a class="link-card" href="#/tools"><b>비료·농약 계산기</b><span>비료 포대 수, 농약 희석량, 약통 수</span></a><a class="link-card" href="#/calendar"><b>월별 농작업 달력</b><span>달마다 모든 작목의 작업</span></a><a class="link-card" href="#/diary"><b>영농일지</b><span>오늘 한 작업, 쓴 자재, 비용 적기</span></a></div>
+    <div class="link-grid lead"><a class="link-card" href="#/tools"><b>비료·농약 계산기</b><span>비료 포대 수, 농약 희석량, 약통 수</span></a><a class="link-card" href="#/calendar"><b>월별 농작업 달력</b><span>달마다 모든 작목의 작업</span></a><a class="link-card" href="#/diary"><b>영농일지</b><span>오늘 한 작업, 쓴 자재, 비용 적기</span></a></div>
+    <section class="card" id="s-account"><h2>${IS_OLD ? '새 주소로 옮기기' : '계정과 저장'}</h2><div class="acct-box" data-sync-box></div></section>
     <section class="card" id="s-settings"><h2>내 설정</h2>
       <h3 class="sub-h">내 지역</h3>
       <p class="sub">고른 지역의 일정만 ‘오늘’ 화면과 달력에 보여 드립니다. 지역 구분이 없는 작업은 그대로 나오고, 내 지역 자료가 아예 없는 작목은 모든 지역 일정을 보여 드립니다.</p>
@@ -1295,9 +1526,11 @@ function render() {
   else if (page === 'tools') html = viewTools(q);
   else if (page === 'diary') html = viewDiary(q);
   else if (page === 'links') html = viewLinks(META);
+  else if (page === 'import') html = viewImport();
   else if (page === 'farm') html = !seg[1] ? viewFarm() : seg[1] === 'new' ? viewFarmNew(q) : seg[2] === 'rec' ? viewRecord(seg[1], seg[3]) : viewPlanting(seg[1]);
   else html = '<div class="stack"><p class="empty">페이지를 찾을 수 없습니다. <a href="#/">오늘 화면으로</a></p></div>';
   $app.innerHTML = html;
+  paintAccount();
   document.body.classList.toggle('is-home', page === 'home');
   const nav = page === 'crop' || page === 'calendar' ? 'crops' : page === 'tools' ? 'links' : page;
   document.querySelectorAll('[data-nav]').forEach((a) => { const on = a.dataset.nav === nav; a.classList.toggle('on', on); on ? a.setAttribute('aria-current', 'page') : a.removeAttribute('aria-current'); });
@@ -1346,8 +1579,10 @@ function toggleFav(id) {
   toast(on ? `<b>${esc(fullName(c))}</b>을(를) 내 작목에 담았습니다.${route().page === 'home' ? '' : ' <a href="#/">오늘 할 일 보기</a>'}` : `<b>${esc(fullName(c))}</b>을(를) 내 작목에서 뺐습니다. <button data-fav="${id}">되돌리기</button>`);
 }
 document.addEventListener('click', (e) => {
-  const t = e.target.closest('[data-pdone],[data-plant-end],[data-plant-del],[data-mix-set],[data-done],[data-undone],[data-region],[data-geo],[data-wx-change],[data-wx-retry],[data-wx-clear],[data-big],[data-fav],[data-go],[data-jump],[data-print],[data-area-reset],[data-diary-del],[data-diary-csv],[data-diary-backup],[data-reset],[data-yr-step]');
+  const t = e.target.closest('[data-sync-now],[data-migrate],[data-pdone],[data-plant-end],[data-plant-del],[data-mix-set],[data-done],[data-undone],[data-region],[data-geo],[data-wx-change],[data-wx-retry],[data-wx-clear],[data-big],[data-fav],[data-go],[data-jump],[data-print],[data-area-reset],[data-diary-del],[data-diary-csv],[data-diary-backup],[data-reset],[data-yr-step]');
   if (!t) return;
+  if ('syncNow' in t.dataset) { syncNow(); return; }
+  if ('migrate' in t.dataset) { startMigrate(); return; }
   if (t.dataset.pdone) {
     const [pid, key, startIso] = t.dataset.pdone.split('|');
     const p = getPlanting(pid);
@@ -1357,18 +1592,20 @@ document.addEventListener('click', (e) => {
     const entry = { id: Date.now().toString(36) + Math.random().toString(36).slice(2, 6), date: isoDay(), crop: fullName(plan.c), field: p.field || '', work: workOf({ kind: it.kind, task: it.task }), plantingId: p.id, input: '', hours: '', cost: '', memo: it.task, auto: true, createdAt: new Date().toISOString() };
     store.set('diary', [...diary(), entry]);
     const k = pDoneKey(p, it);
-    store.set('done', { ...doneMap(), [k]: { at: isoDay(), diaryId: entry.id } });
+    store.set('done', { ...doneMap(), [k]: { at: isoDay(), diaryId: entry.id, ts: Date.now() } });
     const y = window.scrollY; render(); window.scrollTo(0, y);
     toast(`<b>${esc(it.task)}</b> 완료. 영농일지에 적었습니다. <button data-undone="${esc(k)}">되돌리기</button>`);
   } else if (t.dataset.plantEnd) {
     const a = plantings();
     const p = a.find((x) => x.id === t.dataset.plantEnd);
     p.ended = p.ended ? null : isoDay();
+    p.updatedAt = new Date().toISOString();
     savePlantings(a);
     render();
     toast(p.ended ? '작기를 끝냈습니다. 기록과 결산은 ‘끝난 작기’에서 볼 수 있습니다.' : '작기를 다시 진행 중으로 돌렸습니다.');
   } else if (t.dataset.plantDel) {
     if (!confirm('이 작기를 삭제할까요? 영농일지의 기록은 남습니다.')) return;
+    tomb('plantings', t.dataset.plantDel);
     savePlantings(plantings().filter((x) => x.id !== t.dataset.plantDel));
     location.hash = '#/farm';
     toast('작기를 삭제했습니다. 기록은 영농일지에 남아 있습니다.');
@@ -1383,7 +1620,7 @@ document.addEventListener('click', (e) => {
     const key = taskKey(c, s, range(s), Number(x));
     const entry = { id: Date.now().toString(36) + Math.random().toString(36).slice(2, 6), date: isoDay(), crop: fullName(c), work: workOf(s), field: '', input: '', hours: '', cost: '', memo: s.task + (s.region ? ` (${s.region})` : ''), auto: true, createdAt: new Date().toISOString() };
     store.set('diary', [...diary(), entry]);
-    store.set('done', { ...doneMap(), [key]: { at: isoDay(), diaryId: entry.id } });
+    store.set('done', { ...doneMap(), [key]: { at: isoDay(), diaryId: entry.id, ts: Date.now() } });
     const y = window.scrollY; render(); window.scrollTo(0, y);
     toast(`<b>${esc(s.task)}</b> 완료. 영농일지에 적었습니다. <button data-undone="${esc(key)}">되돌리기</button>`);
   } else if (t.dataset.undone) {
@@ -1391,6 +1628,8 @@ document.addEventListener('click', (e) => {
     const rec = dm[t.dataset.undone];
     if (!rec) return;
     delete dm[t.dataset.undone];
+    tomb('done', t.dataset.undone);
+    tomb('diary', rec.diaryId);
     store.set('done', dm);
     store.set('diary', diary().filter((x) => x.id !== rec.diaryId));
     const y = window.scrollY; render(); window.scrollTo(0, y);
@@ -1416,19 +1655,20 @@ document.addEventListener('click', (e) => {
   else if ('print' in t.dataset) window.print();
   else if ('areaReset' in t.dataset) { const cid = t.closest('[data-area-scope]')?.dataset.areaScope; const a = store.get('areas', {}); delete a[cid]; store.set('areas', a); const y = window.scrollY; render(); window.scrollTo(0, y); toast('기본 면적으로 계산합니다.'); }
   else if (t.dataset.yrStep) paintYear(Number(document.querySelector('[data-yr]').value) + Number(t.dataset.yrStep));
-  else if (t.dataset.diaryDel) { if (confirm('이 기록을 삭제할까요?')) { store.set('diary', diary().filter((x) => x.id !== t.dataset.diaryDel)); render(); toast('기록을 삭제했습니다.'); } }
+  else if (t.dataset.diaryDel) { if (confirm('이 기록을 삭제할까요?')) { tomb('diary', t.dataset.diaryDel); store.set('diary', diary().filter((x) => x.id !== t.dataset.diaryDel)); render(); toast('기록을 삭제했습니다.'); } }
   else if ('diaryCsv' in t.dataset) {
     const cols = ['date', 'crop', 'field', 'work', 'input', 'pesticide', 'ratio', 'water', 'phi', 'product', 'qty', 'qunit', 'kg', 'boxes', 'price', 'buyer', 'people', 'hours', 'cost', 'memo'];
     const head = ['날짜', '작목', '필지', '작업', '내용', '약제', '희석배수', '물(L)', '안전일수', '비료', '양', '단위', '수확(kg)', '상자', '판매금액', '출하처', '인원', '작업시간', '비용', '메모'];
     const cell = (v) => `"${String(v ?? '').replace(/"/g, '""')}"`;
     download('영농일지.csv', '﻿' + [head, ...diary().map((x) => cols.map((k) => x[k]))].map((r) => r.map(cell).join(',')).join('\r\n'), 'text/csv');
-  } else if ('diaryBackup' in t.dataset) download('영농노트-백업.json', JSON.stringify({ app: 'youngnong', v: 1, favs: [...favs], diary: diary() }, null, 2), 'application/json');
+  } else if ('diaryBackup' in t.dataset) download('영농노트-백업.json', JSON.stringify({ app: 'youngnong', ...localDoc(), v: 2 }, null, 2), 'application/json');
   else if ('reset' in t.dataset) {
-    if (confirm('내 작목, 면적 설정, 영농일지를 모두 지웁니다. 되돌릴 수 없습니다. 계속할까요?')) {
+    if (confirm(SERVER && sync.status === 'ok' ? '이 기기에 저장된 영농노트 데이터를 지웁니다. 리프노트 계정의 기록은 지워지지 않습니다. 계속할까요?' : '내 작목, 면적 설정, 영농일지를 모두 지웁니다. 되돌릴 수 없습니다. 계속할까요?')) {
       Object.keys(localStorage).filter((k) => k.startsWith('yn:')).forEach((k) => localStorage.removeItem(k));
       favs = new Set();
       render();
-      toast('이 기기의 내 데이터를 모두 지웠습니다.');
+      toast(SERVER && sync.status === 'ok' ? '이 기기의 데이터를 지웠습니다. 리프노트 계정의 기록은 남아 있어 다시 내려받습니다.' : '이 기기의 내 데이터를 모두 지웠습니다.');
+      if (SERVER) syncNow();
     }
   }
 });
@@ -1440,7 +1680,7 @@ document.addEventListener('submit', (e) => {
     if (!o.crop) { toast('작목을 골라 주세요.'); return; }
     const a = plantings();
     const id = f.dataset.edit || Date.now().toString(36) + Math.random().toString(36).slice(2, 6);
-    const rec = { id, cropId: Number(o.crop), field: o.field.trim(), anchorIdx: o.anchor != null ? Number(o.anchor) : null, date: o.anchor != null ? o.date : null, memo: o.memo.trim(), created: isoDay() };
+    const rec = { id, updatedAt: new Date().toISOString(), cropId: Number(o.crop), field: o.field.trim(), anchorIdx: o.anchor != null ? Number(o.anchor) : null, date: o.anchor != null ? o.date : null, memo: o.memo.trim(), created: isoDay() };
     const i = a.findIndex((x) => x.id === id);
     if (i >= 0) a[i] = { ...a[i], ...rec, created: a[i].created }; else a.push(rec);
     savePlantings(a);
@@ -1510,18 +1750,18 @@ document.addEventListener('change', (e) => {
   t.files[0].text().then((txt) => {
     const b = JSON.parse(txt);
     if (b.app !== 'youngnong' || !Array.isArray(b.diary)) throw new Error();
-    const have = new Set(diary().map((x) => x.id));
-    const add = b.diary.filter((x) => x && x.id && !have.has(x.id));
-    store.set('diary', [...diary(), ...add]);
-    (b.favs || []).forEach((id) => favs.add(String(id)));
-    saveFavs();
+    const n0 = diary().length;
+    const incoming = b.v >= 2 ? b : { diary: b.diary, favs: (b.favs || []).map(String), mt: { favs: 0 } };
+    if (b.v < 2) incoming.favs = [...new Set([...favs, ...incoming.favs])];
+    applyDoc(mergeDocs(localDoc(), incoming));
+    schedulePush();
     render();
-    toast(`백업에서 기록 ${add.length}건을 불러왔습니다.`);
+    toast(`백업에서 기록 ${diary().length - n0}건을 더 불러왔습니다.`);
   }).catch(() => toast('백업 파일을 읽지 못했습니다. 영농노트에서 받은 백업 파일인지 확인해 주세요.'));
 });
 
 // ---------- boot ----------
 applyBig();
-load().then((d) => { META = d; lastPath = location.hash.split('?')[0]; render(); })
+load().then((d) => { META = d; lastPath = location.hash.split('?')[0]; render(); startSync(); })
   .catch((err) => { $app.innerHTML = `<div class="stack"><p class="empty">${esc(err.message)}. 연결 상태를 확인한 뒤 새로고침해 주세요.</p></div>`; });
 if ('serviceWorker' in navigator && location.protocol === 'https:') navigator.serviceWorker.register('sw.js').catch(() => {});
