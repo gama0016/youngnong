@@ -78,12 +78,12 @@ const WX_RULES = [
 const DAYS = ['오늘', '내일', '모레', '글피'];
 async function getWeather(loc, force) {
   const c = store.get('wx', null);
-  if (!force && c && c.lat === loc.lat && c.lon === loc.lon && Date.now() - c.at < 2 * 3600e3 && c.day === isoDay()) return c;
-  const u = `https://api.open-meteo.com/v1/forecast?latitude=${loc.lat}&longitude=${loc.lon}&daily=temperature_2m_min,temperature_2m_max,precipitation_sum,wind_speed_10m_max&timezone=Asia%2FSeoul&forecast_days=4&wind_speed_unit=ms`;
+  if (!force && c && c.lat === loc.lat && c.lon === loc.lon && Date.now() - c.at < 2 * 3600e3 && c.day === isoDay() && c.v === 2) return c;
+  const u = `https://api.open-meteo.com/v1/forecast?latitude=${loc.lat}&longitude=${loc.lon}&daily=temperature_2m_min,temperature_2m_max,precipitation_sum,wind_speed_10m_max&hourly=precipitation_probability,precipitation,wind_speed_10m&timezone=Asia%2FSeoul&forecast_days=4&wind_speed_unit=ms`;
   const res = await fetch(u);
   const j = await res.json();
   if (!j.daily) throw new Error(j.reason || '날씨 자료가 없습니다');
-  const w = { at: Date.now(), day: isoDay(), lat: loc.lat, lon: loc.lon, elevation: j.elevation, daily: j.daily };
+  const w = { v: 2, at: Date.now(), day: isoDay(), lat: loc.lat, lon: loc.lon, elevation: j.elevation, daily: j.daily, hourly: j.hourly };
   store.set('wx', w);
   return w;
 }
@@ -106,6 +106,7 @@ function wxHtml(w, loc) {
     return `<details class="wx-alert"><summary><b>${DAYS[i]} ${rule.label(d, i)} · ${rule.name} 주의</b><span>${hits.length ? `내 작목 대책 ${hits.length}개 보기` : '내 작목 자료에 대책 없음'}</span></summary>
       ${hits.map(({ c, r }) => `<a class="wx-crop" href="#/crop/${c.id}?s=risk"><b>${esc(shortName(c))} · ${esc(r.risk)}</b><span>${esc((r.measures || []).slice(0, 3).join(' · '))}</span></a>`).join('')}</details>`;
   }).join('') : '<p class="wx-ok">앞으로 나흘 서리·폭염·많은 비·강한 바람 예보는 없습니다.</p>'}
+  ${sprayHtml(w)}
   <p class="sub">${new Date(w.at).getHours()}시 ${String(new Date(w.at).getMinutes()).padStart(2, '0')}분에 받은 예보 · <button class="linkish" data-wx-change>위치 바꾸기</button> · 날씨 자료 <a href="https://open-meteo.com/" target="_blank" rel="noopener">Open-Meteo</a></p>`;
 }
 function paintWxBanner(w) {
@@ -272,13 +273,15 @@ function viewHome() {
   const d = today();
   const x = nowSlot();
   const mine = myCrops();
-  const all = tasksAt(mine, x);
+  const act = activePlantings();
+  const rest = mine.filter((c) => !act.some((p) => String(p.cropId) === String(c.id)));
+  const all = tasksAt(rest, x);
   const tasks = all.filter((t) => !isDone(t.key));
   const doneNow = all.filter((t) => isDone(t.key));
-  const missed = missedTasks(mine, x);
+  const missed = missedTasks(rest, x);
   const st = settings();
-  const noData = mine.filter((c) => !hasDates(c));
-  const quiet = mine.filter((c) => hasDates(c) && !all.some((t) => t.c.id === c.id));
+  const noData = rest.filter((c) => !hasDates(c));
+  const quiet = rest.filter((c) => hasDates(c) && !all.some((t) => t.c.id === c.id));
   const yx = store.get('yearSlot', null) ?? (x + 1) % 36;
   const yf = yearFrag(yx);
   const area = store.get('area', { v: 300, u: 'pyeong' });
@@ -296,8 +299,10 @@ function viewHome() {
       </div>
       <div class="stage">
         ${mine.length ? '<div data-wx-banner></div>' : ''}
-        ${mine.length ? `
-        <h2>이번 순 할 일 ${tasks.length}건 <small>내 작목 ${mine.length}개 · ${st.region ? `${st.region} 일정` : '모든 지역 일정'}</small></h2>
+        ${act.length ? `<h2>내 농사 ${act.length}곳</h2><div class="farm-list home-farm">${act.map((p) => farmCard(p, true)).join('')}</div>` : ''}
+        ${mine.length && !act.length ? `<a class="farm-cta" href="#/farm/new"><b>필지·하우스별로 관리하기</b><span>심은 날을 등록하면 내 날짜에 맞춘 일정, 방제·수확 기록, 결산을 쓸 수 있습니다</span></a>` : ''}
+        ${rest.length ? `
+        <h2>${act.length ? '그 밖의 내 작목, ' : ''}이번 순 할 일 ${tasks.length}건 <small>작목 ${rest.length}개 · ${st.region ? `${st.region} 일정` : '모든 지역 일정'}</small></h2>
         ${st.region ? '' : `<div class="region-ask"><p>지역을 고르면 그 지역 일정만 남겨 목록이 짧아집니다.</p>${regionChips()}</div>`}
         <div class="frag" data-ui><div class="todo">
           ${missed.length ? `<p class="todo-h">지난 순에 끝난 일, 하셨나요?</p>${todoList(missed, false, true)}<p class="todo-h">이번 순</p>` : ''}
@@ -306,13 +311,12 @@ function viewHome() {
           ${noData.map((c) => `<a class="todo-item more" href="#/crop/${c.id}?s=stage"><div><b>${esc(shortName(c))}</b><div class="when">달력 자료 없음 · 작업 방법 보기</div></div></a>`).join('')}
         </div></div>
         ${doneNow.length ? `<details class="done-box"><summary>끝낸 일 ${doneNow.length}건</summary><div class="todo">${doneNow.map((t) => `<div class="todo-item done"><div><b>${esc(t.s.task)}</b><div class="todo-crop">${esc(shortName(t.c))}</div><div class="when">${esc(doneMap()[t.key].at)} 완료 · 영농일지에 기록됨</div></div><button class="done-btn undo" data-undone="${esc(t.key)}">되돌리기</button></div>`).join('')}</div></details>` : ''}
-        <p class="more row"><a class="btn" href="#/calendar">${d.getMonth() + 1}월 달력 열기</a><a class="btn" href="#/crops">작목 더 담기</a></p>
-        ` : `
+        ` : ''}
+        ${mine.length ? `<p class="more row"><a class="btn" href="#/farm">내 농사</a><a class="btn" href="#/calendar">${d.getMonth() + 1}월 달력</a><a class="btn" href="#/crops">작목 더 담기</a></p>` : `
         <h2>기르는 작목을 골라 주세요</h2>
         <p class="stage-sub">고른 작목의 이번 순 작업만 이 자리에 모아 드립니다. 가입 없이 이 기기에 저장됩니다.</p>
         <div class="quick" data-ui>${quick.map((c) => `<button class="quick-btn" data-fav="${c.id}" aria-pressed="false"><b>${esc(c.name)}</b>${c.type && c.type.length <= 8 ? `<span>${esc(c.type)}</span>` : ''}</button>`).join('')}</div>
-        <p class="more row"><a class="btn" href="#/crops">전체 작목 ${CROPS.length}개에서 고르기</a></p>
-        `}
+        <p class="more row"><a class="btn" href="#/crops">전체 작목 ${CROPS.length}개에서 고르기</a></p>`}
       </div>
       ${mine.length ? '<section class="wx" id="s-wx" data-weather aria-live="polite"></section>' : ''}
     </section>
@@ -408,6 +412,7 @@ function viewCrops(q) {
       <a class="chip ${cat ? '' : 'on'}" href="#/crops">전체 <span class="n">${CROPS.length}</span></a>
       ${cats().map(([k, n]) => `<a class="chip ${cat === k ? 'on' : ''}" href="#/crops?cat=${encodeURIComponent(k)}">${esc(k)} <span class="n">${n}</span></a>`).join('')}
     </div>
+    <p class="row"><a class="btn quiet" href="#/calendar">월별 농작업 달력</a><a class="btn quiet" href="#/farm/new">작기 등록</a></p>
     <p class="sub">기르는 작목의 <b>담기</b>를 누르면 ‘오늘’ 화면과 달력에 그 작목의 작업만 모아 보여 드립니다.</p>
     <div data-results>${cropResults(term, cat)}</div>
   </div>`;
@@ -620,10 +625,35 @@ function viewTools(q) {
       <div data-tool-fert></div>
       ` : '<p class="sub">비료 표가 있는 작목 자료가 없습니다.</p>'}
     </section>
+    <section class="card" id="s-mix"><h2>농약 희석 계산</h2>
+      <div class="form">
+        <label class="f">희석 배수(배)<input type="number" inputmode="numeric" min="1" step="any" value="${esc(store.get('mixRatio', 1000))}" data-mix-tool data-mix-ratio></label>
+        <label class="f">물 양(L)<input type="number" inputmode="decimal" min="0" step="any" value="20" data-mix-tool data-mix-water></label>
+      </div>
+      <div class="chips" style="margin-top:10px">${[20, 100, 200, 500, 1000].map((v) => `<button class="chip" data-mix-set="${v}">${v}L</button>`).join('')}</div>
+      <p class="mix-out" data-mix-tool-out></p>
+      <h3 class="sub-h">내 밭 전체에 뿌리려면</h3>
+      <div class="form">
+        <label class="f">300평(10a)당 물 양(L)<input type="number" inputmode="decimal" min="1" step="any" value="${esc(store.get('sprayPer10a', 200))}" data-mix-tool data-spray-per></label>
+        <label class="f">약통(탱크) 크기(L)<input type="number" inputmode="decimal" min="1" step="any" value="${esc(store.get('tankL', 500))}" data-mix-tool data-tank></label>
+      </div>
+      <div data-mix-area></div>
+      <p class="sub">희석 배수는 농약 포장에 적힌 값을 쓰세요. 1000배는 물 1L에 약 1ml(g)입니다. 살포량은 작물과 생육 단계에 따라 다르니 포장의 안내를 따르세요.</p>
+    </section>
   </div>`;
 }
 function paintTools() {
   const { m2 } = areaNow(document.querySelector('[data-tool-crop]')?.value);
+  const mr = document.querySelector('[data-mix-ratio]');
+  if (mr) {
+    const ratio = Number(mr.value); store.set('mixRatio', ratio || 1000);
+    const water = Number(document.querySelector('[data-mix-water]').value);
+    const per = Number(document.querySelector('[data-spray-per]').value) || 200;
+    const tank = Number(document.querySelector('[data-tank]').value) || 500; store.set('tankL', tank);
+    document.querySelector('[data-mix-tool-out]').innerHTML = mixAmount(ratio, water) == null ? '' : `물 ${fmt(water, 0)}L에 약 <b>${mixText(mixAmount(ratio, water))}</b>`;
+    const totalW = per * m2 / 1000;
+    document.querySelector('[data-mix-area]').innerHTML = `<div class="bags"><div class="bag"><span class="bag-n">필요한 물</span><b>${fmt(totalW, 0)}<small>L</small></b><span class="when">${fmt(m2 / PY, 0)}평 기준</span></div><div class="bag"><span class="bag-n">필요한 약</span><b>${mixText(mixAmount(ratio, totalW)) || '–'}</b><span class="when">${fmt(ratio, 0)}배</span></div><div class="bag"><span class="bag-n">약통</span><b>${fmt(Math.ceil(totalW / tank * 10) / 10, 1)}<small>통</small></b><span class="when">${fmt(tank, 0)}L 통 하나에 약 ${mixText(mixAmount(ratio, tank))}</span></div></div>`;
+  }
   const out = document.querySelector('[data-area-out]');
   if (out) out.innerHTML = [['평', m2 / PY, 0], ['㎡', m2, 0], ['단보(300평)', m2 / 1000, 2], ['ha', m2 / 10000, 3]].map(([l, v, d]) => `<div class="fact"><dt>${l}</dt><dd>${fmt(v, d)}</dd></div>`).join('');
   const selEl = document.querySelector('[data-tool-crop]');
@@ -672,9 +702,7 @@ function viewDiary(q) {
       </section>
       <div class="stack">
         <section class="card" id="s-diary"><h2>기록 <small>${list.length}건</small></h2>
-          ${list.length ? '<div class="entries">' + list.map((e) => `<div class="entry"><div class="meta"><b>${esc(e.date)}</b><span class="tag plain">${esc(e.crop)}</span><span class="tag plain">${esc(e.work)}</span>${e.auto ? '<span class="tag plain">할 일 완료</span>' : ''}${e.field ? `<span>${esc(e.field)}</span>` : ''}${e.hours ? `<span>${fmt(e.hours, 1)}시간</span>` : ''}${e.cost ? `<span>${fmt(e.cost, 0)}원</span>` : ''}</div>
-            ${e.input ? `<p><b>쓴 자재</b> ${esc(e.input)}</p>` : ''}${e.memo ? `<p>${esc(e.memo)}</p>` : ''}
-            <div><button class="btn small danger" data-diary-del="${esc(e.id)}">삭제</button></div></div>`).join('') + '</div>' : '<p class="sub">아직 기록이 없습니다. 오늘 한 작업을 적어 보세요.</p>'}
+          ${list.length ? '<div class="entries">' + list.map(entryHtml).join('') + '</div>' : '<p class="sub">아직 기록이 없습니다. 오늘 한 작업을 적어 보세요.</p>'}
         </section>
         <section class="card"><h2>${year}년 요약</h2>
           <div class="stat"><div><b>${yl.length}</b><span>기록</span></div><div><b>${fmt(hours, 1)}</b><span>작업 시간</span></div><div><b>${fmt(cost, 0)}</b><span>비용(원)</span></div></div>
@@ -720,7 +748,7 @@ function viewLinks(meta) {
   const dated = CROPS.filter(hasDates).length;
   return `<div class="stack">
     <h1>더보기</h1>
-    <div class="link-grid top"><a class="link-card" href="#/tools"><b>비료 계산기</b><span>내 면적에 비료 몇 포대가 필요한지</span></a><a class="link-card" href="#/diary"><b>영농일지</b><span>오늘 한 작업, 쓴 자재, 비용 적기</span></a></div>
+    <div class="link-grid top"><a class="link-card" href="#/tools"><b>비료·농약 계산기</b><span>비료 포대 수, 농약 희석량, 약통 수</span></a><a class="link-card" href="#/calendar"><b>월별 농작업 달력</b><span>달마다 모든 작목의 작업</span></a><a class="link-card" href="#/diary"><b>영농일지</b><span>오늘 한 작업, 쓴 자재, 비용 적기</span></a></div>
     <section class="card" id="s-settings"><h2>내 설정</h2>
       <h3 class="sub-h">내 지역</h3>
       <p class="sub">고른 지역의 일정만 ‘오늘’ 화면과 달력에 보여 드립니다. 지역 구분이 없는 작업은 그대로 나오고, 내 지역 자료가 아예 없는 작목은 모든 지역 일정을 보여 드립니다.</p>
@@ -750,6 +778,496 @@ function viewLinks(meta) {
   </div>`;
 }
 
+// ---------- 내 농사: 필지·동마다 심은 날을 기준으로 한 내 일정, 기록, 결산 ----------
+const DAY = 864e5;
+const plantings = () => store.get('plantings', []);
+const savePlantings = (a) => store.set('plantings', a);
+const getPlanting = (id) => plantings().find((p) => p.id === id);
+const activePlantings = () => plantings().filter((p) => !p.ended && BY_ID.get(String(p.cropId)));
+const parseDay = (s) => { const [y, m, d] = String(s).split('-').map(Number); return new Date(y, m - 1, d); };
+const addDays = (d, n) => new Date(d.getFullYear(), d.getMonth(), d.getDate() + n);
+const dayDiff = (a, b) => Math.round((Date.UTC(a.getFullYear(), a.getMonth(), a.getDate()) - Date.UTC(b.getFullYear(), b.getMonth(), b.getDate())) / DAY);
+const md = (d) => `${d.getMonth() + 1}월 ${d.getDate()}일`;
+const mdRange = (a, b) => (dayDiff(b, a) <= 0 ? md(a) : a.getMonth() === b.getMonth() ? `${md(a)}~${b.getDate()}일` : `${md(a)}~${md(b)}`);
+const XS = [1, 11, 21], XE = [10, 20, 28], XM = [5, 15, 25];
+const REF_Y = 2001; // 윤년이 아닌 기준 해
+const tDate = (t, which) => new Date(REF_Y, t.m - 1, t.p ? (which === 's' ? XS : which === 'e' ? XE : XM)[t.p - 1] : (which === 's' ? 1 : which === 'e' ? 28 : 15));
+const labelOf = (task) => (String(task).match(/\(([^)]+)\)/) || [])[1] || '';
+const ANCHOR_WORD = { plant: '아주심기', sow: '파종' };
+const anchorName = (s) => (s ? s.task.replace(/\s*\(.*$/, '') : '');
+
+// 기준 작업 후보: 날짜가 있는 아주심기·이앙(없으면 파종)
+function anchorOptions(c) {
+  const dated = regionFilter(c.schedule || []).filter((s) => s.start?.m);
+  const pick = (k) => { const a = dated.filter((s) => s.kind === k && !s.est); return a.length ? a : dated.filter((s) => s.kind === k); };
+  let opts = pick('plant');
+  if (!opts.length) opts = pick('sow');
+  return opts.map((s) => ({ s, idx: c.schedule.indexOf(s) }));
+}
+
+// 작형(봄재배·촉성재배 등)이 여러 개인 작목에서 내가 고른 작형의 작업만 남긴다
+function samePlan(task, myLabel, rivals) {
+  if (!myLabel || !rivals.size) return true;
+  const own = labelOf(task);
+  if (!own) return true;
+  if (own === myLabel) return true;
+  if (rivals.has(own)) return false;
+  const tokens = own.split(/[\s,·]+/);
+  if (tokens.includes(myLabel)) return true;
+  return !tokens.some((t) => rivals.has(t));
+}
+
+// 내 일정 만들기: 표준 일정을 내 기준일(심은 날)만큼 옮기고, 본문의 "아주심기 후 20일" 같은 문구도 날짜로 바꾼다
+function planOf(p) {
+  const c = BY_ID.get(String(p.cropId));
+  if (!c) return { c: null, items: [] };
+  const all = regionFilter(c.schedule || []);
+  const anchor = p.anchorIdx != null ? c.schedule[p.anchorIdx] : null;
+  const myA = p.date ? parseDay(p.date) : null;
+  const myLabel = anchor ? labelOf(anchor.task) : '';
+  const rivals = new Set(anchorOptions(c).map((o) => labelOf(o.s.task)).filter((l) => l && l !== myLabel));
+  for (const s of c.schedule) if ((s.kind === 'harvest' || s.kind === 'sow') && s.start?.m && !s.est) { const l = labelOf(s.task); if (l && l !== myLabel && rivals.size) rivals.add(l); }
+  const items = [];
+  const t0 = today();
+  let aM = null;
+  if (anchor && myA) {
+    const aS = tDate(anchor.start, 's');
+    let aE = tDate(anchor.end?.m ? anchor.end : anchor.start, 'e');
+    if (aE < aS) aE = new Date(REF_Y + 1, aE.getMonth(), aE.getDate());
+    aM = new Date(aS.getTime() + (aE - aS) / 2);
+  }
+  const seen = new Set();
+  all.forEach((s) => {
+    if (!s.start?.m || !samePlan(s.task, myLabel, rivals)) return;
+    const idx = c.schedule.indexOf(s);
+    const sig = `${s.task.replace(/\s+/g, '')}|${s.start.m}.${s.start.p}`;
+    const base = (t) => t.replace(/\s*\(.*$/, '').replace(/\s+/g, '');
+    if (s.est && (c.schedule.some((o) => !o.est && o.start?.m && o.kind === s.kind && (base(o.task).startsWith(base(s.task)) || base(s.task).startsWith(base(o.task)))) || [...seen].some((k) => k.endsWith(`|${s.start.m}.${s.start.p}`)))) return; // 원문 표와 겹치는 추정 항목은 뺀다
+    seen.add(sig);
+    const sS = tDate(s.start, 's');
+    let dur = dayDiff(tDate(s.end?.m ? s.end : s.start, 'e'), sS);
+    if (dur < 0) dur += 365;
+    let start;
+    if (s === anchor && myA) start = myA, dur = 0;
+    else if (aM && myA) {
+      let off = dayDiff(sS, aM);
+      const before = s.kind === 'sow' || s.kind === 'nursery' || /어미/.test(s.task);
+      const lo = before ? -330 : -45;
+      while (off < lo) off += 365;
+      while (off >= lo + 365) off -= 365;
+      start = addDays(myA, off);
+    } else {
+      // 기준일이 없는 작목(과수 등): 올해 표준 날짜, 이미 한참 지났으면 내년
+      start = new Date(t0.getFullYear(), s.start.m - 1, sS.getDate());
+      if (dayDiff(addDays(start, dur), t0) < -60) start = new Date(t0.getFullYear() + 1, s.start.m - 1, sS.getDate());
+    }
+    items.push({ key: `s${idx}`, task: s.task, kind: s.kind, region: s.region, start, end: addDays(start, dur), std: periodText(s), est: s.est, anchor: s === anchor, src: s === anchor ? 'anchor' : 'std' });
+  });
+  // 본문의 상대 시기
+  const myPlant = items.find((i) => i.kind === 'plant' && (i.anchor || !anchor || anchor.kind !== 'plant'))?.start || (anchor?.kind === 'plant' ? myA : null);
+  const mySow = items.find((i) => i.kind === 'sow')?.start || (anchor?.kind === 'sow' ? myA : null);
+  const REL = /(아주심기|정식|이앙|모내기|파종|씨뿌림|직파)\s*(?:후|뒤)\s*(\d{1,3})\s*(?:~\s*(\d{1,3}))?\s*일/;
+  (c.stages || []).forEach((st, si) => {
+    if (!samePlan(st.title, myLabel, rivals)) return;
+    const cands = [{ text: st.timing || '', name: st.title, k: `r${si}` }, ...(st.items || []).map((it, ii) => ({ text: `${it.label} ${it.value}`, name: `${st.title} · ${it.label}`, k: `r${si}-${ii}` }))];
+    for (const cd of cands) {
+      const m = cd.text.match(REL);
+      if (!m) continue;
+      const base = /파종|씨뿌림|직파/.test(m[1]) ? mySow : myPlant;
+      if (!base) continue;
+      const a = Number(m[2]);
+      const b = m[3] ? Number(m[3]) : a;
+      if (a > 400) continue;
+      items.push({ key: cd.k, task: cd.name, kind: kindFromText(cd.name), start: addDays(base, a), end: addDays(base, b), std: m[0], src: 'rel' });
+    }
+  });
+  items.sort((x, y) => x.start - y.start);
+  return { c, items, anchor, myLabel };
+}
+const kindFromText = (t) => (/웃거름|밑거름|비료|시비/.test(t) ? 'fert' : /방제|소독|약제/.test(t) ? 'pest' : /수확|출하/.test(t) ? 'harvest' : /아주심기|정식|이앙/.test(t) ? 'plant' : /파종|씨뿌림/.test(t) ? 'sow' : 'manage');
+const pDoneKey = (p, it) => `P|${p.id}|${it.key}|${isoDay(it.start)}`;
+function itemState(it) {
+  const t = today();
+  if (dayDiff(t, it.start) < 0) return { st: 'next', d: dayDiff(it.start, t) };
+  if (dayDiff(t, it.end) <= 0) return { st: 'now', d: dayDiff(it.end, t) };
+  return { st: 'past', d: dayDiff(t, it.end) };
+}
+// 오늘 볼 일: 진행 중, 지난 14일 안에 끝났는데 완료 안 한 일, 7일 안에 시작할 일
+function focusItems(p, plan) {
+  return plan.items.map((it) => ({ it, s: itemState(it), done: isDone(pDoneKey(p, it)) }))
+    .filter(({ s, done }) => !done && ((s.st === 'now') || (s.st === 'past' && s.d <= 14) || (s.st === 'next' && s.d <= 7)))
+    .sort((a, b) => ({ past: 0, now: 1, next: 2 }[a.s.st] - { past: 0, now: 1, next: 2 }[b.s.st]) || a.it.start - b.it.start);
+}
+const stateText = (s, it) => (s.st === 'now' ? (s.d === 0 ? '오늘까지' : `${s.d}일 남음`) : s.st === 'next' ? (s.d === 0 ? '오늘 시작' : s.d === 1 ? '내일 시작' : `${s.d}일 뒤 시작`) : `${s.d}일 지남`);
+function ageText(p, plan) {
+  if (!p.date || !plan.anchor) return '';
+  const d = dayDiff(today(), parseDay(p.date));
+  const w = anchorName(plan.anchor);
+  return d >= 0 ? `${w} ${d + 1}일째` : `${w}까지 ${-d}일`;
+}
+function planItemsHtml(p, list, opts = {}) {
+  return list.map(({ it, s, done }) => `<div class="todo-item linked${done ? ' is-done' : ''}">
+    <a class="todo-link" href="#/crop/${p.cropId}?s=${sectionOf(it.kind)}">${kindTag(it.kind)}<div>
+      <b>${esc(it.task)}</b>${it.est || it.src === 'rel' ? ' <span class="tag plain">추정</span>' : ''}
+      <div class="when"><b class="pdate">${mdRange(it.start, it.end)}</b> · ${s.st === 'past' && !done ? `<span class="ending">${stateText(s, it)}</span>` : stateText(s, it)}${opts.std ? ` · 표준 ${esc(it.std)}` : ''}</div></div></a>
+    ${done ? `<button class="done-btn undo" data-undone="${esc(pDoneKey(p, it))}">되돌리기</button>` : `<button class="done-btn" data-pdone="${esc(p.id)}|${esc(it.key)}|${isoDay(it.start)}" aria-label="${esc(it.task)} 완료">완료</button>`}
+  </div>`).join('');
+}
+
+
+// ---------- 이번 주 영농 정보: 내 작기의 지금 단계·철에 맞는 농사로 정보만 골라 모은다 ----------
+const SEASONS = [
+  { months: [12, 1, 2], name: '겨울', re: /저온|한파|동해|언피해|혹한|서리|폭설|눈|저조도|일조|겨울|추위|한풍|냉해/ },
+  { months: [3, 4, 5], name: '봄', re: /봄|늦서리|서리|저온|가뭄|건조|강풍|냉해/ },
+  { months: [6, 7, 8], name: '여름', re: /장마|호우|태풍|고온|폭염|습해|침수|일소|우박|여름|다습|더위|잦은 비|강우/ },
+  { months: [9, 10, 11], name: '가을', re: /태풍|가을|서리|저온|가뭄|건조|냉해/ },
+];
+const seasonOf = (m) => SEASONS.find((x) => x.months.includes(m));
+const PHASE_RE = { nursery: /모기르기|육묘|모판|못자리|파종|씨뿌림|발아|싹/, growth: /생육|자람|정식 후|아주심기 후|이앙 후|분얼|개화|꽃|비대|웃자람|생장/, harvest: /수확|성숙|착색|결실|출하/ };
+function monthsIn(text) {
+  const out = new Set();
+  const t = String(text || '');
+  for (const m of t.matchAll(/(\d{1,2})\s*[~∼-]\s*(\d{1,2})\s*월/g)) { let a = +m[1]; const b = +m[2]; if (a < 1 || a > 12 || b < 1 || b > 12) continue; for (let i = 0; i < 12 && out.size < 12; i++) { out.add(a); if (a === b) break; a = a % 12 + 1; } }
+  for (const m of t.matchAll(/(\d{1,2})\s*월/g)) if (+m[1] >= 1 && +m[1] <= 12) out.add(+m[1]);
+  return out;
+}
+const normWork = (t) => { const s0 = String(t).replace(/\s+/g, ''); const n = (s0.match(/(\d)\s*(?:회|차)/) || [])[1] || ''; const k = (s0.match(/웃거름|밑거름|덧거름/) || [])[0] || ''; return k ? k + n : ''; };
+function briefOf(p, plan) {
+  const c = plan.c;
+  const t = today();
+  const m = t.getMonth() + 1;
+  const season = seasonOf(m);
+  const win = plan.items.filter((it) => dayDiff(it.start, t) <= 30 && dayDiff(t, it.end) <= 30);
+  const near = plan.items.filter((it) => dayDiff(it.start, t) <= 14 && dayDiff(t, it.end) <= 7);
+  const phases = new Set();
+  near.forEach((it) => { if (it.kind === 'sow' || it.kind === 'nursery') phases.add('nursery'); else if (it.kind === 'harvest') phases.add('harvest'); else phases.add('growth'); });
+  if (!phases.size && p.date && plan.anchor && dayDiff(t, parseDay(p.date)) >= 0) phases.add(plan.items.some((it) => it.kind === 'harvest' && dayDiff(t, it.start) >= 0 && dayDiff(it.end, t) >= 0) ? 'harvest' : 'growth');
+  const base = (x) => String(x).replace(/\s*\(.*$/, '').replace(/[\s·]/g, '');
+  // 작업 방법: 지금 앞뒤 한 달 일정과 이름이 맞거나, 시기 문구에 이번 달이 든 단계
+  const stages = (c.stages || []).filter((st) => {
+    if (!samePlan(st.title, plan.myLabel, new Set())) return false;
+    const b = base(st.title);
+    if (b && win.some((it) => { const ib = base(it.task); return ib && (ib.includes(b) || b.includes(ib)); })) return true;
+    return monthsIn(st.timing).has(m);
+  }).slice(0, 3);
+  // 병해충: 시기 문구의 달·생육 단계·철이 지금과 맞는 것
+  const seasonWord = { 겨울: /저온|겨울|추울|한겨울/, 봄: /봄|저온/, 여름: /고온|여름|장마|다습|건조|더울/, 가을: /가을|저온/ }[season.name];
+  // 재해: 시기에 이번 달이 들었거나, 이름이 이 철의 재해인 것
+  // 다른 철을 적은 재해(봄 가뭄 등)와, 심을 무렵이 아닌데 모·심기 때의 재해는 뺀다
+  const nearAnchor = phases.has('nursery') || (p.date && Math.abs(dayDiff(t, parseDay(p.date))) <= 30);
+  const ownWord = season.name === '여름' ? /여름|장마/ : new RegExp(season.name);
+  const otherWord = new RegExp(['봄', '여름', '가을', '겨울', '장마'].filter((w) => !ownWord.test(w)).join('|'));
+  const PLANTING = /모내기|이앙|아주심기|정식|씨뿌림|파종|모기르기|모 기를|육묘|못자리|싹틔우기|발아|출아/;
+  const fits = (text) => !(otherWord.test(text) && !ownWord.test(text)) && (nearAnchor || !PLANTING.test(text));
+  const risks = (c.disasters || []).filter((r) => {
+    const text = `${r.risk} ${r.timing || ''}`;
+    const ms = monthsIn(r.timing);
+    if (ms.size) return (ms.has(m) || ms.has(m % 12 + 1)) && fits(r.risk);
+    return season.re.test(text) && fits(text);
+  }).slice(0, 4);
+  const pests = (c.pests || []).filter((x) => {
+    const tx = x.timing || '';
+    if (!tx) return false;
+    const ms = monthsIn(tx);
+    if (ms.size) return ms.has(m);
+    if ([...phases].some((ph) => PHASE_RE[ph].test(tx))) return true; // 지금 생육 단계(수확기 등)와 맞으면 남긴다
+    return seasonWord.test(tx) && fits(tx);
+  });
+  const otherPests = (c.pests || []).filter((x) => !pests.includes(x));
+  // 비료: 지금 앞뒤 일정에 든 회차
+  const { m2 } = areaNow('P' + p.id);
+  const fp = fertPlan(c, m2);
+  const keys = new Set(near.map((it) => normWork(it.task)).filter(Boolean));
+  if (p.date && plan.anchor && Math.abs(dayDiff(t, parseDay(p.date))) <= 14) keys.add('밑거름');
+  const ferts = fp && !fp.options ? fp.rounds.filter((r) => keys.has(normWork(r.h)) || (normWork(r.h) === '밑거름' && keys.has('밑거름'))) : [];
+  const env = (c.env || []).filter((e) => /생육|적온|낮|밤|생장/.test(e.label) && !/저장|발아/.test(e.label)).slice(0, 3);
+  return { season, phases, stages, pests, otherPests, risks, ferts, fp, env, bag: fp?.bag };
+}
+const PHASE_NAME = { nursery: '모 기르는 때', growth: '자라는 때', harvest: '수확 때' };
+function briefHtml(p, plan) {
+  const b = briefOf(p, plan);
+  const c = plan.c;
+  const has = b.stages.length || b.pests.length || b.risks.length || b.ferts.length || b.env.length;
+  return `<section class="card brief" id="s-brief"><h2>이번 주 영농 정보 <small>${today().getMonth() + 1}월 · ${b.season.name}${b.phases.size ? ' · ' + [...b.phases].map((x) => PHASE_NAME[x]).join(', ') : ''}</small></h2>
+    <p class="sub">농사로 「${esc(fullName(c))}」 가운데 지금 이 작기에 맞는 것만 골랐습니다.</p>
+    ${b.env.length ? `<dl class="facts">${b.env.map((e) => `<div class="fact"><dt>${esc(e.label)}</dt><dd>${esc(e.value)}</dd></div>`).join('')}</dl>` : ''}
+    ${b.stages.length ? `<h3 class="sub-h">지금 하는 법</h3><div class="stages">${b.stages.map((st) => `<div class="stage-b"><h3>${esc(st.title)}${st.timing ? `<small>${esc(st.timing)}</small>` : ''}</h3><dl class="kv">${(st.items || []).slice(0, 8).map((i) => `<dt>${esc(i.label)}</dt><dd>${esc(i.value)}</dd>`).join('')}</dl></div>`).join('')}</div>` : ''}
+    ${b.ferts.length ? `<h3 class="sub-h">이번 비료</h3>${b.ferts.map((r) => `<div class="fert-round"><h3>${esc(r.h)}</h3><ul class="bag-list">${r.items.map((i) => `<li>${bagTxt(i, b.bag)}</li>`).join('')}</ul></div>`).join('')}` : ''}
+    ${b.pests.length ? `<h3 class="sub-h">지금 살필 병해충</h3><div class="pests">${b.pests.map((x) => `<div class="pest"><h3>${esc(x.name)}${x.kind ? ` <span class="tag plain">${esc(x.kind)}</span>` : ''}</h3><dl class="kv">${x.timing ? `<dt>나오는 때</dt><dd>${esc(x.timing)}</dd>` : ''}${x.control ? `<dt>방제·대책</dt><dd>${esc(x.control)}</dd>` : ''}</dl></div>`).join('')}</div>` : ''}
+    ${b.otherPests.length ? `<p class="sub">그 밖에 이 작목의 병해충: ${b.otherPests.map((x) => esc(x.name)).join(', ')} · <a href="#/crop/${c.id}?s=pest">자세히</a></p>` : ''}
+    ${b.risks.length ? `<h3 class="sub-h">${b.season.name}철 재해 대비</h3><div class="risks">${b.risks.map((r) => `<div class="risk"><h3>${esc(r.risk)}${r.timing ? `<small>${esc(r.timing)}</small>` : ''}</h3><ul class="dots">${(r.measures || []).map((x) => `<li>${esc(x)}</li>`).join('')}</ul></div>`).join('')}</div>` : ''}
+    ${has ? '' : '<p>지금 시기에 맞춰 골라낼 정보가 원문에 따로 없습니다.</p>'}
+    <p class="sub">쓸 수 있는 농약은 <a href="https://psis.rda.go.kr" target="_blank" rel="noopener">농약안전정보시스템</a>에서 작목 이름으로 찾으세요. 전체 정보는 <a href="#/crop/${c.id}">${esc(shortName(c))} 작목 정보</a>에 있습니다.</p>
+  </section>`;
+}
+const briefLine = (p, plan) => {
+  const b = briefOf(p, plan);
+  const bits = [...b.pests.slice(0, 3).map((x) => x.name.replace(/\(.*\)/, '')), ...b.risks.slice(0, 2).map((r) => r.risk.replace(/\s*\(.*$/, ''))];
+  return bits.length ? `<a class="brief-line" href="#/farm/${p.id}?s=brief"><b>지금 주의</b> ${esc(bits.join(' · '))}</a>` : '';
+};
+
+// ---------- 기록: 방제·비료·수확·작업 ----------
+const recordsOf = (pid) => diary().filter((e) => e.plantingId === pid);
+function phiOf(pid) {
+  let worst = null;
+  for (const e of recordsOf(pid)) {
+    if (e.type !== 'spray' || !(Number(e.phi) > 0)) continue;
+    const safe = addDays(parseDay(e.date), Number(e.phi));
+    if (dayDiff(safe, today()) > 0 && (!worst || safe > worst.safe)) worst = { safe, e };
+  }
+  return worst;
+}
+const phiHtml = (pid) => { const w = phiOf(pid); return w ? `<p class="phi">수확 금지: <b>${md(w.safe)}부터 수확 가능</b> (${md(parseDay(w.e.date))} ${esc(w.e.pesticide || '방제')} 살포, 안전일수 ${esc(w.e.phi)}일)</p>` : ''; };
+const REC = { spray: '방제 기록', fert: '비료 기록', harvest: '수확·출하 기록', work: '작업 기록' };
+const quickRec = (p) => `<div class="farm-quick">${Object.entries(REC).map(([k, v]) => `<a class="btn quiet" href="#/farm/${p.id}/rec/${k}">${v.replace(' 기록', '')}</a>`).join('')}</div>`;
+
+// ---------- 비료 계획: 회차별 포대 수 ----------
+function fertPlan(c, m2) {
+  const f = c.fertilizer;
+  const base = unitBase(f?.unit);
+  if (!f?.rows?.length || !base) return null;
+  const fc = store.get('fert', FERT_DEFAULT);
+  const cols = f.columns || [];
+  const totalCol = cols.findIndex((h) => /합계|총량|^계$|총계/.test(h));
+  const NPK = [[/질소/, fc.n, '질소'], [/인산/, fc.p, '인산'], [/칼리|칼륨|가리/, fc.k, '칼리']];
+  const line = (j) => f.rows.map((r) => {
+    const v = (r.values || [])[j];
+    if (typeof v !== 'number' || !v) return null;
+    const nut = NPK.find(([re]) => re.test(r.name));
+    const kgN = v * m2 / base;
+    if (nut) { const prod = kgN / (nut[1].pct / 100); return { name: `${nut[1].name}(${nut[2]})`, kg: prod, bags: prod / fc.bag }; }
+    return { name: r.name, kg: kgN, bags: kgN / 20 };
+  }).filter(Boolean);
+  const nutCol = (h) => NPK.find(([re]) => re.test(h));
+  if (cols.filter(nutCol).length >= 2) {
+    // 열이 질소·인산·칼리인 표: 행(평야지·간척지 등)마다 한 묶음
+    const rounds = f.rows.map((r) => ({ h: r.name, items: cols.map((h, j) => {
+      const v = (r.values || [])[j]; const nut = nutCol(h);
+      if (typeof v !== 'number' || !v) return null;
+      const kgN = v * m2 / base;
+      return nut ? { name: `${nut[1].name}(${nut[2]})`, kg: kgN / (nut[1].pct / 100), bags: kgN / (nut[1].pct / 100) / fc.bag } : { name: h, kg: kgN, bags: kgN / 20 };
+    }).filter(Boolean) })).filter((r) => r.items.length);
+    return { rounds, total: null, bag: fc.bag, options: true };
+  }
+  const rounds = cols.map((h, j) => ({ h, j, items: line(j) })).filter((r) => r.j !== totalCol && r.items.length);
+  let total = totalCol >= 0 ? line(totalCol) : null;
+  if (!total) { const m = new Map(); rounds.forEach((r) => r.items.forEach((i) => { const o = m.get(i.name) || { name: i.name, kg: 0, bags: 0 }; o.kg += i.kg; o.bags += i.bags; m.set(i.name, o); })); total = [...m.values()]; }
+  return { rounds, total, bag: fc.bag };
+}
+const bagTxt = (i, bag) => `${esc(i.name)} <b>${fmt(i.bags, 1)}포대</b> <span class="when">${kg(i.kg)}kg${/요소|인비|칼리/.test(i.name) ? '' : ' · 20kg 포대 기준'}</span>`;
+
+// ---------- 화면: 내 농사 목록 ----------
+function farmCard(p, compact) {
+  const plan = planOf(p);
+  const c = plan.c;
+  const { m2 } = areaNow('P' + p.id);
+  const focus = focusItems(p, plan);
+  return `<article class="farm-card">
+    <a class="farm-head" href="#/farm/${p.id}"><b>${esc(shortName(c))}${p.field ? ` · ${esc(p.field)}` : ''}</b><span>${fmt(m2 / PY, 0)}평${ageText(p, plan) ? ` · ${ageText(p, plan)}` : ''}</span></a>
+    ${phiHtml(p.id)}
+    ${briefLine(p, plan)}
+    <div class="todo">${focus.length ? planItemsHtml(p, focus.slice(0, compact ? 4 : 8)) : `<div class="todo-item"><div><b>이번 주에 챙길 일이 없습니다</b><div class="when">${plan.items.length ? '다음 일정은 작기 화면에서 볼 수 있습니다.' : '이 작목은 원문에 날짜가 적힌 일정이 없어 작업 방법을 참고해 주세요.'}</div></div></div>`}
+      ${focus.length > (compact ? 4 : 8) ? `<a class="todo-item more" href="#/farm/${p.id}"><b>챙길 일 ${focus.length}건 모두 보기</b></a>` : ''}</div>
+    ${quickRec(p)}
+  </article>`;
+}
+function viewFarm() {
+  const act = activePlantings();
+  const ended = plantings().filter((p) => p.ended);
+  return `<div class="stack">
+    <div class="spread"><h1>내 농사</h1><a class="btn primary" href="#/farm/new">작기 등록</a></div>
+    <p class="sub">필지나 하우스 동마다 <b>심은 날</b>을 등록하면, 농사로 표준 일정을 내 날짜에 맞춰 옮기고 방제·비료·수확 기록과 결산을 함께 관리합니다.</p>
+    ${act.length ? `<div class="farm-list">${act.map((p) => farmCard(p)).join('')}</div>` : `<div class="empty-box"><p><b>아직 등록한 작기가 없습니다.</b></p><p>예: 고추 · 앞밭 · 1,200평 · 아주심기 5월 8일. 같은 작목이라도 심은 날이 다르면 따로 등록하세요.</p><p><a class="btn primary" href="#/farm/new">첫 작기 등록하기</a></p></div>`}
+    ${ended.length ? `<details class="done-box"><summary>끝난 작기 ${ended.length}개</summary><div class="todo">${ended.map((p) => { const c = BY_ID.get(String(p.cropId)); return `<a class="todo-item more" href="#/farm/${p.id}"><div><b>${esc(c ? shortName(c) : '작목')} ${esc(p.field || '')}</b><div class="when">${p.date ? esc(p.date) + ' 시작 · ' : ''}${esc(p.ended)} 끝냄</div></div></a>`; }).join('')}</div></details>` : ''}
+  </div>`;
+}
+
+// ---------- 화면: 작기 등록·수정 ----------
+function viewFarmNew(q) {
+  const edit = q.get('edit') ? getPlanting(q.get('edit')) : null;
+  const cid = q.get('crop') || edit?.cropId || myCrops()[0]?.id || '';
+  const c = BY_ID.get(String(cid));
+  const opts = c ? anchorOptions(c) : [];
+  const area = edit ? store.get('areas', {})['P' + edit.id] : null;
+  const mine = myCrops();
+  const copt = (x) => `<option value="${x.id}" ${String(x.id) === String(cid) ? 'selected' : ''}>${esc(fullName(x))}</option>`;
+  const others = CROPS.filter((x) => !isFav(x));
+  return `<div class="stack">
+    <h1>${edit ? '작기 고치기' : '작기 등록'}</h1>
+    <form class="card form" data-plant-form ${edit ? `data-edit="${esc(edit.id)}"` : ''}>
+      <label class="f wide">작목<select name="crop" data-plant-crop required>${c ? '' : '<option value="">작목을 고르세요</option>'}${mine.length ? `<optgroup label="내 작목">${mine.map(copt).join('')}</optgroup><optgroup label="전체 작목">${others.map(copt).join('')}</optgroup>` : CROPS.map(copt).join('')}</select></label>
+      <label class="f">필지·하우스 이름<input type="text" name="field" value="${esc(edit?.field || '')}" placeholder="예: 앞밭, 1~3동"></label>
+      <label class="f">면적<input type="number" name="area" inputmode="decimal" min="0" step="any" value="${esc(area?.v ?? 300)}" required></label>
+      <label class="f">단위<select name="unit">${unitOpts(area?.u || 'pyeong')}</select></label>
+      ${opts.length ? `<fieldset class="wide anchor-pick"><legend>무엇을 한 날을 기준으로 할까요?</legend>
+        ${opts.map((o, i) => `<label class="radio"><input type="radio" name="anchor" value="${o.idx}" ${edit ? (edit.anchorIdx === o.idx ? 'checked' : '') : i === 0 ? 'checked' : ''}><span><b>${esc(o.s.task)}</b>${o.s.region ? ` <span class="tag plain">${esc(o.s.region)}</span>` : ''}<span class="when">표준 ${esc(periodText(o.s))}</span></span></label>`).join('')}
+      </fieldset>
+      <label class="f wide">그 작업을 한 날 (아직이면 할 예정인 날)<input type="date" name="date" value="${esc(edit?.date || isoDay())}" required></label>`
+      : `<p class="wide notice">${c ? '이 작목은 원문에 심는 날짜가 없어 기준일 없이 올해 표준 일정으로 관리합니다. 기록과 결산은 똑같이 쓸 수 있습니다.' : '작목을 먼저 고르세요.'}</p>`}
+      <label class="f wide">메모<input type="text" name="memo" value="${esc(edit?.memo || '')}" placeholder="품종, 재식거리 등"></label>
+      <div class="wide row"><button class="btn primary" type="submit">${edit ? '고친 내용 저장' : '등록'}</button><a class="btn quiet" href="${edit ? `#/farm/${edit.id}` : '#/farm'}">취소</a></div>
+    </form>
+  </div>`;
+}
+
+// ---------- 화면: 작기 하나 ----------
+function viewPlanting(id) {
+  const p = getPlanting(id);
+  if (!p) return '<div class="stack"><p class="empty">작기를 찾을 수 없습니다. <a href="#/farm">내 농사로</a></p></div>';
+  const plan = planOf(p);
+  const c = plan.c;
+  if (!c) return '<div class="stack"><p class="empty">작목 자료를 찾을 수 없습니다.</p></div>';
+  const { m2 } = areaNow('P' + p.id);
+  const all = plan.items.map((it) => ({ it, s: itemState(it), done: isDone(pDoneKey(p, it)) }));
+  const focus = focusItems(p, plan);
+  const later = all.filter(({ s, done }) => !done && s.st === 'next' && s.d > 7);
+  const past = all.filter((x) => !focus.includes(x) && !later.includes(x));
+  const fp = fertPlan(c, m2);
+  const recs = recordsOf(p.id).sort((a, b) => (a.date < b.date ? 1 : -1));
+  const sum = (f, t) => recs.filter((e) => !t || e.type === t).reduce((a, e) => a + (Number(e[f]) || 0), 0);
+  const kgSum = sum('kg', 'harvest');
+  const sales = sum('price', 'harvest');
+  const cost = sum('cost');
+  const tenA = m2 / 1000;
+  return `<div class="stack" data-planting="${esc(p.id)}">
+    <header class="crop-head">
+      <p class="type"><a href="#/farm">내 농사</a> · <a href="#/crop/${c.id}">${esc(fullName(c))} 작목 정보</a></p>
+      <h1>${esc(shortName(c))}${p.field ? ` · ${esc(p.field)}` : ''}</h1>
+      <p class="lede">${fmt(m2 / PY, 0)}평(${fmt(m2, 0)}㎡)${ageText(p, plan) ? ` · <b>${ageText(p, plan)}</b>` : ''}${p.date && plan.anchor ? ` · ${anchorName(plan.anchor)} ${esc(p.date)}` : ''}</p>
+      ${p.memo ? `<p class="sub">${esc(p.memo)}</p>` : ''}
+    </header>
+    ${phiHtml(p.id)}
+    ${quickRec(p)}
+    ${(() => { const w = store.get('wx', null); return w && w.day === isoDay() ? sprayHtml(w) : ''; })()}
+    <section class="card" id="s-now"><h2>지금 챙길 일 <small>지난 2주~앞으로 1주</small></h2>
+      <div class="todo">${focus.length ? planItemsHtml(p, focus, { std: true }) : '<div class="todo-item"><div><b>지금 챙길 일이 없습니다</b></div></div>'}</div>
+      ${plan.items.length ? '<p class="sub">날짜는 농사로 표준 일정을 내 기준일만큼 옮긴 것입니다. 날씨와 생육을 보며 맞추세요. ‘추정’은 본문의 “아주심기 후 20일” 같은 문구로 계산한 날짜입니다.</p>' : ''}
+    </section>
+    ${briefHtml(p, plan)}
+    ${(() => { const und = regionFilter(c.schedule || []).filter((x) => !x.start?.m && samePlan(x.task, plan.myLabel, new Set())); return und.length ? `<section class="card"><h2>날짜가 없는 작업 <small>${und.length}개</small></h2><p class="sub">농사로 원문 달력이 그림이라 날짜를 넣지 못한 작업입니다. <a href="${esc(c.source)}" target="_blank" rel="noopener">원문 달력</a>과 <a href="#/crop/${c.id}?s=stage">작업 방법</a>을 보고 챙기세요.</p><div class="chips undated">${und.map((x) => `<span class="tag plain">${esc(x.task)}</span>`).join('')}</div></section>` : ''; })()}
+    ${later.length ? `<section class="card"><h2>다가올 일</h2><div class="todo">${planItemsHtml(p, later, { std: true })}</div></section>` : ''}
+    ${fp ? `<section class="card" id="s-fertplan"><h2>비료 계획 <small>${fmt(m2 / PY, 0)}평 · ${fmt(fp.bag, 0)}kg 포대</small></h2>
+      <div class="fert-list" style="display:grid">${fp.rounds.map((r) => `<div class="fert-round"><h3>${esc(r.h)}</h3><ul class="bag-list">${r.items.map((i) => `<li>${bagTxt(i, fp.bag)}</li>`).join('')}</ul></div>`).join('')}</div>
+      ${fp.options ? '<p class="sub">위 묶음 가운데 내 논밭에 맞는 한 가지만 쓰세요(토양·지역별 기준).</p>' : `<h3 class="sub-h">한 작기 자재 준비</h3><ul class="bag-list">${fp.total.map((i) => `<li>${bagTxt(i, fp.bag)}</li>`).join('')}</ul>`}
+      <p class="sub">질소는 요소, 인산은 용성인비, 칼리는 염화칼리로 환산했습니다. 쓰는 비료가 다르면 <a href="#/tools?crop=${c.id}">비료 계산기</a>에서 성분 함량을 바꾸세요.</p>
+    </section>` : ''}
+    <section class="card" id="s-sum"><h2>올해 결산 <small>이 작기 기록 기준</small></h2>
+      <div class="stat"><div><b>${fmt(kgSum, 0)}</b><span>수확 kg${kgSum && tenA ? ` · 10a당 ${fmt(kgSum / tenA, 0)}kg` : ''}</span></div><div><b>${fmt(sales, 0)}</b><span>판매 금액(원)</span></div><div><b>${fmt(cost, 0)}</b><span>들인 비용(원)</span></div></div>
+      <p class="lede" style="margin-top:14px">소득 <b>${fmt(sales - cost, 0)}원</b>${m2 ? ` · 평당 ${fmt((sales - cost) / (m2 / PY), 0)}원` : ''}</p>
+      <p class="sub">비용은 기록에 적은 금액만 더합니다. 자재값·인건비를 기록할 때 비용 칸에 적어 두면 결산이 정확해집니다.</p>
+    </section>
+    <section class="card" id="s-recs"><h2>기록 <small>${recs.length}건</small></h2>
+      ${recs.length ? `<div class="entries">${recs.slice(0, 30).map(entryHtml).join('')}</div>` : '<p class="sub">위의 방제·비료·수확·작업 버튼으로 기록하세요. 영농일지에도 함께 쌓입니다.</p>'}
+    </section>
+    ${past.length ? `<details class="done-box"><summary>지난 일·끝낸 일 ${past.length}건</summary><div class="todo">${planItemsHtml(p, past, { std: true })}</div></details>` : ''}
+    <div class="row"><a class="btn quiet" href="#/farm/new?edit=${esc(p.id)}">작기 고치기</a><button class="btn quiet" data-plant-end="${esc(p.id)}">${p.ended ? '다시 진행 중으로' : '작기 끝내기'}</button><button class="btn danger" data-plant-del="${esc(p.id)}">작기 삭제</button></div>
+  </div>`;
+}
+
+// ---------- 화면: 기록 입력 ----------
+const PRODUCTS = ['요소', '용성인비', '염화칼리', '복합비료(21-17-17)', '복합비료(12-12-12)', '유박', '퇴비', '석회(고토석회)', '붕사'];
+function viewRecord(id, type) {
+  const p = getPlanting(id);
+  const c = p && BY_ID.get(String(p.cropId));
+  if (!p || !c || !REC[type]) return '<div class="stack"><p class="empty">기록할 작기를 찾을 수 없습니다. <a href="#/farm">내 농사로</a></p></div>';
+  const last = recordsOf(p.id).filter((e) => e.type === type).sort((a, b) => (a.createdAt < b.createdAt ? 1 : -1))[0] || {};
+  const { m2 } = areaNow('P' + p.id);
+  const water = Math.round((store.get('sprayPer10a', 200) * m2) / 1000);
+  const f = {
+    spray: `<label class="f wide">약제 이름<input type="text" name="pesticide" list="pest-names" value="${esc(last.pesticide || '')}" placeholder="농약 포장의 상표명" required><datalist id="pest-names">${[...new Set(recordsOf(p.id).map((e) => e.pesticide).filter(Boolean))].map((n) => `<option value="${esc(n)}">`).join('')}</datalist></label>
+      <label class="f">희석 배수(배)<input type="number" name="ratio" inputmode="numeric" min="1" step="any" value="${esc(last.ratio || 1000)}" data-mix required></label>
+      <label class="f">물 양(L)<input type="number" name="water" inputmode="decimal" min="0" step="any" value="${esc(water)}" data-mix required></label>
+      <p class="wide mix-out" data-mix-out></p>
+      <label class="f">대상 병해충<input type="text" name="target" list="pest-targets" value=""><datalist id="pest-targets">${(c.pests || []).map((x) => `<option value="${esc(x.name)}">`).join('')}</datalist></label>
+      <label class="f">수확 전 안전일수(일)<input type="number" name="phi" inputmode="numeric" min="0" step="1" value="${esc(last.phi || '')}" placeholder="포장의 ‘수확 ○일 전까지’"></label>`,
+    fert: `<label class="f wide">비료 이름<input type="text" name="product" list="fert-names" value="${esc(last.product || '')}" required><datalist id="fert-names">${PRODUCTS.map((n) => `<option value="${n}">`).join('')}</datalist></label>
+      <label class="f">양<input type="number" name="qty" inputmode="decimal" min="0" step="any" required></label>
+      <label class="f">단위<select name="qunit"><option>포대</option><option>kg</option><option>L</option></select></label>
+      <label class="f">회차<input type="text" name="round" placeholder="예: 웃거름 2회"></label>`,
+    harvest: `<label class="f">수확량(kg)<input type="number" name="kg" inputmode="decimal" min="0" step="any" required></label>
+      <label class="f">상자 수<input type="number" name="boxes" inputmode="numeric" min="0" step="1"></label>
+      <label class="f">판매 금액(원)<input type="number" name="price" inputmode="numeric" min="0" step="1" placeholder="팔았으면 적기"></label>
+      <label class="f">출하처<input type="text" name="buyer" list="buyers" value="${esc(last.buyer || '')}" placeholder="예: 가락시장, 농협, 직거래"><datalist id="buyers">${[...new Set(diary().map((e) => e.buyer).filter(Boolean))].map((n) => `<option value="${esc(n)}">`).join('')}</datalist></label>`,
+    work: `<label class="f">작업<select name="work">${WORKS.map((w) => `<option>${w}</option>`).join('')}</select></label>
+      <label class="f">일한 사람(명)<input type="number" name="people" inputmode="numeric" min="0" step="1" value="1"></label>
+      <label class="f">작업 시간(시간)<input type="number" name="hours" inputmode="decimal" min="0" step="0.5"></label>`,
+  }[type];
+  return `<div class="stack">
+    <p class="type"><a href="#/farm/${p.id}">${esc(shortName(c))}${p.field ? ` · ${esc(p.field)}` : ''}</a></p>
+    <h1>${REC[type]}</h1>
+    ${type === 'harvest' ? phiHtml(p.id) : ''}
+    <form class="card form" data-rec-form="${type}" data-pid="${esc(p.id)}">
+      <label class="f">날짜<input type="date" name="date" value="${isoDay()}" required></label>
+      ${f}
+      <label class="f">비용(원)<input type="number" name="cost" inputmode="numeric" min="0" step="1" placeholder="${type === 'harvest' ? '포장재·운송비 등' : '자재값·인건비'}"></label>
+      <label class="f wide">메모<input type="text" name="memo"></label>
+      <div class="wide row"><button class="btn primary" type="submit">저장</button><a class="btn quiet" href="#/farm/${p.id}">취소</a></div>
+    </form>
+  </div>`;
+}
+const mixAmount = (ratio, water) => (Number(ratio) > 0 && Number(water) > 0 ? (Number(water) * 1000) / Number(ratio) : null);
+const mixText = (a) => (a == null ? '' : a >= 1000 ? `${fmt(a / 1000, 2)}L(kg)` : `${fmt(a, a < 10 ? 1 : 0)}ml(g)`);
+function paintMix() {
+  const out = document.querySelector('[data-mix-out]');
+  if (!out) return;
+  const f = out.closest('form');
+  const a = mixAmount(f.ratio.value, f.water.value);
+  out.innerHTML = a == null ? '' : `물 ${fmt(Number(f.water.value), 0)}L에 약 <b>${mixText(a)}</b> · 20L 말통 하나에 ${mixText(mixAmount(f.ratio.value, 20))}`;
+}
+function recordFromForm(f, type, p) {
+  const c = BY_ID.get(String(p.cropId));
+  const o = Object.fromEntries(new FormData(f));
+  const e = { id: Date.now().toString(36) + Math.random().toString(36).slice(2, 6), createdAt: new Date().toISOString(), type, plantingId: p.id, date: o.date, crop: fullName(c), field: p.field || '', cost: o.cost || '', memo: o.memo || '', hours: o.hours || '' };
+  if (type === 'spray') {
+    const a = mixAmount(o.ratio, o.water);
+    Object.assign(e, { work: '방제', pesticide: o.pesticide, ratio: o.ratio, water: o.water, target: o.target, phi: o.phi, input: `${o.pesticide} ${o.ratio}배 · 물 ${o.water}L · 약 ${mixText(a)}${o.target ? ` · ${o.target}` : ''}${Number(o.phi) > 0 ? ` · 수확 가능 ${md(addDays(parseDay(o.date), Number(o.phi)))}` : ''}` });
+  } else if (type === 'fert') Object.assign(e, { work: '비료', product: o.product, qty: o.qty, qunit: o.qunit, round: o.round, input: `${o.product} ${o.qty}${o.qunit}${o.round ? ` · ${o.round}` : ''}` });
+  else if (type === 'harvest') Object.assign(e, { work: '수확', kg: o.kg, boxes: o.boxes, price: o.price, buyer: o.buyer, input: `${fmt(Number(o.kg), 1)}kg${o.boxes ? ` · ${o.boxes}상자` : ''}${o.price ? ` · ${fmt(Number(o.price), 0)}원` : ''}${o.buyer ? ` · ${o.buyer}` : ''}` });
+  else Object.assign(e, { work: o.work, people: o.people, input: `${o.people || 1}명${o.hours ? ` × ${o.hours}시간` : ''}` });
+  return e;
+}
+function entryHtml(e) {
+  return `<div class="entry"><div class="meta"><b>${esc(e.date)}</b><span class="tag plain">${esc(e.crop)}</span>${e.field ? `<span class="tag plain">${esc(e.field)}</span>` : ''}<span class="tag plain">${esc(e.work)}</span>${e.auto ? '<span class="tag plain">할 일 완료</span>' : ''}${e.hours && !e.type ? `<span>${fmt(e.hours, 1)}시간</span>` : ''}${e.cost ? `<span>${fmt(e.cost, 0)}원</span>` : ''}</div>
+    ${e.input ? `<p>${e.type ? '' : '<b>쓴 자재</b> '}${esc(e.input)}</p>` : ''}${e.memo ? `<p>${esc(e.memo)}</p>` : ''}
+    <div><button class="btn small danger" data-diary-del="${esc(e.id)}">삭제</button></div></div>`;
+}
+
+// ---------- 방제하기 좋은 때 (시간별 예보) ----------
+function sprayWindows(w) {
+  const h = w.hourly;
+  if (!h?.time) return null;
+  const now = new Date();
+  const ok = (i) => (h.precipitation_probability?.[i] ?? 0) <= 30 && (h.precipitation?.[i] ?? 0) === 0 && (h.wind_speed_10m?.[i] ?? 0) <= 4;
+  const dry = (i) => (h.precipitation_probability?.[i] ?? 0) <= 40 && (h.precipitation?.[i] ?? 0) === 0;
+  return [0, 1].map((off) => {
+    const day = isoDay(addDays(now, off));
+    let best = null;
+    let run = [];
+    const close = () => {
+      if (run.length >= 3) {
+        const endI = run[run.length - 1];
+        const after = [1, 2, 3, 4].map((k) => endI + k).filter((i) => i < h.time.length);
+        if (after.every(dry) && (!best || run.length > best.length)) best = run.slice();
+      }
+      run = [];
+    };
+    h.time.forEach((t, i) => {
+      if (!t.startsWith(day)) return;
+      const hr = Number(t.slice(11, 13));
+      if (hr < 6 || hr > 18 || (off === 0 && new Date(t).getTime() + 3600e3 < now.getTime())) { close(); return; }
+      ok(i) ? run.push(i) : close();
+    });
+    close();
+    return { label: DAYS[off], best: best && { from: Number(h.time[best[0]].slice(11, 13)), to: Number(h.time[best[best.length - 1]].slice(11, 13)) + 1 } };
+  });
+}
+function sprayHtml(w) {
+  const s = sprayWindows(w);
+  if (!s) return '';
+  const good = s.filter((d) => d.best);
+  return `<p class="spray-win"><b>방제하기 좋은 때</b> ${good.length ? good.map((d) => `${d.label} ${d.best.from}~${d.best.to}시`).join(' · ') : '오늘·내일은 비나 바람 때문에 마땅한 때가 없습니다'}<span class="when">비 올 확률 30% 이하, 바람 초속 4m 이하가 3시간 넘게 이어지고 뒤이어 4시간 비 소식이 없는 낮 시간</span></p>`;
+}
+
 // ---------- 알림 ----------
 let toastTimer;
 function toast(html) {
@@ -777,15 +1295,17 @@ function render() {
   else if (page === 'tools') html = viewTools(q);
   else if (page === 'diary') html = viewDiary(q);
   else if (page === 'links') html = viewLinks(META);
+  else if (page === 'farm') html = !seg[1] ? viewFarm() : seg[1] === 'new' ? viewFarmNew(q) : seg[2] === 'rec' ? viewRecord(seg[1], seg[3]) : viewPlanting(seg[1]);
   else html = '<div class="stack"><p class="empty">페이지를 찾을 수 없습니다. <a href="#/">오늘 화면으로</a></p></div>';
   $app.innerHTML = html;
   document.body.classList.toggle('is-home', page === 'home');
-  const nav = page === 'crop' ? 'crops' : page === 'tools' ? 'links' : page;
+  const nav = page === 'crop' || page === 'calendar' ? 'crops' : page === 'tools' ? 'links' : page;
   document.querySelectorAll('[data-nav]').forEach((a) => { const on = a.dataset.nav === nav; a.classList.toggle('on', on); on ? a.setAttribute('aria-current', 'page') : a.removeAttribute('aria-current'); });
   motion();
   if (page === 'tools') paintTools();
   if (page === 'calendar') document.querySelectorAll('.filter .chip.on').forEach((el) => { const box = el.parentElement; box.scrollLeft = Math.max(0, el.offsetLeft - box.offsetLeft - 16); });
   if (page === 'home') paintWeather();
+  if (page === 'farm') paintMix();
   if (page === 'crop') {
     const c = BY_ID.get(String(seg[1]));
     document.title = c ? `${fullName(c)} — 영농노트` : '영농노트';
@@ -826,9 +1346,36 @@ function toggleFav(id) {
   toast(on ? `<b>${esc(fullName(c))}</b>을(를) 내 작목에 담았습니다.${route().page === 'home' ? '' : ' <a href="#/">오늘 할 일 보기</a>'}` : `<b>${esc(fullName(c))}</b>을(를) 내 작목에서 뺐습니다. <button data-fav="${id}">되돌리기</button>`);
 }
 document.addEventListener('click', (e) => {
-  const t = e.target.closest('[data-done],[data-undone],[data-region],[data-geo],[data-wx-change],[data-wx-retry],[data-wx-clear],[data-big],[data-fav],[data-go],[data-jump],[data-print],[data-area-reset],[data-diary-del],[data-diary-csv],[data-diary-backup],[data-reset],[data-yr-step]');
+  const t = e.target.closest('[data-pdone],[data-plant-end],[data-plant-del],[data-mix-set],[data-done],[data-undone],[data-region],[data-geo],[data-wx-change],[data-wx-retry],[data-wx-clear],[data-big],[data-fav],[data-go],[data-jump],[data-print],[data-area-reset],[data-diary-del],[data-diary-csv],[data-diary-backup],[data-reset],[data-yr-step]');
   if (!t) return;
-  if (t.dataset.done) {
+  if (t.dataset.pdone) {
+    const [pid, key, startIso] = t.dataset.pdone.split('|');
+    const p = getPlanting(pid);
+    const plan = p && planOf(p);
+    const it = plan?.items.find((i) => i.key === key && isoDay(i.start) === startIso);
+    if (!it) return;
+    const entry = { id: Date.now().toString(36) + Math.random().toString(36).slice(2, 6), date: isoDay(), crop: fullName(plan.c), field: p.field || '', work: workOf({ kind: it.kind, task: it.task }), plantingId: p.id, input: '', hours: '', cost: '', memo: it.task, auto: true, createdAt: new Date().toISOString() };
+    store.set('diary', [...diary(), entry]);
+    const k = pDoneKey(p, it);
+    store.set('done', { ...doneMap(), [k]: { at: isoDay(), diaryId: entry.id } });
+    const y = window.scrollY; render(); window.scrollTo(0, y);
+    toast(`<b>${esc(it.task)}</b> 완료. 영농일지에 적었습니다. <button data-undone="${esc(k)}">되돌리기</button>`);
+  } else if (t.dataset.plantEnd) {
+    const a = plantings();
+    const p = a.find((x) => x.id === t.dataset.plantEnd);
+    p.ended = p.ended ? null : isoDay();
+    savePlantings(a);
+    render();
+    toast(p.ended ? '작기를 끝냈습니다. 기록과 결산은 ‘끝난 작기’에서 볼 수 있습니다.' : '작기를 다시 진행 중으로 돌렸습니다.');
+  } else if (t.dataset.plantDel) {
+    if (!confirm('이 작기를 삭제할까요? 영농일지의 기록은 남습니다.')) return;
+    savePlantings(plantings().filter((x) => x.id !== t.dataset.plantDel));
+    location.hash = '#/farm';
+    toast('작기를 삭제했습니다. 기록은 영농일지에 남아 있습니다.');
+  } else if (t.dataset.mixSet) {
+    const inp = document.querySelector('[data-mix-water]');
+    if (inp) { inp.value = t.dataset.mixSet; paintTools(); }
+  } else if (t.dataset.done) {
     const [cid, idx, x] = t.dataset.done.split('|');
     const c = BY_ID.get(cid);
     const s = c?.schedule[Number(idx)];
@@ -871,8 +1418,8 @@ document.addEventListener('click', (e) => {
   else if (t.dataset.yrStep) paintYear(Number(document.querySelector('[data-yr]').value) + Number(t.dataset.yrStep));
   else if (t.dataset.diaryDel) { if (confirm('이 기록을 삭제할까요?')) { store.set('diary', diary().filter((x) => x.id !== t.dataset.diaryDel)); render(); toast('기록을 삭제했습니다.'); } }
   else if ('diaryCsv' in t.dataset) {
-    const cols = ['date', 'crop', 'work', 'field', 'input', 'hours', 'cost', 'memo'];
-    const head = ['날짜', '작목', '작업', '필지', '투입자재', '작업시간', '비용', '메모'];
+    const cols = ['date', 'crop', 'field', 'work', 'input', 'pesticide', 'ratio', 'water', 'phi', 'product', 'qty', 'qunit', 'kg', 'boxes', 'price', 'buyer', 'people', 'hours', 'cost', 'memo'];
+    const head = ['날짜', '작목', '필지', '작업', '내용', '약제', '희석배수', '물(L)', '안전일수', '비료', '양', '단위', '수확(kg)', '상자', '판매금액', '출하처', '인원', '작업시간', '비용', '메모'];
     const cell = (v) => `"${String(v ?? '').replace(/"/g, '""')}"`;
     download('영농일지.csv', '﻿' + [head, ...diary().map((x) => cols.map((k) => x[k]))].map((r) => r.map(cell).join(',')).join('\r\n'), 'text/csv');
   } else if ('diaryBackup' in t.dataset) download('영농노트-백업.json', JSON.stringify({ app: 'youngnong', v: 1, favs: [...favs], diary: diary() }, null, 2), 'application/json');
@@ -888,6 +1435,31 @@ document.addEventListener('click', (e) => {
 document.addEventListener('submit', (e) => {
   e.preventDefault();
   const f = e.target;
+  if ('plantForm' in f.dataset) {
+    const o = Object.fromEntries(new FormData(f));
+    if (!o.crop) { toast('작목을 골라 주세요.'); return; }
+    const a = plantings();
+    const id = f.dataset.edit || Date.now().toString(36) + Math.random().toString(36).slice(2, 6);
+    const rec = { id, cropId: Number(o.crop), field: o.field.trim(), anchorIdx: o.anchor != null ? Number(o.anchor) : null, date: o.anchor != null ? o.date : null, memo: o.memo.trim(), created: isoDay() };
+    const i = a.findIndex((x) => x.id === id);
+    if (i >= 0) a[i] = { ...a[i], ...rec, created: a[i].created }; else a.push(rec);
+    savePlantings(a);
+    const areas = store.get('areas', {}); areas['P' + id] = { v: Number(o.area) || 0, u: o.unit }; store.set('areas', areas);
+    if (!favs.has(String(o.crop))) { favs.add(String(o.crop)); saveFavs(); }
+    location.hash = '#/farm/' + id;
+    toast(i >= 0 ? '작기를 고쳤습니다.' : '작기를 등록했습니다. 아래에서 내 날짜에 맞춘 일정을 확인하세요.');
+    return;
+  }
+  if ('recForm' in f.dataset) {
+    const p = getPlanting(f.dataset.pid);
+    if (!p) return;
+    const e2 = recordFromForm(f, f.dataset.recForm, p);
+    store.set('diary', [...diary(), e2]);
+    location.hash = '#/farm/' + p.id + '?s=recs';
+    const phi = e2.type === 'spray' && Number(e2.phi) > 0 ? ` <b>${md(addDays(parseDay(e2.date), Number(e2.phi)))}</b>부터 수확할 수 있습니다.` : '';
+    toast(`${REC[e2.type]}을 저장했습니다.${phi}`);
+    return;
+  }
   if ('search' in f.dataset) {
     if (f.q.hasAttribute('data-live')) f.q.blur();
     else location.hash = '#/crops?q=' + encodeURIComponent(f.q.value.trim());
@@ -925,7 +1497,10 @@ document.addEventListener('input', (e) => {
     const fc = store.get('fert', FERT_DEFAULT);
     const v = Number(t.value);
     if (v > 0) { t.dataset.fc === 'bag' ? (fc.bag = v) : (fc[t.dataset.fc].pct = v); store.set('fert', fc); paintTools(); }
-  } else if (t.matches('[data-tool-crop]')) { store.set('toolCrop', t.value); location.hash = '#/tools?crop=' + t.value; }
+  } else if (t.matches('[data-mix]')) paintMix();
+  else if (t.matches('[data-mix-tool]')) { if (t.matches('[data-spray-per]')) store.set('sprayPer10a', Number(t.value) || 200); paintTools(); }
+  else if (t.matches('[data-plant-crop]')) { const ed = t.form.dataset.edit; location.hash = '#/farm/new?crop=' + t.value + (ed ? '&edit=' + ed : ''); }
+  else if (t.matches('[data-tool-crop]')) { store.set('toolCrop', t.value); location.hash = '#/tools?crop=' + t.value; }
   else if (t.matches('[data-yr]')) paintYear(Number(t.value));
 });
 document.addEventListener('change', (e) => {
