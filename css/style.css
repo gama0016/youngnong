@@ -637,3 +637,10 @@ html.big { font-size: 118.75%; }
 .card .bags .bag { background: var(--bg); }
 @media (max-width: 420px) { .farm-quick { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 .todo-item > div:only-child { grid-column: 1 / -1; }
+
+.brief { display: grid; gap: 4px; }
+.brief > h2 { margin-bottom: 4px; }
+.brief .facts { margin: 10px 0 4px; }
+.brief .fert-round { margin-bottom: var(--gap); }
+.brief-line { display: flex; align-items: center; min-height: 44px; margin: 0 var(--gap); padding: 10px 14px; background: var(--ink); color: var(--bg); text-decoration: none; font-size: var(--step-small); }
+.brief-line b { color: #ffd166; margin-right: 6px; }

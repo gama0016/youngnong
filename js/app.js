@@ -914,6 +914,98 @@ function planItemsHtml(p, list, opts = {}) {
   </div>`).join('');
 }
 
+
+// ---------- 이번 주 영농 정보: 내 작기의 지금 단계·철에 맞는 농사로 정보만 골라 모은다 ----------
+const SEASONS = [
+  { months: [12, 1, 2], name: '겨울', re: /저온|한파|동해|언피해|혹한|서리|폭설|눈|저조도|일조|겨울|추위|한풍|냉해/ },
+  { months: [3, 4, 5], name: '봄', re: /봄|늦서리|서리|저온|가뭄|건조|강풍|냉해/ },
+  { months: [6, 7, 8], name: '여름', re: /장마|호우|태풍|고온|폭염|습해|침수|일소|우박|여름|다습|더위|잦은 비|강우/ },
+  { months: [9, 10, 11], name: '가을', re: /태풍|가을|서리|저온|가뭄|건조|냉해/ },
+];
+const seasonOf = (m) => SEASONS.find((x) => x.months.includes(m));
+const PHASE_RE = { nursery: /모기르기|육묘|모판|못자리|파종|씨뿌림|발아|싹/, growth: /생육|자람|정식 후|아주심기 후|이앙 후|분얼|개화|꽃|비대|웃자람|생장/, harvest: /수확|성숙|착색|결실|출하/ };
+function monthsIn(text) {
+  const out = new Set();
+  const t = String(text || '');
+  for (const m of t.matchAll(/(\d{1,2})\s*[~∼-]\s*(\d{1,2})\s*월/g)) { let a = +m[1]; const b = +m[2]; if (a < 1 || a > 12 || b < 1 || b > 12) continue; for (let i = 0; i < 12 && out.size < 12; i++) { out.add(a); if (a === b) break; a = a % 12 + 1; } }
+  for (const m of t.matchAll(/(\d{1,2})\s*월/g)) if (+m[1] >= 1 && +m[1] <= 12) out.add(+m[1]);
+  return out;
+}
+const normWork = (t) => { const s0 = String(t).replace(/\s+/g, ''); const n = (s0.match(/(\d)\s*(?:회|차)/) || [])[1] || ''; const k = (s0.match(/웃거름|밑거름|덧거름/) || [])[0] || ''; return k ? k + n : ''; };
+function briefOf(p, plan) {
+  const c = plan.c;
+  const t = today();
+  const m = t.getMonth() + 1;
+  const season = seasonOf(m);
+  const win = plan.items.filter((it) => dayDiff(it.start, t) <= 30 && dayDiff(t, it.end) <= 30);
+  const near = plan.items.filter((it) => dayDiff(it.start, t) <= 14 && dayDiff(t, it.end) <= 7);
+  const phases = new Set();
+  near.forEach((it) => { if (it.kind === 'sow' || it.kind === 'nursery') phases.add('nursery'); else if (it.kind === 'harvest') phases.add('harvest'); else phases.add('growth'); });
+  if (!phases.size && p.date && plan.anchor && dayDiff(t, parseDay(p.date)) >= 0) phases.add(plan.items.some((it) => it.kind === 'harvest' && dayDiff(t, it.start) >= 0 && dayDiff(it.end, t) >= 0) ? 'harvest' : 'growth');
+  const base = (x) => String(x).replace(/\s*\(.*$/, '').replace(/[\s·]/g, '');
+  // 작업 방법: 지금 앞뒤 한 달 일정과 이름이 맞거나, 시기 문구에 이번 달이 든 단계
+  const stages = (c.stages || []).filter((st) => {
+    if (!samePlan(st.title, plan.myLabel, new Set())) return false;
+    const b = base(st.title);
+    if (b && win.some((it) => { const ib = base(it.task); return ib && (ib.includes(b) || b.includes(ib)); })) return true;
+    return monthsIn(st.timing).has(m);
+  }).slice(0, 3);
+  // 병해충: 시기 문구의 달·생육 단계·철이 지금과 맞는 것
+  const seasonWord = { 겨울: /저온|겨울|추울|한겨울/, 봄: /봄|저온/, 여름: /고온|여름|장마|다습|건조|더울/, 가을: /가을|저온/ }[season.name];
+  // 재해: 시기에 이번 달이 들었거나, 이름이 이 철의 재해인 것
+  // 다른 철을 적은 재해(봄 가뭄 등)와, 심을 무렵이 아닌데 모·심기 때의 재해는 뺀다
+  const nearAnchor = phases.has('nursery') || (p.date && Math.abs(dayDiff(t, parseDay(p.date))) <= 30);
+  const ownWord = season.name === '여름' ? /여름|장마/ : new RegExp(season.name);
+  const otherWord = new RegExp(['봄', '여름', '가을', '겨울', '장마'].filter((w) => !ownWord.test(w)).join('|'));
+  const PLANTING = /모내기|이앙|아주심기|정식|씨뿌림|파종|모기르기|모 기를|육묘|못자리|싹틔우기|발아|출아/;
+  const fits = (text) => !(otherWord.test(text) && !ownWord.test(text)) && (nearAnchor || !PLANTING.test(text));
+  const risks = (c.disasters || []).filter((r) => {
+    const text = `${r.risk} ${r.timing || ''}`;
+    const ms = monthsIn(r.timing);
+    if (ms.size) return (ms.has(m) || ms.has(m % 12 + 1)) && fits(r.risk);
+    return season.re.test(text) && fits(text);
+  }).slice(0, 4);
+  const pests = (c.pests || []).filter((x) => {
+    const tx = x.timing || '';
+    if (!tx) return false;
+    const ms = monthsIn(tx);
+    if (ms.size) return ms.has(m);
+    if ([...phases].some((ph) => PHASE_RE[ph].test(tx))) return true; // 지금 생육 단계(수확기 등)와 맞으면 남긴다
+    return seasonWord.test(tx) && fits(tx);
+  });
+  const otherPests = (c.pests || []).filter((x) => !pests.includes(x));
+  // 비료: 지금 앞뒤 일정에 든 회차
+  const { m2 } = areaNow('P' + p.id);
+  const fp = fertPlan(c, m2);
+  const keys = new Set(near.map((it) => normWork(it.task)).filter(Boolean));
+  if (p.date && plan.anchor && Math.abs(dayDiff(t, parseDay(p.date))) <= 14) keys.add('밑거름');
+  const ferts = fp && !fp.options ? fp.rounds.filter((r) => keys.has(normWork(r.h)) || (normWork(r.h) === '밑거름' && keys.has('밑거름'))) : [];
+  const env = (c.env || []).filter((e) => /생육|적온|낮|밤|생장/.test(e.label) && !/저장|발아/.test(e.label)).slice(0, 3);
+  return { season, phases, stages, pests, otherPests, risks, ferts, fp, env, bag: fp?.bag };
+}
+const PHASE_NAME = { nursery: '모 기르는 때', growth: '자라는 때', harvest: '수확 때' };
+function briefHtml(p, plan) {
+  const b = briefOf(p, plan);
+  const c = plan.c;
+  const has = b.stages.length || b.pests.length || b.risks.length || b.ferts.length || b.env.length;
+  return `<section class="card brief" id="s-brief"><h2>이번 주 영농 정보 <small>${today().getMonth() + 1}월 · ${b.season.name}${b.phases.size ? ' · ' + [...b.phases].map((x) => PHASE_NAME[x]).join(', ') : ''}</small></h2>
+    <p class="sub">농사로 「${esc(fullName(c))}」 가운데 지금 이 작기에 맞는 것만 골랐습니다.</p>
+    ${b.env.length ? `<dl class="facts">${b.env.map((e) => `<div class="fact"><dt>${esc(e.label)}</dt><dd>${esc(e.value)}</dd></div>`).join('')}</dl>` : ''}
+    ${b.stages.length ? `<h3 class="sub-h">지금 하는 법</h3><div class="stages">${b.stages.map((st) => `<div class="stage-b"><h3>${esc(st.title)}${st.timing ? `<small>${esc(st.timing)}</small>` : ''}</h3><dl class="kv">${(st.items || []).slice(0, 8).map((i) => `<dt>${esc(i.label)}</dt><dd>${esc(i.value)}</dd>`).join('')}</dl></div>`).join('')}</div>` : ''}
+    ${b.ferts.length ? `<h3 class="sub-h">이번 비료</h3>${b.ferts.map((r) => `<div class="fert-round"><h3>${esc(r.h)}</h3><ul class="bag-list">${r.items.map((i) => `<li>${bagTxt(i, b.bag)}</li>`).join('')}</ul></div>`).join('')}` : ''}
+    ${b.pests.length ? `<h3 class="sub-h">지금 살필 병해충</h3><div class="pests">${b.pests.map((x) => `<div class="pest"><h3>${esc(x.name)}${x.kind ? ` <span class="tag plain">${esc(x.kind)}</span>` : ''}</h3><dl class="kv">${x.timing ? `<dt>나오는 때</dt><dd>${esc(x.timing)}</dd>` : ''}${x.control ? `<dt>방제·대책</dt><dd>${esc(x.control)}</dd>` : ''}</dl></div>`).join('')}</div>` : ''}
+    ${b.otherPests.length ? `<p class="sub">그 밖에 이 작목의 병해충: ${b.otherPests.map((x) => esc(x.name)).join(', ')} · <a href="#/crop/${c.id}?s=pest">자세히</a></p>` : ''}
+    ${b.risks.length ? `<h3 class="sub-h">${b.season.name}철 재해 대비</h3><div class="risks">${b.risks.map((r) => `<div class="risk"><h3>${esc(r.risk)}${r.timing ? `<small>${esc(r.timing)}</small>` : ''}</h3><ul class="dots">${(r.measures || []).map((x) => `<li>${esc(x)}</li>`).join('')}</ul></div>`).join('')}</div>` : ''}
+    ${has ? '' : '<p>지금 시기에 맞춰 골라낼 정보가 원문에 따로 없습니다.</p>'}
+    <p class="sub">쓸 수 있는 농약은 <a href="https://psis.rda.go.kr" target="_blank" rel="noopener">농약안전정보시스템</a>에서 작목 이름으로 찾으세요. 전체 정보는 <a href="#/crop/${c.id}">${esc(shortName(c))} 작목 정보</a>에 있습니다.</p>
+  </section>`;
+}
+const briefLine = (p, plan) => {
+  const b = briefOf(p, plan);
+  const bits = [...b.pests.slice(0, 3).map((x) => x.name.replace(/\(.*\)/, '')), ...b.risks.slice(0, 2).map((r) => r.risk.replace(/\s*\(.*$/, ''))];
+  return bits.length ? `<a class="brief-line" href="#/farm/${p.id}?s=brief"><b>지금 주의</b> ${esc(bits.join(' · '))}</a>` : '';
+};
+
 // ---------- 기록: 방제·비료·수확·작업 ----------
 const recordsOf = (pid) => diary().filter((e) => e.plantingId === pid);
 function phiOf(pid) {
@@ -973,6 +1065,7 @@ function farmCard(p, compact) {
   return `<article class="farm-card">
     <a class="farm-head" href="#/farm/${p.id}"><b>${esc(shortName(c))}${p.field ? ` · ${esc(p.field)}` : ''}</b><span>${fmt(m2 / PY, 0)}평${ageText(p, plan) ? ` · ${ageText(p, plan)}` : ''}</span></a>
     ${phiHtml(p.id)}
+    ${briefLine(p, plan)}
     <div class="todo">${focus.length ? planItemsHtml(p, focus.slice(0, compact ? 4 : 8)) : `<div class="todo-item"><div><b>이번 주에 챙길 일이 없습니다</b><div class="when">${plan.items.length ? '다음 일정은 작기 화면에서 볼 수 있습니다.' : '이 작목은 원문에 날짜가 적힌 일정이 없어 작업 방법을 참고해 주세요.'}</div></div></div>`}
       ${focus.length > (compact ? 4 : 8) ? `<a class="todo-item more" href="#/farm/${p.id}"><b>챙길 일 ${focus.length}건 모두 보기</b></a>` : ''}</div>
     ${quickRec(p)}
@@ -1050,6 +1143,7 @@ function viewPlanting(id) {
       <div class="todo">${focus.length ? planItemsHtml(p, focus, { std: true }) : '<div class="todo-item"><div><b>지금 챙길 일이 없습니다</b></div></div>'}</div>
       ${plan.items.length ? '<p class="sub">날짜는 농사로 표준 일정을 내 기준일만큼 옮긴 것입니다. 날씨와 생육을 보며 맞추세요. ‘추정’은 본문의 “아주심기 후 20일” 같은 문구로 계산한 날짜입니다.</p>' : ''}
     </section>
+    ${briefHtml(p, plan)}
     ${(() => { const und = regionFilter(c.schedule || []).filter((x) => !x.start?.m && samePlan(x.task, plan.myLabel, new Set())); return und.length ? `<section class="card"><h2>날짜가 없는 작업 <small>${und.length}개</small></h2><p class="sub">농사로 원문 달력이 그림이라 날짜를 넣지 못한 작업입니다. <a href="${esc(c.source)}" target="_blank" rel="noopener">원문 달력</a>과 <a href="#/crop/${c.id}?s=stage">작업 방법</a>을 보고 챙기세요.</p><div class="chips undated">${und.map((x) => `<span class="tag plain">${esc(x.task)}</span>`).join('')}</div></section>` : ''; })()}
     ${later.length ? `<section class="card"><h2>다가올 일</h2><div class="todo">${planItemsHtml(p, later, { std: true })}</div></section>` : ''}
     ${fp ? `<section class="card" id="s-fertplan"><h2>비료 계획 <small>${fmt(m2 / PY, 0)}평 · ${fmt(fp.bag, 0)}kg 포대</small></h2>
