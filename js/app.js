@@ -1633,7 +1633,11 @@ function warnHits(data, loc) {
     for (const a of w.areas) {
       const sameSido = alias.includes(a.name);
       const partHit = (p) => (short.length >= 2 && p.startsWith(short)) || (JEJU[loc.sgg] && JEJU[loc.sgg].test(p));
-      const hit = sameSido && (!a.parts.length || !loc.sgg || a.parts.some(partHit));
+      // "제주도(서귀포시남부 제외)"처럼 빼는 곳만 적힌 경우는 도 전체로 본다(빠진 곳에 있어도 알려 두는 편이 낫다)
+      const whole = !a.parts.length || a.parts.every((p) => /제외$/.test(p));
+      // "울릉도.독도", "인천(옹진, ...)"처럼 시·군 이름이 구역 이름이 된 경우(바다 구역은 뺀다)
+      const named = !sameSido && short.length >= 2 && !/바다/.test(a.name) && a.name.startsWith(short);
+      const hit = named || (sameSido && (whole || !loc.sgg || a.parts.some(partHit)));
       if (hit) { mine.push({ w, a }); break; }
       if (sameSido && a.parts.length) near.push({ w, a });
     }
