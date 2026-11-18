@@ -43,8 +43,12 @@ function candidates(name) {
   for (const x of base.split('·')) out.add(norm(x));
   return [...out].filter((x) => x.length >= 1);
 }
+// 이름이 다른 같은 작목(농사로 작목별병해충 쪽 이름). 다른 작물로 넘겨짚지 않는다 — 같은 작물의 다른 이름만.
+const ALIAS = { 벼: ['논벼'], '셀러리(양미나리)': ['샐러리'], 아스파라거스: ['아스파라가스'], 참다래: ['키위', '참다래(키위)'], 단감: ['감', '단감'], '한라봉(부지화)': ['감귤', '만감류'], '산약(마)': ['마'], '담근먹이 옥수수': ['옥수수'], 풋콩: ['콩'] };
+// 끝말이 농사로 작목 이름인 품종형 이름(결구상추→상추, 일반보리·맥주보리→보리). 다른 작물이 되는 경우는 막는다.
+const NO_SUFFIX = new Set(['쪽파', '꽃도라지', '꽃해바라기', '적채', '오리엔탈나리']);
 const bundle = JSON.parse(await readFile('data/crops.json', 'utf8'));
-const ours = (bundle.crops || bundle).map((c) => ({ id: c.id, name: c.name, cands: candidates(c.name) }));
+const ours = (bundle.crops || bundle).map((c) => ({ id: c.id, name: c.name, cands: [...candidates(c.name), ...(ALIAS[c.name] || []).map(norm)] }));
 
 // 1) 분류 탭마다 작목 목록
 const kcrops = [];
@@ -58,7 +62,8 @@ const only = (process.env.ONLY || '').split(',').filter(Boolean);
 const byCrop = {};
 const want = new Map();
 for (const o of ours) {
-  const hits = kcrops.filter((k) => o.cands.includes(norm(k.name)));
+  let hits = kcrops.filter((k) => candidates(k.name).some((x) => o.cands.includes(x)));
+  if (!hits.length && !NO_SUFFIX.has(o.name)) hits = kcrops.filter((k) => norm(k.name).length >= 2 && norm(o.name).endsWith(norm(k.name)));
   if (!hits.length) continue;
   byCrop[o.id] = [...new Set(hits.map((k) => k.code))];
   for (const k of hits) if (!only.length || only.includes(k.code)) want.set(k.code, k);
@@ -88,7 +93,7 @@ function parseDetail(h, code) {
   return { code, kind: code[0] === 'H' ? '해충' : '병', name, latin, sections, photos };
 }
 await mkdir('data/pests', { recursive: true });
-const index = { source: '농촌진흥청 농사로 「작목별병해충」 (https://www.nongsaro.go.kr/portal/ps/pss/pssa/photoSearchLst.ps?menuId=PS00202) · 사진: 국가농작물병해충관리시스템', fetched: new Date().toISOString().slice(0, 10), crops: {}, byCrop };
+const index = { all: kcrops.map((k) => [k.code, k.name, k.tabName]), source: '농촌진흥청 농사로 「작목별병해충」 (https://www.nongsaro.go.kr/portal/ps/pss/pssa/photoSearchLst.ps?menuId=PS00202) · 사진: 국가농작물병해충관리시스템', fetched: new Date().toISOString().slice(0, 10), crops: {}, byCrop };
 let nItems = 0;
 for (const k of want.values()) {
   const h = await get(`${BASE}/photoSearchLst.ps?menuId=PS00202&sKidofcomdtyTabCode=${k.tab}&sKidofcomdtyCode=${k.code}`);
