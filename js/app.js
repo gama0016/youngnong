@@ -702,7 +702,7 @@ function viewCrop(id) {
   const { a: area, m2, own } = areaNow(c.id);
   const pestFull = (c.pests || []).filter((p) => p.timing || p.control);
   const pestBare = (c.pests || []).filter((p) => !p.timing && !p.control);
-  const has = { cal: (c.schedule || []).length, stage: (c.stages || []).length, fert: c.fertilizer?.rows?.length, pest: (c.pests || []).length, risk: (c.disasters || []).length };
+  const has = { cal: (c.schedule || []).length, stage: (c.stages || []).length, fert: c.fertilizer?.rows?.length, pest: (c.pests || []).length || hasBook(c), risk: (c.disasters || []).length };
   const jump = [['cal', '달력'], ['stage', '작업 방법'], ['fert', '비료'], ['pest', '병해충'], ['risk', '재해 대책']].filter(([k]) => has[k]);
   return `<div class="stack" data-crop="${c.id}">
     <header class="crop-head">
@@ -733,10 +733,12 @@ function viewCrop(id) {
       <p class="row"><a class="btn" href="#/tools?crop=${c.id}">비료 포대 수로 계산하기</a></p>
       <p class="sub">표는 표준 기준입니다. 토양검정을 받으면 내 밭에 맞는 처방을 받을 수 있습니다 (<a href="https://soil.rda.go.kr" target="_blank" rel="noopener">흙토람</a>).</p>
     </section>` : ''}
-    ${has.pest ? `<section class="card" id="s-pest"><h2>병해충·생리장해</h2>
-      <div class="pests">${pestFull.map((p) => `<div class="pest"><h3>${esc(p.name)}${p.kind ? ` <span class="tag plain">${esc(p.kind)}</span>` : ''}</h3>
-        <dl class="kv">${p.timing ? `<dt>나오는 때</dt><dd>${esc(p.timing)}</dd>` : ''}${p.control ? `<dt>방제·대책</dt><dd>${esc(p.control)}</dd>` : ''}</dl></div>`).join('')}</div>
-      ${pestBare.length ? `<p class="sub">${pestFull.length ? '그 밖에 ' : ''}원문에 이름만 실린 병해충: ${pestBare.map((p) => esc(p.name)).join(', ')}</p>` : ''}
+    ${has.pest ? `<section class="card" id="s-pest"><h2>병해충</h2>
+      ${pestFull.length ? `<h3 class="sub-h">이 작형에서 챙길 병해충 <small>농작업일정</small></h3>
+      <div class="pests">${pestFull.map((p) => `<div class="pest" data-pestname="${esc(p.name)}" data-crop="${c.id}"><h3>${esc(p.name)}${p.kind ? ` <span class="tag plain">${esc(p.kind)}</span>` : ''}</h3>
+        <dl class="kv">${p.timing ? `<dt>나오는 때</dt><dd>${esc(p.timing)}</dd>` : ''}${p.control ? `<dt>방제·대책</dt><dd>${esc(p.control)}</dd>` : ''}</dl></div>`).join('')}</div>` : ''}
+      ${pestBare.length ? `<p class="sub">${pestFull.length ? '그 밖에 ' : ''}농작업일정에 이름만 실린 병해충: ${pestBare.map((p) => esc(p.name)).join(', ')}</p>` : ''}
+      ${hasBook(c) ? `<h3 class="sub-h">병해충 도감 <small>증상 사진 · 생기는 조건 · 방제 방법</small></h3><div data-pestbook="${c.id}"><p class="sub">불러오는 중…</p></div>` : ''}
       <p class="sub">쓸 수 있는 농약과 안전사용기준은 <a href="https://psis.rda.go.kr" target="_blank" rel="noopener">농약안전정보시스템</a>, 병해충 예찰·진단은 <a href="https://ncpms.rda.go.kr" target="_blank" rel="noopener">국가농작물병해충관리시스템</a>에서 확인하세요.</p>
     </section>` : ''}
     ${has.risk ? `<section class="card" id="s-risk"><h2>기상재해 대책</h2><div class="risks">${c.disasters.map((r) => `<div class="risk"><h3>${esc(r.risk)}${r.timing ? `<small>${esc(r.timing)}</small>` : ''}</h3><ul class="dots">${(r.measures || []).map((x) => `<li>${esc(x)}</li>`).join('')}</ul></div>`).join('')}</div></section>` : ''}
@@ -753,6 +755,152 @@ function paintCropFert() {
   box.innerHTML = fertTable(c, m2);
   const base = unitBase(c.fertilizer.unit);
   root.querySelector('[data-fert-unit]').textContent = base ? `${fmt(m2 / PY, 0)}평(${fmt(m2, 0)}㎡)에 주는 양, kg` : (c.fertilizer.unit || '');
+}
+
+// ---------- 병해충 도감: 농사로 「작목별병해충」의 증상·발생환경·방제방법·사진 (data/pests/) ----------
+let PEST_INDEX = null;
+const PEST_FILES = new Map();
+async function pestIndex() {
+  if (!PEST_INDEX) { try { PEST_INDEX = await (await fetch('data/pests/index.json')).json(); } catch { PEST_INDEX = { byCrop: {}, crops: {} }; } }
+  return PEST_INDEX;
+}
+const hasBook = (c) => !!(PEST_INDEX?.byCrop?.[c.id] || []).length;
+async function pestBook(c) {
+  const idx = await pestIndex();
+  const items = [];
+  const seen = new Set();
+  for (const k of idx.byCrop?.[c.id] || []) {
+    if (!PEST_FILES.has(k)) { try { PEST_FILES.set(k, await (await fetch(`data/pests/${k}.json`)).json()); } catch { PEST_FILES.set(k, null); } }
+    for (const it of PEST_FILES.get(k)?.items || []) if (!seen.has(it.code)) { seen.add(it.code); items.push({ ...it, kcode: k }); }
+  }
+  return items;
+}
+const SYM_RE = /증상|피해/;
+const ENV_RE = /발생환경|생태/;
+const CTL_RE = /방제/;
+const pestSec = (it, re) => (it.sections.find(([h]) => re.test(h)) || [])[1] || '';
+const pestKey = (s) => String(s || '').replace(/\(.*?\)|\s/g, '');
+// 농작업일정의 병해충 이름(예: "진딧물(바이러스병)") ↔ 도감 이름(예: "복숭아혹진딧물")
+function bookMatch(items, name) {
+  const k = pestKey(name).split(/[,·/]/)[0];
+  if (k.length < 2) return null;
+  return items.find((it) => pestKey(it.name) === k) || items.find((it) => pestKey(it.name).endsWith(k) || k.endsWith(pestKey(it.name))) || null;
+}
+// 농작업일정에 이 작형의 병해충으로 이름이 오른 것(주요)과 그 '나오는 때·방제·대책'
+const schedPest = (c, it) => (c.pests || []).find((p) => bookMatch([it], p.name));
+// 도감 글(발생환경·생태)에 이번 달이 적혀 있으면 '이번 달' 표시 — 적힌 달이 없으면 표시하지 않는다(없다고 단정하지 않음)
+const pestThisMonth = (it) => monthsIn(pestSec(it, ENV_RE)).has(today().getMonth() + 1);
+// 데이터 절약 모드나 느린 망(2G·3G)이면 목록에서는 사진을 받지 않는다(사진 한 장이 0.5MB 안팎). 자세히 화면에서는 보인다.
+const LITE = (() => { try { const k = navigator.connection; return !!(k && (k.saveData || /(^|-)(2g|3g)$/.test(k.effectiveType || ''))); } catch { return false; } })();
+const pestImg = (ph, cls = '') => (ph ? `<img class="${cls}" data-pimg src="${esc(ph.src)}" alt="${esc(ph.cap || '')}" loading="lazy" referrerpolicy="no-referrer">` : '');
+const firstSentences = (s, n = 2) => s.split('\n').map((l) => l.replace(/^[-·ㆍ*]\s*/, '')).filter(Boolean).slice(0, n).join(' ');
+const linesHtml = (s) => `<ul class="dots">${s.split('\n').map((l) => l.replace(/^[-·ㆍ*]\s*/, '').trim()).filter(Boolean).map((l) => `<li>${esc(l)}</li>`).join('')}</ul>`;
+function pestCard(c, it) {
+  const main = schedPest(c, it);
+  return `<a class="pcard" href="#/pest/${c.id}/${it.code}" data-kind="${it.kind}">
+    <span class="pimg">${LITE ? '' : pestImg(it.photos[0])}</span>
+    <span class="pbody"><b>${esc(it.name)}</b>
+      <span class="ptags"><span class="tag plain">${it.kind}</span>${main ? '<span class="tag main">주요</span>' : ''}${pestThisMonth(it) ? `<span class="tag now">${today().getMonth() + 1}월 발생</span>` : ''}</span>
+      <span class="psym">${esc(firstSentences(pestSec(it, SYM_RE)))}</span></span>
+  </a>`;
+}
+// 증상으로 찾기: 적은 낱말이 모두 증상·피해·발생환경·이름에 들어 있는 것. 끝말(게·고·요·짐…)은 떼고 찾는다.
+function pestFilter(items, kind, q) {
+  const toks = String(q || '').split(/[\s,]+/).map((w) => w.replace(/(해짐|어짐|아짐|게|고|요|짐|짐요|함|했어요|해요|었다|였다|다)$/, '')).filter((w) => w.length >= 1);
+  return items.filter((it) => {
+    if (kind && it.kind !== kind) return false;
+    if (!toks.length) return true;
+    const hay = pestKey(`${it.name} ${pestSec(it, SYM_RE)} ${pestSec(it, ENV_RE)}`);
+    return toks.every((w) => hay.includes(w));
+  });
+}
+async function paintPestBook() {
+  const box = document.querySelector('[data-pestbook]');
+  if (!box) return;
+  const c = BY_ID.get(box.dataset.pestbook);
+  const items = await pestBook(c);
+  if (!document.contains(box)) return;
+  if (!items.length) { box.innerHTML = ''; return; }
+  // 주요(농작업일정에 오른 것) → 이번 달 → 나머지
+  const rank = (it) => (schedPest(c, it) ? 0 : 2) + (pestThisMonth(it) ? 0 : 1);
+  items.sort((a, b) => rank(a) - rank(b));
+  box._items = items;
+  const nD = items.filter((x) => x.kind === '병').length;
+  const srcNames = (PEST_INDEX.byCrop[c.id] || []).map((k) => PEST_INDEX.crops[k]?.name).filter(Boolean);
+  const other = srcNames.filter((n) => pestKey(n) !== pestKey(bare(c)));
+  box.innerHTML = `${other.length ? `<p class="sub">농사로 작목별병해충의 「${other.map(esc).join('」·「')}」 자료입니다.</p>` : ''}<div class="pfind">
+      <label class="f">증상으로 찾기<input type="search" data-pest-q placeholder="예: 겹무늬, 구멍, 시들, 흰가루, 잎 뒷면" autocomplete="off" enterkeyhint="search"></label>
+      <div class="chips" role="group" aria-label="종류"><button class="chip on" data-pest-kind="" aria-pressed="true">전체 ${items.length}</button><button class="chip" data-pest-kind="병" aria-pressed="false">병 ${nD}</button><button class="chip" data-pest-kind="해충" aria-pressed="false">해충 ${items.length - nD}</button></div>
+    </div>
+    <div class="pgrid" data-pest-grid>${items.map((it) => pestCard(c, it)).join('')}</div>
+    <p class="sub">${LITE ? '데이터 절약 중이라 목록에서는 사진을 빼고 보여 드립니다. ' : ''}카드를 누르면 사진과 증상·생기는 조건·방제 방법을 크게 봅니다. 자료: 농사로 「작목별병해충」(사진 국가농작물병해충관리시스템).</p>`;
+}
+function repaintPestGrid() {
+  const box = document.querySelector('[data-pestbook]');
+  if (!box?._items) return;
+  const c = BY_ID.get(box.dataset.pestbook);
+  const kind = box.querySelector('[data-pest-kind].on')?.dataset.pestKind || '';
+  const q = box.querySelector('[data-pest-q]').value;
+  const list = pestFilter(box._items, kind, q);
+  box.querySelector('[data-pest-grid]').innerHTML = list.length ? list.map((it) => pestCard(c, it)).join('') : '<p class="sub">맞는 병해충이 없습니다. 낱말을 줄이거나 다르게 적어 보세요(예: “노랗게” 대신 “황화”, “구멍”, “반점”).</p>';
+}
+// 영농 정보·작목 화면의 병해충 이름 옆에 도감 사진과 '자세히'를 붙인다
+async function paintPestLinks() {
+  const els = [...document.querySelectorAll('[data-pestname]')];
+  if (!els.length) return;
+  const byCrop = new Map();
+  for (const el of els) { const cid = el.dataset.crop; if (!byCrop.has(cid)) byCrop.set(cid, []); byCrop.get(cid).push(el); }
+  for (const [cid, list] of byCrop) {
+    const c = BY_ID.get(cid);
+    if (!c || !hasBook(c)) continue;
+    const items = await pestBook(c);
+    for (const el of list) {
+      if (!document.contains(el) || el.dataset.linked) continue;
+      const it = bookMatch(items, el.dataset.pestname);
+      if (!it) continue;
+      el.dataset.linked = '1';
+      el.insertAdjacentHTML('afterbegin', it.photos[0] && !LITE ? `<a class="pthumb" href="#/pest/${c.id}/${it.code}" aria-hidden="true" tabindex="-1">${pestImg(it.photos[0])}</a>` : '');
+      el.insertAdjacentHTML('beforeend', `<p class="pmore"><span>${esc(firstSentences(pestSec(it, SYM_RE), 1))}</span> <a href="#/pest/${c.id}/${it.code}">증상·방제 자세히</a></p>`);
+    }
+  }
+}
+function viewPest(cid, code) {
+  const c = BY_ID.get(String(cid));
+  if (!c) return '<div class="stack"><p class="empty">작목을 찾을 수 없습니다.</p></div>';
+  return `<div class="stack" data-pestview="${c.id}|${esc(code)}"><p class="sub">병해충 정보를 불러오는 중…</p></div>`;
+}
+async function paintPestView() {
+  const root = document.querySelector('[data-pestview]');
+  if (!root) return;
+  const [cid, code] = root.dataset.pestview.split('|');
+  const c = BY_ID.get(cid);
+  const items = await pestBook(c);
+  const it = items.find((x) => x.code === code);
+  if (!document.contains(root)) return;
+  if (!it) { root.innerHTML = `<p class="empty">병해충 정보를 찾지 못했습니다. <a href="#/crop/${c.id}?s=pest">${esc(shortName(c))} 병해충 목록</a></p>`; return; }
+  document.title = `${it.name} — ${c.name} 병해충 — 영농노트`;
+  const main = schedPest(c, it);
+  const sym = pestSec(it, SYM_RE);
+  const env = pestSec(it, ENV_RE);
+  const ctl = pestSec(it, CTL_RE);
+  const extra = it.sections.filter(([h]) => !SYM_RE.test(h) && !ENV_RE.test(h) && !CTL_RE.test(h) && !/대상작물/.test(h));
+  const act = activePlantings().filter((p) => String(p.cropId) === String(c.id));
+  const url = it.kind === '해충' ? `https://www.nongsaro.go.kr/portal/ps/pss/pssa/hlsctSearchDtl.ps?menuId=PS00202&hlsctCode=${it.code}` : `https://www.nongsaro.go.kr/portal/ps/pss/pssa/sicknsSearchDtl.ps?menuId=PS00202&sicknsCode=${it.code}`;
+  root.innerHTML = `<header class="crop-head">
+      <p class="type"><a href="#/crop/${c.id}?s=pest">${esc(shortName(c))} 병해충</a></p>
+      <h1>${esc(it.name)}</h1>
+      <p class="ptags"><span class="tag plain">${it.kind}</span>${main ? '<span class="tag main">이 작형의 주요 병해충</span>' : ''}${pestThisMonth(it) ? `<span class="tag now">${today().getMonth() + 1}월에 발생</span>` : ''}${it.latin ? `<span class="sub">${esc(it.latin)}</span>` : ''}</p>
+    </header>
+    ${it.photos.length ? `<div class="pgal" aria-label="사진">${it.photos.map((ph) => `<figure>${pestImg(ph)}<figcaption>${esc(ph.cap.replace(/^[^_]*_[^_]*_/, '').replace(/_/g, ' ').replace(/^(.+)\(\1\)$/, '$1'))}</figcaption></figure>`).join('')}</div>` : ''}
+    ${sym ? `<section class="card psec"><h2>${it.kind === '해충' ? '이런 피해가 보이면' : '이런 증상이 보이면'}</h2>${linesHtml(sym)}</section>` : ''}
+    ${ctl || main?.control ? `<section class="card psec ctl"><h2>방제 방법</h2>${ctl ? linesHtml(ctl) : ''}
+      ${main?.control || main?.timing ? `<div class="pplan"><b>농작업일정(${esc(fullName(c))})</b>${main.timing ? `<span>나오는 때: ${esc(main.timing)}</span>` : ''}${main.control ? `<span>방제·대책: ${esc(main.control)}</span>` : ''}</div>` : ''}
+      <div class="row">${act.map((p) => `<button class="btn primary" data-pest-rec="${esc(p.id)}|${esc(it.name)}">${act.length > 1 ? `${esc(p.field || '작기')} ` : ''}방제 기록하기</button>`).join('')}<a class="btn quiet" href="https://psis.rda.go.kr" target="_blank" rel="noopener">등록 농약 찾기(농약안전정보시스템)</a></div>
+      <p class="sub">농약은 반드시 ${esc(c.name)}에 등록된 약제를 라벨의 희석배수·안전사용기준대로 쓰세요.</p></section>` : ''}
+    ${env ? `<section class="card psec"><h2>${it.kind === '해충' ? '생태 — 언제, 어떻게 생기나' : '생기는 조건 — 언제, 어떻게 퍼지나'}</h2>${linesHtml(env)}</section>` : ''}
+    ${extra.length ? `<section class="card"><dl class="kv">${extra.map(([h, v]) => `<dt>${esc(h)}</dt><dd>${esc(v)}</dd>`).join('')}</dl></section>` : ''}
+    <p class="source">출처: 농촌진흥청 농사로 「작목별병해충」 ${esc(PEST_FILES.get(it.kcode)?.name || '')} · <a href="${url}" target="_blank" rel="noopener">원문 보기</a> · 사진 국가농작물병해충관리시스템</p>
+    <p><a class="btn quiet" href="#/crop/${c.id}?s=pest">← ${esc(shortName(c))} 병해충 목록</a></p>`;
 }
 
 // ---------- 달력 ----------
@@ -1230,7 +1378,7 @@ function briefHtml(p, plan) {
     ${b.env.length ? `<dl class="facts">${b.env.map((e) => `<div class="fact"><dt>${esc(e.label)}</dt><dd>${esc(e.value)}</dd></div>`).join('')}</dl>` : ''}
     ${b.stages.length ? `<h3 class="sub-h">지금 하는 법</h3><div class="stages">${b.stages.map((st) => `<div class="stage-b"><h3>${esc(st.title)}${st.timing ? `<small>${esc(st.timing)}</small>` : ''}</h3><dl class="kv">${(st.items || []).slice(0, 8).map((i) => `<dt>${esc(i.label)}</dt><dd>${esc(i.value)}</dd>`).join('')}</dl></div>`).join('')}</div>` : ''}
     ${b.ferts.length ? `<h3 class="sub-h">이번 비료</h3>${b.ferts.map((r) => `<div class="fert-round"><h3>${esc(r.h)}</h3><ul class="bag-list">${r.items.map((i) => `<li>${bagTxt(i, b.bag)}</li>`).join('')}</ul></div>`).join('')}` : ''}
-    ${b.pests.length ? `<h3 class="sub-h">지금 살필 병해충</h3><div class="pests">${b.pests.map((x) => `<div class="pest"><h3>${esc(x.name)}${x.kind ? ` <span class="tag plain">${esc(x.kind)}</span>` : ''}</h3><dl class="kv">${x.timing ? `<dt>나오는 때</dt><dd>${esc(x.timing)}</dd>` : ''}${x.control ? `<dt>방제·대책</dt><dd>${esc(x.control)}</dd>` : ''}</dl></div>`).join('')}</div>` : ''}
+    ${b.pests.length ? `<h3 class="sub-h">지금 살필 병해충</h3><div class="pests">${b.pests.map((x) => `<div class="pest" data-pestname="${esc(x.name)}" data-crop="${c.id}"><h3>${esc(x.name)}${x.kind ? ` <span class="tag plain">${esc(x.kind)}</span>` : ''}</h3><dl class="kv">${x.timing ? `<dt>나오는 때</dt><dd>${esc(x.timing)}</dd>` : ''}${x.control ? `<dt>방제·대책</dt><dd>${esc(x.control)}</dd>` : ''}</dl></div>`).join('')}</div>` : ''}
     ${b.otherPests.length ? `<p class="sub">그 밖에 이 작목의 병해충: ${b.otherPests.map((x) => esc(x.name)).join(', ')} · <a href="#/crop/${c.id}?s=pest">자세히</a></p>` : ''}
     ${b.risks.length ? `<h3 class="sub-h">${b.season.name}철 재해 대비</h3><div class="risks">${b.risks.map((r) => `<div class="risk"><h3>${esc(r.risk)}${r.timing ? `<small>${esc(r.timing)}</small>` : ''}</h3><ul class="dots">${(r.measures || []).map((x) => `<li>${esc(x)}</li>`).join('')}</ul></div>`).join('')}</div>` : ''}
     ${has ? '' : '<p>지금 시기에 맞춰 골라낼 정보가 원문에 따로 없습니다.</p>'}
@@ -1415,7 +1563,7 @@ function viewRecord(id, type) {
       <label class="f">희석 배수(배)<input type="number" name="ratio" inputmode="numeric" min="1" step="any" value="${esc(last.ratio || 1000)}" data-mix required></label>
       <label class="f">물 양(L)<input type="number" name="water" inputmode="decimal" min="0" step="any" value="${esc(water)}" data-mix required></label>
       <p class="wide mix-out" data-mix-out></p>
-      <label class="f">대상 병해충<input type="text" name="target" list="pest-targets" value=""><datalist id="pest-targets">${(c.pests || []).map((x) => `<option value="${esc(x.name)}">`).join('')}</datalist></label>
+      <label class="f">대상 병해충<input type="text" name="target" list="pest-targets" value=""><datalist id="pest-targets">${[...new Set([...(c.pests || []).map((x) => x.name), ...(PEST_INDEX?.byCrop?.[c.id] || []).flatMap((k) => (PEST_FILES.get(k)?.items || []).map((x) => x.name))])].map((n) => `<option value="${esc(n)}">`).join('')}</datalist></label>
       <label class="f">수확 전 안전일수(일)<input type="number" name="phi" inputmode="numeric" min="0" step="1" value="${esc(last.phi || '')}" placeholder="포장의 ‘수확 ○일 전까지’"></label>`,
     fert: `<label class="f wide">비료 이름<input type="text" name="product" list="fert-names" value="${esc(last.product || '')}" required><datalist id="fert-names">${PRODUCTS.map((n) => `<option value="${n}">`).join('')}</datalist></label>
       <label class="f">양<input type="number" name="qty" inputmode="decimal" min="0" step="any" required></label>
@@ -1896,7 +2044,7 @@ function applyPrefill() {
   for (const [k, v] of Object.entries(pf.values || {})) { const el = form.elements[k]; if (el && v != null && v !== '') el.value = v; }
   const need = { '약제 이름': 'pesticide', '희석 배수': 'ratio', '물 양': 'water', '비료 이름': 'product', '양': 'qty', '수확량(kg)': 'kg' };
   (pf.missing || []).forEach((m) => { const el = form.elements[need[m]]; if (el) { el.value = ''; el.classList.add('miss'); } });
-  form.insertAdjacentHTML('afterbegin', `<p class="wide vbanner">말한 내용: “${esc(pf.text)}”${pf.missing?.length ? `<br><b>빠진 것: ${pf.missing.map(esc).join(', ')}</b> — 표시된 칸을 채워 주세요.` : ''}</p>`);
+  if (pf.text) form.insertAdjacentHTML('afterbegin', `<p class="wide vbanner">말한 내용: “${esc(pf.text)}”${pf.missing?.length ? `<br><b>빠진 것: ${pf.missing.map(esc).join(', ')}</b> — 표시된 칸을 채워 주세요.` : ''}</p>`);
   form.querySelector('.miss')?.focus();
   paintMix();
 }
@@ -1990,13 +2138,14 @@ function render() {
   else if (page === 'links') html = viewLinks(META);
   else if (page === 'import') html = viewImport();
   else if (page === 'voice') html = viewVoice(q);
+  else if (page === 'pest') html = viewPest(seg[1], seg[2]);
   else if (page === 'report') html = viewReport(q);
   else if (page === 'farm') html = !seg[1] ? viewFarm() : seg[1] === 'new' ? viewFarmNew(q) : seg[2] === 'rec' ? viewRecord(seg[1], seg[3]) : viewPlanting(seg[1]);
   else html = '<div class="stack"><p class="empty">페이지를 찾을 수 없습니다. <a href="#/">오늘 화면으로</a></p></div>';
   $app.innerHTML = html;
   paintAccount();
   document.body.classList.toggle('is-home', page === 'home');
-  const nav = page === 'crop' || page === 'calendar' ? 'crops' : page === 'tools' ? 'links' : page === 'voice' ? 'farm' : page === 'report' ? 'diary' : page;
+  const nav = page === 'crop' || page === 'calendar' || page === 'pest' ? 'crops' : page === 'tools' ? 'links' : page === 'voice' ? 'farm' : page === 'report' ? 'diary' : page;
   document.querySelectorAll('[data-nav]').forEach((a) => { const on = a.dataset.nav === nav; a.classList.toggle('on', on); on ? a.setAttribute('aria-current', 'page') : a.removeAttribute('aria-current'); });
   motion();
   if (page === 'tools') paintTools();
@@ -2004,6 +2153,7 @@ function render() {
   if (page === 'home') paintWeather();
   if (page === 'farm') { paintMix(); if (seg[2] === 'rec') applyPrefill(); }
   if (document.querySelector('[data-rpick]')) paintRpick();
+  paintPestBook(); paintPestLinks(); paintPestView();
   if (page === 'voice' && voiceDraft && voiceDraft.text) { document.querySelector('[data-voice-text]').value = voiceDraft.text; document.querySelector('[data-voice-out]').innerHTML = voiceResultHtml(voiceDraft.recs); }
   if (page === 'crop') {
     const c = BY_ID.get(String(seg[1]));
@@ -2045,8 +2195,19 @@ function toggleFav(id) {
   toast(on ? `<b>${esc(fullName(c))}</b>을(를) 내 작목에 담았습니다.${route().page === 'home' ? '' : ' <a href="#/">오늘 할 일 보기</a>'}` : `<b>${esc(fullName(c))}</b>을(를) 내 작목에서 뺐습니다. <button data-fav="${id}">되돌리기</button>`);
 }
 document.addEventListener('click', (e) => {
-  const t = e.target.closest('[data-rp-apply],[data-rp-pick],[data-mic],[data-voice-go],[data-voice-pid],[data-voice-save],[data-voice-fill],[data-voice-saveall],[data-voice-diary],[data-sync-now],[data-migrate],[data-pdone],[data-plant-end],[data-plant-del],[data-mix-set],[data-done],[data-undone],[data-region],[data-geo],[data-wx-change],[data-wx-retry],[data-wx-clear],[data-big],[data-fav],[data-go],[data-jump],[data-print],[data-area-reset],[data-diary-del],[data-diary-csv],[data-diary-backup],[data-reset],[data-yr-step]');
+  const t = e.target.closest('[data-pest-kind],[data-pest-rec],[data-rp-apply],[data-rp-pick],[data-mic],[data-voice-go],[data-voice-pid],[data-voice-save],[data-voice-fill],[data-voice-saveall],[data-voice-diary],[data-sync-now],[data-migrate],[data-pdone],[data-plant-end],[data-plant-del],[data-mix-set],[data-done],[data-undone],[data-region],[data-geo],[data-wx-change],[data-wx-retry],[data-wx-clear],[data-big],[data-fav],[data-go],[data-jump],[data-print],[data-area-reset],[data-diary-del],[data-diary-csv],[data-diary-backup],[data-reset],[data-yr-step]');
   if (!t) return;
+  if ('pestKind' in t.dataset) {
+    t.parentElement.querySelectorAll('[data-pest-kind]').forEach((b) => { const on = b === t; b.classList.toggle('on', on); b.setAttribute('aria-pressed', on); });
+    repaintPestGrid();
+    return;
+  }
+  if (t.dataset.pestRec) {
+    const [pid, name] = t.dataset.pestRec.split('|');
+    sessionStorage.setItem('yn:prefill', JSON.stringify({ type: 'spray', pid, values: { target: name }, missing: [], text: '' }));
+    location.hash = `#/farm/${pid}/rec/spray`;
+    return;
+  }
   if ('rpApply' in t.dataset) { const loc = rpickValue(t.closest('[data-rpick]')); if (loc) setLoc(loc); return; }
   if (t.dataset.rpPick) {
     const box = t.closest('[data-rpick]');
@@ -2240,6 +2401,7 @@ function setArea(v, u, cid) {
 }
 document.addEventListener('input', (e) => {
   const t = e.target;
+  if (t.matches('[data-pest-q]')) { repaintPestGrid(); return; }
   if (t.matches('[data-rp-q]')) { loadRegions().then(() => rpickSearch(t.closest('[data-rpick]'), t.value)); return; }
   if (t.matches('[data-live]')) {
     document.querySelector('[data-results]').innerHTML = cropResults(t.value, t.dataset.cat);
@@ -2285,8 +2447,11 @@ document.addEventListener('change', (e) => {
   }).catch(() => toast('백업 파일을 읽지 못했습니다. 영농노트에서 받은 백업 파일인지 확인해 주세요.'));
 });
 
+// 병해충 사진을 못 받으면 칸을 비운다
+document.addEventListener('error', (e) => { const im = e.target; if (im?.matches?.('img[data-pimg]')) { im.parentElement?.classList.add('noimg'); im.remove(); } }, true);
+
 // ---------- boot ----------
 applyBig();
-load().then((d) => { META = d; lastPath = location.hash.split('?')[0]; render(); startSync(); })
+Promise.all([load(), pestIndex()]).then(([d]) => { META = d; lastPath = location.hash.split('?')[0]; render(); startSync(); })
   .catch((err) => { $app.innerHTML = `<div class="stack"><p class="empty">${esc(err.message)}. 연결 상태를 확인한 뒤 새로고침해 주세요.</p></div>`; });
 if ('serviceWorker' in navigator && location.protocol === 'https:') navigator.serviceWorker.register('sw.js').catch(() => {});

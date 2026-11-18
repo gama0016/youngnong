@@ -42,6 +42,7 @@ jobs:
           mkdir -p _site/data
           cp -r index.html sw.js manifest.webmanifest .nojekyll css js icons assets _site/
           cp data/crops.json data/regions.json _site/data/
+          if [ -d data/pests ]; then cp -r data/pests _site/data/; fi
 
       - uses: actions/configure-pages@v5
 

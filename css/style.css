@@ -741,3 +741,36 @@ input.miss, select.miss { outline: 3px solid #e0a100; outline-offset: 1px; }
   .rp-open { width: 100%; }
 }
 @media print { .rp { display: none !important; } }
+/* 병해충 도감 */
+.pfind { display: grid; gap: 10px; margin-bottom: 12px; }
+.pgrid { display: grid; gap: var(--gap); grid-template-columns: repeat(auto-fill, minmax(min(100%, 220px), 1fr)); }
+@media (max-width: 520px) { .pgrid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.pcard { display: grid; grid-template-rows: auto 1fr; background: var(--bg); color: var(--ink); text-decoration: none; min-width: 0; }
+.pcard:hover { outline: 2px solid var(--ink); outline-offset: -2px; }
+.pimg { display: block; aspect-ratio: 4 / 3; background: var(--surface-2); overflow: hidden; }
+.pimg img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.pimg.noimg::after, .pimg:empty::after { content: "사진 없음"; display: grid; place-items: center; height: 100%; color: var(--muted); font-size: var(--step-small); }
+.pbody { display: grid; gap: 6px; padding: 10px 12px 14px; align-content: start; }
+.pbody b { font-size: 1.05rem; line-height: 1.3; word-break: keep-all; }
+.psym { font-size: var(--step-small); color: var(--muted); display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.ptags { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin: 0; }
+.tag.main { background: var(--accent); color: var(--accent-ink); padding: 2px 8px; }
+.tag.now { background: var(--danger); color: #fff; padding: 2px 8px; }
+.pest[data-linked] { grid-template-columns: minmax(0, 1fr) 96px; }
+.pest[data-linked] > .pthumb { grid-column: 2; grid-row: 1 / span 3; }
+.pest[data-linked] > :not(.pthumb) { grid-column: 1; }
+.pthumb { display: block; width: 96px; aspect-ratio: 1; overflow: hidden; background: var(--surface-2); }
+.pthumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.pthumb.noimg { display: none; }
+.pmore { margin: 0; font-size: var(--step-small); }
+.pmore span { color: var(--muted); }
+.pmore a { font-weight: 800; white-space: nowrap; }
+.pgal { display: flex; gap: 10px; overflow-x: auto; scroll-snap-type: x mandatory; margin: 0 calc(-1 * var(--m)); padding: 0 var(--m) 6px; scrollbar-width: thin; }
+.pgal figure { flex: 0 0 min(78vw, 340px); margin: 0; scroll-snap-align: start; background: var(--surface); }
+.pgal img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; display: block; }
+.pgal figure.noimg { display: none; }
+.pgal figcaption { font-size: var(--step-small); padding: 6px 10px; color: var(--muted); }
+.psec .dots li { margin-bottom: 6px; }
+.psec.ctl { box-shadow: inset 6px 0 0 var(--accent); }
+.pplan { display: grid; gap: 4px; background: var(--bg); padding: 12px 14px; margin: 12px 0; }
+@media print { .pgal { overflow: visible; flex-wrap: wrap; } .pgal figure { flex-basis: 30%; } }
