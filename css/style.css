@@ -710,3 +710,34 @@ input.miss, select.miss { outline: 3px solid #e0a100; outline-offset: 1px; }
 }
 .farm-quick .voice-btn { grid-column: 1 / -1; }
 .report .form input { min-width: 0; width: 100%; }
+
+/* 잘못된 내용 알리기 · 건의하기 — js/report.js 가 만드는 창과 바닥글의 여는 버튼.
+   다른 화면과 같은 규칙: 선·그림자 없이 면과 4px 틈으로 나눈다. */
+.rp-row { margin-top: 6px; }
+.rp-open { min-height: 52px; padding: 12px 20px; border: 0; background: var(--field-ink); color: var(--field); font-weight: 800; cursor: pointer; text-align: left; transition: background-color 160ms ease, color 160ms ease, transform 120ms var(--ease-out); }
+.rp-open:hover { background: var(--accent); color: var(--accent-ink); }
+.rp-open:active { transform: scale(0.97); }
+.rp { width: min(560px, calc(100vw - 32px)); max-height: calc(100dvh - 32px); overflow: auto; padding: 0; border: 0; background: var(--bg); color: var(--ink); }
+.rp::backdrop { background: rgba(10, 10, 10, 0.6); }
+.rp-form { display: grid; gap: 14px; padding: clamp(20px, 4vw, 32px); }
+.rp-lead, .rp-where, .rp-note { color: var(--muted); font-size: var(--step-small); }
+.rp-kinds { margin: 0; padding: 0; border: 0; display: grid; gap: var(--gap); min-width: 0; }
+.rp-kinds legend { padding: 0 0 8px; font-size: var(--step-small); font-weight: 700; }
+.rp-kind { display: flex; align-items: center; gap: 12px; min-height: 52px; padding: 8px 14px; background: var(--surface); font-weight: 700; cursor: pointer; transition: background-color 160ms ease, color 160ms ease; }
+.rp-kind:has(input:checked) { background: var(--accent); color: var(--accent-ink); }
+.rp-kind:has(input:focus-visible) { outline: 3px solid var(--ink); outline-offset: 2px; }
+.rp-kind input { width: 22px; height: 22px; margin: 0; flex: none; accent-color: var(--ink); }
+.rp textarea { min-height: 132px; }
+.rp-count { margin-top: -8px; text-align: right; color: var(--muted); font-size: var(--step-small); font-variant-numeric: tabular-nums; }
+.rp-actions { display: grid; grid-template-columns: 2fr 1fr; gap: var(--gap); }
+.rp-actions .btn { min-height: 56px; }
+.rp-status { min-height: 1.5em; font-weight: 800; }
+.rp-status.is-ok { color: var(--accent); }
+.rp-status.is-error { color: var(--danger); }
+.rp-hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+@media (max-width: 560px) {
+  .rp { width: 100vw; max-width: 100vw; max-height: 92dvh; margin: auto 0 0; }
+  .rp-form { padding-bottom: max(20px, env(safe-area-inset-bottom)); }
+  .rp-open { width: 100%; }
+}
+@media print { .rp { display: none !important; } }
