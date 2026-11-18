@@ -17,12 +17,13 @@ jobs:
       - name: Fetch
         run: node scripts/fetch-pests.mjs
         env:
-          MODE: ${{ vars.PESTS_MODE || 'probe' }}
+          MODE: ${{ vars.PESTS_MODE || 'full' }}
+          ONLY: ${{ vars.PESTS_ONLY || '' }}
       - name: Commit
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          for d in data/pests-raw data/pests; do if [ -e "$d" ]; then git add "$d"; fi; done
+          git add -A data/pests data/pests-raw 2>/dev/null || git add -A data/pests
           if git diff --cached --quiet; then echo "변경 없음"; exit 0; fi
           git commit -m "농사로 작목별병해충 자료 받기 (자동)"
           git push
