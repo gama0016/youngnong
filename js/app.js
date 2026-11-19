@@ -702,7 +702,7 @@ function viewCrop(id) {
   const { a: area, m2, own } = areaNow(c.id);
   const pestFull = (c.pests || []).filter((p) => p.timing || p.control);
   const pestBare = (c.pests || []).filter((p) => !p.timing && !p.control);
-  const has = { cal: (c.schedule || []).length, stage: (c.stages || []).length, fert: c.fertilizer?.rows?.length, pest: (c.pests || []).length, risk: (c.disasters || []).length };
+  const has = { cal: (c.schedule || []).length, stage: (c.stages || []).length, fert: c.fertilizer?.rows?.length, pest: (c.pests || []).length || hasBook(c), risk: (c.disasters || []).length };
   const jump = [['cal', '달력'], ['stage', '작업 방법'], ['fert', '비료'], ['pest', '병해충'], ['risk', '재해 대책']].filter(([k]) => has[k]);
   return `<div class="stack" data-crop="${c.id}">
     <header class="crop-head">
@@ -733,10 +733,12 @@ function viewCrop(id) {
       <p class="row"><a class="btn" href="#/tools?crop=${c.id}">비료 포대 수로 계산하기</a></p>
       <p class="sub">표는 표준 기준입니다. 토양검정을 받으면 내 밭에 맞는 처방을 받을 수 있습니다 (<a href="https://soil.rda.go.kr" target="_blank" rel="noopener">흙토람</a>).</p>
     </section>` : ''}
-    ${has.pest ? `<section class="card" id="s-pest"><h2>병해충·생리장해</h2>
-      <div class="pests">${pestFull.map((p) => `<div class="pest"><h3>${esc(p.name)}${p.kind ? ` <span class="tag plain">${esc(p.kind)}</span>` : ''}</h3>
-        <dl class="kv">${p.timing ? `<dt>나오는 때</dt><dd>${esc(p.timing)}</dd>` : ''}${p.control ? `<dt>방제·대책</dt><dd>${esc(p.control)}</dd>` : ''}</dl></div>`).join('')}</div>
-      ${pestBare.length ? `<p class="sub">${pestFull.length ? '그 밖에 ' : ''}원문에 이름만 실린 병해충: ${pestBare.map((p) => esc(p.name)).join(', ')}</p>` : ''}
+    ${has.pest ? `<section class="card" id="s-pest"><h2>병해충</h2>
+      ${pestFull.length ? `<h3 class="sub-h">이 작형에서 챙길 병해충 <small>농작업일정</small></h3>
+      <div class="pests">${pestFull.map((p) => `<div class="pest" data-pestname="${esc(p.name)}" data-crop="${c.id}"><h3>${esc(p.name)}${p.kind ? ` <span class="tag plain">${esc(p.kind)}</span>` : ''}</h3>
+        <dl class="kv">${p.timing ? `<dt>나오는 때</dt><dd>${esc(p.timing)}</dd>` : ''}${p.control ? `<dt>방제·대책</dt><dd>${esc(p.control)}</dd>` : ''}</dl></div>`).join('')}</div>` : ''}
+      ${pestBare.length ? `<p class="sub">${pestFull.length ? '그 밖에 ' : ''}농작업일정에 이름만 실린 병해충: ${pestBare.map((p) => esc(p.name)).join(', ')}</p>` : ''}
+      ${hasBook(c) ? `<h3 class="sub-h">병해충 도감 <small>증상 사진 · 생기는 조건 · 방제 방법</small></h3><div data-pestbook="${c.id}"><p class="sub">불러오는 중…</p></div>` : ''}
       <p class="sub">쓸 수 있는 농약과 안전사용기준은 <a href="https://psis.rda.go.kr" target="_blank" rel="noopener">농약안전정보시스템</a>, 병해충 예찰·진단은 <a href="https://ncpms.rda.go.kr" target="_blank" rel="noopener">국가농작물병해충관리시스템</a>에서 확인하세요.</p>
     </section>` : ''}
     ${has.risk ? `<section class="card" id="s-risk"><h2>기상재해 대책</h2><div class="risks">${c.disasters.map((r) => `<div class="risk"><h3>${esc(r.risk)}${r.timing ? `<small>${esc(r.timing)}</small>` : ''}</h3><ul class="dots">${(r.measures || []).map((x) => `<li>${esc(x)}</li>`).join('')}</ul></div>`).join('')}</div></section>` : ''}
@@ -753,6 +755,152 @@ function paintCropFert() {
   box.innerHTML = fertTable(c, m2);
   const base = unitBase(c.fertilizer.unit);
   root.querySelector('[data-fert-unit]').textContent = base ? `${fmt(m2 / PY, 0)}평(${fmt(m2, 0)}㎡)에 주는 양, kg` : (c.fertilizer.unit || '');
+}
+
+// ---------- 병해충 도감: 농사로 「작목별병해충」의 증상·발생환경·방제방법·사진 (data/pests/) ----------
+let PEST_INDEX = null;
+const PEST_FILES = new Map();
+async function pestIndex() {
+  if (!PEST_INDEX) { try { PEST_INDEX = await (await fetch('data/pests/index.json')).json(); } catch { PEST_INDEX = { byCrop: {}, crops: {} }; } }
+  return PEST_INDEX;
+}
+const hasBook = (c) => !!(PEST_INDEX?.byCrop?.[c.id] || []).length;
+async function pestBook(c) {
+  const idx = await pestIndex();
+  const items = [];
+  const seen = new Set();
+  for (const k of idx.byCrop?.[c.id] || []) {
+    if (!PEST_FILES.has(k)) { try { PEST_FILES.set(k, await (await fetch(`data/pests/${k}.json`)).json()); } catch { PEST_FILES.set(k, null); } }
+    for (const it of PEST_FILES.get(k)?.items || []) if (!seen.has(it.code)) { seen.add(it.code); items.push({ ...it, kcode: k }); }
+  }
+  return items;
+}
+const SYM_RE = /증상|피해/;
+const ENV_RE = /발생환경|생태/;
+const CTL_RE = /방제/;
+const pestSec = (it, re) => (it.sections.find(([h]) => re.test(h)) || [])[1] || '';
+const pestKey = (s) => String(s || '').replace(/\(.*?\)|\s/g, '');
+// 농작업일정의 병해충 이름(예: "진딧물(바이러스병)") ↔ 도감 이름(예: "복숭아혹진딧물")
+function bookMatch(items, name) {
+  const k = pestKey(name).split(/[,·/]/)[0];
+  if (k.length < 2) return null;
+  return items.find((it) => pestKey(it.name) === k) || items.find((it) => pestKey(it.name).endsWith(k) || k.endsWith(pestKey(it.name))) || null;
+}
+// 농작업일정에 이 작형의 병해충으로 이름이 오른 것(주요)과 그 '나오는 때·방제·대책'
+const schedPest = (c, it) => (c.pests || []).find((p) => bookMatch([it], p.name));
+// 도감 글(발생환경·생태)에 이번 달이 적혀 있으면 '이번 달' 표시 — 적힌 달이 없으면 표시하지 않는다(없다고 단정하지 않음)
+const pestThisMonth = (it) => monthsIn(pestSec(it, ENV_RE)).has(today().getMonth() + 1);
+// 데이터 절약 모드나 느린 망(2G·3G)이면 목록에서는 사진을 받지 않는다(사진 한 장이 0.5MB 안팎). 자세히 화면에서는 보인다.
+const LITE = (() => { try { const k = navigator.connection; return !!(k && (k.saveData || /(^|-)(2g|3g)$/.test(k.effectiveType || ''))); } catch { return false; } })();
+const pestImg = (ph, cls = '') => (ph ? `<img class="${cls}" data-pimg src="${esc(ph.src)}" alt="${esc(ph.cap || '')}" loading="lazy" referrerpolicy="no-referrer">` : '');
+const firstSentences = (s, n = 2) => s.split('\n').map((l) => l.replace(/^[-·ㆍ*]\s*/, '')).filter(Boolean).slice(0, n).join(' ');
+const linesHtml = (s) => `<ul class="dots">${s.split('\n').map((l) => l.replace(/^[-·ㆍ*]\s*/, '').trim()).filter(Boolean).map((l) => `<li>${esc(l)}</li>`).join('')}</ul>`;
+function pestCard(c, it) {
+  const main = schedPest(c, it);
+  return `<a class="pcard" href="#/pest/${c.id}/${it.code}" data-kind="${it.kind}">
+    <span class="pimg">${LITE ? '' : pestImg(it.photos[0])}</span>
+    <span class="pbody"><b>${esc(it.name)}</b>
+      <span class="ptags"><span class="tag plain">${it.kind}</span>${main ? '<span class="tag main">주요</span>' : ''}${pestThisMonth(it) ? `<span class="tag now">${today().getMonth() + 1}월 발생</span>` : ''}</span>
+      <span class="psym">${esc(firstSentences(pestSec(it, SYM_RE)))}</span></span>
+  </a>`;
+}
+// 증상으로 찾기: 적은 낱말이 모두 증상·피해·발생환경·이름에 들어 있는 것. 끝말(게·고·요·짐…)은 떼고 찾는다.
+function pestFilter(items, kind, q) {
+  const toks = String(q || '').split(/[\s,]+/).map((w) => w.replace(/(해짐|어짐|아짐|게|고|요|짐|짐요|함|했어요|해요|었다|였다|다)$/, '')).filter((w) => w.length >= 1);
+  return items.filter((it) => {
+    if (kind && it.kind !== kind) return false;
+    if (!toks.length) return true;
+    const hay = pestKey(`${it.name} ${pestSec(it, SYM_RE)} ${pestSec(it, ENV_RE)}`);
+    return toks.every((w) => hay.includes(w));
+  });
+}
+async function paintPestBook() {
+  const box = document.querySelector('[data-pestbook]');
+  if (!box) return;
+  const c = BY_ID.get(box.dataset.pestbook);
+  const items = await pestBook(c);
+  if (!document.contains(box)) return;
+  if (!items.length) { box.innerHTML = ''; return; }
+  // 주요(농작업일정에 오른 것) → 이번 달 → 나머지
+  const rank = (it) => (schedPest(c, it) ? 0 : 2) + (pestThisMonth(it) ? 0 : 1);
+  items.sort((a, b) => rank(a) - rank(b));
+  box._items = items;
+  const nD = items.filter((x) => x.kind === '병').length;
+  const srcNames = (PEST_INDEX.byCrop[c.id] || []).map((k) => PEST_INDEX.crops[k]?.name).filter(Boolean);
+  const other = srcNames.filter((n) => pestKey(n) !== pestKey(bare(c)));
+  box.innerHTML = `${other.length ? `<p class="sub">농사로 작목별병해충의 「${other.map(esc).join('」·「')}」 자료입니다.</p>` : ''}<div class="pfind">
+      <label class="f">증상으로 찾기<input type="search" data-pest-q placeholder="예: 겹무늬, 구멍, 시들, 흰가루, 잎 뒷면" autocomplete="off" enterkeyhint="search"></label>
+      <div class="chips" role="group" aria-label="종류"><button class="chip on" data-pest-kind="" aria-pressed="true">전체 ${items.length}</button><button class="chip" data-pest-kind="병" aria-pressed="false">병 ${nD}</button><button class="chip" data-pest-kind="해충" aria-pressed="false">해충 ${items.length - nD}</button></div>
+    </div>
+    <div class="pgrid" data-pest-grid>${items.map((it) => pestCard(c, it)).join('')}</div>
+    <p class="sub">${LITE ? '데이터 절약 중이라 목록에서는 사진을 빼고 보여 드립니다. ' : ''}카드를 누르면 사진과 증상·생기는 조건·방제 방법을 크게 봅니다. 자료: 농사로 「작목별병해충」(사진 국가농작물병해충관리시스템).</p>`;
+}
+function repaintPestGrid() {
+  const box = document.querySelector('[data-pestbook]');
+  if (!box?._items) return;
+  const c = BY_ID.get(box.dataset.pestbook);
+  const kind = box.querySelector('[data-pest-kind].on')?.dataset.pestKind || '';
+  const q = box.querySelector('[data-pest-q]').value;
+  const list = pestFilter(box._items, kind, q);
+  box.querySelector('[data-pest-grid]').innerHTML = list.length ? list.map((it) => pestCard(c, it)).join('') : '<p class="sub">맞는 병해충이 없습니다. 낱말을 줄이거나 다르게 적어 보세요(예: “노랗게” 대신 “황화”, “구멍”, “반점”).</p>';
+}
+// 영농 정보·작목 화면의 병해충 이름 옆에 도감 사진과 '자세히'를 붙인다
+async function paintPestLinks() {
+  const els = [...document.querySelectorAll('[data-pestname]')];
+  if (!els.length) return;
+  const byCrop = new Map();
+  for (const el of els) { const cid = el.dataset.crop; if (!byCrop.has(cid)) byCrop.set(cid, []); byCrop.get(cid).push(el); }
+  for (const [cid, list] of byCrop) {
+    const c = BY_ID.get(cid);
+    if (!c || !hasBook(c)) continue;
+    const items = await pestBook(c);
+    for (const el of list) {
+      if (!document.contains(el) || el.dataset.linked) continue;
+      const it = bookMatch(items, el.dataset.pestname);
+      if (!it) continue;
+      el.dataset.linked = '1';
+      el.insertAdjacentHTML('afterbegin', it.photos[0] && !LITE ? `<a class="pthumb" href="#/pest/${c.id}/${it.code}" aria-hidden="true" tabindex="-1">${pestImg(it.photos[0])}</a>` : '');
+      el.insertAdjacentHTML('beforeend', `<p class="pmore"><span>${esc(firstSentences(pestSec(it, SYM_RE), 1))}</span> <a href="#/pest/${c.id}/${it.code}">증상·방제 자세히</a></p>`);
+    }
+  }
+}
+function viewPest(cid, code) {
+  const c = BY_ID.get(String(cid));
+  if (!c) return '<div class="stack"><p class="empty">작목을 찾을 수 없습니다.</p></div>';
+  return `<div class="stack" data-pestview="${c.id}|${esc(code)}"><p class="sub">병해충 정보를 불러오는 중…</p></div>`;
+}
+async function paintPestView() {
+  const root = document.querySelector('[data-pestview]');
+  if (!root) return;
+  const [cid, code] = root.dataset.pestview.split('|');
+  const c = BY_ID.get(cid);
+  const items = await pestBook(c);
+  const it = items.find((x) => x.code === code);
+  if (!document.contains(root)) return;
+  if (!it) { root.innerHTML = `<p class="empty">병해충 정보를 찾지 못했습니다. <a href="#/crop/${c.id}?s=pest">${esc(shortName(c))} 병해충 목록</a></p>`; return; }
+  document.title = `${it.name} — ${c.name} 병해충 — 영농노트`;
+  const main = schedPest(c, it);
+  const sym = pestSec(it, SYM_RE);
+  const env = pestSec(it, ENV_RE);
+  const ctl = pestSec(it, CTL_RE);
+  const extra = it.sections.filter(([h]) => !SYM_RE.test(h) && !ENV_RE.test(h) && !CTL_RE.test(h) && !/대상작물/.test(h));
+  const act = activePlantings().filter((p) => String(p.cropId) === String(c.id));
+  const url = it.kind === '해충' ? `https://www.nongsaro.go.kr/portal/ps/pss/pssa/hlsctSearchDtl.ps?menuId=PS00202&hlsctCode=${it.code}` : `https://www.nongsaro.go.kr/portal/ps/pss/pssa/sicknsSearchDtl.ps?menuId=PS00202&sicknsCode=${it.code}`;
+  root.innerHTML = `<header class="crop-head">
+      <p class="type"><a href="#/crop/${c.id}?s=pest">${esc(shortName(c))} 병해충</a></p>
+      <h1>${esc(it.name)}</h1>
+      <p class="ptags"><span class="tag plain">${it.kind}</span>${main ? '<span class="tag main">이 작형의 주요 병해충</span>' : ''}${pestThisMonth(it) ? `<span class="tag now">${today().getMonth() + 1}월에 발생</span>` : ''}${it.latin ? `<span class="sub">${esc(it.latin)}</span>` : ''}</p>
+    </header>
+    ${it.photos.length ? `<div class="pgal" aria-label="사진">${it.photos.map((ph) => `<figure>${pestImg(ph)}<figcaption>${esc(ph.cap.replace(/^[^_]*_[^_]*_/, '').replace(/_/g, ' ').replace(/^(.+)\(\1\)$/, '$1'))}</figcaption></figure>`).join('')}</div>` : ''}
+    ${sym ? `<section class="card psec"><h2>${it.kind === '해충' ? '이런 피해가 보이면' : '이런 증상이 보이면'}</h2>${linesHtml(sym)}</section>` : ''}
+    ${ctl || main?.control ? `<section class="card psec ctl"><h2>방제 방법</h2>${ctl ? linesHtml(ctl) : ''}
+      ${main?.control || main?.timing ? `<div class="pplan"><b>농작업일정(${esc(fullName(c))})</b>${main.timing ? `<span>나오는 때: ${esc(main.timing)}</span>` : ''}${main.control ? `<span>방제·대책: ${esc(main.control)}</span>` : ''}</div>` : ''}
+      <div class="row">${act.map((p) => `<button class="btn primary" data-pest-rec="${esc(p.id)}|${esc(it.name)}">${act.length > 1 ? `${esc(p.field || '작기')} ` : ''}방제 기록하기</button>`).join('')}<a class="btn quiet" href="https://psis.rda.go.kr" target="_blank" rel="noopener">등록 농약 찾기(농약안전정보시스템)</a></div>
+      <p class="sub">농약은 반드시 ${esc(c.name)}에 등록된 약제를 라벨의 희석배수·안전사용기준대로 쓰세요.</p></section>` : ''}
+    ${env ? `<section class="card psec"><h2>${it.kind === '해충' ? '생태 — 언제, 어떻게 생기나' : '생기는 조건 — 언제, 어떻게 퍼지나'}</h2>${linesHtml(env)}</section>` : ''}
+    ${extra.length ? `<section class="card"><dl class="kv">${extra.map(([h, v]) => `<dt>${esc(h)}</dt><dd>${esc(v)}</dd>`).join('')}</dl></section>` : ''}
+    <p class="source">출처: 농촌진흥청 농사로 「작목별병해충」 ${esc(PEST_FILES.get(it.kcode)?.name || '')} · <a href="${url}" target="_blank" rel="noopener">원문 보기</a> · 사진 국가농작물병해충관리시스템</p>
+    <p><a class="btn quiet" href="#/crop/${c.id}?s=pest">← ${esc(shortName(c))} 병해충 목록</a></p>`;
 }
 
 // ---------- 달력 ----------
@@ -946,6 +1094,7 @@ function viewDiary(q) {
             <label class="btn quiet">백업 불러오기<input type="file" accept="application/json" data-diary-restore hidden></label>
             <button class="btn quiet" data-diary-csv>엑셀용 파일 받기</button>
             <a class="btn quiet" href="#/report">제출용 영농일지(인쇄)</a>
+            <a class="btn quiet" href="#/profit">작기별·연말 순이익</a>
           </div>
         </section>
       </div>
@@ -1230,7 +1379,7 @@ function briefHtml(p, plan) {
     ${b.env.length ? `<dl class="facts">${b.env.map((e) => `<div class="fact"><dt>${esc(e.label)}</dt><dd>${esc(e.value)}</dd></div>`).join('')}</dl>` : ''}
     ${b.stages.length ? `<h3 class="sub-h">지금 하는 법</h3><div class="stages">${b.stages.map((st) => `<div class="stage-b"><h3>${esc(st.title)}${st.timing ? `<small>${esc(st.timing)}</small>` : ''}</h3><dl class="kv">${(st.items || []).slice(0, 8).map((i) => `<dt>${esc(i.label)}</dt><dd>${esc(i.value)}</dd>`).join('')}</dl></div>`).join('')}</div>` : ''}
     ${b.ferts.length ? `<h3 class="sub-h">이번 비료</h3>${b.ferts.map((r) => `<div class="fert-round"><h3>${esc(r.h)}</h3><ul class="bag-list">${r.items.map((i) => `<li>${bagTxt(i, b.bag)}</li>`).join('')}</ul></div>`).join('')}` : ''}
-    ${b.pests.length ? `<h3 class="sub-h">지금 살필 병해충</h3><div class="pests">${b.pests.map((x) => `<div class="pest"><h3>${esc(x.name)}${x.kind ? ` <span class="tag plain">${esc(x.kind)}</span>` : ''}</h3><dl class="kv">${x.timing ? `<dt>나오는 때</dt><dd>${esc(x.timing)}</dd>` : ''}${x.control ? `<dt>방제·대책</dt><dd>${esc(x.control)}</dd>` : ''}</dl></div>`).join('')}</div>` : ''}
+    ${b.pests.length ? `<h3 class="sub-h">지금 살필 병해충</h3><div class="pests">${b.pests.map((x) => `<div class="pest" data-pestname="${esc(x.name)}" data-crop="${c.id}"><h3>${esc(x.name)}${x.kind ? ` <span class="tag plain">${esc(x.kind)}</span>` : ''}</h3><dl class="kv">${x.timing ? `<dt>나오는 때</dt><dd>${esc(x.timing)}</dd>` : ''}${x.control ? `<dt>방제·대책</dt><dd>${esc(x.control)}</dd>` : ''}</dl></div>`).join('')}</div>` : ''}
     ${b.otherPests.length ? `<p class="sub">그 밖에 이 작목의 병해충: ${b.otherPests.map((x) => esc(x.name)).join(', ')} · <a href="#/crop/${c.id}?s=pest">자세히</a></p>` : ''}
     ${b.risks.length ? `<h3 class="sub-h">${b.season.name}철 재해 대비</h3><div class="risks">${b.risks.map((r) => `<div class="risk"><h3>${esc(r.risk)}${r.timing ? `<small>${esc(r.timing)}</small>` : ''}</h3><ul class="dots">${(r.measures || []).map((x) => `<li>${esc(x)}</li>`).join('')}</ul></div>`).join('')}</div>` : ''}
     ${has ? '' : '<p>지금 시기에 맞춰 골라낼 정보가 원문에 따로 없습니다.</p>'}
@@ -1312,7 +1461,7 @@ function viewFarm() {
   const act = activePlantings();
   const ended = plantings().filter((p) => p.ended);
   return `<div class="stack">
-    <div class="spread"><h1>내 농사</h1><div class="row"><a class="btn quiet" href="#/voice">말로 기록</a><a class="btn primary" href="#/farm/new">작기 등록</a></div></div>
+    <div class="spread"><h1>내 농사</h1><div class="row"><a class="btn quiet" href="#/profit">올해 순이익</a><a class="btn quiet" href="#/voice">말로 기록</a><a class="btn primary" href="#/farm/new">작기 등록</a></div></div>
     <p class="sub">필지나 하우스 동마다 <b>심은 날</b>을 등록하면, 농사로 표준 일정을 내 날짜에 맞춰 옮기고 방제·비료·수확 기록과 결산을 함께 관리합니다.</p>
     ${act.length ? `<div class="farm-list">${act.map((p) => farmCard(p)).join('')}</div>` : `<div class="empty-box"><p><b>아직 등록한 작기가 없습니다.</b></p><p>예: 고추 · 앞밭 · 1,200평 · 아주심기 5월 8일. 같은 작목이라도 심은 날이 다르면 따로 등록하세요.</p><p><a class="btn primary" href="#/farm/new">첫 작기 등록하기</a></p></div>`}
     ${ended.length ? `<details class="done-box"><summary>끝난 작기 ${ended.length}개</summary><div class="todo">${ended.map((p) => { const c = BY_ID.get(String(p.cropId)); return `<a class="todo-item more" href="#/farm/${p.id}"><div><b>${esc(c ? shortName(c) : '작목')} ${esc(p.field || '')}</b><div class="when">${p.date ? esc(p.date) + ' 시작 · ' : ''}${esc(p.ended)} 끝냄</div></div></a>`; }).join('')}</div></details>` : ''}
@@ -1361,11 +1510,6 @@ function viewPlanting(id) {
   const past = all.filter((x) => !focus.includes(x) && !later.includes(x));
   const fp = fertPlan(c, m2);
   const recs = recordsOf(p.id).sort((a, b) => (a.date < b.date ? 1 : -1));
-  const sum = (f, t) => recs.filter((e) => !t || e.type === t).reduce((a, e) => a + (Number(e[f]) || 0), 0);
-  const kgSum = sum('kg', 'harvest');
-  const sales = sum('price', 'harvest');
-  const cost = sum('cost');
-  const tenA = m2 / 1000;
   return `<div class="stack" data-planting="${esc(p.id)}">
     <header class="crop-head">
       <p class="type"><a href="#/farm">내 농사</a> · <a href="#/crop/${c.id}">${esc(fullName(c))} 작목 정보</a></p>
@@ -1388,16 +1532,165 @@ function viewPlanting(id) {
       ${fp.options ? '<p class="sub">위 묶음 가운데 내 논밭에 맞는 한 가지만 쓰세요(토양·지역별 기준).</p>' : `<h3 class="sub-h">한 작기 자재 준비</h3><ul class="bag-list">${fp.total.map((i) => `<li>${bagTxt(i, fp.bag)}</li>`).join('')}</ul>`}
       <p class="sub">질소는 요소, 인산은 용성인비, 칼리는 염화칼리로 환산했습니다. 쓰는 비료가 다르면 <a href="#/tools?crop=${c.id}">비료 계산기</a>에서 성분 함량을 바꾸세요.</p>
     </section>` : ''}
-    <section class="card" id="s-sum"><h2>올해 결산 <small>이 작기 기록 기준</small></h2>
-      <div class="stat"><div><b>${fmt(kgSum, 0)}</b><span>수확 kg${kgSum && tenA ? ` · 10a당 ${fmt(kgSum / tenA, 0)}kg` : ''}</span></div><div><b>${fmt(sales, 0)}</b><span>판매 금액(원)</span></div><div><b>${fmt(cost, 0)}</b><span>들인 비용(원)</span></div></div>
-      <p class="lede" style="margin-top:14px">소득 <b>${fmt(sales - cost, 0)}원</b>${m2 ? ` · 평당 ${fmt((sales - cost) / (m2 / PY), 0)}원` : ''}</p>
-      <p class="sub">비용은 기록에 적은 금액만 더합니다. 자재값·인건비를 기록할 때 비용 칸에 적어 두면 결산이 정확해집니다.</p>
-    </section>
+    ${profitCard(p)}
     <section class="card" id="s-recs"><h2>기록 <small>${recs.length}건</small></h2>
       ${recs.length ? `<div class="entries">${recs.slice(0, 30).map(entryHtml).join('')}</div>` : '<p class="sub">위의 방제·비료·수확·작업 버튼으로 기록하세요. 영농일지에도 함께 쌓입니다.</p>'}
     </section>
     ${past.length ? `<details class="done-box"><summary>지난 일·끝낸 일 ${past.length}건</summary><div class="todo">${planItemsHtml(p, past, { std: true })}</div></details>` : ''}
     <div class="row"><a class="btn quiet" href="#/report?pid=${esc(p.id)}">제출용 영농일지</a><a class="btn quiet" href="#/farm/new?edit=${esc(p.id)}">작기 고치기</a><button class="btn quiet" data-plant-end="${esc(p.id)}">${p.ended ? '다시 진행 중으로' : '작기 끝내기'}</button><button class="btn danger" data-plant-del="${esc(p.id)}">작기 삭제</button></div>
+  </div>`;
+}
+
+// ---------- 순이익(소득): 작기별·연말 — 내 기록 + 농사로 농산물소득정보(전국 평균) ----------
+let INCOME = null;
+async function loadIncome() {
+  if (!INCOME) { try { INCOME = await (await fetch('data/income.json')).json(); } catch { INCOME = { crops: [], byCrop: {} }; } }
+  return INCOME;
+}
+const incOpts = (c) => (INCOME?.byCrop?.[c?.id] || []).map((code) => INCOME.crops.find((x) => x.code === code)).filter(Boolean);
+function incOf(p, c) {
+  if (p.incCode === 'none') return null;
+  const opts = incOpts(c);
+  return opts.find((o) => o.code === p.incCode) || opts[0] || null;
+}
+const yrsAvg = (o, k) => Math.round(o.years.reduce((a, y) => a + (Number(y[k]) || 0), 0) / o.years.length);
+const sumOf = (arr, k) => arr.reduce((a, e) => a + (Number(e[k]) || 0), 0);
+const won = (n) => (n == null || Number.isNaN(n) ? '–' : `${fmt(Math.round(n), 0)}원`);
+const manwon = (n) => (n == null || Number.isNaN(n) ? '–' : Math.abs(n) >= 10000 ? `${fmt(n / 10000, Math.abs(n) >= 1e6 ? 0 : 1)}만 원` : `${fmt(Math.round(n), 0)}원`);
+// year를 주면 그해 날짜의 기록만 '실제'로 센다. 예상은 작기 전체 기준(끝낸 작기는 예상 = 실제).
+function profitOf(p, year) {
+  const c = BY_ID.get(String(p.cropId));
+  const { m2 } = areaNow('P' + p.id);
+  const tenA = m2 / 1000;
+  const all = recordsOf(p.id);
+  const recs = year ? all.filter((e) => String(e.date).startsWith(year)) : all;
+  const hv = recs.filter((e) => e.type === 'harvest');
+  const hvAll = all.filter((e) => e.type === 'harvest');
+  const kg = sumOf(hv, 'kg');
+  const sales = sumOf(hv, 'price');
+  const sold = hvAll.filter((e) => Number(e.price) > 0);
+  const soldKgAll = sumOf(sold, 'kg');
+  const myUnit = soldKgAll > 0 ? sumOf(sold, 'price') / soldKgAll : null;
+  const cost = sumOf(recs, 'cost');
+  const ref = incOf(p, c);
+  const refPrice = ref ? yrsAvg(ref, 'price') : null;
+  const refYield = ref ? yrsAvg(ref, 'yieldKg') : null;
+  const refLatest = ref?.years[0];
+  const refCostMine = refLatest ? refLatest.cost * tenA : null;
+  const price = Number(p.expPrice) || myUnit || refPrice || null;
+  const priceSrc = Number(p.expPrice) ? '내가 정한 단가' : myUnit ? '지금까지 판 평균 단가' : refPrice ? `농사로 ${ref.years.length}년 평균 가격` : '';
+  const expKg = Number(p.expKg) || (refYield ? refYield * tenA : null);
+  const expKgSrc = Number(p.expKg) ? '내가 정한 수량' : refYield ? `농사로 10a 평균 ${fmt(refYield, 0)}kg × 내 면적` : '';
+  const remainKg = p.ended || !expKg ? 0 : Math.max(0, expKg - soldKgAll);
+  const salesAll = sumOf(hvAll, 'price');
+  const projRev = salesAll + (price ? remainKg * price : 0);
+  const costAll = sumOf(all, 'cost');
+  const mode = settings().costMode || 'max';
+  const projCost = refCostMine == null || mode === 'mine' || p.ended ? costAll : mode === 'ref' ? refCostMine : Math.max(costAll, refCostMine);
+  const costSrc = refCostMine == null || mode === 'mine' || p.ended ? '내가 적은 비용' : mode === 'ref' ? '농사로 평균 경영비 × 내 면적' : costAll >= refCostMine ? '내가 적은 비용(평균보다 많음)' : '농사로 평균 경영비 × 내 면적(적은 비용이 아직 적어서)';
+  return { c, m2, tenA, kg, sales, cost, net: sales - cost, ref, refLatest, refPrice, refYield, refCostMine, myUnit, price, priceSrc, expKg, expKgSrc, remainKg, salesAll, costAll, projRev, projCost, projNet: projRev - projCost, refNet: refLatest ? refLatest.income * tenA : null, canProject: !!(price && expKg) || p.ended };
+}
+// 남은 수확 가운데 [from, to] 사이에 들어올 몫(내 날짜로 옮긴 수확 일정 기준). 수확 날짜를 모르면 null.
+function harvestShare(p, from, to) {
+  const hs = planOf(p).items.filter((i) => i.kind === 'harvest');
+  if (!hs.length) return null;
+  const s0 = Math.min(...hs.map((i) => +i.start));
+  const e0 = Math.max(...hs.map((i) => +i.end));
+  const a = Math.max(s0, +from);
+  if (a > e0) return 1; // 수확 시기가 지났으면 남은 것은 곧 팔린다고 본다
+  if (a > +to) return 0;
+  const total = dayDiff(new Date(e0), new Date(a)) + 1;
+  const inside = dayDiff(new Date(Math.min(e0, +to)), new Date(a)) + 1;
+  return Math.max(0, Math.min(1, inside / total));
+}
+const COST_MODES = [['max', '둘 중 큰 쪽'], ['mine', '내 기록만'], ['ref', '농사로 평균']];
+const costModeChips = () => { const cur = settings().costMode || 'max'; return `<div class="chips" role="group" aria-label="예상 비용 기준">${COST_MODES.map(([k, v]) => `<button class="chip${cur === k ? ' on' : ''}" data-cost-mode="${k}" aria-pressed="${cur === k}">${v}</button>`).join('')}</div>`; };
+// 작기 예상 설정 저장 — 입력란은 그대로 두고 위의 숫자만 바꾼다(입력 중 화면을 다시 그리지 않음)
+let expTimer;
+function saveExp(f) {
+  if (!document.contains(f)) return;
+  const a = plantings();
+  const p = a.find((x) => x.id === f.dataset.pid);
+  if (!p) return;
+  const o = Object.fromEntries(new FormData(f));
+  Object.assign(p, { incCode: o.incCode || p.incCode || null, expKg: o.expKg ? Number(o.expKg) : null, expPrice: o.expPrice ? Number(o.expPrice) : null, updatedAt: new Date().toISOString() });
+  savePlantings(a);
+  const sec = f.closest('#s-sum');
+  const tmp = document.createElement('div');
+  tmp.innerHTML = profitCard(p);
+  for (const sel of ['.pf-grid', '.pf-how']) {
+    const n = tmp.querySelector(sel);
+    const old = sec.querySelector(sel);
+    if (old && n) old.replaceWith(n); else if (n) sec.querySelector('.pf-grid').after(n); else if (old) old.remove();
+  }
+}
+function profitCard(p) {
+  const r = profitOf(p);
+  const opts = incOpts(r.c);
+  const tenA = r.tenA;
+  return `<section class="card profit" id="s-sum"><h2>순이익 <small>이 작기 · ${fmt(r.m2 / PY, 0)}평</small></h2>
+    <div class="pf-grid">
+      <div class="pf-box"><span>지금까지(기록)</span><b class="${r.net < 0 ? 'neg' : ''}">${manwon(r.net)}</b><small>판매 ${manwon(r.sales)} − 비용 ${manwon(r.cost)}${r.kg ? ` · 수확 ${fmt(r.kg, 0)}kg${tenA ? `(10a당 ${fmt(r.kg / tenA, 0)}kg)` : ''}` : ''}</small></div>
+      <div class="pf-box main"><span>${p.ended ? '작기 결산' : '작기 끝까지 예상'}</span><b class="${r.projNet < 0 ? 'neg' : ''}">${r.canProject ? manwon(r.projNet) : '–'}</b><small>${r.canProject ? `판매 ${manwon(r.projRev)} − 비용 ${manwon(r.projCost)}` : '아래에 예상 수량과 단가를 적으면 계산합니다'}</small></div>
+      ${r.refNet != null ? `<div class="pf-box"><span>농사로 평균 소득(내 면적)</span><b>${manwon(r.refNet)}</b><small>${esc(r.ref.name)} ${r.refLatest.year}년 · 10a당 ${manwon(r.refLatest.income)}</small></div>` : ''}
+    </div>
+    ${r.canProject && !p.ended ? `<dl class="kv pf-how">
+      <dt>예상 수확</dt><dd>${fmt(r.expKg, 0)}kg <span class="sub">${esc(r.expKgSrc)}</span>${r.remainKg ? ` · 남은 ${fmt(r.remainKg, 0)}kg` : ''}</dd>
+      <dt>단가</dt><dd>${fmt(r.price, 0)}원/kg <span class="sub">${esc(r.priceSrc)}</span>${r.refPrice && r.priceSrc !== `농사로 ${r.ref.years.length}년 평균 가격` ? ` · 농사로 평균 ${fmt(r.refPrice, 0)}원/kg` : ''}</dd>
+      <dt>예상 비용</dt><dd>${manwon(r.projCost)} <span class="sub">${esc(r.costSrc)}</span></dd>
+    </dl>` : ''}
+    <form class="form pf-set" data-exp-form data-pid="${esc(p.id)}">
+      ${opts.length ? `<label class="f wide">비교할 농사로 소득자료<select name="incCode">${opts.map((o) => `<option value="${o.code}"${r.ref?.code === o.code ? ' selected' : ''}>${esc(o.name)} (${esc(o.group)})</option>`).join('')}<option value="none"${p.incCode === 'none' ? ' selected' : ''}>쓰지 않음</option></select></label>` : '<p class="wide sub">이 작목은 농사로 농산물소득정보에 평균 자료가 없습니다(벼·노지 고추 등은 농진청 소득조사에 없음). 예상 수량과 단가를 직접 적어 주세요.</p>'}
+      <label class="f">예상 수량(kg, 작기 전체)<input type="number" name="expKg" inputmode="decimal" min="0" step="any" value="${esc(p.expKg || '')}" placeholder="${r.refYield ? `평균이면 ${fmt(Math.round(r.refYield * tenA), 0)}` : '예: 3000'}"></label>
+      <label class="f">예상 판매 단가(원/kg)<input type="number" name="expPrice" inputmode="numeric" min="0" step="1" value="${esc(p.expPrice || '')}" placeholder="${r.myUnit ? `판 평균 ${fmt(Math.round(r.myUnit), 0)}` : r.refPrice ? `평균 ${fmt(r.refPrice, 0)}` : '예: 3000'}"></label>
+    </form>
+    <p class="sub">실제 판매 단가는 수확·출하 기록에 적습니다(수확량과 단가를 적으면 판매 금액이 계산됩니다). 비용은 기록에 적은 금액을 더한 것입니다. 예상 비용 기준: ${costModeChips()}</p>
+    <p class="row"><a class="btn quiet" href="#/profit">농장 전체 연말 순이익</a><a class="btn quiet" href="#/farm/${p.id}/rec/harvest">수확·판매 기록</a></p>
+    ${r.ref ? `<p class="source">농사로 농산물소득정보 「${esc(r.ref.name)}」 전국 평균, ${esc(r.ref.unit)}: ${r.ref.years.map((y) => `${y.year}년 ${fmt(y.price, 0)}원/kg·${fmt(y.yieldKg, 0)}kg`).join(' · ')} (농촌진흥청 농산물소득조사)</p>` : ''}
+  </section>`;
+}
+function viewProfit(q) {
+  const t = today();
+  const years = [...new Set([String(t.getFullYear()), ...diary().map((e) => String(e.date).slice(0, 4)).filter((y) => /^\d{4}$/.test(y))])].sort().reverse();
+  const year = q.get('y') || String(t.getFullYear());
+  const isNow = year === String(t.getFullYear());
+  const ps = plantings().filter((p) => BY_ID.get(String(p.cropId)) && (recordsOf(p.id).some((e) => String(e.date).startsWith(year)) || (!p.ended && isNow) || String(p.date || p.created || '').startsWith(year)));
+  const rows = ps.map((p) => ({ p, r: profitOf(p, year) }));
+  const loose = diary().filter((e) => !e.plantingId && String(e.date).startsWith(year));
+  const looseCost = sumOf(loose, 'cost');
+  const looseSales = sumOf(loose.filter((e) => e.type === 'harvest'), 'price');
+  const tot = { sales: sumOf(rows.map((x) => x.r), 'sales') + looseSales, cost: sumOf(rows.map((x) => x.r), 'cost') + looseCost };
+  // 연말 예상: 진행 중 작기의 남은 판매·비용 가운데, 내 수확 일정으로 보아 12월 31일까지 들어올 몫만 더한다
+  const yEnd = new Date(Number(year), 11, 31);
+  for (const x of rows) {
+    const { p, r } = x;
+    x.share = p.ended || !isNow || !r.canProject ? 0 : harvestShare(p, t, yEnd);
+    x.shareKnown = x.share !== null;
+    if (x.share === null) x.share = 1;
+    x.add = x.share * ((r.projRev - r.salesAll) - Math.max(0, r.projCost - r.costAll));
+  }
+  const extra = rows.reduce((a, x) => a + x.add, 0);
+  const netNow = tot.sales - tot.cost;
+  const netEnd = netNow + extra;
+  const missing = rows.filter(({ p, r }) => !p.ended && !r.canProject);
+  return `<div class="stack profit-page">
+    <div class="spread"><h1>${year}년 순이익</h1><div class="row"><select data-profit-year aria-label="연도">${years.map((y) => `<option${y === year ? ' selected' : ''}>${y}</option>`).join('')}</select><button class="btn quiet only-wide-i" data-print>인쇄</button></div></div>
+    <div class="pf-grid big">
+      <div class="pf-box"><span>${isNow ? '지금까지' : '한 해'} 순이익(기록)</span><b class="${netNow < 0 ? 'neg' : ''}">${manwon(netNow)}</b><small>판매 ${manwon(tot.sales)} − 비용 ${manwon(tot.cost)}</small></div>
+      ${isNow ? `<div class="pf-box main"><span>연말 예상 순이익</span><b class="${netEnd < 0 ? 'neg' : ''}">${manwon(netEnd)}</b><small>진행 중 작기의 남은 판매·비용 예상 ${extra >= 0 ? '+' : ''}${manwon(extra)}</small></div>` : ''}
+    </div>
+    ${isNow ? `<p class="sub">예상은 작기마다 예상 수량 × 단가(내가 정한 단가 → 지금까지 판 평균 단가 → 농사로 평균 가격 순)로 남은 판매를 잡고, 내 수확 일정으로 보아 올해 안에 들어올 몫만 더합니다. 비용 기준: ${costModeChips()}</p>` : ''}
+    ${missing.length ? `<p class="notice">예상 수량·단가가 없어 연말 예상에서 빠진 작기: ${missing.map(({ p, r }) => `<a href="#/farm/${p.id}?s=sum">${esc(shortName(r.c))}${p.field ? ` ${esc(p.field)}` : ''}</a>`).join(', ')}</p>` : ''}
+    <section class="card"><h2>작기별 <small>${rows.length}개</small></h2>
+      ${rows.length ? `<div class="pf-rows">${rows.map((x) => { const { p, r } = x; return `<a class="pf-row" href="#/farm/${p.id}?s=sum">
+        <div class="pf-name"><b>${esc(shortName(r.c))}${p.field ? ` · ${esc(p.field)}` : ''}</b><span>${fmt(r.m2 / PY, 0)}평${p.ended ? ' · 끝남' : ''}${r.kg ? ` · 수확 ${fmt(r.kg, 0)}kg` : ''}</span></div>
+        <div><span>판매</span><b>${manwon(r.sales)}</b></div><div><span>비용</span><b>${manwon(r.cost)}</b></div>
+        <div><span>순이익</span><b class="${r.net < 0 ? 'neg' : ''}">${manwon(r.net)}</b></div>
+        ${isNow && !p.ended ? `<div class="pf-exp"><span>작기 끝까지 예상 ${r.canProject ? manwon(r.projNet) : '–'}</span><b class="${x.add < 0 ? 'neg' : ''}">${r.canProject ? `연말까지 ${x.add >= 0 ? '+' : ''}${manwon(x.add)}` : '–'}</b><small>${r.canProject ? (x.shareKnown ? `남은 수확의 ${fmt(x.share * 100, 0)}%가 올해 안` : '수확 시기를 몰라 남은 몫을 모두 올해로') : ''}</small></div>` : ''}
+      </a>`; }).join('')}</div>` : '<p class="sub">이 해의 작기가 없습니다. <a href="#/farm/new">작기 등록</a></p>'}
+      ${looseCost || looseSales ? `<div class="pf-row loose"><div class="pf-name"><b>작기에 묶이지 않은 기록</b><span>영농일지에서 바로 적은 것 ${loose.length}건</span></div><div><span>판매</span><b>${manwon(looseSales)}</b></div><div><span>비용</span><b>${manwon(looseCost)}</b></div><div><span>순이익</span><b>${manwon(looseSales - looseCost)}</b></div></div>` : ''}
+    </section>
+    <p class="sub">순이익은 판매 금액에서 기록한 비용을 뺀 것입니다(농사로 소득조사의 ‘소득’과 같은 뜻 — 내 노동의 값은 빼지 않음). 기록에 비용을 꼼꼼히 적을수록 정확해집니다.</p>
   </div>`;
 }
 
@@ -1415,7 +1708,7 @@ function viewRecord(id, type) {
       <label class="f">희석 배수(배)<input type="number" name="ratio" inputmode="numeric" min="1" step="any" value="${esc(last.ratio || 1000)}" data-mix required></label>
       <label class="f">물 양(L)<input type="number" name="water" inputmode="decimal" min="0" step="any" value="${esc(water)}" data-mix required></label>
       <p class="wide mix-out" data-mix-out></p>
-      <label class="f">대상 병해충<input type="text" name="target" list="pest-targets" value=""><datalist id="pest-targets">${(c.pests || []).map((x) => `<option value="${esc(x.name)}">`).join('')}</datalist></label>
+      <label class="f">대상 병해충<input type="text" name="target" list="pest-targets" value=""><datalist id="pest-targets">${[...new Set([...(c.pests || []).map((x) => x.name), ...(PEST_INDEX?.byCrop?.[c.id] || []).flatMap((k) => (PEST_FILES.get(k)?.items || []).map((x) => x.name))])].map((n) => `<option value="${esc(n)}">`).join('')}</datalist></label>
       <label class="f">수확 전 안전일수(일)<input type="number" name="phi" inputmode="numeric" min="0" step="1" value="${esc(last.phi || '')}" placeholder="포장의 ‘수확 ○일 전까지’"></label>`,
     fert: `<label class="f wide">비료 이름<input type="text" name="product" list="fert-names" value="${esc(last.product || '')}" required><datalist id="fert-names">${PRODUCTS.map((n) => `<option value="${n}">`).join('')}</datalist></label>
       <label class="f">양<input type="number" name="qty" inputmode="decimal" min="0" step="any" required></label>
@@ -1423,7 +1716,8 @@ function viewRecord(id, type) {
       <label class="f">회차<input type="text" name="round" placeholder="예: 웃거름 2회"></label>`,
     harvest: `<label class="f">수확량(kg)<input type="number" name="kg" inputmode="decimal" min="0" step="any" required></label>
       <label class="f">상자 수<input type="number" name="boxes" inputmode="numeric" min="0" step="1"></label>
-      <label class="f">판매 금액(원)<input type="number" name="price" inputmode="numeric" min="0" step="1" placeholder="팔았으면 적기"></label>
+      <label class="f">판매 단가(원/kg)<input type="number" name="unit" inputmode="numeric" min="0" step="1" value="${esc(last.unit || '')}" placeholder="kg당 받은 값" data-unit-price></label>
+      <label class="f">판매 금액(원)<input type="number" name="price" inputmode="numeric" min="0" step="1" placeholder="단가를 적으면 자동 계산" data-sale-price></label>
       <label class="f">출하처<input type="text" name="buyer" list="buyers" value="${esc(last.buyer || '')}" placeholder="예: 가락시장, 농협, 직거래"><datalist id="buyers">${[...new Set(diary().map((e) => e.buyer).filter(Boolean))].map((n) => `<option value="${esc(n)}">`).join('')}</datalist></label>`,
     work: `<label class="f">작업<select name="work">${WORKS.map((w) => `<option>${w}</option>`).join('')}</select></label>
       <label class="f">일한 사람(명)<input type="number" name="people" inputmode="numeric" min="0" step="1" value="1"></label>
@@ -1459,7 +1753,11 @@ function recordFromForm(f, type, p) {
     const a = mixAmount(o.ratio, o.water);
     Object.assign(e, { work: '방제', pesticide: o.pesticide, ratio: o.ratio, water: o.water, target: o.target, phi: o.phi, input: `${o.pesticide} ${o.ratio}배 · 물 ${o.water}L · 약 ${mixText(a)}${o.target ? ` · ${o.target}` : ''}${Number(o.phi) > 0 ? ` · 수확 가능 ${md(addDays(parseDay(o.date), Number(o.phi)))}` : ''}` });
   } else if (type === 'fert') Object.assign(e, { work: '비료', product: o.product, qty: o.qty, qunit: o.qunit, round: o.round, input: `${o.product} ${o.qty}${o.qunit}${o.round ? ` · ${o.round}` : ''}` });
-  else if (type === 'harvest') Object.assign(e, { work: '수확', kg: o.kg, boxes: o.boxes, price: o.price, buyer: o.buyer, input: `${fmt(Number(o.kg), 1)}kg${o.boxes ? ` · ${o.boxes}상자` : ''}${o.price ? ` · ${fmt(Number(o.price), 0)}원` : ''}${o.buyer ? ` · ${o.buyer}` : ''}` });
+  else if (type === 'harvest') {
+    const price = o.price || (Number(o.unit) > 0 && Number(o.kg) > 0 ? String(Math.round(Number(o.unit) * Number(o.kg))) : '');
+    const unit = o.unit || (Number(price) > 0 && Number(o.kg) > 0 ? String(Math.round(Number(price) / Number(o.kg))) : '');
+    Object.assign(e, { work: '수확', kg: o.kg, boxes: o.boxes, price, unit, buyer: o.buyer, input: `${fmt(Number(o.kg), 1)}kg${o.boxes ? ` · ${o.boxes}상자` : ''}${price ? ` · ${fmt(Number(price), 0)}원` : ''}${unit ? `(kg당 ${fmt(Number(unit), 0)}원)` : ''}${o.buyer ? ` · ${o.buyer}` : ''}` });
+  }
   else Object.assign(e, { work: o.work, people: o.people, input: `${o.people || 1}명${o.hours ? ` × ${o.hours}시간` : ''}` });
   return e;
 }
@@ -1633,7 +1931,11 @@ function warnHits(data, loc) {
     for (const a of w.areas) {
       const sameSido = alias.includes(a.name);
       const partHit = (p) => (short.length >= 2 && p.startsWith(short)) || (JEJU[loc.sgg] && JEJU[loc.sgg].test(p));
-      const hit = sameSido && (!a.parts.length || !loc.sgg || a.parts.some(partHit));
+      // "제주도(서귀포시남부 제외)"처럼 빼는 곳만 적힌 경우는 도 전체로 본다(빠진 곳에 있어도 알려 두는 편이 낫다)
+      const whole = !a.parts.length || a.parts.every((p) => /제외$/.test(p));
+      // "울릉도.독도", "인천(옹진, ...)"처럼 시·군 이름이 구역 이름이 된 경우(바다 구역은 뺀다)
+      const named = !sameSido && short.length >= 2 && !/바다/.test(a.name) && a.name.startsWith(short);
+      const hit = named || (sameSido && (whole || !loc.sgg || a.parts.some(partHit)));
       if (hit) { mine.push({ w, a }); break; }
       if (sameSido && a.parts.length) near.push({ w, a });
     }
@@ -1892,7 +2194,7 @@ function applyPrefill() {
   for (const [k, v] of Object.entries(pf.values || {})) { const el = form.elements[k]; if (el && v != null && v !== '') el.value = v; }
   const need = { '약제 이름': 'pesticide', '희석 배수': 'ratio', '물 양': 'water', '비료 이름': 'product', '양': 'qty', '수확량(kg)': 'kg' };
   (pf.missing || []).forEach((m) => { const el = form.elements[need[m]]; if (el) { el.value = ''; el.classList.add('miss'); } });
-  form.insertAdjacentHTML('afterbegin', `<p class="wide vbanner">말한 내용: “${esc(pf.text)}”${pf.missing?.length ? `<br><b>빠진 것: ${pf.missing.map(esc).join(', ')}</b> — 표시된 칸을 채워 주세요.` : ''}</p>`);
+  if (pf.text) form.insertAdjacentHTML('afterbegin', `<p class="wide vbanner">말한 내용: “${esc(pf.text)}”${pf.missing?.length ? `<br><b>빠진 것: ${pf.missing.map(esc).join(', ')}</b> — 표시된 칸을 채워 주세요.` : ''}</p>`);
   form.querySelector('.miss')?.focus();
   paintMix();
 }
@@ -1946,9 +2248,9 @@ function viewReport(q) {
         ${ferts.length ? ferts.map((e) => `<tr>${td(e.date)}${td(e.product || e.input)}${td(e.qty ? `${e.qty}${e.qunit || ''}` : '')}${td(e.round || '')}${td(e.memo)}</tr>`).join('') : '<tr><td colspan="5">기록 없음</td></tr>'}
       </tbody></table>
       <h2>4. 수확·출하 기록</h2>
-      <table><thead><tr><th>날짜</th><th>수확량(kg)</th><th>상자</th><th>판매 금액(원)</th><th>출하처</th></tr></thead><tbody>
-        ${harvests.length ? harvests.map((e) => `<tr>${td(e.date)}${td(e.kg ? fmt(e.kg, 1) : '')}${td(e.boxes || '')}${td(e.price ? fmt(e.price, 0) : '')}${td(e.buyer || '')}</tr>`).join('') : '<tr><td colspan="5">기록 없음</td></tr>'}
-        ${harvests.length ? `<tr class="sum"><th>합계</th>${td(fmt(sum(harvests, 'kg'), 1))}${td(fmt(sum(harvests, 'boxes'), 0))}${td(fmt(sum(harvests, 'price'), 0))}<td></td></tr>` : ''}
+      <table><thead><tr><th>날짜</th><th>수확량(kg)</th><th>상자</th><th>단가(원/kg)</th><th>판매 금액(원)</th><th>출하처</th></tr></thead><tbody>
+        ${harvests.length ? harvests.map((e) => `<tr>${td(e.date)}${td(e.kg ? fmt(e.kg, 1) : '')}${td(e.boxes || '')}${td(e.unit ? fmt(e.unit, 0) : e.price && e.kg ? fmt(e.price / e.kg, 0) : '')}${td(e.price ? fmt(e.price, 0) : '')}${td(e.buyer || '')}</tr>`).join('') : '<tr><td colspan="6">기록 없음</td></tr>'}
+        ${harvests.length ? `<tr class="sum"><th>합계</th>${td(fmt(sum(harvests, 'kg'), 1))}${td(fmt(sum(harvests, 'boxes'), 0))}<td></td>${td(fmt(sum(harvests, 'price'), 0))}<td></td></tr>` : ''}
       </tbody></table>
       <p class="sheet-foot">들인 비용 합계 ${fmt(sum(recs, 'cost'), 0)}원 · 판매 금액 합계 ${fmt(sum(harvests, 'price'), 0)}원 · 작성: 영농노트(leafnote.kr/nong), ${isoDay(t)}</p>
     </article>
@@ -1986,13 +2288,15 @@ function render() {
   else if (page === 'links') html = viewLinks(META);
   else if (page === 'import') html = viewImport();
   else if (page === 'voice') html = viewVoice(q);
+  else if (page === 'pest') html = viewPest(seg[1], seg[2]);
+  else if (page === 'profit') html = viewProfit(q);
   else if (page === 'report') html = viewReport(q);
   else if (page === 'farm') html = !seg[1] ? viewFarm() : seg[1] === 'new' ? viewFarmNew(q) : seg[2] === 'rec' ? viewRecord(seg[1], seg[3]) : viewPlanting(seg[1]);
   else html = '<div class="stack"><p class="empty">페이지를 찾을 수 없습니다. <a href="#/">오늘 화면으로</a></p></div>';
   $app.innerHTML = html;
   paintAccount();
   document.body.classList.toggle('is-home', page === 'home');
-  const nav = page === 'crop' || page === 'calendar' ? 'crops' : page === 'tools' ? 'links' : page === 'voice' ? 'farm' : page === 'report' ? 'diary' : page;
+  const nav = page === 'crop' || page === 'calendar' || page === 'pest' ? 'crops' : page === 'tools' ? 'links' : page === 'voice' || page === 'profit' ? 'farm' : page === 'report' ? 'diary' : page;
   document.querySelectorAll('[data-nav]').forEach((a) => { const on = a.dataset.nav === nav; a.classList.toggle('on', on); on ? a.setAttribute('aria-current', 'page') : a.removeAttribute('aria-current'); });
   motion();
   if (page === 'tools') paintTools();
@@ -2000,6 +2304,7 @@ function render() {
   if (page === 'home') paintWeather();
   if (page === 'farm') { paintMix(); if (seg[2] === 'rec') applyPrefill(); }
   if (document.querySelector('[data-rpick]')) paintRpick();
+  paintPestBook(); paintPestLinks(); paintPestView();
   if (page === 'voice' && voiceDraft && voiceDraft.text) { document.querySelector('[data-voice-text]').value = voiceDraft.text; document.querySelector('[data-voice-out]').innerHTML = voiceResultHtml(voiceDraft.recs); }
   if (page === 'crop') {
     const c = BY_ID.get(String(seg[1]));
@@ -2041,8 +2346,20 @@ function toggleFav(id) {
   toast(on ? `<b>${esc(fullName(c))}</b>을(를) 내 작목에 담았습니다.${route().page === 'home' ? '' : ' <a href="#/">오늘 할 일 보기</a>'}` : `<b>${esc(fullName(c))}</b>을(를) 내 작목에서 뺐습니다. <button data-fav="${id}">되돌리기</button>`);
 }
 document.addEventListener('click', (e) => {
-  const t = e.target.closest('[data-rp-apply],[data-rp-pick],[data-mic],[data-voice-go],[data-voice-pid],[data-voice-save],[data-voice-fill],[data-voice-saveall],[data-voice-diary],[data-sync-now],[data-migrate],[data-pdone],[data-plant-end],[data-plant-del],[data-mix-set],[data-done],[data-undone],[data-region],[data-geo],[data-wx-change],[data-wx-retry],[data-wx-clear],[data-big],[data-fav],[data-go],[data-jump],[data-print],[data-area-reset],[data-diary-del],[data-diary-csv],[data-diary-backup],[data-reset],[data-yr-step]');
+  const t = e.target.closest('[data-cost-mode],[data-pest-kind],[data-pest-rec],[data-rp-apply],[data-rp-pick],[data-mic],[data-voice-go],[data-voice-pid],[data-voice-save],[data-voice-fill],[data-voice-saveall],[data-voice-diary],[data-sync-now],[data-migrate],[data-pdone],[data-plant-end],[data-plant-del],[data-mix-set],[data-done],[data-undone],[data-region],[data-geo],[data-wx-change],[data-wx-retry],[data-wx-clear],[data-big],[data-fav],[data-go],[data-jump],[data-print],[data-area-reset],[data-diary-del],[data-diary-csv],[data-diary-backup],[data-reset],[data-yr-step]');
   if (!t) return;
+  if (t.dataset.costMode) { setSetting({ costMode: t.dataset.costMode }); const y = window.scrollY; render(); window.scrollTo(0, y); return; }
+  if ('pestKind' in t.dataset) {
+    t.parentElement.querySelectorAll('[data-pest-kind]').forEach((b) => { const on = b === t; b.classList.toggle('on', on); b.setAttribute('aria-pressed', on); });
+    repaintPestGrid();
+    return;
+  }
+  if (t.dataset.pestRec) {
+    const [pid, name] = t.dataset.pestRec.split('|');
+    sessionStorage.setItem('yn:prefill', JSON.stringify({ type: 'spray', pid, values: { target: name }, missing: [], text: '' }));
+    location.hash = `#/farm/${pid}/rec/spray`;
+    return;
+  }
   if ('rpApply' in t.dataset) { const loc = rpickValue(t.closest('[data-rpick]')); if (loc) setLoc(loc); return; }
   if (t.dataset.rpPick) {
     const box = t.closest('[data-rpick]');
@@ -2236,6 +2553,14 @@ function setArea(v, u, cid) {
 }
 document.addEventListener('input', (e) => {
   const t = e.target;
+  if (t.matches('[data-pest-q]')) { repaintPestGrid(); return; }
+  if (t.closest('[data-exp-form]')) { clearTimeout(expTimer); const f = t.closest('[data-exp-form]'); expTimer = setTimeout(() => saveExp(f), 350); return; }
+  if (t.matches('[data-sale-price]')) { t.dataset.user = t.value ? '1' : ''; return; }
+  if (t.form?.dataset.recForm === 'harvest' && (t.name === 'kg' || t.name === 'unit')) {
+    const f = t.form;
+    if (f.price.dataset.user !== '1') f.price.value = Number(f.unit.value) > 0 && Number(f.kg.value) > 0 ? Math.round(Number(f.unit.value) * Number(f.kg.value)) : '';
+    return;
+  }
   if (t.matches('[data-rp-q]')) { loadRegions().then(() => rpickSearch(t.closest('[data-rpick]'), t.value)); return; }
   if (t.matches('[data-live]')) {
     document.querySelector('[data-results]').innerHTML = cropResults(t.value, t.dataset.cat);
@@ -2264,6 +2589,8 @@ document.addEventListener('input', (e) => {
 });
 document.addEventListener('change', (e) => {
   const t = e.target;
+  if (t.closest('[data-exp-form]')) { clearTimeout(expTimer); saveExp(t.closest('[data-exp-form]')); return; }
+  if (t.matches('[data-profit-year]')) { location.hash = '#/profit?y=' + t.value; return; }
   if (t.matches('[data-rp="sido"]')) { fillSgg(t.closest('[data-rpick]'), null); return; }
   if (t.matches('[data-rp="sgg"]')) { fillEmd(t.closest('[data-rpick]'), null); return; }
   if (t.matches('[data-report-form] [name="farmer"]')) { setSetting({ farmer: t.value.trim() }); document.querySelectorAll('.meta-t td').forEach((td, i) => { if (i === 0) td.textContent = t.value.trim(); }); return; }
@@ -2281,8 +2608,11 @@ document.addEventListener('change', (e) => {
   }).catch(() => toast('백업 파일을 읽지 못했습니다. 영농노트에서 받은 백업 파일인지 확인해 주세요.'));
 });
 
+// 병해충 사진을 못 받으면 칸을 비운다
+document.addEventListener('error', (e) => { const im = e.target; if (im?.matches?.('img[data-pimg]')) { im.parentElement?.classList.add('noimg'); im.remove(); } }, true);
+
 // ---------- boot ----------
 applyBig();
-load().then((d) => { META = d; lastPath = location.hash.split('?')[0]; render(); startSync(); })
+Promise.all([load(), pestIndex(), loadIncome()]).then(([d]) => { META = d; lastPath = location.hash.split('?')[0]; render(); startSync(); })
   .catch((err) => { $app.innerHTML = `<div class="stack"><p class="empty">${esc(err.message)}. 연결 상태를 확인한 뒤 새로고침해 주세요.</p></div>`; });
 if ('serviceWorker' in navigator && location.protocol === 'https:') navigator.serviceWorker.register('sw.js').catch(() => {});

@@ -1,0 +1,1779 @@
+{
+ "source": "농촌진흥청 농산물소득조사 — 농사로 「농산물소득정보」 (https://www.nongsaro.go.kr/portal/ps/psb/psbf/agricultIncomeInfoLst.ps?menuId=PS65441), 전국 평균, 10a당",
+ "note": "10a당 전국 평균. 총수입은 주산물(수량×가격)과 부산물, 경영비는 생산에 실제로 들어간 비용(자가노동비 등 제외), 소득 = 총수입 − 경영비",
+ "fetched": "2026-11-19",
+ "crops": [
+  {
+   "code": "696009",
+   "name": "겉보리",
+   "group": "식량작물",
+   "unit": "년1기작/10a",
+   "years": [
+    {
+     "year": 2025,
+     "revenue": 698483,
+     "yieldKg": 460,
+     "price": 1518,
+     "cost": 400700,
+     "income": 297782
+    },
+    {
+     "year": 2024,
+     "revenue": 454571,
+     "yieldKg": 422,
+     "price": 1074,
+     "cost": 334139,
+     "income": 120432
+    },
+    {
+     "year": 2023,
+     "revenue": 501219,
+     "yieldKg": 521,
+     "price": 958,
+     "cost": 348299,
+     "income": 152920
+    }
+   ]
+  },
+  {
+   "code": "696010",
+   "name": "쌀보리",
+   "group": "식량작물",
+   "unit": "년1기작/10a",
+   "years": [
+    {
+     "year": 2025,
+     "revenue": 857730,
+     "yieldKg": 440,
+     "price": 1950,
+     "cost": 385332,
+     "income": 472398
+    },
+    {
+     "year": 2024,
+     "revenue": 439374,
+     "yieldKg": 336,
+     "price": 1308,
+     "cost": 360456,
+     "income": 78918
+    },
+    {
+     "year": 2023,
+     "revenue": 554793,
+     "yieldKg": 422,
+     "price": 1311,
+     "cost": 338104,
+     "income": 216689
+    }
+   ]
+  },
+  {
+   "code": "696011",
+   "name": "밀",
+   "group": "식량작물",
+   "unit": "년1기작/10a",
+   "years": [
+    {
+     "year": 2025,
+     "revenue": 443475,
+     "yieldKg": 445,
+     "price": 995,
+     "cost": 322315,
+     "income": 121160
+    },
+    {
+     "year": 2024,
+     "revenue": 364906,
+     "yieldKg": 394,
+     "price": 925,
+     "cost": 314758,
+     "income": 50148
+    },
+    {
+     "year": 2023,
+     "revenue": 446230,
+     "yieldKg": 469,
+     "price": 951,
+     "cost": 315545,
+     "income": 130685
+    }
+   ]
+  },
+  {
+   "code": "696013",
+   "name": "노지풋옥수수",
+   "group": "식량작물",
+   "unit": "년1기작/10a",
+   "years": [
+    {
+     "year": 2025,
+     "revenue": 1852748,
+     "yieldKg": 2805,
+     "price": 660,
+     "cost": 920559,
+     "income": 932189
+    },
+    {
+     "year": 2024,
+     "revenue": 1988080,
+     "yieldKg": 2796,
+     "price": 709,
+     "cost": 852631,
+     "income": 1135449
+    },
+    {
+     "year": 2023,
+     "revenue": 2060022,
+     "yieldKg": 2904,
+     "price": 708,
+     "cost": 949062,
+     "income": 1110961
+    }
+   ]
+  },
+  {
+   "code": "696014",
+   "name": "고구마",
+   "group": "식량작물",
+   "unit": "년1기작/10a",
+   "years": [
+    {
+     "year": 2025,
+     "revenue": 3934240,
+     "yieldKg": 1872,
+     "price": 2096,
+     "cost": 2136810,
+     "income": 1797430
+    },
+    {
+     "year": 2024,
+     "revenue": 3629811,
+     "yieldKg": 1686,
+     "price": 2094,
+     "cost": 1919252,
+     "income": 1710559
+    },
+    {
+     "year": 2023,
+     "revenue": 4108604,
+     "yieldKg": 1812,
+     "price": 2222,
+     "cost": 2023417,
+     "income": 2085187
+    }
+   ]
+  },
+  {
+   "code": "696015",
+   "name": "봄감자",
+   "group": "식량작물",
+   "unit": "년1기작/10a",
+   "years": [
+    {
+     "year": 2025,
+     "revenue": 2640681,
+     "yieldKg": 2054,
+     "price": 1285,
+     "cost": 1511488,
+     "income": 1129193
+    },
+    {
+     "year": 2024,
+     "revenue": 2693175,
+     "yieldKg": 2263,
+     "price": 1190,
+     "cost": 1443511,
+     "income": 1249665
+    },
+    {
+     "year": 2023,
+     "revenue": 2783500,
+     "yieldKg": 2141,
+     "price": 1300,
+     "cost": 1409073,
+     "income": 1374427
+    }
+   ]
+  },
+  {
+   "code": "696016",
+   "name": "가을감자",
+   "group": "식량작물",
+   "unit": "년1기작/10a",
+   "years": [
+    {
+     "year": 2025,
+     "revenue": 2279018,
+     "yieldKg": 1638,
+     "price": 1391,
+     "cost": 1716447,
+     "income": 562572
+    },
+    {
+     "year": 2024,
+     "revenue": 2631152,
+     "yieldKg": 1894,
+     "price": 1389,
+     "cost": 1685251,
+     "income": 945902
+    },
+    {
+     "year": 2023,
+     "revenue": 2969016,
+     "yieldKg": 1973,
+     "price": 1505,
+     "cost": 1647982,
+     "income": 1321035
+    }
+   ]
+  },
+  {
+   "code": "696019",
+   "name": "노지수박",
+   "group": "노지채소",
+   "unit": "년1기작/10a",
+   "years": [
+    {
+     "year": 2025,
+     "revenue": 5393666,
+     "yieldKg": 4735,
+     "price": 1139,
+     "cost": 2549702,
+     "income": 2843964
+    },
+    {
+     "year": 2024,
+     "revenue": 4910955,
+     "yieldKg": 4481,
+     "price": 1096,
+     "cost": 2384712,
+     "income": 2526242
+    },
+    {
+     "year": 2023,
+     "revenue": 4523275,
+     "yieldKg": 4447,
+     "price": 1017,
+     "cost": 2273084,
+     "income": 2250191
+    }
+   ]
+  },
+  {
+   "code": "696022",
+   "name": "고랭지무",
+   "group": "노지채소",
+   "unit": "년1기작/10a",
+   "years": [
+    {
+     "year": 2025,
+     "revenue": 3137665,
+     "yieldKg": 6172,
+     "price": 508,
+     "cost": 1926622,
+     "income": 1211043
+    },
+    {
+     "year": 2024,
+     "revenue": 3806962,
+     "yieldKg": 7490,
+     "price": 508,
+     "cost": 1832245,
+     "income": 1974717
+    },
+    {
+     "year": 2023,
+     "revenue": 2872785,
+     "yieldKg": 7506,
+     "price": 383,
+     "cost": 1535040,
+     "income": 1337746
+    }
+   ]
+  },
+  {
+   "code": "696025",
+   "name": "가을배추",
+   "group": "노지채소",
+   "unit": "년1기작/10a",
+   "years": [
+    {
+     "year": 2025,
+     "revenue": 3539951,
+     "yieldKg": 5241,
+     "price": 675,
+     "cost": 1522173,
+     "income": 2017777
+    },
+    {
+     "year": 2024,
+     "revenue": 4136819,
+     "yieldKg": 6155,
+     "price": 672,
+     "cost": 1533753,
+     "income": 2603067
+    },
+    {
+     "year": 2023,
+     "revenue": 2893696,
+     "yieldKg": 5601,
+     "price": 517,
+     "cost": 1381542,
+     "income": 1512154
+    }
+   ]
+  },
+  {
+   "code": "696026",
+   "name": "고랭지배추",
+   "group": "노지채소",
+   "unit": "년1기작/10a",
+   "years": [
+    {
+     "year": 2025,
+     "revenue": 3174864,
+     "yieldKg": 4423,
+     "price": 718,
+     "cost": 1883104,
+     "income": 1291760
+    },
+    {
+     "year": 2024,
+     "revenue": 2754908,
+     "yieldKg": 4865,
+     "price": 566,
+     "cost": 1541629,
+     "income": 1213278
+    },
+    {
+     "year": 2023,
+     "revenue": 2803094,
+     "yieldKg": 5338,
+     "price": 525,
+     "cost": 1609023,
+     "income": 1194071
+    }
+   ]
+  },
+  {
+   "code": "696027",
+   "name": "노지시금치",
+   "group": "노지채소",
+   "unit": "년1기작/10a",
+   "years": [
+    {
+     "year": 2025,
+     "revenue": 3820342,
+     "yieldKg": 910,
+     "price": 4198,
+     "cost": 1380796,
+     "income": 2439546
+    },
+    {
+     "year": 2024,
+     "revenue": 3786633,
+     "yieldKg": 978,
+     "price": 3870,
+     "cost": 1205375,
+     "income": 2581259
+    },
+    {
+     "year": 2023,
+     "revenue": 3692611,
+     "yieldKg": 1280,
+     "price": 2885,
+     "cost": 1416686,
+     "income": 2275925
+    }
+   ]
+  },
+  {
+   "code": "696030",
+   "name": "대파",
+   "group": "노지채소",
+   "unit": "년1기작/10a",
+   "years": [
+    {
+     "year": 2025,
+     "revenue": 3862988,
+     "yieldKg": 3710,
+     "price": 1041,
+     "cost": 2046390,
+     "income": 1816598
+    },
+    {
+     "year": 2024,
+     "revenue": 4569980,
+     "yieldKg": 3821,
+     "price": 1196,
+     "cost": 1915197,
+     "income": 2654782
+    },
+    {
+     "year": 2023,
+     "revenue": 4352848,
+     "yieldKg": 3769,
+     "price": 1155,
+     "cost": 1770456,
+     "income": 2582392
+    }
+   ]
+  },
+  {
+   "code": "696031",
+   "name": "쪽파",
+   "group": "노지채소",
+   "unit": "년1기작/10a",
+   "years": [
+    {
+     "year": 2025,
+     "revenue": 4927834,
+     "yieldKg": 1486,
+     "price": 3316,
+     "cost": 2756887,
+     "income": 2170947
+    },
+    {
+     "year": 2024,
+     "revenue": 5873196,
+     "yieldKg": 1614,
+     "price": 3638,
+     "cost": 2791661,
+     "income": 3081534
+    },
+    {
+     "year": 2023,
+     "revenue": 5381476,
+     "yieldKg": 1760,
+     "price": 3049,
+     "cost": 2406276,
+     "income": 2975199
+    }
+   ]
+  },
+  {
+   "code": "696032",
+   "name": "생강",
+   "group": "노지채소",
+   "unit": "년1기작/10a",
+   "years": [
+    {
+     "year": 2025,
+     "revenue": 8139879,
+     "yieldKg": 1878,
+     "price": 4297,
+     "cost": 4772491,
+     "income": 3367388
+    },
+    {
+     "year": 2024,
+     "revenue": 8472194,
+     "yieldKg": 1873,
+     "price": 4505,
+     "cost": 4301341,
+     "income": 4170854
+    },
+    {
+     "year": 2023,
+     "revenue": 9791077,
+     "yieldKg": 1703,
+     "price": 5713,
+     "cost": 4535331,
+     "income": 5255746
+    }
+   ]
+  },
+  {
+   "code": "696086",
+   "name": "노지가을무",
+   "group": "노지채소",
+   "unit": "년1기작/10a",
+   "years": [
+    {
+     "year": 2025,
+     "revenue": 2678856,
+     "yieldKg": 4890,
+     "price": 541,
+     "cost": 1248491,
+     "income": 1430366
+    },
+    {
+     "year": 2024,
+     "revenue": 2796080,
+     "yieldKg": 4928,
+     "price": 557,
+     "cost": 1264566,
+     "income": 1531514
+    },
+    {
+     "year": 2023,
+     "revenue": 2563446,
+     "yieldKg": 6162,
+     "price": 413,
+     "cost": 1168128,
+     "income": 1395318
+    }
+   ]
+  },
+  {
+   "code": "696087",
+   "name": "노지당근",
+   "group": "노지채소",
+   "unit": "년1기작/10a",
+   "years": [
+    {
+     "year": 2025,
+     "revenue": 3549778,
+     "yieldKg": 3597,
+     "price": 987,
+     "cost": 2388460,
+     "income": 1161319
+    },
+    {
+     "year": 2024,
+     "revenue": 6275072,
+     "yieldKg": 3542,
+     "price": 1772,
+     "cost": 2461740,
+     "income": 3813332
+    },
+    {
+     "year": 2023,
+     "revenue": 4877046,
+     "yieldKg": 4341,
+     "price": 1123,
+     "cost": 2395024,
+     "income": 2482021
+    }
+   ]
+  },
+  {
+   "code": "696088",
+   "name": "노지봄배추",
+   "group": "노지채소",
+   "unit": "년1기작/10a",
+   "years": [
+    {
+     "year": 2025,
+     "revenue": 2394313,
+     "yieldKg": 6405,
+     "price": 374,
+     "cost": 1376166,
+     "income": 1018147
+    },
+    {
+     "year": 2024,
+     "revenue": 2501713,
+     "yieldKg": 7122,
+     "price": 351,
+     "cost": 1343294,
+     "income": 1158419
+    },
+    {
+     "year": 2023,
+     "revenue": 2755054,
+     "yieldKg": 7205,
+     "price": 382,
+     "cost": 1265953,
+     "income": 1489101
+    }
+   ]
+  },
+  {
+   "code": "696090",
+   "name": "노지양배추",
+   "group": "노지채소",
+   "unit": "년1기작/10a",
+   "years": [
+    {
+     "year": 2025,
+     "revenue": 2373298,
+     "yieldKg": 6030,
+     "price": 394,
+     "cost": 1474565,
+     "income": 898734
+    },
+    {
+     "year": 2024,
+     "revenue": 2498961,
+     "yieldKg": 6174,
+     "price": 405,
+     "cost": 1359926,
+     "income": 1139035
+    },
+    {
+     "year": 2023,
+     "revenue": 2332080,
+     "yieldKg": 6479,
+     "price": 360,
+     "cost": 1359774,
+     "income": 972306
+    }
+   ]
+  },
+  {
+   "code": "696035",
+   "name": "시설참외",
+   "group": "시설채소",
+   "unit": "년1기작/10a",
+   "years": [
+    {
+     "year": 2025,
+     "revenue": 13526442,
+     "yieldKg": 4425,
+     "price": 3057,
+     "cost": 7055544,
+     "income": 6470899
+    },
+    {
+     "year": 2024,
+     "revenue": 13193589,
+     "yieldKg": 4053,
+     "price": 3255,
+     "cost": 6171572,
+     "income": 7022018
+    },
+    {
+     "year": 2023,
+     "revenue": 12781206,
+     "yieldKg": 4137,
+     "price": 3089,
+     "cost": 6360284,
+     "income": 6420923
+    }
+   ]
+  },
+  {
+   "code": "696041",
+   "name": "시설호박",
+   "group": "시설채소",
+   "unit": "년1기작/10a",
+   "years": [
+    {
+     "year": 2025,
+     "revenue": 18065904,
+     "yieldKg": 9162,
+     "price": 1972,
+     "cost": 8646900,
+     "income": 9419004
+    },
+    {
+     "year": 2024,
+     "revenue": 18633705,
+     "yieldKg": 8700,
+     "price": 2142,
+     "cost": 7842191,
+     "income": 10791514
+    },
+    {
+     "year": 2023,
+     "revenue": 17814950,
+     "yieldKg": 8575,
+     "price": 2078,
+     "cost": 8231243,
+     "income": 9583707
+    }
+   ]
+  },
+  {
+   "code": "696045",
+   "name": "시설가지",
+   "group": "시설채소",
+   "unit": "년1기작/10a",
+   "years": [
+    {
+     "year": 2025,
+     "revenue": 28810911,
+     "yieldKg": 12595,
+     "price": 2288,
+     "cost": 15559095,
+     "income": 13251816
+    },
+    {
+     "year": 2024,
+     "revenue": 30277844,
+     "yieldKg": 13114,
+     "price": 2309,
+     "cost": 15183663,
+     "income": 15094181
+    },
+    {
+     "year": 2023,
+     "revenue": 27318823,
+     "yieldKg": 12511,
+     "price": 2184,
+     "cost": 14260702,
+     "income": 13058121
+    }
+   ]
+  },
+  {
+   "code": "696049",
+   "name": "시설시금치",
+   "group": "시설채소",
+   "unit": "년1기작/10a",
+   "years": [
+    {
+     "year": 2025,
+     "revenue": 4896907,
+     "yieldKg": 1512,
+     "price": 3240,
+     "cost": 2609099,
+     "income": 2287808
+    },
+    {
+     "year": 2024,
+     "revenue": 5143116,
+     "yieldKg": 1528,
+     "price": 3365,
+     "cost": 2208166,
+     "income": 2934950
+    },
+    {
+     "year": 2023,
+     "revenue": 4025775,
+     "yieldKg": 1242,
+     "price": 3240,
+     "cost": 2297401,
+     "income": 1728374
+    }
+   ]
+  },
+  {
+   "code": "696050",
+   "name": "시설상추",
+   "group": "시설채소",
+   "unit": "년1기작/10a",
+   "years": [
+    {
+     "year": 2025,
+     "revenue": 14347617,
+     "yieldKg": 4067,
+     "price": 3528,
+     "cost": 8717420,
+     "income": 5630197
+    },
+    {
+     "year": 2024,
+     "revenue": 11629071,
+     "yieldKg": 3315,
+     "price": 3508,
+     "cost": 6608669,
+     "income": 5020401
+    },
+    {
+     "year": 2023,
+     "revenue": 11087540,
+     "yieldKg": 3062,
+     "price": 3618,
+     "cost": 6119823,
+     "income": 4967717
+    }
+   ]
+  },
+  {
+   "code": "696051",
+   "name": "시설부추",
+   "group": "시설채소",
+   "unit": "년1기작/10a",
+   "years": [
+    {
+     "year": 2025,
+     "revenue": 12888436,
+     "yieldKg": 4153,
+     "price": 3103,
+     "cost": 7519280,
+     "income": 5369155
+    },
+    {
+     "year": 2024,
+     "revenue": 12290946,
+     "yieldKg": 3846,
+     "price": 3196,
+     "cost": 7042152,
+     "income": 5248793
+    },
+    {
+     "year": 2023,
+     "revenue": 12919442,
+     "yieldKg": 4122,
+     "price": 3134,
+     "cost": 7130534,
+     "income": 5788908
+    }
+   ]
+  },
+  {
+   "code": "696052",
+   "name": "시설고추",
+   "group": "시설채소",
+   "unit": "년1기작/10a",
+   "years": [
+    {
+     "year": 2025,
+     "revenue": 17017281,
+     "yieldKg": 4381,
+     "price": 3885,
+     "cost": 10502186,
+     "income": 6515095
+    },
+    {
+     "year": 2024,
+     "revenue": 22359106,
+     "yieldKg": 5028,
+     "price": 4446,
+     "cost": 9764164,
+     "income": 12594942
+    },
+    {
+     "year": 2023,
+     "revenue": 20077288,
+     "yieldKg": 5245,
+     "price": 3828,
+     "cost": 9776668,
+     "income": 10300620
+    }
+   ]
+  },
+  {
+   "code": "696075",
+   "name": "시설수박",
+   "group": "시설채소",
+   "unit": "년1기작/10a",
+   "years": [
+    {
+     "year": 2025,
+     "revenue": 7769580,
+     "yieldKg": 4655,
+     "price": 1669,
+     "cost": 3528955,
+     "income": 4240625
+    },
+    {
+     "year": 2024,
+     "revenue": 7135084,
+     "yieldKg": 4442,
+     "price": 1606,
+     "cost": 3500230,
+     "income": 3634855
+    },
+    {
+     "year": 2023,
+     "revenue": 7029381,
+     "yieldKg": 4562,
+     "price": 1541,
+     "cost": 3287730,
+     "income": 3741651
+    }
+   ]
+  },
+  {
+   "code": "696076",
+   "name": "시설딸기(토경)",
+   "group": "시설채소",
+   "unit": "년1기작/10a",
+   "years": [
+    {
+     "year": 2025,
+     "revenue": 30820372,
+     "yieldKg": 3323,
+     "price": 9276,
+     "cost": 18225867,
+     "income": 12594504
+    },
+    {
+     "year": 2024,
+     "revenue": 26307065,
+     "yieldKg": 2893,
+     "price": 9094,
+     "cost": 15620841,
+     "income": 10686223
+    },
+    {
+     "year": 2023,
+     "revenue": 26590440,
+     "yieldKg": 2998,
+     "price": 8869,
+     "cost": 15087166,
+     "income": 11503274
+    }
+   ]
+  },
+  {
+   "code": "696077",
+   "name": "시설딸기(수경)",
+   "group": "시설채소",
+   "unit": "년1기작/10a",
+   "years": [
+    {
+     "year": 2025,
+     "revenue": 40830905,
+     "yieldKg": 3844,
+     "price": 10622,
+     "cost": 24414176,
+     "income": 16416729
+    },
+    {
+     "year": 2024,
+     "revenue": 35781730,
+     "yieldKg": 3292,
+     "price": 10868,
+     "cost": 20782965,
+     "income": 14998764
+    },
+    {
+     "year": 2023,
+     "revenue": 34423381,
+     "yieldKg": 3397,
+     "price": 10129,
+     "cost": 19754233,
+     "income": 14669148
+    }
+   ]
+  },
+  {
+   "code": "696078",
+   "name": "시설오이",
+   "group": "시설채소",
+   "unit": "년1기작/10a",
+   "years": [
+    {
+     "year": 2025,
+     "revenue": 25297812,
+     "yieldKg": 11052,
+     "price": 2289,
+     "cost": 13421995,
+     "income": 11875817
+    },
+    {
+     "year": 2024,
+     "revenue": 25183583,
+     "yieldKg": 10505,
+     "price": 2397,
+     "cost": 12299942,
+     "income": 12883641
+    },
+    {
+     "year": 2023,
+     "revenue": 22729042,
+     "yieldKg": 9974,
+     "price": 2279,
+     "cost": 12018109,
+     "income": 10710933
+    }
+   ]
+  },
+  {
+   "code": "696079",
+   "name": "시설토마토(토경)",
+   "group": "시설채소",
+   "unit": "년1기작/10a",
+   "years": [
+    {
+     "year": 2025,
+     "revenue": 21281686,
+     "yieldKg": 6623,
+     "price": 3213,
+     "cost": 10963787,
+     "income": 10317899
+    },
+    {
+     "year": 2024,
+     "revenue": 20509637,
+     "yieldKg": 6226,
+     "price": 3294,
+     "cost": 9768283,
+     "income": 10741353
+    },
+    {
+     "year": 2023,
+     "revenue": 18961806,
+     "yieldKg": 6468,
+     "price": 2932,
+     "cost": 9411225,
+     "income": 9550581
+    }
+   ]
+  },
+  {
+   "code": "696080",
+   "name": "시설토마토(수경)",
+   "group": "시설채소",
+   "unit": "년1기작/10a",
+   "years": [
+    {
+     "year": 2025,
+     "revenue": 35890211,
+     "yieldKg": 14908,
+     "price": 2407,
+     "cost": 25845975,
+     "income": 10044236
+    },
+    {
+     "year": 2024,
+     "revenue": 42014598,
+     "yieldKg": 14310,
+     "price": 2936,
+     "cost": 24369593,
+     "income": 17645005
+    },
+    {
+     "year": 2023,
+     "revenue": 33862645,
+     "yieldKg": 13723,
+     "price": 2468,
+     "cost": 21715876,
+     "income": 12146769
+    }
+   ]
+  },
+  {
+   "code": "696081",
+   "name": "시설방울토마토(토경)",
+   "group": "시설채소",
+   "unit": "년1기작/10a",
+   "years": [
+    {
+     "year": 2025,
+     "revenue": 20081054,
+     "yieldKg": 4117,
+     "price": 4878,
+     "cost": 10077781,
+     "income": 10003273
+    },
+    {
+     "year": 2024,
+     "revenue": 20255687,
+     "yieldKg": 4306,
+     "price": 4704,
+     "cost": 9565134,
+     "income": 10690553
+    },
+    {
+     "year": 2023,
+     "revenue": 16030839,
+     "yieldKg": 4608,
+     "price": 3479,
+     "cost": 9702000,
+     "income": 6328839
+    }
+   ]
+  },
+  {
+   "code": "696082",
+   "name": "시설방울토마토(수경)",
+   "group": "시설채소",
+   "unit": "년1기작/10a",
+   "years": [
+    {
+     "year": 2025,
+     "revenue": 31467891,
+     "yieldKg": 8211,
+     "price": 3832,
+     "cost": 19328833,
+     "income": 12139058
+    },
+    {
+     "year": 2024,
+     "revenue": 28862575,
+     "yieldKg": 6758,
+     "price": 4271,
+     "cost": 16780458,
+     "income": 12082117
+    },
+    {
+     "year": 2023,
+     "revenue": 21533073,
+     "yieldKg": 6356,
+     "price": 3388,
+     "cost": 15357054,
+     "income": 6176019
+    }
+   ]
+  },
+  {
+   "code": "696091",
+   "name": "시설착색단고추",
+   "group": "시설채소",
+   "unit": "년1기작/10a",
+   "years": [
+    {
+     "year": 2025,
+     "revenue": 44217060,
+     "yieldKg": 11191,
+     "price": 3951,
+     "cost": 32233111,
+     "income": 11983949
+    },
+    {
+     "year": 2024,
+     "revenue": 41318208,
+     "yieldKg": 11349,
+     "price": 3641,
+     "cost": 29377408,
+     "income": 11940800
+    },
+    {
+     "year": 2023,
+     "revenue": 40833808,
+     "yieldKg": 12425,
+     "price": 3286,
+     "cost": 30164806,
+     "income": 10669003
+    }
+   ]
+  },
+  {
+   "code": "696054",
+   "name": "사과",
+   "group": "노지과수",
+   "unit": "연/10a",
+   "years": [
+    {
+     "year": 2025,
+     "revenue": 9799161,
+     "yieldKg": 2036,
+     "price": 4813,
+     "cost": 4095698,
+     "income": 5703463
+    },
+    {
+     "year": 2024,
+     "revenue": 8820320,
+     "yieldKg": 1982,
+     "price": 4449,
+     "cost": 3706022,
+     "income": 5114297
+    },
+    {
+     "year": 2023,
+     "revenue": 8852139,
+     "yieldKg": 2066,
+     "price": 4286,
+     "cost": 3823247,
+     "income": 5028892
+    }
+   ]
+  },
+  {
+   "code": "696055",
+   "name": "배",
+   "group": "노지과수",
+   "unit": "연/10a",
+   "years": [
+    {
+     "year": 2025,
+     "revenue": 8542300,
+     "yieldKg": 2993,
+     "price": 2854,
+     "cost": 4116617,
+     "income": 4425683
+    },
+    {
+     "year": 2024,
+     "revenue": 8178345,
+     "yieldKg": 2620,
+     "price": 3122,
+     "cost": 3859722,
+     "income": 4318622
+    },
+    {
+     "year": 2023,
+     "revenue": 7265401,
+     "yieldKg": 2448,
+     "price": 2963,
+     "cost": 3641190,
+     "income": 3624211
+    }
+   ]
+  },
+  {
+   "code": "696056",
+   "name": "복숭아",
+   "group": "노지과수",
+   "unit": "연/10a",
+   "years": [
+    {
+     "year": 2025,
+     "revenue": 5880602,
+     "yieldKg": 1118,
+     "price": 5258,
+     "cost": 2850388,
+     "income": 3030214
+    },
+    {
+     "year": 2024,
+     "revenue": 5238963,
+     "yieldKg": 1126,
+     "price": 4652,
+     "cost": 2698074,
+     "income": 2540889
+    },
+    {
+     "year": 2023,
+     "revenue": 4910890,
+     "yieldKg": 973,
+     "price": 5046,
+     "cost": 2576085,
+     "income": 2334805
+    }
+   ]
+  },
+  {
+   "code": "696057",
+   "name": "노지포도",
+   "group": "노지과수",
+   "unit": "연/10a",
+   "years": [
+    {
+     "year": 2025,
+     "revenue": 8969252,
+     "yieldKg": 1788,
+     "price": 5016,
+     "cost": 4170580,
+     "income": 4798672
+    },
+    {
+     "year": 2024,
+     "revenue": 9864012,
+     "yieldKg": 1652,
+     "price": 5972,
+     "cost": 4384742,
+     "income": 5479269
+    },
+    {
+     "year": 2023,
+     "revenue": 10642010,
+     "yieldKg": 1545,
+     "price": 6887,
+     "cost": 4213986,
+     "income": 6428025
+    }
+   ]
+  },
+  {
+   "code": "696058",
+   "name": "노지감귤",
+   "group": "노지과수",
+   "unit": "연/10a",
+   "years": [
+    {
+     "year": 2025,
+     "revenue": 3996099,
+     "yieldKg": 2468,
+     "price": 1619,
+     "cost": 1591075,
+     "income": 2405024
+    },
+    {
+     "year": 2024,
+     "revenue": 4536225,
+     "yieldKg": 1747,
+     "price": 2597,
+     "cost": 1670431,
+     "income": 2865794
+    },
+    {
+     "year": 2023,
+     "revenue": 5196222,
+     "yieldKg": 2557,
+     "price": 2024,
+     "cost": 1903310,
+     "income": 3292913
+    }
+   ]
+  },
+  {
+   "code": "696059",
+   "name": "단감",
+   "group": "노지과수",
+   "unit": "연/10a",
+   "years": [
+    {
+     "year": 2025,
+     "revenue": 3813753,
+     "yieldKg": 1484,
+     "price": 2570,
+     "cost": 1982148,
+     "income": 1831605
+    },
+    {
+     "year": 2024,
+     "revenue": 4002483,
+     "yieldKg": 1537,
+     "price": 2604,
+     "cost": 1944421,
+     "income": 2058061
+    },
+    {
+     "year": 2023,
+     "revenue": 4137075,
+     "yieldKg": 1414,
+     "price": 2926,
+     "cost": 2029527,
+     "income": 2107548
+    }
+   ]
+  },
+  {
+   "code": "696061",
+   "name": "참다래(키위)",
+   "group": "노지과수",
+   "unit": "연/10a",
+   "years": [
+    {
+     "year": 2025,
+     "revenue": 6834873,
+     "yieldKg": 1667,
+     "price": 4098,
+     "cost": 3208096,
+     "income": 3626777
+    },
+    {
+     "year": 2024,
+     "revenue": 6469041,
+     "yieldKg": 1532,
+     "price": 4149,
+     "cost": 2979213,
+     "income": 3489828
+    },
+    {
+     "year": 2023,
+     "revenue": 5596774,
+     "yieldKg": 1274,
+     "price": 4390,
+     "cost": 2767229,
+     "income": 2829545
+    }
+   ]
+  },
+  {
+   "code": "696062",
+   "name": "블루베리",
+   "group": "노지과수",
+   "unit": "연/10a",
+   "years": [
+    {
+     "year": 2025,
+     "revenue": 12836892,
+     "yieldKg": 510,
+     "price": 25166,
+     "cost": 5430711,
+     "income": 7406181
+    },
+    {
+     "year": 2024,
+     "revenue": 11639504,
+     "yieldKg": 491,
+     "price": 23651,
+     "cost": 5179707,
+     "income": 6459798
+    },
+    {
+     "year": 2023,
+     "revenue": 10599168,
+     "yieldKg": 454,
+     "price": 23255,
+     "cost": 4566214,
+     "income": 6032954
+    }
+   ]
+  },
+  {
+   "code": "696064",
+   "name": "자두",
+   "group": "노지과수",
+   "unit": "연/10a",
+   "years": [
+    {
+     "year": 2025,
+     "revenue": 5100416,
+     "yieldKg": 970,
+     "price": 5259,
+     "cost": 2000707,
+     "income": 3099709
+    },
+    {
+     "year": 2024,
+     "revenue": 4332818,
+     "yieldKg": 1080,
+     "price": 4012,
+     "cost": 2030414,
+     "income": 2302405
+    },
+    {
+     "year": 2023,
+     "revenue": 4232833,
+     "yieldKg": 823,
+     "price": 5140,
+     "cost": 1985182,
+     "income": 2247652
+    }
+   ]
+  },
+  {
+   "code": "696065",
+   "name": "시설포도",
+   "group": "시설과수",
+   "unit": "연/10a",
+   "years": [
+    {
+     "year": 2025,
+     "revenue": 12564032,
+     "yieldKg": 1664,
+     "price": 7551,
+     "cost": 6742640,
+     "income": 5821392
+    },
+    {
+     "year": 2024,
+     "revenue": 13064112,
+     "yieldKg": 1596,
+     "price": 8184,
+     "cost": 6015839,
+     "income": 7048273
+    },
+    {
+     "year": 2023,
+     "revenue": 15427657,
+     "yieldKg": 1632,
+     "price": 9450,
+     "cost": 6323322,
+     "income": 9104335
+    }
+   ]
+  },
+  {
+   "code": "696092",
+   "name": "시설멜론",
+   "group": "시설과수",
+   "unit": "연/10a",
+   "years": [
+    {
+     "year": 2025,
+     "revenue": 9969361,
+     "yieldKg": 2463,
+     "price": 4048,
+     "cost": 5635392,
+     "income": 4333969
+    },
+    {
+     "year": 2024,
+     "revenue": 10391860,
+     "yieldKg": 2695,
+     "price": 3856,
+     "cost": 5861347,
+     "income": 4530513
+    },
+    {
+     "year": 2023,
+     "revenue": 10257378,
+     "yieldKg": 2692,
+     "price": 3810,
+     "cost": 5556371,
+     "income": 4701007
+    }
+   ]
+  },
+  {
+   "code": "696067",
+   "name": "시설장미",
+   "group": "화훼",
+   "unit": "년1기작/10a",
+   "years": [
+    {
+     "year": 2025,
+     "revenue": 38176948,
+     "yieldKg": 74099,
+     "price": 515,
+     "cost": 28927768,
+     "income": 9249180
+    },
+    {
+     "year": 2024,
+     "revenue": 37257298,
+     "yieldKg": 65840,
+     "price": 566,
+     "cost": 23418501,
+     "income": 13838797
+    },
+    {
+     "year": 2023,
+     "revenue": 37099876,
+     "yieldKg": 66540,
+     "price": 558,
+     "cost": 24259225,
+     "income": 12840651
+    }
+   ]
+  },
+  {
+   "code": "696069",
+   "name": "참깨",
+   "group": "특용작물",
+   "unit": "년1기작/10a",
+   "years": [
+    {
+     "year": 2025,
+     "revenue": 2266819,
+     "yieldKg": 88,
+     "price": 25802,
+     "cost": 709300,
+     "income": 1557519
+    },
+    {
+     "year": 2024,
+     "revenue": 1815866,
+     "yieldKg": 71,
+     "price": 25580,
+     "cost": 770302,
+     "income": 1045564
+    },
+    {
+     "year": 2023,
+     "revenue": 1652613,
+     "yieldKg": 64,
+     "price": 25821,
+     "cost": 653389,
+     "income": 999225
+    }
+   ]
+  },
+  {
+   "code": "696071",
+   "name": "인삼(4년근)",
+   "group": "특용작물",
+   "unit": "4년1기작/10a",
+   "years": [
+    {
+     "year": 2025,
+     "revenue": 16767241,
+     "yieldKg": 680,
+     "price": 24670,
+     "cost": 9326625,
+     "income": 7440616
+    },
+    {
+     "year": 2024,
+     "revenue": 14561630,
+     "yieldKg": 651,
+     "price": 22360,
+     "cost": 8926853,
+     "income": 5634777
+    },
+    {
+     "year": 2023,
+     "revenue": 15600731,
+     "yieldKg": 764,
+     "price": 20411,
+     "cost": 6919072,
+     "income": 8681660
+    }
+   ]
+  },
+  {
+   "code": "696072",
+   "name": "오미자",
+   "group": "특용작물",
+   "unit": "년1기작/10a",
+   "years": [
+    {
+     "year": 2025,
+     "revenue": 4853868,
+     "yieldKg": 393,
+     "price": 12348,
+     "cost": 2089500,
+     "income": 2764369
+    },
+    {
+     "year": 2024,
+     "revenue": 4588608,
+     "yieldKg": 395,
+     "price": 11629,
+     "cost": 1811618,
+     "income": 2776989
+    },
+    {
+     "year": 2023,
+     "revenue": 4025782,
+     "yieldKg": 372,
+     "price": 10819,
+     "cost": 1906838,
+     "income": 2118943
+    }
+   ]
+  },
+  {
+   "code": "696073",
+   "name": "들깨",
+   "group": "특용작물",
+   "unit": "년1기작/10a",
+   "years": [
+    {
+     "year": 2025,
+     "revenue": 1103536,
+     "yieldKg": 80,
+     "price": 13736,
+     "cost": 508216,
+     "income": 595320
+    },
+    {
+     "year": 2024,
+     "revenue": 1094506,
+     "yieldKg": 86,
+     "price": 12707,
+     "cost": 497644,
+     "income": 596862
+    },
+    {
+     "year": 2023,
+     "revenue": 1161635,
+     "yieldKg": 97,
+     "price": 11987,
+     "cost": 441594,
+     "income": 720041
+    }
+   ]
+  }
+ ],
+ "byCrop": {
+  "30599": [
+   "696052"
+  ],
+  "30601": [
+   "696052"
+  ],
+  "30605": [
+   "696087"
+  ],
+  "30609": [
+   "696076",
+   "696077"
+  ],
+  "30610": [
+   "696076",
+   "696077"
+  ],
+  "30613": [
+   "696092"
+  ],
+  "30614": [
+   "696022",
+   "696086"
+  ],
+  "30615": [
+   "696022",
+   "696086"
+  ],
+  "30618": [
+   "696025",
+   "696026",
+   "696088"
+  ],
+  "30619": [
+   "696026",
+   "696025",
+   "696088"
+  ],
+  "30620": [
+   "696051"
+  ],
+  "30624": [
+   "696050"
+  ],
+  "30625": [
+   "696032"
+  ],
+  "30627": [
+   "696019",
+   "696075"
+  ],
+  "30628": [
+   "696027",
+   "696049"
+  ],
+  "30634": [
+   "696090"
+  ],
+  "30636": [
+   "696078"
+  ],
+  "30639": [
+   "696031"
+  ],
+  "30640": [
+   "696035"
+  ],
+  "30646": [
+   "696079",
+   "696080",
+   "696081",
+   "696082"
+  ],
+  "30647": [
+   "696030"
+  ],
+  "30649": [
+   "696091"
+  ],
+  "30651": [
+   "696041"
+  ],
+  "30654": [
+   "696058"
+  ],
+  "30656": [
+   "696059"
+  ],
+  "30661": [
+   "696055"
+  ],
+  "30662": [
+   "696056"
+  ],
+  "30663": [
+   "696054"
+  ],
+  "30667": [
+   "696064"
+  ],
+  "30668": [
+   "696061"
+  ],
+  "30669": [
+   "696057"
+  ],
+  "30688": [
+   "696067"
+  ],
+  "30699": [
+   "696015",
+   "696016"
+  ],
+  "30701": [
+   "696014"
+  ],
+  "30703": [
+   "696073"
+  ],
+  "30707": [
+   "696011"
+  ],
+  "30709": [
+   "696013"
+  ],
+  "30712": [
+   "696009",
+   "696010"
+  ],
+  "30714": [
+   "696069"
+  ],
+  "30749": [
+   "696072"
+  ],
+  "30770": [
+   "696045"
+  ]
+ }
+}

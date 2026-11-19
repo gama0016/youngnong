@@ -1,0 +1,28 @@
+name: 농사로 농산물소득정보 받기
+on:
+  workflow_dispatch:
+  push:
+    branches: ['claude/**']
+    paths: ['scripts/fetch-income.mjs', '.github/workflows/income-fetch.yml']
+permissions:
+  contents: write
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - name: Fetch
+        run: node scripts/fetch-income.mjs
+        env:
+          MODE: ${{ vars.INCOME_MODE || 'full' }}
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A data/income.json data/income-raw 2>/dev/null || git add -A data/income-raw 2>/dev/null || git add -A data/income.json
+          if git diff --cached --quiet; then echo "변경 없음"; exit 0; fi
+          git commit -m "농사로 농산물소득정보 받기 (자동)"
+          git push
