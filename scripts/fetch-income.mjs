@@ -46,7 +46,7 @@ if (MODE === 'full') {
       const years = ((await json(`${BASE}/selectSearchYearLst.ps?areaCode=${AREA}&orderCode=desc&lowerCode=${lo.code}`))?.resultCodeList || []).map((y) => String(y.YEAR)).slice(0, 3);
       const rows = [];
       for (const y of years) {
-        const h = await get(`${BASE}/agricultIncomeInfoLst.ps?menuId=PS65441&sAreaCode=${AREA}&sUpperCode=${up.code}&sLowerCode=${lo.code}&sYear=${y}`);
+        const h = await get(`${BASE}/agricultIncomeInfoLst.ps?menuId=PS65441&areaCode=${AREA}&upperCode=${up.code}&lowerCode=${lo.code}&year=${y}&srchInfo=AVRG_INCOME`);
         if (!h) continue;
         const tb = (h.match(/<caption>\s*<strong>작물 경영성과 상세<\/strong>[\s\S]*?<tbody[^>]*>([\s\S]*?)<\/tbody>/) || [])[1] || '';
         for (const tr of tb.matchAll(/<tr>([\s\S]*?)<\/tr>/g)) {
@@ -63,6 +63,8 @@ if (MODE === 'full') {
       console.log(lo.code, lo.codeNm, uniq.map((r) => `${r.year}:${r.price}원/kg`).join(' '));
     }
   }
+  const sig = new Set(out.map((o) => JSON.stringify(o.years[0])));
+  if (out.length > 5 && sig.size < out.length / 2) { console.log('작목마다 같은 값이 나와 조회가 잘못된 것으로 보고 멈춘다'); process.exit(1); }
   // 우리 작목과 이름 맞추기(괄호 앞 이름). 같은 작물의 다른 이름만 잇는다.
   const norm = (s) => String(s).replace(/\s+/g, '');
   const head = (s) => norm(String(s).replace(/\(.*$/, ''));
