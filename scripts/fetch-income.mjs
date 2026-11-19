@@ -2,6 +2,7 @@
 // 사이트 HTML/조회 응답을 읽는 방식이라 농사로에 닿는 곳(GitHub Actions)에서 돌린다. 값은 원문 그대로 옮긴다.
 // MODE=probe 이면 구조 확인용 원본만 data/income-raw/ 에 저장한다.
 import { mkdir, readFile, writeFile, rm } from 'node:fs/promises';
+import { linkIncome } from './income-link.mjs';
 const BASE = 'https://www.nongsaro.go.kr/portal/ps/psb/psbf';
 const UA = 'Mozilla/5.0 (compatible; youngnong-data/1.0; +https://leafnote.kr/nong/)';
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
@@ -65,21 +66,11 @@ if (MODE === 'full') {
   }
   const sig = new Set(out.map((o) => JSON.stringify(o.years[0])));
   if (out.length > 5 && sig.size < out.length / 2) { console.log('작목마다 같은 값이 나와 조회가 잘못된 것으로 보고 멈춘다'); process.exit(1); }
-  // 우리 작목과 이름 맞추기(괄호 앞 이름). 같은 작물의 다른 이름만 잇는다.
-  const norm = (s) => String(s).replace(/\s+/g, '');
-  const head = (s) => norm(String(s).replace(/\(.*$/, ''));
-  const ALIAS = { 벼: ['논벼', '쌀', '벼'], '토마토·방울토마토': ['토마토', '방울토마토'], '한라봉(부지화)': ['감귤', '만감류', '부지화', '한라봉'], 단감: ['단감', '감'], 참다래: ['참다래', '키위'], 일반보리: ['보리', '겉보리', '쌀보리'], 맥주보리: ['맥주보리', '보리'], 결구상추: ['상추'], '길경(도라지)': ['도라지'], '더덕(양유)': ['더덕'], '산약(마)': ['마'], '양앵두(체리)': ['체리'], '셀러리(양미나리)': ['셀러리'], '감귤(노지재배)': ['감귤'], '감귤(시설재배)': ['감귤'], 풋콩: ['콩'], '들깨(종실)': ['들깨'], '들깨(잎)': ['들깨잎', '깻잎'] };
   const bundle = JSON.parse(await readFile('data/crops.json', 'utf8'));
-  const byCrop = {};
-  for (const c of bundle.crops || bundle) {
-    const cands = new Set([norm(c.name), head(c.name), ...(ALIAS[c.name] || []).map(norm)]);
-    for (const x of String(c.name).replace(/\(.*?\)/g, '').split('·')) cands.add(norm(x));
-    const hit = out.filter((o) => cands.has(head(o.name)) || cands.has(norm(o.name)));
-    if (hit.length) byCrop[c.id] = hit.map((o) => o.code);
-  }
+  const byCrop = linkIncome(bundle.crops || bundle, out);
   await writeFile('data/income.json', JSON.stringify({
     source: '농촌진흥청 농산물소득조사 — 농사로 「농산물소득정보」 (https://www.nongsaro.go.kr/portal/ps/psb/psbf/agricultIncomeInfoLst.ps?menuId=PS65441), 전국 평균, 10a당',
-    note: '총수입 = 수량 × 가격(농가 판매가 기준) + 부산물, 경영비 = 생산에 들어간 비용(자가노동비 제외), 소득 = 총수입 − 경영비',
+    note: '10a당 전국 평균. 총수입은 주산물(수량×가격)과 부산물, 경영비는 생산에 실제로 들어간 비용(자가노동비 등 제외), 소득 = 총수입 − 경영비',
     fetched: new Date().toISOString().slice(0, 10), crops: out, byCrop,
   }, null, 1));
   await rm('data/income-raw', { recursive: true, force: true });
