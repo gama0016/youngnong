@@ -1,0 +1,871 @@
+{
+ "source": "농촌진흥청 농산물소득조사 — 농사로 「농산물소득정보」 (https://www.nongsaro.go.kr/portal/ps/psb/psbf/agricultIncomeInfoLst.ps?menuId=PS65441), 전국 평균, 10a당",
+ "note": "총수입 = 수량 × 가격(농가 판매가 기준) + 부산물, 경영비 = 생산에 들어간 비용(자가노동비 제외), 소득 = 총수입 − 경영비",
+ "fetched": "2026-11-19",
+ "crops": [
+  {
+   "code": "696009",
+   "name": "겉보리",
+   "group": "식량작물",
+   "unit": "년1기작/10a",
+   "years": [
+    {
+     "year": 2025,
+     "revenue": 698483,
+     "yieldKg": 460,
+     "price": 1518,
+     "cost": 400700,
+     "income": 297782
+    }
+   ]
+  },
+  {
+   "code": "696010",
+   "name": "쌀보리",
+   "group": "식량작물",
+   "unit": "년1기작/10a",
+   "years": [
+    {
+     "year": 2025,
+     "revenue": 698483,
+     "yieldKg": 460,
+     "price": 1518,
+     "cost": 400700,
+     "income": 297782
+    }
+   ]
+  },
+  {
+   "code": "696011",
+   "name": "밀",
+   "group": "식량작물",
+   "unit": "년1기작/10a",
+   "years": [
+    {
+     "year": 2025,
+     "revenue": 698483,
+     "yieldKg": 460,
+     "price": 1518,
+     "cost": 400700,
+     "income": 297782
+    }
+   ]
+  },
+  {
+   "code": "696013",
+   "name": "노지풋옥수수",
+   "group": "식량작물",
+   "unit": "년1기작/10a",
+   "years": [
+    {
+     "year": 2025,
+     "revenue": 698483,
+     "yieldKg": 460,
+     "price": 1518,
+     "cost": 400700,
+     "income": 297782
+    }
+   ]
+  },
+  {
+   "code": "696014",
+   "name": "고구마",
+   "group": "식량작물",
+   "unit": "년1기작/10a",
+   "years": [
+    {
+     "year": 2025,
+     "revenue": 698483,
+     "yieldKg": 460,
+     "price": 1518,
+     "cost": 400700,
+     "income": 297782
+    }
+   ]
+  },
+  {
+   "code": "696015",
+   "name": "봄감자",
+   "group": "식량작물",
+   "unit": "년1기작/10a",
+   "years": [
+    {
+     "year": 2025,
+     "revenue": 698483,
+     "yieldKg": 460,
+     "price": 1518,
+     "cost": 400700,
+     "income": 297782
+    }
+   ]
+  },
+  {
+   "code": "696016",
+   "name": "가을감자",
+   "group": "식량작물",
+   "unit": "년1기작/10a",
+   "years": [
+    {
+     "year": 2025,
+     "revenue": 698483,
+     "yieldKg": 460,
+     "price": 1518,
+     "cost": 400700,
+     "income": 297782
+    }
+   ]
+  },
+  {
+   "code": "696019",
+   "name": "노지수박",
+   "group": "노지채소",
+   "unit": "년1기작/10a",
+   "years": [
+    {
+     "year": 2025,
+     "revenue": 698483,
+     "yieldKg": 460,
+     "price": 1518,
+     "cost": 400700,
+     "income": 297782
+    }
+   ]
+  },
+  {
+   "code": "696022",
+   "name": "고랭지무",
+   "group": "노지채소",
+   "unit": "년1기작/10a",
+   "years": [
+    {
+     "year": 2025,
+     "revenue": 698483,
+     "yieldKg": 460,
+     "price": 1518,
+     "cost": 400700,
+     "income": 297782
+    }
+   ]
+  },
+  {
+   "code": "696025",
+   "name": "가을배추",
+   "group": "노지채소",
+   "unit": "년1기작/10a",
+   "years": [
+    {
+     "year": 2025,
+     "revenue": 698483,
+     "yieldKg": 460,
+     "price": 1518,
+     "cost": 400700,
+     "income": 297782
+    }
+   ]
+  },
+  {
+   "code": "696026",
+   "name": "고랭지배추",
+   "group": "노지채소",
+   "unit": "년1기작/10a",
+   "years": [
+    {
+     "year": 2025,
+     "revenue": 698483,
+     "yieldKg": 460,
+     "price": 1518,
+     "cost": 400700,
+     "income": 297782
+    }
+   ]
+  },
+  {
+   "code": "696027",
+   "name": "노지시금치",
+   "group": "노지채소",
+   "unit": "년1기작/10a",
+   "years": [
+    {
+     "year": 2025,
+     "revenue": 698483,
+     "yieldKg": 460,
+     "price": 1518,
+     "cost": 400700,
+     "income": 297782
+    }
+   ]
+  },
+  {
+   "code": "696030",
+   "name": "대파",
+   "group": "노지채소",
+   "unit": "년1기작/10a",
+   "years": [
+    {
+     "year": 2025,
+     "revenue": 698483,
+     "yieldKg": 460,
+     "price": 1518,
+     "cost": 400700,
+     "income": 297782
+    }
+   ]
+  },
+  {
+   "code": "696031",
+   "name": "쪽파",
+   "group": "노지채소",
+   "unit": "년1기작/10a",
+   "years": [
+    {
+     "year": 2025,
+     "revenue": 698483,
+     "yieldKg": 460,
+     "price": 1518,
+     "cost": 400700,
+     "income": 297782
+    }
+   ]
+  },
+  {
+   "code": "696032",
+   "name": "생강",
+   "group": "노지채소",
+   "unit": "년1기작/10a",
+   "years": [
+    {
+     "year": 2025,
+     "revenue": 698483,
+     "yieldKg": 460,
+     "price": 1518,
+     "cost": 400700,
+     "income": 297782
+    }
+   ]
+  },
+  {
+   "code": "696086",
+   "name": "노지가을무",
+   "group": "노지채소",
+   "unit": "년1기작/10a",
+   "years": [
+    {
+     "year": 2025,
+     "revenue": 698483,
+     "yieldKg": 460,
+     "price": 1518,
+     "cost": 400700,
+     "income": 297782
+    }
+   ]
+  },
+  {
+   "code": "696087",
+   "name": "노지당근",
+   "group": "노지채소",
+   "unit": "년1기작/10a",
+   "years": [
+    {
+     "year": 2025,
+     "revenue": 698483,
+     "yieldKg": 460,
+     "price": 1518,
+     "cost": 400700,
+     "income": 297782
+    }
+   ]
+  },
+  {
+   "code": "696088",
+   "name": "노지봄배추",
+   "group": "노지채소",
+   "unit": "년1기작/10a",
+   "years": [
+    {
+     "year": 2025,
+     "revenue": 698483,
+     "yieldKg": 460,
+     "price": 1518,
+     "cost": 400700,
+     "income": 297782
+    }
+   ]
+  },
+  {
+   "code": "696090",
+   "name": "노지양배추",
+   "group": "노지채소",
+   "unit": "년1기작/10a",
+   "years": [
+    {
+     "year": 2025,
+     "revenue": 698483,
+     "yieldKg": 460,
+     "price": 1518,
+     "cost": 400700,
+     "income": 297782
+    }
+   ]
+  },
+  {
+   "code": "696035",
+   "name": "시설참외",
+   "group": "시설채소",
+   "unit": "년1기작/10a",
+   "years": [
+    {
+     "year": 2025,
+     "revenue": 698483,
+     "yieldKg": 460,
+     "price": 1518,
+     "cost": 400700,
+     "income": 297782
+    }
+   ]
+  },
+  {
+   "code": "696041",
+   "name": "시설호박",
+   "group": "시설채소",
+   "unit": "년1기작/10a",
+   "years": [
+    {
+     "year": 2025,
+     "revenue": 698483,
+     "yieldKg": 460,
+     "price": 1518,
+     "cost": 400700,
+     "income": 297782
+    }
+   ]
+  },
+  {
+   "code": "696045",
+   "name": "시설가지",
+   "group": "시설채소",
+   "unit": "년1기작/10a",
+   "years": [
+    {
+     "year": 2025,
+     "revenue": 698483,
+     "yieldKg": 460,
+     "price": 1518,
+     "cost": 400700,
+     "income": 297782
+    }
+   ]
+  },
+  {
+   "code": "696049",
+   "name": "시설시금치",
+   "group": "시설채소",
+   "unit": "년1기작/10a",
+   "years": [
+    {
+     "year": 2025,
+     "revenue": 698483,
+     "yieldKg": 460,
+     "price": 1518,
+     "cost": 400700,
+     "income": 297782
+    }
+   ]
+  },
+  {
+   "code": "696050",
+   "name": "시설상추",
+   "group": "시설채소",
+   "unit": "년1기작/10a",
+   "years": [
+    {
+     "year": 2025,
+     "revenue": 698483,
+     "yieldKg": 460,
+     "price": 1518,
+     "cost": 400700,
+     "income": 297782
+    }
+   ]
+  },
+  {
+   "code": "696051",
+   "name": "시설부추",
+   "group": "시설채소",
+   "unit": "년1기작/10a",
+   "years": [
+    {
+     "year": 2025,
+     "revenue": 698483,
+     "yieldKg": 460,
+     "price": 1518,
+     "cost": 400700,
+     "income": 297782
+    }
+   ]
+  },
+  {
+   "code": "696052",
+   "name": "시설고추",
+   "group": "시설채소",
+   "unit": "년1기작/10a",
+   "years": [
+    {
+     "year": 2025,
+     "revenue": 698483,
+     "yieldKg": 460,
+     "price": 1518,
+     "cost": 400700,
+     "income": 297782
+    }
+   ]
+  },
+  {
+   "code": "696075",
+   "name": "시설수박",
+   "group": "시설채소",
+   "unit": "년1기작/10a",
+   "years": [
+    {
+     "year": 2025,
+     "revenue": 698483,
+     "yieldKg": 460,
+     "price": 1518,
+     "cost": 400700,
+     "income": 297782
+    }
+   ]
+  },
+  {
+   "code": "696076",
+   "name": "시설딸기(토경)",
+   "group": "시설채소",
+   "unit": "년1기작/10a",
+   "years": [
+    {
+     "year": 2025,
+     "revenue": 698483,
+     "yieldKg": 460,
+     "price": 1518,
+     "cost": 400700,
+     "income": 297782
+    }
+   ]
+  },
+  {
+   "code": "696077",
+   "name": "시설딸기(수경)",
+   "group": "시설채소",
+   "unit": "년1기작/10a",
+   "years": [
+    {
+     "year": 2025,
+     "revenue": 698483,
+     "yieldKg": 460,
+     "price": 1518,
+     "cost": 400700,
+     "income": 297782
+    }
+   ]
+  },
+  {
+   "code": "696078",
+   "name": "시설오이",
+   "group": "시설채소",
+   "unit": "년1기작/10a",
+   "years": [
+    {
+     "year": 2025,
+     "revenue": 698483,
+     "yieldKg": 460,
+     "price": 1518,
+     "cost": 400700,
+     "income": 297782
+    }
+   ]
+  },
+  {
+   "code": "696079",
+   "name": "시설토마토(토경)",
+   "group": "시설채소",
+   "unit": "년1기작/10a",
+   "years": [
+    {
+     "year": 2025,
+     "revenue": 698483,
+     "yieldKg": 460,
+     "price": 1518,
+     "cost": 400700,
+     "income": 297782
+    }
+   ]
+  },
+  {
+   "code": "696080",
+   "name": "시설토마토(수경)",
+   "group": "시설채소",
+   "unit": "년1기작/10a",
+   "years": [
+    {
+     "year": 2025,
+     "revenue": 698483,
+     "yieldKg": 460,
+     "price": 1518,
+     "cost": 400700,
+     "income": 297782
+    }
+   ]
+  },
+  {
+   "code": "696081",
+   "name": "시설방울토마토(토경)",
+   "group": "시설채소",
+   "unit": "년1기작/10a",
+   "years": [
+    {
+     "year": 2025,
+     "revenue": 698483,
+     "yieldKg": 460,
+     "price": 1518,
+     "cost": 400700,
+     "income": 297782
+    }
+   ]
+  },
+  {
+   "code": "696082",
+   "name": "시설방울토마토(수경)",
+   "group": "시설채소",
+   "unit": "년1기작/10a",
+   "years": [
+    {
+     "year": 2025,
+     "revenue": 698483,
+     "yieldKg": 460,
+     "price": 1518,
+     "cost": 400700,
+     "income": 297782
+    }
+   ]
+  },
+  {
+   "code": "696091",
+   "name": "시설착색단고추",
+   "group": "시설채소",
+   "unit": "년1기작/10a",
+   "years": [
+    {
+     "year": 2025,
+     "revenue": 698483,
+     "yieldKg": 460,
+     "price": 1518,
+     "cost": 400700,
+     "income": 297782
+    }
+   ]
+  },
+  {
+   "code": "696054",
+   "name": "사과",
+   "group": "노지과수",
+   "unit": "연/10a",
+   "years": [
+    {
+     "year": 2025,
+     "revenue": 698483,
+     "yieldKg": 460,
+     "price": 1518,
+     "cost": 400700,
+     "income": 297782
+    }
+   ]
+  },
+  {
+   "code": "696055",
+   "name": "배",
+   "group": "노지과수",
+   "unit": "연/10a",
+   "years": [
+    {
+     "year": 2025,
+     "revenue": 698483,
+     "yieldKg": 460,
+     "price": 1518,
+     "cost": 400700,
+     "income": 297782
+    }
+   ]
+  },
+  {
+   "code": "696056",
+   "name": "복숭아",
+   "group": "노지과수",
+   "unit": "연/10a",
+   "years": [
+    {
+     "year": 2025,
+     "revenue": 698483,
+     "yieldKg": 460,
+     "price": 1518,
+     "cost": 400700,
+     "income": 297782
+    }
+   ]
+  },
+  {
+   "code": "696057",
+   "name": "노지포도",
+   "group": "노지과수",
+   "unit": "연/10a",
+   "years": [
+    {
+     "year": 2025,
+     "revenue": 698483,
+     "yieldKg": 460,
+     "price": 1518,
+     "cost": 400700,
+     "income": 297782
+    }
+   ]
+  },
+  {
+   "code": "696058",
+   "name": "노지감귤",
+   "group": "노지과수",
+   "unit": "연/10a",
+   "years": [
+    {
+     "year": 2025,
+     "revenue": 698483,
+     "yieldKg": 460,
+     "price": 1518,
+     "cost": 400700,
+     "income": 297782
+    }
+   ]
+  },
+  {
+   "code": "696059",
+   "name": "단감",
+   "group": "노지과수",
+   "unit": "연/10a",
+   "years": [
+    {
+     "year": 2025,
+     "revenue": 698483,
+     "yieldKg": 460,
+     "price": 1518,
+     "cost": 400700,
+     "income": 297782
+    }
+   ]
+  },
+  {
+   "code": "696061",
+   "name": "참다래(키위)",
+   "group": "노지과수",
+   "unit": "연/10a",
+   "years": [
+    {
+     "year": 2025,
+     "revenue": 698483,
+     "yieldKg": 460,
+     "price": 1518,
+     "cost": 400700,
+     "income": 297782
+    }
+   ]
+  },
+  {
+   "code": "696062",
+   "name": "블루베리",
+   "group": "노지과수",
+   "unit": "연/10a",
+   "years": [
+    {
+     "year": 2025,
+     "revenue": 698483,
+     "yieldKg": 460,
+     "price": 1518,
+     "cost": 400700,
+     "income": 297782
+    }
+   ]
+  },
+  {
+   "code": "696064",
+   "name": "자두",
+   "group": "노지과수",
+   "unit": "연/10a",
+   "years": [
+    {
+     "year": 2025,
+     "revenue": 698483,
+     "yieldKg": 460,
+     "price": 1518,
+     "cost": 400700,
+     "income": 297782
+    }
+   ]
+  },
+  {
+   "code": "696065",
+   "name": "시설포도",
+   "group": "시설과수",
+   "unit": "연/10a",
+   "years": [
+    {
+     "year": 2025,
+     "revenue": 698483,
+     "yieldKg": 460,
+     "price": 1518,
+     "cost": 400700,
+     "income": 297782
+    }
+   ]
+  },
+  {
+   "code": "696092",
+   "name": "시설멜론",
+   "group": "시설과수",
+   "unit": "연/10a",
+   "years": [
+    {
+     "year": 2025,
+     "revenue": 698483,
+     "yieldKg": 460,
+     "price": 1518,
+     "cost": 400700,
+     "income": 297782
+    }
+   ]
+  },
+  {
+   "code": "696067",
+   "name": "시설장미",
+   "group": "화훼",
+   "unit": "년1기작/10a",
+   "years": [
+    {
+     "year": 2025,
+     "revenue": 698483,
+     "yieldKg": 460,
+     "price": 1518,
+     "cost": 400700,
+     "income": 297782
+    }
+   ]
+  },
+  {
+   "code": "696069",
+   "name": "참깨",
+   "group": "특용작물",
+   "unit": "년1기작/10a",
+   "years": [
+    {
+     "year": 2025,
+     "revenue": 698483,
+     "yieldKg": 460,
+     "price": 1518,
+     "cost": 400700,
+     "income": 297782
+    }
+   ]
+  },
+  {
+   "code": "696071",
+   "name": "인삼(4년근)",
+   "group": "특용작물",
+   "unit": "4년1기작/10a",
+   "years": [
+    {
+     "year": 2025,
+     "revenue": 698483,
+     "yieldKg": 460,
+     "price": 1518,
+     "cost": 400700,
+     "income": 297782
+    }
+   ]
+  },
+  {
+   "code": "696072",
+   "name": "오미자",
+   "group": "특용작물",
+   "unit": "년1기작/10a",
+   "years": [
+    {
+     "year": 2025,
+     "revenue": 698483,
+     "yieldKg": 460,
+     "price": 1518,
+     "cost": 400700,
+     "income": 297782
+    }
+   ]
+  },
+  {
+   "code": "696073",
+   "name": "들깨",
+   "group": "특용작물",
+   "unit": "년1기작/10a",
+   "years": [
+    {
+     "year": 2025,
+     "revenue": 698483,
+     "yieldKg": 460,
+     "price": 1518,
+     "cost": 400700,
+     "income": 297782
+    }
+   ]
+  }
+ ],
+ "byCrop": {
+  "30607": [
+   "696073"
+  ],
+  "30625": [
+   "696032"
+  ],
+  "30639": [
+   "696031"
+  ],
+  "30656": [
+   "696059"
+  ],
+  "30661": [
+   "696055"
+  ],
+  "30662": [
+   "696056"
+  ],
+  "30663": [
+   "696054"
+  ],
+  "30667": [
+   "696064"
+  ],
+  "30668": [
+   "696061"
+  ],
+  "30701": [
+   "696014"
+  ],
+  "30703": [
+   "696073"
+  ],
+  "30707": [
+   "696011"
+  ],
+  "30712": [
+   "696009",
+   "696010"
+  ],
+  "30714": [
+   "696069"
+  ],
+  "30749": [
+   "696072"
+  ]
+ }
+}
